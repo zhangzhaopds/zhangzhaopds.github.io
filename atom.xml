@@ -1,0 +1,1519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>最爱冰红茶</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-03-30T03:20:57.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Zhang Zhao</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>URL中特殊字符的转义</title>
+    <link href="http://yoursite.com/2016/03/30/URL%E4%B8%AD%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E7%9A%84%E5%A4%84%E7%90%86/"/>
+    <id>http://yoursite.com/2016/03/30/URL中特殊字符的处理/</id>
+    <published>2016-03-30T03:40:38.000Z</published>
+    <updated>2016-03-30T03:20:57.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;解决思路&quot;&gt;&lt;a href=&quot;#解决思路&quot; class=&quot;headerlink&quot; title=&quot;解决思路&quot;&gt;&lt;/a&gt;解决思路&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;// 对URL进行转义
+- (NSString *)formatURLwithText:(NSString *)text {
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)text, NULL, (CFStringRef)@&amp;quot;!*’();:@&amp;amp;=+$,/?%#[]&amp;quot;, kCFStringEncodingUTF8));
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上面代码是就是最近本的处理方法，关键在用的时机。&lt;/p&gt;
+&lt;p&gt;生成sign值：通常的做法是对所有参数按key排序，然后拼接成a=x&amp;amp;b=y…这样的字符串，然后RSA一下。但是如果encode一下，iOS端和安卓端出现不同的结果，那么服务端拿到以后是可以得到原串的，但是服务端encode一下所得到的结果会不一样，那么校验sign就会失败。&lt;/p&gt;
+&lt;p&gt;但是，如果不对每个value进行转码，在服务端就无法通过&amp;amp;来分割了，因为value中有&amp;amp;时，若不转码就会出问题，因此encode是必须的。&lt;/p&gt;
+&lt;p&gt;解决方法：生成sign时，是遍历所有的key-value，然后拼接，最后RSA。那么，生成sign时，我们只要不对value进行encode，而其他上传的参数值都encode，这样就可以解决我们的问题了。&lt;/p&gt;
+&lt;p&gt;注意点：转义之后的URL不可再用encode；例如，value里面含有中文字段，正常情况下是要进行中文编码的，如果调用转义的方法后，就不需要在进行中文编码的。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;解决思路&quot;&gt;&lt;a href=&quot;#解决思路&quot; class=&quot;headerlink&quot; title
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>高阶函数：map、flatMap、forEach、filter、reduce</title>
+    <link href="http://yoursite.com/2016/03/15/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%EF%BC%9Amap%E3%80%81flatMap%E3%80%81forEach%E3%80%81filter%E3%80%81reduce/"/>
+    <id>http://yoursite.com/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/</id>
+    <published>2016-03-15T03:40:38.000Z</published>
+    <updated>2016-03-15T07:08:33.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;高阶函数：函数作为参数或者函数作为返回值。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;函数的写法：&quot;&gt;&lt;a href=&quot;#函数的写法：&quot; class=&quot;headerlink&quot; title=&quot;函数的写法：&quot;&gt;&lt;/a&gt;函数的写法：&lt;/h3&gt;&lt;h4 id=&quot;1-正常写法&quot;&gt;&lt;a href=&quot;#1-正常写法&quot; class=&quot;headerlink&quot; title=&quot;1.正常写法&quot;&gt;&lt;/a&gt;1.正常写法&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;let res = numbers.sort({$0 &amp;lt; $1})
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;2-Trailing-Closure&quot;&gt;&lt;a href=&quot;#2-Trailing-Closure&quot; class=&quot;headerlink&quot; title=&quot;2.Trailing Closure&quot;&gt;&lt;/a&gt;2.Trailing Closure&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;let ree = numbers.sort{$0 &amp;lt; $1}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;常用实例&quot;&gt;&lt;a href=&quot;#常用实例&quot; class=&quot;headerlink&quot; title=&quot;常用实例&quot;&gt;&lt;/a&gt;常用实例&lt;/h3&gt;&lt;h4 id=&quot;map函数：&quot;&gt;&lt;a href=&quot;#map函数：&quot; class=&quot;headerlink&quot; title=&quot;map函数：&quot;&gt;&lt;/a&gt;map函数：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;map函数：当数组调用map函数时，闭包作为它的参数，闭包实现对数组单个元素进行某种规则的处理，最终map函数返回一个原数组元素被闭包处理过的新的数组（新的数组元素个数和原先的相等，数组类型可自定义，如数组类型由[Int],变为[String] 或者 [Bool]等）。
+
+let arr = [1, 2, 9, 4, 5]
+// 写法一：推荐写法
+let mrr1 = arr.map {
+    &amp;quot;step.&amp;quot; + String($0)
+}
+// 写法二：
+let mrr2 = arr.map { (a: Int) -&amp;gt; String in
+    &amp;quot;step.&amp;quot; + String(a)
+}
+// 写法三：
+let mrr3 = arr.map ({ (a: Int) -&amp;gt; String in
+    &amp;quot;step.&amp;quot; + String(a)
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;flatMap函数：&quot;&gt;&lt;a href=&quot;#flatMap函数：&quot; class=&quot;headerlink&quot; title=&quot;flatMap函数：&quot;&gt;&lt;/a&gt;flatMap函数：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;flatMap函数：功能和map函数基本相同，不同之处在于，flatMap生成的数组自动去除nil。
+
+// 1、去除nil
+let frr = [&amp;quot;af&amp;quot;, &amp;quot;vf&amp;quot;, &amp;quot;&amp;quot;]
+let frr1 = frr.flatMap { (a: String) -&amp;gt; Int? in
+    if a.characters.count == 0 {
+            return nil
+    } else {
+        return a.characters.count
+    }
+}   // [2,2]
+
+// 2、对嵌套数组的拆分合并
+let fmp = [[2, 6, 4], [5, 3, 7]]
+let fmp1 = fmp.flatMap { (a: [Int]) -&amp;gt; [Int] in
+    a
+}   // [2, 6, 4, 5, 3, 7]
+
+let fmp2 = fmp.map { (a: [Int]) -&amp;gt; [Int] in
+    a
+}   // [[2, 6, 4], [5, 3, 7]]
+
+// 3、对不同类型数组的合并
+let c = [&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]
+let i = [1, 2]
+let fmp3 = i.flatMap { car in
+    c.map { num in
+        num + &amp;quot;\(car)&amp;quot;
+    }
+}   // [&amp;quot;a1&amp;quot;, &amp;quot;b1&amp;quot;, &amp;quot;c1&amp;quot;, &amp;quot;a2&amp;quot;, &amp;quot;b2&amp;quot;, &amp;quot;c2&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;filter函数：&quot;&gt;&lt;a href=&quot;#filter函数：&quot; class=&quot;headerlink&quot; title=&quot;filter函数：&quot;&gt;&lt;/a&gt;filter函数：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;let err = arr.filter { (a: Int) -&amp;gt; Bool in
+    a % 2 == 0
+}   // [2, 4]
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;forEach函数：&quot;&gt;&lt;a href=&quot;#forEach函数：&quot; class=&quot;headerlink&quot; title=&quot;forEach函数：&quot;&gt;&lt;/a&gt;forEach函数：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;arr.forEach { (a: Int) -&amp;gt; () in
+    print(a)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;reduce函数：&quot;&gt;&lt;a href=&quot;#reduce函数：&quot; class=&quot;headerlink&quot; title=&quot;reduce函数：&quot;&gt;&lt;/a&gt;reduce函数：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;reduce函数：把数组元素合并成一个新的值, 新值类型不固定。有两个参数，第一个参数是返回值的初始值；第二个参数是一个处理数组元素的函数。
+
+// 返回Int
+let crr = arr.reduce(0) { (prevSum: Int, elemen: Int) in
+    return prevSum + elemen
+
+}
+// 返回String
+let crr2 = arr.reduce(&amp;quot;&amp;quot;) {
+      &amp;quot;\($0)&amp;quot; + &amp;quot;\($1)&amp;quot;
+}
+
+// 实现map和filter
+extension Array {
+    func mMap&amp;lt;U&amp;gt; (transform: Element -&amp;gt; U) -&amp;gt; [U] {
+    return reduce([], combine: { $0 + [transform($1)] })
+    }
+    func mFilter (includeElement: Element -&amp;gt; Bool) -&amp;gt; [Element] {
+        return reduce([]) { includeElement($1) ? $0 + [$1] : $0 }
+    }
+}
+
+// 利用 reduce 实现 map
+let ass = arr.reduce([]) { (a: [Int], element: Int) -&amp;gt;[Int] in
+    var t = Array(a)
+    t.append(element * 2)
+    return t
+}
+
+// 利用 reduce 方法一次求出数组中奇数的和、以及偶数乘积
+let sss:(Int, Int) = arr.reduce((0, 1)) {
+    (a: (Int, Int), element: Int) -&amp;gt; (Int, Int) in
+    if element % 2 == 0 {
+        return (a.0, a.1 * element)
+    } else {
+        return (a.0 + element, a.1)
+    }
+}
+
+// 利用 reduce 方法一次求出数组中偶数的平方和
+let kkk = arr.filter {
+        $0 % 2 == 0
+    }.map {
+        $0 * $0
+    }.reduce(0){
+        $0 + $1
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;高阶函数：函数作为参数或者函数作为返回值。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;函数的写法：&quot;&gt;&lt;a href=&quot;#函数的写法：&quot; class=&quot;headerlink&quot; title=&quot;函数的写法：&quot;&gt;&lt;/a&gt;函数的写法：&lt;/h3&gt;&lt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>NSURLSession_Swift</title>
+    <link href="http://yoursite.com/2016/03/09/NSURLSession-Swift/"/>
+    <id>http://yoursite.com/2016/03/09/NSURLSession-Swift/</id>
+    <published>2016-03-09T06:46:51.000Z</published>
+    <updated>2016-03-15T07:12:35.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;一个简单地Swift语言的网络请求封装，包括数据请求、数据上传、图片下载、图片上传。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/NSURLSession_Swift.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本文链接&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;数据请求&quot;&gt;&lt;a href=&quot;#数据请求&quot; class=&quot;headerlink&quot; title=&quot;数据请求&quot;&gt;&lt;/a&gt;数据请求&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;/**
+ 数据请求
+
+ - parameter urlStr:  请求地址
+ - parameter reponse: 请求结果
+ */
+func get(urlStr: String, reponse: (result: AnyObject, response: NSURLResponse)-&amp;gt;Void)-&amp;gt;Void  {
+
+    if urlStr.isEmpty {
+        print(&amp;quot;Request address cannot be empty&amp;quot;)
+        return
+    }
+    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    let url: NSURL = NSURL.init(string: strEncode)!
+    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
+
+    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    let task: NSURLSessionDataTask = session.dataTaskWithRequest(request) { (data, resp, err) -&amp;gt; Void in
+        if (err != nil) {
+            print(&amp;quot;Data request failed: \(err?.code)&amp;quot;)
+            return
+        }
+        do {
+            let json =
+            try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+            reponse(result: json, response: resp!)
+
+        } catch {
+        }
+    }
+    task.resume()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;数据下载&quot;&gt;&lt;a href=&quot;#数据下载&quot; class=&quot;headerlink&quot; title=&quot;数据下载&quot;&gt;&lt;/a&gt;数据下载&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;/**
+ 数据下载
+
+ - parameter urlStr:  请求地址
+ - parameter reponse: 数据本地保存地址
+ */
+func downLoad(urlStr: String, reponse:(location: String)-&amp;gt;Void)-&amp;gt;Void {
+    if urlStr.isEmpty {
+        print(&amp;quot;Request address cannot be empty&amp;quot;)
+        return
+    }
+    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    let url: NSURL = NSURL.init(string: strEncode)!
+    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
+    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    let downLoadTask: NSURLSessionDownloadTask = session.downloadTaskWithRequest(request) { (location, resp, err) -&amp;gt; Void in
+        if (err != nil) {
+            print(&amp;quot;DownLoadData request failed: \(err?.code)&amp;quot;)
+            return
+        }
+        let caches: String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!
+
+        let file: String = caches.stringByAppendingString(&amp;quot;/\(resp!.suggestedFilename!)&amp;quot;)
+
+        if NSFileManager.defaultManager().fileExistsAtPath(file) {
+            if NSThread.isMainThread() {
+                reponse(location: file)
+            } else {
+                dispatch_async(dispatch_get_main_queue(), { () -&amp;gt; Void in
+                    reponse(location: file)
+                })
+            }
+        } else {
+            do {
+                try NSFileManager.defaultManager().moveItemAtPath(location!.path!, toPath: file)
+                if NSThread.isMainThread() {
+                    reponse(location: file)
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), { () -&amp;gt; Void in
+                        reponse(location: file)
+                    })
+                }
+            } catch {
+
+            }
+        }
+    }
+    downLoadTask.resume()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;JSON数据上传&quot;&gt;&lt;a href=&quot;#JSON数据上传&quot; class=&quot;headerlink&quot; title=&quot;JSON数据上传&quot;&gt;&lt;/a&gt;JSON数据上传&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;/**
+ 普通数据上传
+
+ - parameter urlStr:     上传地址
+ - parameter uploadData: 字典数据
+ - parameter reponse:    上传结果
+ */
+func upLoadData(urlStr: String, uploadData: AnyObject, reponse: (result: AnyObject, response: NSURLResponse)-&amp;gt;Void)-&amp;gt;Void {
+    if urlStr.isEmpty {
+        print(&amp;quot;Request address cannot be empty&amp;quot;)
+        return
+    }
+
+    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    let url: NSURL = NSURL.init(string: strEncode)!
+    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
+
+    request.addValue(&amp;quot;application/json&amp;quot;, forHTTPHeaderField: &amp;quot;Content-Type&amp;quot;)
+    request.addValue(&amp;quot;application/json&amp;quot;, forHTTPHeaderField: &amp;quot;Accept&amp;quot;)
+
+    request.HTTPMethod = &amp;quot;POST&amp;quot;
+    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+    request.timeoutInterval = 20
+    do {
+        let data: NSData =
+        try NSJSONSerialization.dataWithJSONObject(uploadData, options: NSJSONWritingOptions.PrettyPrinted)
+        let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let uploadTask: NSURLSessionUploadTask = session.uploadTaskWithRequest(request, fromData: data, completionHandler: { (result, resp, err) -&amp;gt; Void in
+            if (err != nil) {
+                print(&amp;quot;UpLoadData request failed: \(err?.code)&amp;quot;)
+                return
+            }
+
+            do {
+                let json: AnyObject =
+                try NSJSONSerialization.JSONObjectWithData(result!, options: NSJSONReadingOptions.MutableContainers)
+                reponse(result: json, response: resp!)
+            } catch {
+
+            }
+
+        })
+        uploadTask.resume()
+    } catch {
+
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;图片上传&quot;&gt;&lt;a href=&quot;#图片上传&quot; class=&quot;headerlink&quot; title=&quot;图片上传&quot;&gt;&lt;/a&gt;图片上传&lt;/h4&gt;&lt;pre&gt;&lt;code&gt; /**
+ 图片上传
+
+ - parameter urlStr:     上传地址
+ - parameter uploadData: 图片数据
+ - parameter dataType:   图片类型
+ - parameter reponse:    上传结果
+ */
+func upLoadImage(urlStr: String, image: UIImage, dataType: DataType, reponse: (result: String, response: NSURLResponse)-&amp;gt;Void)-&amp;gt;Void {
+    if urlStr.isEmpty {
+        print(&amp;quot;Request address cannot be empty&amp;quot;)
+        return
+    }
+
+    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    let url: NSURL = NSURL.init(string: strEncode)!
+    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
+    var daa = NSData()
+    switch dataType {
+    case .JPEG:
+        request.addValue(&amp;quot;image/jpeg&amp;quot;, forHTTPHeaderField: &amp;quot;Content-Type&amp;quot;)
+        request.addValue(&amp;quot;text/html&amp;quot;, forHTTPHeaderField: &amp;quot;Accept&amp;quot;)
+        daa = UIImageJPEGRepresentation(image, 1)!
+    case .PNG:
+        request.addValue(&amp;quot;image/png&amp;quot;, forHTTPHeaderField: &amp;quot;Content-Type&amp;quot;)
+        request.addValue(&amp;quot;text/html&amp;quot;, forHTTPHeaderField: &amp;quot;Accept&amp;quot;)
+        daa = UIImagePNGRepresentation(image)!
+    }
+
+    request.HTTPMethod = &amp;quot;POST&amp;quot;
+    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+    request.timeoutInterval = 20
+    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+
+    let uploadTask: NSURLSessionUploadTask = session.uploadTaskWithRequest(request, fromData: daa, completionHandler: { (result, resp, err) -&amp;gt; Void in
+
+        if (err != nil) {
+            print(&amp;quot;UpLoadImage request failed: \(err?.code)&amp;quot;)
+            return
+        }
+        let ss: String = String.init(data: result!, encoding: NSUTF8StringEncoding)!
+        reponse(result: ss, response: resp!)
+    })
+    uploadTask.resume()
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;一个简单地Swift语言的网络请求封装，包括数据请求、数据上传、图片下载、图片上传。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/NSURLSession_Swift.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Fabric-Crashlytics</title>
+    <link href="http://yoursite.com/2016/03/03/Fabric-Crashlytics/"/>
+    <id>http://yoursite.com/2016/03/03/Fabric-Crashlytics/</id>
+    <published>2016-03-03T02:59:15.000Z</published>
+    <updated>2016-03-15T07:12:13.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Fabric是Twitter公司提供的一款，应用于移动应用开发，统计应用崩溃信息的工具。操作简单，使用方便。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;使用介绍&quot;&gt;&lt;a href=&quot;#使用介绍&quot; class=&quot;headerlink&quot; title=&quot;使用介绍&quot;&gt;&lt;/a&gt;使用介绍&lt;/h3&gt;&lt;h4 id=&quot;申请账号&quot;&gt;&lt;a href=&quot;#申请账号&quot; class=&quot;headerlink&quot; title=&quot;申请账号&quot;&gt;&lt;/a&gt;申请账号&lt;/h4&gt;&lt;p&gt;Crashlytics的服务是免费提供的，但是并不能直接注册使用，需要先申请，打开 &lt;a href=&quot;http://try.crashlytics.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Crashlytic的官网&lt;/a&gt; ，输入自己的邮箱申请使用。之后Fabric会发一封确认邮件，确认成功之后，还会发一封Welcome to Fabric的邮件，点击Get Started with Fabric，根据提示，现在安装Mac端的App，登陆并根据提示完成配置。&lt;/p&gt;
+&lt;h4 id=&quot;设置工程&quot;&gt;&lt;a href=&quot;#设置工程&quot; class=&quot;headerlink&quot; title=&quot;设置工程&quot;&gt;&lt;/a&gt;设置工程&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;1、点击&amp;quot;+ New App&amp;quot; 添加工程项目；
+2、根据提示配置&amp;quot;Run Script&amp;quot;。打开工程-&amp;gt;Build Phases-&amp;gt;Editor-&amp;gt;Add Build Phase-&amp;gt;Add Run Script Build Phase, 然后将Fabric提供的代码粘贴到Shell下， 然后Command+B;
+3、按照提示，将Fabric提供的frameworks(图标)拖到工程里，然后粘贴复制相关代码。
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;测试&quot;&gt;&lt;a href=&quot;#测试&quot; class=&quot;headerlink&quot; title=&quot;测试&quot;&gt;&lt;/a&gt;测试&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;1、可以直接使用Fabric提供的强行Crash代码进行测试，也可以自己写个。
+2、测试的时候需要脱离Xcode的调试环境。最简单的方法就是真机测试，但要注意的是，测试的时候手机和Xcode不要用数据线连接。测试之后，会收到Fabric的测试报告，出现Crash的具体位置，十分方便。
+3、用户也可以在AppStore中下载Fabric,在手机端查看测试报告。
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Fabric是Twitter公司提供的一款，应用于移动应用开发，统计应用崩溃信息的工具。操作简单，使用方便。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;使用介绍&quot;&gt;&lt;a href=&quot;#使用介绍&quot; class=&quot;headerlink&quot; ti
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Spotlight</title>
+    <link href="http://yoursite.com/2016/02/29/Spotlight/"/>
+    <id>http://yoursite.com/2016/02/29/Spotlight/</id>
+    <published>2016-02-29T05:17:43.000Z</published>
+    <updated>2016-03-15T07:12:00.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;iOS9推出的Core Spotlight(CS)框架，利用CS做应用内搜索。&lt;br&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/CoreSpotlight.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本文链接&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;框架&quot;&gt;&lt;a href=&quot;#框架&quot; class=&quot;headerlink&quot; title=&quot;框架&quot;&gt;&lt;/a&gt;框架&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;导入MobileCoreServices.framework和CoreSpotligt.framework
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;主要代码&quot;&gt;&lt;a href=&quot;#主要代码&quot; class=&quot;headerlink&quot; title=&quot;主要代码&quot;&gt;&lt;/a&gt;主要代码&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;// 设置spotlight
+- (void)setSpotligtht {
+    self.searchItemArr = [NSMutableArray array];
+    int i = 0;
+    for (NSDictionary *dic in self.dataArr) {
+
+        CSSearchableItemAttributeSet *searchItemSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:(NSString *)kUTTypeText];
+
+        // 标题
+        searchItemSet.title = [dic objectForKey:@&amp;quot;title&amp;quot;];
+
+        // 描述
+        searchItemSet.contentDescription = [dic objectForKey:@&amp;quot;desc&amp;quot;];
+        NSArray *arr = [[dic objectForKey:@&amp;quot;picture&amp;quot;] componentsSeparatedByString:@&amp;quot;.&amp;quot;];
+
+        // 设置照片路径
+        searchItemSet.thumbnailURL = [[NSBundle mainBundle] URLForResource:arr[0] withExtension:arr[1]];
+
+        // 搜索关键词 keywords(字符串形式) / contactKeywords(数组形式)
+        searchItemSet.keywords = [dic objectForKey:@&amp;quot;title&amp;quot;];
+
+        /*
+         uniqueIdentifier：这个参数唯一地标识Spotlight当前搜索项。你可以用你喜欢的方式构造这个唯一标示符。
+         domainIdentifier:使用这个参数对搜索项进行分组。
+         attributeSet：它就是我们刚刚设置属性时的属性设置对象。
+         */
+        CSSearchableItem *searchItem = [[CSSearchableItem alloc] initWithUniqueIdentifier:[NSString stringWithFormat:@&amp;quot;com.spolight.%d&amp;quot;, i] domainIdentifier:@&amp;quot;books&amp;quot; attributeSet:searchItemSet];
+        [self.searchItemArr addObject:searchItem];
+        i++;
+    }
+
+    [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:self.searchItemArr completionHandler:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@&amp;quot;%@&amp;quot;, error.localizedDescription);
+        }
+    }];
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;iOS9推出的Core Spotlight(CS)框架，利用CS做应用内搜索。&lt;br&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/CoreSpotlight.git&quot; target=&quot;_blank&quot; rel=&quot;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>BLE_Central</title>
+    <link href="http://yoursite.com/2016/02/26/BLE-Central/"/>
+    <id>http://yoursite.com/2016/02/26/BLE-Central/</id>
+    <published>2016-02-26T01:08:38.000Z</published>
+    <updated>2016-03-15T07:10:27.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;iOS蓝牙开发，中心模式开发。&lt;a href=&quot;https://github.com/zhangzhaopds/BLE_Central.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;相关DEMO&lt;/a&gt;    &lt;a href=&quot;https://github.com/zhangzhaopds/BluetoothStubOnOSX.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;模拟外设&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;iOS链接外设的代码实现流程&quot;&gt;&lt;a href=&quot;#iOS链接外设的代码实现流程&quot; class=&quot;headerlink&quot; title=&quot;iOS链接外设的代码实现流程&quot;&gt;&lt;/a&gt;iOS链接外设的代码实现流程&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;1. 建立中心角色
+2. 扫描外设（discover）
+3. 连接外设(connect)
+4. 扫描外设中的服务和特征(discover)
+    - 4.1 获取外设的services
+    - 4.2 获取外设的Characteristics,获取Characteristics的值，获取Characteristics的Descriptor和Descriptor的值
+5. 与外设做数据交互(explore and interact)
+6. 订阅Characteristic的通知
+7. 断开连接(disconnect)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;实现步骤&quot;&gt;&lt;a href=&quot;#实现步骤&quot; class=&quot;headerlink&quot; title=&quot;实现步骤&quot;&gt;&lt;/a&gt;实现步骤&lt;/h3&gt;&lt;h4 id=&quot;1-初始化-init&quot;&gt;&lt;a href=&quot;#1-初始化-init&quot; class=&quot;headerlink&quot; title=&quot;1.初始化(init)&quot;&gt;&lt;/a&gt;1.初始化(init)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#import &amp;lt;CoreBluetooth/CoreBluetooth.h&amp;gt;
+
+@interface ViewController ()&amp;lt;CBCentralManagerDelegate&amp;gt;
+
+@property (nonatomic, strong) manager *centralManager;
+
+@property (nonatomic, strong) CBPeripheral *peripheral;
+
+// CBCentralManagerOptionShowPowerAlertKey的作用是，当设备蓝牙未打开时打开
+NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], CBCentralManagerOptionShowPowerAlertKey, nil];
+
+// 初始化并设置委托和线程队列，默认main线程
+self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:options];
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;2-扫描外设-discover&quot;&gt;&lt;a href=&quot;#2-扫描外设-discover&quot; class=&quot;headerlink&quot; title=&quot;2.扫描外设(discover)&quot;&gt;&lt;/a&gt;2.扫描外设(discover)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;-(void)centralManagerDidUpdateState:(CBCentralManager *)central{
+
+        switch (central.state) {
+            case CBCentralManagerStateUnknown:
+                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStateUnknown&amp;quot;);
+                break;
+            case CBCentralManagerStateResetting:
+                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStateResetting&amp;quot;);
+                break;
+            case CBCentralManagerStateUnsupported:
+                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStateUnsupported&amp;quot;);
+                break;
+            case CBCentralManagerStateUnauthorized:
+                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStateUnauthorized&amp;quot;);
+                break;
+            case CBCentralManagerStatePoweredOff:
+                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStatePoweredOff&amp;quot;);
+                break;
+            case CBCentralManagerStatePoweredOn:
+                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStatePoweredOn&amp;quot;);
+                //开始扫描周围的外设
+                /*
+                 第一个参数nil就是扫描周围所有的外设，扫描到外设后会进入
+                      - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI;
+                 */
+                [manager scanForPeripheralsWithServices:nil options:nil];
+
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    //扫描到设备会进入方法
+    -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
+
+        NSLog(@&amp;quot;当扫描到设备:%@&amp;quot;,peripheral.name);
+        //接下来可以连接设备
+
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;3-链接外设-connect&quot;&gt;&lt;a href=&quot;#3-链接外设-connect&quot; class=&quot;headerlink&quot; title=&quot;3.链接外设(connect)&quot;&gt;&lt;/a&gt;3.链接外设(connect)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//扫描到设备会进入方法
+ -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
+
+//连接设备（注意：这里使用self.peripheral,而不是peripheral,是因为如果peripheral被释放掉，将不会实现连接到外设的回调方法，也就是下面三个方法将不执行）
+     self.peripheral = peripheral;
+     [manager connectPeripheral:self.peripheral options:nil]; 
+ }
+
+ //连接到Peripherals-成功
+ - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
+     NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;连接到名称为（%@）的设备-成功&amp;quot;,peripheral.name);
+ }
+
+ //连接到Peripherals-失败
+ -(void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+     NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;连接到名称为（%@）的设备-失败,原因:%@&amp;quot;,[peripheral name],[error localizedDescription]);
+ }
+
+ //Peripherals断开连接
+ - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+     NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;外设连接断开连接 %@: %@\n&amp;quot;, [peripheral name], [error localizedDescription]);
+ }
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;4-获取外设的services&quot;&gt;&lt;a href=&quot;#4-获取外设的services&quot; class=&quot;headerlink&quot; title=&quot;4.获取外设的services&quot;&gt;&lt;/a&gt;4.获取外设的services&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//连接到Peripherals-成功
+   - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
+   {
+       NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;连接到名称为（%@）的设备-成功&amp;quot;,peripheral.name);
+       //设置的peripheral委托CBPeripheralDelegate
+       //@interface ViewController : UIViewController&amp;lt;CBCentralManagerDelegate,CBPeripheralDelegate&amp;gt;
+       [peripheral setDelegate:self];
+       //扫描外设Services，成功后会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
+       [peripheral discoverServices:nil];
+
+   }
+
+   //扫描到Services
+   -(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
+       //  NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;扫描到服务：%@&amp;quot;,peripheral.services);
+       if (error)
+       {
+           NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;Discovered services for %@ with error: %@&amp;quot;, peripheral.name, [error localizedDescription]);
+           return;
+       }
+
+       for (CBService *service in peripheral.services) {
+                        NSLog(@&amp;quot;%@&amp;quot;,service.UUID);
+                        //扫描每个service的Characteristics，扫描到后会进入方法： -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
+                        [peripheral discoverCharacteristics:nil forService:service];
+                    }
+
+   }
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;5-获取外设的Characteristics-Descriptor&quot;&gt;&lt;a href=&quot;#5-获取外设的Characteristics-Descriptor&quot; class=&quot;headerlink&quot; title=&quot;5.获取外设的Characteristics,Descriptor&quot;&gt;&lt;/a&gt;5.获取外设的Characteristics,Descriptor&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//扫描到Characteristics
+ -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
+     if (error)
+     {
+         NSLog(@&amp;quot;error Discovered characteristics for %@ with error: %@&amp;quot;, service.UUID, [error localizedDescription]);
+         return;
+     }
+
+     for (CBCharacteristic *characteristic in service.characteristics)
+     {
+         NSLog(@&amp;quot;service:%@ 的 Characteristic: %@&amp;quot;,service.UUID,characteristic.UUID);
+     }
+
+     //获取Characteristic的值，读到数据会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+     for (CBCharacteristic *characteristic in service.characteristics){
+         {
+             [peripheral readValueForCharacteristic:characteristic];
+         }
+     }
+
+     //搜索Characteristic的Descriptors，读到数据会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+     for (CBCharacteristic *characteristic in service.characteristics){
+         [peripheral discoverDescriptorsForCharacteristic:characteristic];
+     }
+
+
+ }
+
+//获取的charateristic的值
+-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
+    //打印出characteristic的UUID和值
+    //!注意，value的类型是NSData，具体开发时，会根据外设协议制定的方式去解析数据
+    NSLog(@&amp;quot;characteristic uuid:%@  value:%@&amp;quot;,characteristic.UUID,characteristic.value);
+
+}
+
+//搜索到Characteristic的Descriptors
+-(void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
+
+    //打印出Characteristic和他的Descriptors
+     NSLog(@&amp;quot;characteristic uuid:%@&amp;quot;,characteristic.UUID);
+    for (CBDescriptor *d in characteristic.descriptors) {
+        NSLog(@&amp;quot;Descriptor uuid:%@&amp;quot;,d.UUID);
+    }
+
+}
+//获取到Descriptors的值
+-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForDescriptor:(CBDescriptor *)descriptor error:(NSError *)error{
+    //打印出DescriptorsUUID 和value
+    //这个descriptor都是对于characteristic的描述，一般都是字符串，所以这里我们转换成字符串去解析
+    NSLog(@&amp;quot;characteristic uuid:%@  value:%@&amp;quot;,[NSString stringWithFormat:@&amp;quot;%@&amp;quot;,descriptor.UUID],descriptor.value);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;6-把数据写入到Characteristic中&quot;&gt;&lt;a href=&quot;#6-把数据写入到Characteristic中&quot; class=&quot;headerlink&quot; title=&quot;6.把数据写入到Characteristic中&quot;&gt;&lt;/a&gt;6.把数据写入到Characteristic中&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//写数据
+-(void)writeCharacteristic:(CBPeripheral *)peripheral
+            characteristic:(CBCharacteristic *)characteristic
+                     value:(NSData *)value{
+
+    //打印出 characteristic 的权限，可以看到有很多种，这是一个NS_OPTIONS，就是可以同时用于好几个值，常见的有read，write，notify，indicate，知知道这几个基本就够用了，前连个是读写权限，后两个都是通知，两种不同的通知方式。
+    /*
+     typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
+     CBCharacteristicPropertyBroadcast                                                = 0x01,
+     CBCharacteristicPropertyRead                                                    = 0x02,
+     CBCharacteristicPropertyWriteWithoutResponse                                    = 0x04,
+     CBCharacteristicPropertyWrite                                                    = 0x08,
+     CBCharacteristicPropertyNotify                                                    = 0x10,
+     CBCharacteristicPropertyIndicate                                                = 0x20,
+     CBCharacteristicPropertyAuthenticatedSignedWrites                                = 0x40,
+     CBCharacteristicPropertyExtendedProperties                                        = 0x80,
+     CBCharacteristicPropertyNotifyEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)        = 0x100,
+     CBCharacteristicPropertyIndicateEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)    = 0x200
+     };
+
+     */
+    NSLog(@&amp;quot;%lu&amp;quot;, (unsigned long)characteristic.properties);
+
+
+    //只有 characteristic.properties 有write的权限才可以写
+    if(characteristic.properties &amp;amp; CBCharacteristicPropertyWrite){
+        /*
+            最好一个type参数可以为CBCharacteristicWriteWithResponse或type:CBCharacteristicWriteWithResponse,区别是是否会有反馈
+        */
+        [peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+    }else{
+        NSLog(@&amp;quot;该字段不可写！&amp;quot;);
+    }
+
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;7-订阅Characteristic的通知&quot;&gt;&lt;a href=&quot;#7-订阅Characteristic的通知&quot; class=&quot;headerlink&quot; title=&quot;7.订阅Characteristic的通知&quot;&gt;&lt;/a&gt;7.订阅Characteristic的通知&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//设置通知
+-(void)notifyCharacteristic:(CBPeripheral *)peripheral
+            characteristic:(CBCharacteristic *)characteristic{
+    //设置通知，数据通知会进入：didUpdateValueForCharacteristic方法
+    [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+
+}
+
+//取消通知
+-(void)cancelNotifyCharacteristic:(CBPeripheral *)peripheral
+             characteristic:(CBCharacteristic *)characteristic{
+
+     [peripheral setNotifyValue:NO forCharacteristic:characteristic];
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;7-断开连接-disconnect&quot;&gt;&lt;a href=&quot;#7-断开连接-disconnect&quot; class=&quot;headerlink&quot; title=&quot;7.断开连接(disconnect)&quot;&gt;&lt;/a&gt;7.断开连接(disconnect)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//停止扫描并断开连接
+-(void)disconnectPeripheral:(CBCentralManager *)centralManager
+                 peripheral:(CBPeripheral *)peripheral{
+    //停止扫描
+    [centralManager stopScan];
+    //断开连接
+    [centralManager cancelPeripheralConnection:peripheral];
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;iOS蓝牙开发，中心模式开发。&lt;a href=&quot;https://github.com/zhangzhaopds/BLE_Central.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;相关DEMO&lt;/a&gt;    &lt;a hre
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Refresh-Swift</title>
+    <link href="http://yoursite.com/2016/01/29/Refresh-Swift/"/>
+    <id>http://yoursite.com/2016/01/29/Refresh-Swift/</id>
+    <published>2016-01-29T08:23:29.000Z</published>
+    <updated>2016-03-15T07:11:49.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Swift语言实现的数据刷新功能，类似于MJRefresh.(上拉加载，下拉刷新)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/Alamofire-Refresh.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本文DEMO&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/BLOG_%E5%88%B7%E6%96%B0.png?imageView2/2/w/300&quot; alt=&quot;&quot;&gt;&lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/BLOG_%E5%8A%A0%E8%BD%BD.png?imageView2/2/w/300&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Swift语言实现的数据刷新功能，类似于MJRefresh.(上拉加载，下拉刷新)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/Alamofire-Refresh.gi
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ActivityIndicator-Swift</title>
+    <link href="http://yoursite.com/2016/01/28/ActivityIndicator-Swift/"/>
+    <id>http://yoursite.com/2016/01/28/ActivityIndicator-Swift/</id>
+    <published>2016-01-28T06:14:58.000Z</published>
+    <updated>2016-03-15T07:11:21.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/Blogactivity.png?imageView2/2/h/500&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Swift实现简单的活动指示器。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/Indicator..git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本文DEMO链接&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;主要代码展示&quot;&gt;&lt;a href=&quot;#主要代码展示&quot; class=&quot;headerlink&quot; title=&quot;主要代码展示&quot;&gt;&lt;/a&gt;主要代码展示&lt;/h3&gt;&lt;p&gt;&lt;code&gt;1.创建活动指示器单例&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class var shareIndicator: HTTPIndicator {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: HTTPIndicator?
+    }
+    dispatch_once(&amp;amp;Static.onceToken, {() -&amp;gt; Void in
+        Static.instance = HTTPIndicator()
+    })
+    return Static.instance!
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;2.设置活动指示器界面的大小（全屏显示、部分显现）&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;enum IndicatorSizeModel {
+    case Landscape      // 全屏
+    case FullScreen        // 非全屏
+}
+
+// 重写sizeModel的set方法
+var sizeModel: IndicatorSizeModel = .Landscape {
+    didSet {
+        switch sizeModel {
+        case .Landscape:
+            self.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64)
+            maskWindow!.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            indicatorImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+            indicatorImageView.transform = CGAffineTransformIdentity
+            loopImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+
+        case .FullScreen:
+            self.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            maskWindow?.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            indicatorImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2)
+            loopImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2)
+        } 
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;3.创建活动指示器图片，由两部分组成&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 中间部分
+lazy var indicatorImageView: UIImageView = {
+    let imageView = UIImageView(frame: CGRectMake(0, 0, 60 * kScreenWidthFactor, 60 * kScreenWidthFactor))
+    imageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+    imageView.image = UIImage(named: &amp;quot;Indicator&amp;quot;)
+    imageView.contentMode = UIViewContentMode.ScaleToFill
+    return imageView
+}()
+
+// 外部转圈部分
+lazy var loopImageView: UIImageView = {
+   let imageView = UIImageView(frame: CGRectMake(0, 0, 80 * kScreenWidthFactor, 80 * kScreenWidthFactor))
+    imageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+    imageView.image = UIImage(named: &amp;quot;loopIndicator&amp;quot;)
+    imageView.contentMode = UIViewContentMode.ScaleToFill
+    return imageView
+}()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;4.创建window对象，用来承载指示器&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lazy var maskWindow : UIWindow? = {
+    let window = UIWindow(frame: CGRectMake(0, 0, kScreenWidth, kScreenHeight))
+    window.windowLevel = UIWindowLevelNormal
+    return window
+}()
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;5.指示器的显现&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class func show() {
+    shareIndicator.maskWindow?.makeKeyAndVisible()
+    shareIndicator.maskWindow?.addSubview(shareIndicator)
+    shareIndicator.beginAnimation()
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;6.指示器的取消&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;因为新建了window对象来承载指示器，所以，当取消指示器的时候，一定要将新建的window移除。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class func dismiss() {
+    shareIndicator.endAnimationWithCompletion { () -&amp;gt; Void in
+        shareIndicator.maskWindow?.resignKeyWindow()
+        shareIndicator.removeFromSuperview()
+
+        let originalWindow = UIApplication.sharedApplication().delegate?.window
+        originalWindow!?.makeKeyAndVisible()
+
+        shareIndicator.resetBounds()
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/Blogactivity.png?imageView2/2/h/500&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Swift实现简单的活动指示器。&lt;/p&gt;
+&lt;/b
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ZXingObjC</title>
+    <link href="http://yoursite.com/2015/12/30/ZXingObjC%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
+    <id>http://yoursite.com/2015/12/30/ZXingObjC二维码/</id>
+    <published>2015-12-30T06:53:05.000Z</published>
+    <updated>2016-03-15T07:12:22.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;最近在做一个支付类的APP, 涉及到二维码的使用，上网查一些资料，发现网上的资料都N年之前了。也找到了一些大神的demo,但却是各种封装，一眼看不到重点，几经周折，才搞出来。本文是一个最简单的使用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/-.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本文DEMO链接&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/TheLevelUp/ZXingObjC&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ZXingObjC链接&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-基本应用&quot;&gt;&lt;a href=&quot;#1-基本应用&quot; class=&quot;headerlink&quot; title=&quot;1.基本应用&quot;&gt;&lt;/a&gt;1.基本应用&lt;/h2&gt;&lt;h3 id=&quot;二维码扫描&quot;&gt;&lt;a href=&quot;#二维码扫描&quot; class=&quot;headerlink&quot; title=&quot;二维码扫描&quot;&gt;&lt;/a&gt;二维码扫描&lt;/h3&gt;&lt;h4 id=&quot;cocoaPods导入ZXingObjC&quot;&gt;&lt;a href=&quot;#cocoaPods导入ZXingObjC&quot; class=&quot;headerlink&quot; title=&quot;cocoaPods导入ZXingObjC&quot;&gt;&lt;/a&gt;&lt;code&gt;cocoaPods导入ZXingObjC&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;pod &amp;apos;ZXingObjC&amp;apos;, &amp;apos;~&amp;gt; 3.1.0&amp;apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;导入头文件&quot;&gt;&lt;a href=&quot;#导入头文件&quot; class=&quot;headerlink&quot; title=&quot;导入头文件&quot;&gt;&lt;/a&gt;&lt;code&gt;导入头文件&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#import &amp;lt;ZXingObjC.h&amp;gt;
+
+@interface ViewController () &amp;lt;ZXCaptureDelegate&amp;gt; //协议
+
+@property (nonatomic, strong) ZXCapture *capture; 
+@property (nonatomic, assign) BOOL isScan; //标记扫描状态
+
+@end    
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;初始化摄像头&quot;&gt;&lt;a href=&quot;#初始化摄像头&quot; class=&quot;headerlink&quot; title=&quot;初始化摄像头&quot;&gt;&lt;/a&gt;&lt;code&gt;初始化摄像头&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;- (void)creatCapture {
+
+self.isScan = NO; 
+
+self.capture = [[ZXCapture alloc] init];
+
+self.capture.camera = self.capture.back; //后置摄像头
+
+self.capture.focusMode = AVCaptureFocusModeAutoFocus; //自动对焦
+
+self.capture.rotation = 90.0f;
+
+self.capture.layer.frame = CGRectMake(50, 60, self.view.frame.size.width - 100, 150);
+
+[self.view.layer addSublayer:self.capture.layer];
+
+self.capture.delegate = self; //协议的签订，用于对扫描结果进行处理
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;扫描结果的处理&quot;&gt;&lt;a href=&quot;#扫描结果的处理&quot; class=&quot;headerlink&quot; title=&quot;扫描结果的处理&quot;&gt;&lt;/a&gt;&lt;code&gt;扫描结果的处理&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;- (void)captureResult:(ZXCapture *)capture result:(ZXResult *)result {
+if (!result || self.isScan == YES ){
+    return;
+}
+self.isScan = YES;
+[self.capture stop];
+
+//震动提示（可不加）
+AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+
+//result就是扫描获取的结果，处理text属性外，还有其他的属性，如条码的类型等。
+NSLog(@&amp;quot;%@&amp;quot;,[NSString stringWithFormat:@&amp;quot;%@&amp;quot;, result.text]);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;二维码的生成&quot;&gt;&lt;a href=&quot;#二维码的生成&quot; class=&quot;headerlink&quot; title=&quot;二维码的生成&quot;&gt;&lt;/a&gt;二维码的生成&lt;/h3&gt;&lt;h4 id=&quot;简单的几行代码&quot;&gt;&lt;a href=&quot;#简单的几行代码&quot; class=&quot;headerlink&quot; title=&quot;简单的几行代码&quot;&gt;&lt;/a&gt;&lt;code&gt;简单的几行代码&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;ZXBitMatrix *rusult = [writer encode:@&amp;quot;这里就是要用来生成二维码的文字&amp;quot; format:kBarcodeFormatQRCode width:200 height:200 error:&amp;amp;error];
+
+CGImageRef image = [[ZXImage imageWithMatrix:rusult] cgimage];
+
+// img就是生成的二维码图片
+UIImage *img = [UIImage imageWithCGImage:image];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id=&quot;2-自定义扫描视图&quot;&gt;&lt;a href=&quot;#2-自定义扫描视图&quot; class=&quot;headerlink&quot; title=&quot;2.自定义扫描视图&quot;&gt;&lt;/a&gt;2.自定义扫描视图&lt;/h2&gt;&lt;p&gt;代码就不一一粘贴了，主要的几个部分看一些，具体看&lt;a href=&quot;https://github.com/zhangzhaopds/-.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;demo&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;上下扫描的动画效果&quot;&gt;&lt;a href=&quot;#上下扫描的动画效果&quot; class=&quot;headerlink&quot; title=&quot;上下扫描的动画效果&quot;&gt;&lt;/a&gt;上下扫描的动画效果&lt;/h3&gt;&lt;h4 id=&quot;初始化一个扫描线视图&quot;&gt;&lt;a href=&quot;#初始化一个扫描线视图&quot; class=&quot;headerlink&quot; title=&quot;初始化一个扫描线视图&quot;&gt;&lt;/a&gt;&lt;code&gt;初始化一个扫描线视图&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;- (void)initQRLine {
+
+self.qrLine  = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width / 2 - self.transparentArea.width / 2, self.bounds.size.height / 2 - self.transparentArea.height / 2, self.transparentArea.width, 2)];
+
+//self.qrLine的照片让美工做个好看点的，demo中的是一个截屏图片
+self.qrLine.image = [UIImage imageNamed:@&amp;quot;22&amp;quot;];
+
+self.qrLine.contentMode = UIViewContentModeScaleAspectFill;
+
+[self addSubview:self.qrLine];
+
+self.qrLineY = self.qrLine.frame.origin.y;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}&lt;/p&gt;
+&lt;h4 id=&quot;扫描线上下循环移动效果&quot;&gt;&lt;a href=&quot;#扫描线上下循环移动效果&quot; class=&quot;headerlink&quot; title=&quot;扫描线上下循环移动效果&quot;&gt;&lt;/a&gt;&lt;code&gt;扫描线上下循环移动效果&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;添加一个计时器
+ NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:kQrLineanimateDuration target:self selector:@selector(show) userInfo:nil repeats:YES];
+
+ //实现计时器中的方法，使扫描线上下移动
+ - (void)show {
+
+[UIView animateWithDuration:kQrLineanimateDuration animations:^{
+
+    CGRect rect = self.qrLine.frame;
+    rect.origin.y = self.qrLineY;
+    self.qrLine.frame = rect;
+
+} completion:^(BOOL finished) {
+
+    CGFloat maxBorder = self.frame.size.height / 2 + self.transparentArea.height / 2 - 4;
+    if (self.qrLineY &amp;gt; maxBorder) {
+
+        self.qrLineY = self.frame.size.height / 2 - self.transparentArea.height /2;
+    }
+    self.qrLineY++;
+}];
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;扫描区域的四个角&quot;&gt;&lt;a href=&quot;#扫描区域的四个角&quot; class=&quot;headerlink&quot; title=&quot;扫描区域的四个角&quot;&gt;&lt;/a&gt;扫描区域的四个角&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;- (void)addCornerLineWithContext:(CGContextRef)ctx rect:(CGRect)rect{
+
+//画四个边角
+CGContextSetLineWidth(ctx, 2);
+CGContextSetRGBStrokeColor(ctx, 83 /255.0, 239/255.0, 111/255.0, 1);//绿色
+
+//左上角
+CGPoint poinsTopLeftA[] = {
+    CGPointMake(rect.origin.x + 0.7, rect.origin.y),
+    CGPointMake(rect.origin.x + 0.7 , rect.origin.y + 15)
+};
+
+CGPoint poinsTopLeftB[] = {CGPointMake(rect.origin.x, rect.origin.y + 0.7),CGPointMake(rect.origin.x + 15, rect.origin.y + 0.7)};
+[self addLine:poinsTopLeftA pointB:poinsTopLeftB ctx:ctx];
+
+//左下角
+CGPoint poinsBottomLeftA[] = {CGPointMake(rect.origin.x + 0.7, rect.origin.y + rect.size.height - 15),CGPointMake(rect.origin.x + 0.7,rect.origin.y + rect.size.height)};
+CGPoint poinsBottomLeftB[] = {CGPointMake(rect.origin.x , rect.origin.y + rect.size.height - 0.7) ,CGPointMake(rect.origin.x + 0.7 + 15, rect.origin.y + rect.size.height - 0.7)};
+[self addLine:poinsBottomLeftA pointB:poinsBottomLeftB ctx:ctx];
+
+//右上角
+CGPoint poinsTopRightA[] = {CGPointMake(rect.origin.x + rect.size.width - 15, rect.origin.y + 0.7),CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + 0.7 )};
+CGPoint poinsTopRightB[] = {CGPointMake(rect.origin.x + rect.size.width-0.7, rect.origin.y),CGPointMake(rect.origin.x + rect.size.width - 0.7, rect.origin.y + 15 + 0.7 )};
+[self addLine:poinsTopRightA pointB:poinsTopRightB ctx:ctx];
+
+CGPoint poinsBottomRightA[] = {CGPointMake(rect.origin.x + rect.size.width -0.7, rect.origin.y + rect.size.height - 15),CGPointMake(rect.origin.x - 0.7 + rect.size.width, rect.origin.y + rect.size.height )};
+CGPoint poinsBottomRightB[] = {CGPointMake(rect.origin.x + rect.size.width - 15 , rect.origin.y + rect.size.height-0.7),CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height - 0.7)};
+[self addLine:poinsBottomRightA pointB:poinsBottomRightB ctx:ctx];
+CGContextStrokePath(ctx);
+
+
+- (void)addLine:(CGPoint[])pointA pointB:(CGPoint[])pointB ctx:(CGContextRef)ctx {
+CGContextAddLines(ctx, pointA, 2);
+CGContextAddLines(ctx, pointB, 2);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;最近在做一个支付类的APP, 涉及到二维码的使用，上网查一些资料，发现网上的资料都N年之前了。也找到了一些大神的demo,但却是各种封装，一眼看不到重点，几经周折，才搞出来。本文是一个最简单的使用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>UITextView</title>
+    <link href="http://yoursite.com/2015/08/09/UITextView/"/>
+    <id>http://yoursite.com/2015/08/09/UITextView/</id>
+    <published>2015-08-09T13:41:24.000Z</published>
+    <updated>2016-03-15T07:10:12.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;   UITextView的三种应用效果：&lt;br&gt;        1.链接地址在应用程序内跳转&lt;br&gt;        2.占位符（类似于UITextField的占位符效果）&lt;br&gt;        3.改变选中文本的属性&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;链接地址在应用程序内跳转&quot;&gt;&lt;a href=&quot;#链接地址在应用程序内跳转&quot; class=&quot;headerlink&quot; title=&quot;链接地址在应用程序内跳转&quot;&gt;&lt;/a&gt;链接地址在应用程序内跳转&lt;/h2&gt;&lt;h3 id=&quot;核心API&quot;&gt;&lt;a href=&quot;#核心API&quot; class=&quot;headerlink&quot; title=&quot;核心API&quot;&gt;&lt;/a&gt;核心API&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/UITextView.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Class: UITextView
+
+/** UITextView的编辑状态, 默认YES. */
+@property(nonatomic, getter=isEditable) BOOL editable
+
+@property(nonatomic) UIDataDetectorTypes dataDetectorTypes
+
+/** 字典内存储链接文本的属性. */
+@property(nonatomic, copy) NSDictionary *linkTextAttributes
+
+/** 询问代理人, 是否可以跳转到指定的链接地址. */
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;功能实现&quot;&gt;&lt;a href=&quot;#功能实现&quot; class=&quot;headerlink&quot; title=&quot;功能实现&quot;&gt;&lt;/a&gt;功能实现&lt;/h3&gt;&lt;p&gt;我们在UITextView里面点击链接地址时, 它是跳到浏览器里面的. 如果我们不想跳到浏览器, 想在自己的程序内部跳转显示, 该怎么做呢?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;思路
+UITextView有一个代理方法是用来链接跳转动作是否执行的. 返回值是BOOL类型, 默认是YES. 
+* 当我们返回NO时, 它就不会跳转了. 
+* 在这个代理方法内, 我们执行其他的操作, 让链接地址的内容在程序内显示.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;#import &amp;quot;ViewController.h&amp;quot;
+#import &amp;quot;WebViewController.h&amp;quot;
+
+/** 签订协议 */
+@interface ViewController ()&amp;lt;UITextViewDelegate&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+
+    [self layoutTextView];
+
+    /** 这个属性是UIViewController的属性, 当有Navicontroller的时候, 会自动向下调整UIScrollView及其子类的坐标位置, 默认为YES, 开启状态. */
+    /** 如果为YES, TextView里的内容会自动向下移动位置. 可以自己测试一下. */
+    self.automaticallyAdjustsScrollViewInsets = NO;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;- (void)layoutTextView {
+
+/** 第一种链接界面: 地址链接. */
+
+/** 创建UITextView的对象. 在这里我们并不需要textContainer, 设置成nil即可. */
+UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(30, 100, 300, 150) textContainer:nil];
+
+textView.text = @&amp;quot;http://blog.csdn.net/sponge_cmz?viewmode=contents&amp;quot;;
+textView.font = [UIFont systemFontOfSize:20];
+textView.layer.borderColor = [UIColor blackColor].CGColor;
+textView.layer.borderWidth = 1;
+
+/** 设置代理人, 我们要实现的效果, 需要用到代理方法. 在上面签订UITextViewDelegate协议. */
+textView.delegate = self;
+
+/** 链接地址能够跳转, textView的编辑状态必须为NO, 否则与普通文本无异. */
+textView.editable = NO;
+
+/** 设置自动检测类型为链接网址. */
+textView.dataDetectorTypes = UIDataDetectorTypeLink;
+
+/** 设置链接文字的属性. */
+textView.linkTextAttributes = @{NSForegroundColorAttributeName: [UIColor orangeColor]};
+
+[self.view addSubview:textView];
+
+/** 第二种连接界面: 文字链接 */
+UITextView *otherTextView = [[UITextView alloc] initWithFrame:CGRectMake(30, 350, 300, 150) textContainer:nil];
+
+/** font属性是设置text的字体, 但是它对attributedText的字体不起作用. */
+//    otherTextView.font = [UIFont systemFontOfSize:20];
+
+otherTextView.layer.borderColor = [UIColor blackColor].CGColor;
+otherTextView.layer.borderWidth = 1;
+otherTextView.delegate = self;
+otherTextView.editable = NO;
+
+/** 详细内容请见博文说明中提到的另外一篇博客. */
+NSAttributedString *linkAttribute = [[NSAttributedString alloc] initWithString:@&amp;quot;百度&amp;quot; attributes:@{NSLinkAttributeName: [NSURL URLWithString:@&amp;quot;http://www.baidu.com&amp;quot;], NSFontAttributeName:[UIFont systemFontOfSize:25]}];
+
+otherTextView.attributedText = linkAttribute;
+
+[self.view addSubview:otherTextView];
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;/** 当点击链接时, 是否要跳转到浏览器. 默认返回YES. 想要实现在应用程序内部跳转, 只需要返回NO即可. */
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+
+/** 跳转到WebViewController的WebView上. */
+
+WebViewController *webContro = [[WebViewController alloc] init];
+
+UIWebView *web = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
+/** URL参数就是我们点击的链接地址. */
+[web loadRequest:[NSURLRequest requestWithURL:URL]];
+
+web.scalesPageToFit = YES;
+[webContro.view addSubview:web];
+
+[self.navigationController pushViewController:webContro animated:YES];
+
+/** 返回NO, 不跳转到浏览器. */
+return NO;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;占位符（类似于UITextField的占位符效果）&quot;&gt;&lt;a href=&quot;#占位符（类似于UITextField的占位符效果）&quot; class=&quot;headerlink&quot; title=&quot;占位符（类似于UITextField的占位符效果）&quot;&gt;&lt;/a&gt;占位符（类似于UITextField的占位符效果）&lt;/h2&gt;&lt;h3 id=&quot;核心API-1&quot;&gt;&lt;a href=&quot;#核心API-1&quot; class=&quot;headerlink&quot; title=&quot;核心API&quot;&gt;&lt;/a&gt;核心API&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/UITextView3.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Class: UITextView
+/** 告诉代理人, 用户已经改变指定textView里面的text或者attributes. */
+- (void)textViewDidChange:(UITextView *)textView
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;功能实现-1&quot;&gt;&lt;a href=&quot;#功能实现-1&quot; class=&quot;headerlink&quot; title=&quot;功能实现&quot;&gt;&lt;/a&gt;功能实现&lt;/h3&gt;&lt;p&gt;我们在使用UITextView的时候发现, UITextView没有像UITextField一样的占位符. 如果我们想要在UITextView里面实现占位符的效果, 该怎么办呢?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;思路:
+我们想要实现和UITextField一样的占位符效果, 那么我们就先看看UITextField是怎么实现的.
+
+.通过观察UITextField的图层, 我们发现, 占位符在一个单独的UILabel上.
+.我们让UITextField处于编辑状态, 再来看图层, 会发现在占位符label的上面又多了两层视图.
+.我们输入文字之后再看图层, 会发现占位符的lable没有了.
+.由此, 我们可以推测, 这个占位符label, 再输入之后, 就被隐藏了.
+.我们再来看UITextView的图层, 会发现它也有两个图层, 一个是UITextView, 一个是UITextContainerView. (还有两个滑条, 是UIImageView, 但是和我们实现的效果无关.)
+.那我们也可以仿照UITextField, 把一个label放到UITextContainerView的下面, 输入时就隐藏.
+.注: UITextView和UITextField 我是使用StoryBoard创建的, 所以在代码中没有创建的代码.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;代码-1&quot;&gt;&lt;a href=&quot;#代码-1&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/** 签订协议. */
+@interface ViewController ()&amp;lt;UITextViewDelegate&amp;gt;
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (nonatomic, strong) UILabel *label_Placeholder; /**&amp;lt; 用来显示占位符的label. */
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    _textView.layer.borderColor = [UIColor blackColor].CGColor;
+    _textView.layer.borderWidth = 2;
+
+    /** 签订代理人, 实现效果需要用到代理方法. */
+    _textView.delegate = self;
+
+    /** 创建占位符label. */
+    self.label_Placeholder = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 200, 40)]; /**&amp;lt; 坐标要根据实际情况做出调整. */
+
+    /** 使用属性文本. 详情请查看博文说明中提到的另一篇博客. */
+    _label_Placeholder.attributedText = [[NSAttributedString alloc] initWithString:@&amp;quot;Hello World!&amp;quot; attributes:@{NSFontAttributeName: _textView.font, NSForegroundColorAttributeName: [UIColor grayColor]}];
+
+    /** 我们之前说过了, textView上有UITextContainerView 和 两个UIImageView 子视图, 我们把label_Placeholder放到UITextContainerView的下面, 也就是textView的第一个子视图. */
+    [_textView insertSubview:_label_Placeholder atIndex:0];
+
+    /** 可以打印textView的子视图看一下. */
+    NSLog(@&amp;quot;%@&amp;quot;, [_textView subviews]);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;/** 当textView里面的内容发生改变时, 调用这个代理方法. */
+- (void)textViewDidChange:(UITextView *)textView{
+/** 判断条件是多次尝试的结果. 大家按照自己的想法, 尝试着写判断条件, 会更加理解为什么这么写了! */
+if (_textView.text.length != 0 &amp;amp;&amp;amp; _label_Placeholder.hidden == NO) {
+
+    _label_Placeholder.hidden = YES;
+
+} else if (_textView.text.length == 0) {
+
+    _label_Placeholder.hidden = NO;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;改变选中文本的属性&quot;&gt;&lt;a href=&quot;#改变选中文本的属性&quot; class=&quot;headerlink&quot; title=&quot;改变选中文本的属性&quot;&gt;&lt;/a&gt;改变选中文本的属性&lt;/h2&gt;&lt;h3 id=&quot;核心API-2&quot;&gt;&lt;a href=&quot;#核心API-2&quot; class=&quot;headerlink&quot; title=&quot;核心API&quot;&gt;&lt;/a&gt;核心API&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/UITextView--.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DEMO链接&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Class : UITextViews
+
+/** 用户输入新的文本属性时, 会被存储在这个字典属性里. */
+@property(nonatomic, copy) NSDictionary *typingAttributes
+
+/** */
+@property(nonatomic, readonly, retain) NSTextStorage *textStorage
+
+/** 被选中的范围. */
+@property(nonatomic) NSRange selectedRange
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;功能实现-2&quot;&gt;&lt;a href=&quot;#功能实现-2&quot; class=&quot;headerlink&quot; title=&quot;功能实现&quot;&gt;&lt;/a&gt;功能实现&lt;/h3&gt;&lt;p&gt;我们在看小说或文档时, 可以对一些重点内容进行标注, 例如, 加下划线, 改变颜色之类的. 那么UITextView里的内容, 我们是如何进行标注的呢?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;思路
+
+首先获取到被选中的文本, 之后改变这段文本的属性设置.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;代码-2&quot;&gt;&lt;a href=&quot;#代码-2&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;@interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@property (nonatomic, strong) NSDictionary *oldAttributes; /** 用来接收textView文本的初始属性设置. */
+
+@end
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;- (void)viewDidLoad {
+[super viewDidLoad];
+
+/** 我们在textView的文本还未做出任何改变的时候, 将原始属性设置保存起来, 便于以后恢复. */
+
+/** 
+ * 初始化oldAttributes.
+ * typingAttributes : 在用户没有输入新的文本属性时, 里面会有一些默认的文本属性.
+ */
+self.oldAttributes = [NSDictionary dictionaryWithDictionary:[_textView typingAttributes]];
+
+/** 打印看一下里面存储的内容. */
+NSLog(@&amp;quot;old: %@&amp;quot;, _oldAttributes);
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * textStorage : UITextView的属性, 是NSTextStorage类型.
+ * NSTextStorage 继承于NSMutableAttributedString类, 所以可以使用父类的方法.
+ * 
+ * selectedRange : UITextView的属性, 是NSRange类型.
+ * textView当前被选择的文本.
+ */
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;/** 改变字体的笔画宽度. */
+- (IBAction)wordWeight:(UIButton *)sender {
+
+    [_textView.textStorage addAttribute:NSStrokeWidthAttributeName value:@5 range:_textView.selectedRange];
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;/** 给选中的文本添加黄色背景, 以及下划线. */
+- (IBAction)backgroundColor:(UIButton *)sender {
+
+/** 
+ * 上面使用的是addAttribute: value: rang: 的方法. 它只能添加一个属性.
+ * 如果我们要同时添加多个属性, 我们需要使用addAttributes: rang: 方法.
+ * 这个方法的第一个参数是一个字典, 可以在字典中存储多个属性.
+ */
+
+[_textView.textStorage addAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor], NSUnderlineStyleAttributeName: @2} range:_textView.selectedRange];
+
+/** 
+ * 要注意 addAttributes 和 setAttributes 的区别: 
+ * addAttributes 是添加属性, 不会将之前的属性移除掉, 它们是共同存在的.
+ * setAttributes 是设置属性, 会将之前的属性替换掉, 之前的属性将不会存在.
+ */
+
+//  [_textView.textStorage setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor], NSUnderlineStyleAttributeName: @2} range:_textView.selectedRange];
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;/** 恢复到原来的文本状态. */
+- (IBAction)recoverAttribute:(UIButton *)sender {
+
+/** 我们想要恢复之前的属性, 也就是说不再使用做出改变的属性, 所以在这里我使用的是setAttributes: rang: 方法.  */
+[_textView.textStorage setAttributes:_oldAttributes range:_textView.selectedRange];
+
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;   UITextView的三种应用效果：&lt;br&gt;        1.链接地址在应用程序内跳转&lt;br&gt;        2.占位符（类似于UITextField的占位符效果）&lt;br&gt;        3.改变选中文本的属性&lt;/p&gt;
+&lt;/blockquo
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title> NSAttributedString</title>
+    <link href="http://yoursite.com/2015/03/20/NSAttributedString/"/>
+    <id>http://yoursite.com/2015/03/20/NSAttributedString/</id>
+    <published>2015-03-20T11:14:35.000Z</published>
+    <updated>2016-03-15T07:09:55.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;NSAttributedString 可以非常方便的实现文字排版和图文混排功能. 共有21中效果(API), 本文将较详细的介绍21种的属性的使用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;API&quot;&gt;&lt;a href=&quot;#API&quot; class=&quot;headerlink&quot; title=&quot;API&quot;&gt;&lt;/a&gt;API&lt;/h3&gt;&lt;h4 id=&quot;文本API&quot;&gt;&lt;a href=&quot;#文本API&quot; class=&quot;headerlink&quot; title=&quot;文本API:&quot;&gt;&lt;/a&gt;文本API:&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;Character Attributes , NSAttributedString 共有21个属性
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSFontAttributeName               -&amp;gt;设置字体属性，默认值：字体：Helvetica(Neue) 字号：12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSParagraphStyleAttributeName     -&amp;gt;设置文本段落排版格式，取值为 NSParagraphStyle 对象(详情见下面的API说明)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSForegroundColorAttributeName    -&amp;gt;设置字体颜色，取值为 UIColor对象，默认值为黑色&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSBackgroundColorAttributeName    -&amp;gt;设置字体所在区域背景颜色，取值为 UIColor对象，默认值为nil, 透明色&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSLigatureAttributeName           -&amp;gt;设置连体属性，取值为NSNumber 对象(整数)，0 表示没有连体字符，1 表示使用默认的连体字符&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSKernAttributeName               -&amp;gt;设置字符间距，取值为 NSNumber 对象（整数），正值间距加宽，负值间距变窄&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSStrikethroughStyleAttributeName -&amp;gt;设置删除线，取值为 NSNumber 对象（整数）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSStrikethroughColorAttributeName -&amp;gt;设置删除线颜色，取值为 UIColor 对象，默认值为黑色&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSUnderlineStyleAttributeName     -&amp;gt;设置下划线，取值为 NSNumber 对象（整数），枚举常量 NSUnderlineStyle中的值，与删除线类似&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSUnderlineColorAttributeName    -&amp;gt;设置下划线颜色，取值为 UIColor 对象，默认值为黑色&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSStrokeWidthAttributeName       -&amp;gt;设置笔画宽度(粗细)，取值为 NSNumber 对象（整数），负值填充效果，正值中空效果&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSStrokeColorAttributeName       -&amp;gt;填充部分颜色，不是字体颜色，取值为 UIColor 对象&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSShadowAttributeName            -&amp;gt;设置阴影属性，取值为 NSShadow 对象&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSTextEffectAttributeName        -&amp;gt;设置文本特殊效果，取值为 NSString 对象，目前只有图版印刷效果可用&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSBaselineOffsetAttributeName    -&amp;gt;设置基线偏移值，取值为 NSNumber （float）,正值上偏，负值下偏&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSObliquenessAttributeName       -&amp;gt;设置字形倾斜度，取值为 NSNumber （float）,正值右倾，负值左倾&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSExpansionAttributeName         -&amp;gt;设置文本横向拉伸属性，取值为 NSNumber （float）,正值横向拉伸文本，负值横向压缩文本&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSWritingDirectionAttributeName  -&amp;gt;设置文字书写方向，从左向右书写或者从右向左书写&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSVerticalGlyphFormAttributeName -&amp;gt;设置文字排版方向，取值为 NSNumber 对象(整数)，0 表示横排文本，1 表示竖排文本&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSLinkAttributeName              -&amp;gt;设置链接属性，点击后调用浏览器打开指定URL地址&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSAttachmentAttributeName        -&amp;gt;设置文本附件,取值为NSTextAttachment对象,常用于文字图片混排&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;段落API&quot;&gt;&lt;a href=&quot;#段落API&quot; class=&quot;headerlink&quot; title=&quot;段落API:&quot;&gt;&lt;/a&gt;段落API:&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;NSParagraphStyleAttributeName
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;值为NSParagraphStyle，设置段落属性，默认值为[NSParagraphStyle defaultParagraphStyle]返回的值。&lt;br&gt;NSMutableParagraphStyle与NSParagraphStyle包括一下属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;alignment                -&amp;gt;对齐方式
+firstLineHeadIndent      -&amp;gt;首行缩进
+headIndent               -&amp;gt;缩进
+tailIndent               -&amp;gt;尾部缩进
+lineBreakMode            -&amp;gt;断行方式
+maximumLineHeight        -&amp;gt;最大行高
+minimumLineHeight        -&amp;gt;最低行高
+lineSpacing              -&amp;gt;行距
+paragraphSpacing         -&amp;gt;段距
+paragraphSpacingBefore   -&amp;gt;段首空间
+baseWritingDirection     -&amp;gt;句子方向
+lineHeightMultiple       -&amp;gt;可变行高,乘因数。
+hyphenationFactor        -&amp;gt;连字符属性
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, 320, 400)];
+
+self.titleLabel.numberOfLines = 0;
+
+self.titleLabel.layer.borderColor = [UIColor grayColor].CGColor;
+
+self.titleLabel.layer.borderWidth = 0.5;
+self.titleLabel.textAlignment = NSTextAlignmentLeft;
+[self.view addSubview:self.titleLabel];
+
+NSString *string = @&amp;quot;An NSAttributedString object manages character strings and associated sets of attributes (for example, font and kerning) that apply to individual characters or ranges of characters in the string. An association of characters and their attributes is called an attributed string. &amp;quot;;
+这句话就是对这个类的一个最简明扼要的概括。
+NSAttributedString管理一个字符串，以及与该字符串中的
+单个字符或某些范围的字符串相关的属性。它有一个子类NSMutableAttributedString具体实现时,NSAttributedString
+维护了一个NSString，用来保存最原始的字符串，另有一个NSDictionary用来保存各个子串/字符的属性。        
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;创建&quot;&gt;&lt;a href=&quot;#创建&quot; class=&quot;headerlink&quot; title=&quot;创建&quot;&gt;&lt;/a&gt;创建&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark - NSMutableAttributedString 创建
+三种初始化方法,NSMutableAttributedString没有初始化方法,使用父类初始化方法, 使用initWithString:, initWithString:attributes:, 或者 initWithAttributedString: 
+
+NSAttributedString *attStri = [[NSAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:30]}];
+
+NSMutableAttributedString *mAttStri = [[NSMutableAttributedString alloc] initWithString:string];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;字体属性&quot;&gt;&lt;a href=&quot;#字体属性&quot; class=&quot;headerlink&quot; title=&quot;字体属性&quot;&gt;&lt;/a&gt;字体属性&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 1. NSFontAttributeName 设置字体属性
+/* 字体大小 及 字体类型 */
+NSRange font_range = [string rangeOfString:@&amp;quot;An&amp;quot;];
+[mAttStri addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:30] range:font_range];
+[mAttStri addAttribute:NSFontAttributeName value:[UIFont fontWithName:@&amp;quot;Courier-BoldOblique&amp;quot; size:17.0] range:NSMakeRange(10, 10)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;文本段落排版格式&quot;&gt;&lt;a href=&quot;#文本段落排版格式&quot; class=&quot;headerlink&quot; title=&quot;文本段落排版格式&quot;&gt;&lt;/a&gt;文本段落排版格式&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 2. NSParagraphStyleAttributeName 设置文本段落排版格式
+NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+style.firstLineHeadIndent = 20;
+style.lineSpacing = 10;
+[mAttStri addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, mAttStri.length / 2)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;字体颜色&quot;&gt;&lt;a href=&quot;#字体颜色&quot; class=&quot;headerlink&quot; title=&quot;字体颜色&quot;&gt;&lt;/a&gt;字体颜色&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 3. NSForegroundColorAttributeName 设置字体颜色
+/* 值为UIColor，字体颜色，默认为黑色. */
+[mAttStri addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, mAttStri.length)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;字体所在区域背景颜色&quot;&gt;&lt;a href=&quot;#字体所在区域背景颜色&quot; class=&quot;headerlink&quot; title=&quot;字体所在区域背景颜色&quot;&gt;&lt;/a&gt;字体所在区域背景颜色&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 4. NSBackgroundColorAttributeName 设置字体所在区域背景颜色
+/* 值为UIColor，字体背景色，默认透明. */
+[mAttStri addAttribute:NSBackgroundColorAttributeName value:[UIColor grayColor] range:NSMakeRange(0, 20)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;连体属性&quot;&gt;&lt;a href=&quot;#连体属性&quot; class=&quot;headerlink&quot; title=&quot;连体属性&quot;&gt;&lt;/a&gt;连体属性&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 5. NSLigatureAttributeName 设置连体属性
+/* 取值为NSNumber 对象(整数). 0 表示没有连体字符, 1 表示使用默认的连体字符. 一般中文用不到，在英文中可能出现相邻字母连笔的情况 */
+[mAttStri addAttribute:NSLigatureAttributeName value:@0 range:NSMakeRange(0, mAttStri.length)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;字符间距&quot;&gt;&lt;a href=&quot;#字符间距&quot; class=&quot;headerlink&quot; title=&quot;字符间距&quot;&gt;&lt;/a&gt;字符间距&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 6. NSKernAttributeName 设置字符间距
+/* 值为浮点数NSNumber，字距属性，默认值为0。*/
+[mAttStri addAttribute:NSKernAttributeName value:@3 range:NSMakeRange(0, mAttStri.length)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;删除线&quot;&gt;&lt;a href=&quot;#删除线&quot; class=&quot;headerlink&quot; title=&quot;删除线&quot;&gt;&lt;/a&gt;删除线&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 7. NSStrikethroughStyleAttributeName 设置删除线
+/* 值为整型NSNumber，可取值为
+    enum {
+
+    NSUnderlineStyleNone = 0×00,
+
+    NSUnderlineStyleSingle = 0×01,
+
+    }; 设置删除线。
+*/
+[mAttStri addAttribute:NSStrikethroughStyleAttributeName value:@3 range:NSMakeRange(3, 7)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;删除线颜色&quot;&gt;&lt;a href=&quot;#删除线颜色&quot; class=&quot;headerlink&quot; title=&quot;删除线颜色&quot;&gt;&lt;/a&gt;删除线颜色&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 8. NSStrikethroughColorAttributeName 设置删除线颜色
+/* 这个属性的值是一个UIColor对象. */
+[mAttStri addAttribute:NSStrikethroughColorAttributeName value:[UIColor blueColor] range:NSMakeRange(3, 3)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;下划线&quot;&gt;&lt;a href=&quot;#下划线&quot; class=&quot;headerlink&quot; title=&quot;下划线&quot;&gt;&lt;/a&gt;下划线&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 9. NSUnderlineStyleAttributeName 设置下划线
+/* 取值为 NSNumber 对象（整数），枚举常量 NSUnderlineStyle中的值，与删除线类似 */
+[mAttStri addAttribute:NSUnderlineStyleAttributeName value:@2 range:NSMakeRange(6, 5)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;下划线颜色&quot;&gt;&lt;a href=&quot;#下划线颜色&quot; class=&quot;headerlink&quot; title=&quot;下划线颜色&quot;&gt;&lt;/a&gt;下划线颜色&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 10. NSUnderlineColorAttributeName 设置下划线颜色
+/* 这个属性的值是一个UIColor对象.默认值为nil. */
+[mAttStri addAttribute:NSUnderlineColorAttributeName value:[UIColor blackColor] range:NSMakeRange(6, 5)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;笔画粗细&quot;&gt;&lt;a href=&quot;#笔画粗细&quot; class=&quot;headerlink&quot; title=&quot;笔画粗细&quot;&gt;&lt;/a&gt;笔画粗细&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 11. NSStrokeWidthAttributeName 设置笔画宽度(粗细)
+/* 值为浮点数NSNumber。设置笔画的粗细。负值填充效果，正值中空效果. */
+[mAttStri addAttribute:NSStrokeWidthAttributeName value:@10 range:NSMakeRange(50, 30)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;填充部分颜色-不是字体颜色&quot;&gt;&lt;a href=&quot;#填充部分颜色-不是字体颜色&quot; class=&quot;headerlink&quot; title=&quot;填充部分颜色(不是字体颜色)&quot;&gt;&lt;/a&gt;填充部分颜色(不是字体颜色)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 12. NSStrokeColorAttributeName 填充部分颜色，
+/* 不是字体颜色，取值为 UIColor 对象 默认值为nil，设置的属性同ForegroundColor。*/
+[mAttStri addAttribute:NSStrokeColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(50, 20)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;阴影属性&quot;&gt;&lt;a href=&quot;#阴影属性&quot; class=&quot;headerlink&quot; title=&quot;阴影属性&quot;&gt;&lt;/a&gt;阴影属性&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 13. NSShadowAttributeName 设置阴影属性
+
+/* 值为NSShadow，设置笔画的阴影，默认值为nil。*/
+NSShadow *shadow = [[NSShadow alloc]init];
+shadow.shadowOffset = CGSizeMake(10, 10);
+shadow.shadowColor = [UIColor greenColor];
+[mAttStri addAttribute:NSShadowAttributeName value:shadow range:NSMakeRange(20, 10)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;文本特效&quot;&gt;&lt;a href=&quot;#文本特效&quot; class=&quot;headerlink&quot; title=&quot;文本特效&quot;&gt;&lt;/a&gt;文本特效&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 14. NSTextEffectAttributeName 设置文本特殊效果
+/* 这个属性的值是一个NSString对象。使用此属性指定的文字效果，如NSTextEffectLetterpressStyle。此属性的默认值为nil，表示没有文本效应。*/
+[mAttStri addAttribute:NSTextEffectAttributeName value:NSTextEffectLetterpressStyle range:NSMakeRange(80, 10)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;基线偏移值&quot;&gt;&lt;a href=&quot;#基线偏移值&quot; class=&quot;headerlink&quot; title=&quot;基线偏移值&quot;&gt;&lt;/a&gt;基线偏移值&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 15. NSBaselineOffsetAttributeName 设置基线偏移值
+/* 此属性的值是包含一个浮点值的NSNumber对象,表示的字符从基线偏移的NSNumber对象，默认值是0。正值上偏，负值下偏 */
+[mAttStri addAttribute:NSBaselineOffsetAttributeName value:@5 range:NSMakeRange(112, 10)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;字形-左倾-右倾&quot;&gt;&lt;a href=&quot;#字形-左倾-右倾&quot; class=&quot;headerlink&quot; title=&quot;字形(左倾 右倾)&quot;&gt;&lt;/a&gt;字形(左倾 右倾)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 16. NSObliquenessAttributeName 设置字形倾斜度取值为 NSNumber （float）,正值右倾，负值左倾
+/* 此属性的值是包含一个浮点值的NSNumber对象。默认值为0，表示没有倾斜, 正值右倾，负值左倾。 */
+[mAttStri addAttribute:NSObliquenessAttributeName value:@0.8 range:NSMakeRange(135, 15)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;文本横向-拉伸-压缩&quot;&gt;&lt;a href=&quot;#文本横向-拉伸-压缩&quot; class=&quot;headerlink&quot; title=&quot;文本横向 拉伸 压缩&quot;&gt;&lt;/a&gt;文本横向 拉伸 压缩&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 17. NSExpansionAttributeName 设置文本横向拉伸属性
+/* 取值为 NSNumber(float), 正值横向拉伸文本, 负值横向压缩文本 */
+NSRange range =  [string rangeOfString:@&amp;quot;An association of&amp;quot;];
+[mAttStri addAttribute:NSExpansionAttributeName value:@1.0 range:range];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;文字书写方向&quot;&gt;&lt;a href=&quot;#文字书写方向&quot; class=&quot;headerlink&quot; title=&quot;文字书写方向&quot;&gt;&lt;/a&gt;文字书写方向&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 18. NSWritingDirectionAttributeName 设置文字书写方向
+/** 
+ * 取值为包含NSNumber对象的数组. 从左向右书写或者从右向左书写.
+ *
+ * The values of the NSNumber objects should be 0, 1, 2, or 3, for LRE, RLE, LRO, or RLO respectively, and combinations of NSWritingDirectionLeftToRight and NSWritingDirectionRightToLeft with NSTextWritingDirectionEmbedding or NSTextWritingDirectionOverride, as shown in Values of NSWritingDirectionAttributeName and equivalent markup.
+ */
+NSRange rang2 = [string rangeOfString:@&amp;quot;characters and their&amp;quot;];
+[mAttStri addAttribute:NSWritingDirectionAttributeName value:@[@3] range:rang2];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;文字排版方向-水平、垂直&quot;&gt;&lt;a href=&quot;#文字排版方向-水平、垂直&quot; class=&quot;headerlink&quot; title=&quot;文字排版方向(水平、垂直)&quot;&gt;&lt;/a&gt;文字排版方向(水平、垂直)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 19. NSVerticalGlyphFormAttributeName 设置文字排版方向
+/**
+ * 值为整型NSNumber，0为水平排版的字，1为垂直排版的字。注意,在iOS中, 总是以横向排版
+ *
+ * In iOS, horizontal text is always used and specifying a different value is undefined.
+ */
+[mAttStri addAttribute:NSVerticalGlyphFormAttributeName value:@1 range:NSMakeRange(1, 10)];
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;超链接&quot;&gt;&lt;a href=&quot;#超链接&quot; class=&quot;headerlink&quot; title=&quot;超链接&quot;&gt;&lt;/a&gt;超链接&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 20. NSLinkAttributeName 设置链接属性
+/**
+ * 此属性的值是NSURL对象（首选）或一个NSString对象。此属性的默认值为nil，表示没有链接。
+ * UILabel无法使用该属性, 可以使用UITextView 控件.
+ */
+UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 450, 320, 60)];
+[self.view addSubview:textView];
+textView.backgroundColor  = [UIColor lightGrayColor];
+
+NSString *strLink = @&amp;quot;百度链接&amp;quot;;
+NSAttributedString *attStr  = [[NSAttributedString alloc] initWithString:strLink attributes:@{NSLinkAttributeName: [NSURL URLWithString:@&amp;quot;http://www.baidu.com&amp;quot;]}];
+
+textView.editable = NO;
+
+/* 签订协议, 指定代理人之后. 但点击链接时, 会回调协议方法 (- textView:shouldInteractWithURL:inRange:) */
+textView.delegate = self;
+
+textView.attributedText = attStr;
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;文本附件&quot;&gt;&lt;a href=&quot;#文本附件&quot; class=&quot;headerlink&quot; title=&quot;文本附件&quot;&gt;&lt;/a&gt;文本附件&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 21. NSAttachmentAttributeName 设置文本附件
+/* 这个属性的值是一个NSTextAttachment对象。此属性的默认值为nil，表示无附件。*/
+
+/**
+ * 关于NSTextAttachment类的简单说明
+ *
+ * NSTextAttachment 类有一个指定的初始化方法(- initWithData:ofType:), 需要指定附件文档的数据和附件文件的类型. 如果附件文档数据指定nil, 那么系统将会默认指定为image对象作为值. 因此, 也可以通过这个特性实现图文混排.
+ * 下面就以附件为image对象来说明NSAttachmentAttributeName的使用.
+ */
+
+UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 550, 320, 60)];
+label.backgroundColor = [UIColor yellowColor];
+[self.view addSubview:label];
+
+/* 下面实现在百度两个汉字之间插入一个照片 */
+NSString *stiAtt = @&amp;quot;百度&amp;quot;;
+
+NSTextAttachment *attach = [[NSTextAttachment alloc] initWithData:nil ofType:nil];
+attach.bounds = CGRectMake(0, 0, 50, 50);
+attach.image = [UIImage imageNamed:@&amp;quot;baidu.jpg&amp;quot;];
+
+NSAttributedString *strAtt = [NSAttributedString attributedStringWithAttachment:attach];
+
+NSMutableAttributedString *strMatt = [[NSMutableAttributedString alloc] initWithString:stiAtt];
+
+[strMatt insertAttributedString:strAtt atIndex:1];
+
+label.attributedText = strMatt;
+
+self.titleLabel.attributedText = mAttStri;
+[self.titleLabel sizeToFit];
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h4 id=&quot;UITextView协议&quot;&gt;&lt;a href=&quot;#UITextView协议&quot; class=&quot;headerlink&quot; title=&quot;UITextView协议&quot;&gt;&lt;/a&gt;UITextView协议&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark - textView delegate 
+-(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+NSLog(@&amp;quot;%s&amp;quot;, __func__);
+NSLog(@&amp;quot;url: %@&amp;quot;, URL);
+return YES;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;NSAttributedString 可以非常方便的实现文字排版和图文混排功能. 共有21中效果(API), 本文将较详细的介绍21种的属性的使用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;API&quot;&gt;&lt;a href=&quot;#API&quot; clas
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Runtime</title>
+    <link href="http://yoursite.com/2015/03/06/runtime%E7%9A%84%E9%82%A3%E4%BA%9B%E5%B7%A7%E7%94%A8/"/>
+    <id>http://yoursite.com/2015/03/06/runtime的那些巧用/</id>
+    <published>2015-03-06T13:53:22.000Z</published>
+    <updated>2016-01-28T06:16:35.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;1-获取类的属性列表&quot;&gt;&lt;a href=&quot;#1-获取类的属性列表&quot; class=&quot;headerlink&quot; title=&quot;1.获取类的属性列表&quot;&gt;&lt;/a&gt;1.获取类的属性列表&lt;/h2&gt;&lt;h3 id=&quot;API&quot;&gt;&lt;a href=&quot;#API&quot; class=&quot;headerlink&quot; title=&quot;API&quot;&gt;&lt;/a&gt;&lt;code&gt;API&lt;/code&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;`class_copyPropertyList(Class cls, unsigned int *outCount)`
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;在复杂对象存储中的简单应用-归档和反归档&quot;&gt;&lt;a href=&quot;#在复杂对象存储中的简单应用-归档和反归档&quot; class=&quot;headerlink&quot; title=&quot;在复杂对象存储中的简单应用-归档和反归档&quot;&gt;&lt;/a&gt;&lt;code&gt;在复杂对象存储中的简单应用-归档和反归档&lt;/code&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;归档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)encodeWithCoder:(NSCoder *)aCoder &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    unsigned int num = 0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    获取属性列表&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    objc_property_t *propertys = class_copyPropertyList([Person class], &amp;amp;num);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    遍历Person类的属性列表，逐一归档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    for (int i = 0; i &amp;lt; num; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        objc_property_t property = propertys[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        const char *name = property_getName(property);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        NSString *key = [NSString stringWithUTF8String:name];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        归档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [aCoder encodeObject:[self valueForKey:key] forKey:key];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;反归档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (instancetype)initWithCoder:(NSCoder *)aDecoder &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    self = [super init];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    if (self) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        unsigned int num = 0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        objc_property_t *propertys = class_copyPropertyList([Person class], &amp;amp;num);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        遍历Person类的属性列表，逐一反归档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        for (int i = 0; i &amp;lt; num; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            objc_property_t property = propertys[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            const char *name = property_getName(property);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            NSString *key = [NSString stringWithUTF8String:name];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            // 反归档&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            [self setValue:[aDecoder decodeObjectForKey:key] forKey:key];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return self;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;2-为类添加方法&quot;&gt;&lt;a href=&quot;#2-为类添加方法&quot; class=&quot;headerlink&quot; title=&quot;2.为类添加方法&quot;&gt;&lt;/a&gt;2.为类添加方法&lt;/h2&gt;&lt;h3 id=&quot;API-1&quot;&gt;&lt;a href=&quot;#API-1&quot; class=&quot;headerlink&quot; title=&quot;API&quot;&gt;&lt;/a&gt;&lt;code&gt;API&lt;/code&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;`class_addMethod(Class cls, SEL name, IMP imp, const char *types)`
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;简单应用&quot;&gt;&lt;a href=&quot;#简单应用&quot; class=&quot;headerlink&quot; title=&quot;简单应用&quot;&gt;&lt;/a&gt;&lt;code&gt;简单应用&lt;/code&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;`为Person类添加一个Method3的方法，此方法能打印出“Hello”`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;下面的方法的是 `- void sayHello;` 方法的实现函数：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void sayHello(id self, SEL _cmd) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    NSLog(@&amp;quot;Hello&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)viewDidLoad &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [super viewDidLoad];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    为Person类添加method3方法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    class_addMethod([Person class], @selector(method3), (IMP)sayHello, &amp;quot;v&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    unsigned int count = 0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    获取Person类的方法列表&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Method * mem = class_copyMethodList([Person class], &amp;amp;count);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    通过遍历，查看Person类的所有方法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    for ( int  i=0;i&amp;lt;count;i++)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        SEL name = method_getName(mem[i]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        NSString * method = [NSString stringWithCString:sel_getName(name) encoding:NSUTF8StringEncoding];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        NSLog(@&amp;quot;%d: %@&amp;quot; , i, method);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Person *person = [Person new];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    实现method3方法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [person performSelector:@selector(method3)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;输出结果为：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2015-12-06 22:57:30.391 Runtime[42093:505478] 0: method3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`这条信息说明method3方法已经添加到了Person类里面`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2015-12-06 22:57:30.393 Runtime[42093:505478] Hello&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;`Hello的打印,说明method3方法实现了方法 `- void sayHello;` 的实现`&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;types参数&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;如要添加一个这样的方法：-(int)say:(NSString *)str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;相应的实现函数就应该是这样：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int say(id self, SEL _cmd, NSString *str) &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    NSLog(@&amp;quot;%@&amp;quot;, str); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return 100;//随便返回个值 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;class_addMethod这句就应该这么写：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;class_addMethod([EmptyClass class], @selector(say:), (IMP)say, &amp;quot;i@:@&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;其中types参数为&amp;quot;i@:@“，按顺序分别表示：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i ：返回值类型int，若是v则表示void&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@ ：参数id(self)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;: ：SEL(_cmd)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@ ：id(str)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;3-方法调剂&quot;&gt;&lt;a href=&quot;#3-方法调剂&quot; class=&quot;headerlink&quot; title=&quot;3.方法调剂&quot;&gt;&lt;/a&gt;3.方法调剂&lt;/h2&gt;&lt;h3 id=&quot;API-2&quot;&gt;&lt;a href=&quot;#API-2&quot; class=&quot;headerlink&quot; title=&quot;API&quot;&gt;&lt;/a&gt;&lt;code&gt;API&lt;/code&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;`method_exchangeImplementations(Method m1, Method m2)`
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;方法实现的对调&quot;&gt;&lt;a href=&quot;#方法实现的对调&quot; class=&quot;headerlink&quot; title=&quot;方法实现的对调&quot;&gt;&lt;/a&gt;&lt;code&gt;方法实现的对调&lt;/code&gt;&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;简单案例：将UIView的 `setBackgroundColor:` 方法 的实现 和 自定义的方法 `- (void)night:(UIColor *)color；` 的实现 进行对调。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;创建基于UIView的Category：UIView+Night.h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;·#import &amp;quot;UIView+Night.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;·#import &amp;lt;objc/runtime.h&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@implementation UIView (Night)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;自定义的方法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)night:(UIColor *)color &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    if ([color isEqual:[UIColor yellowColor]]) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [self night:[UIColor blackColor]];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; else &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    	此处调用night方法不会出错，因为此处的night的实现已经更换&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [self night:color];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+ (void)load &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	获取方法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Method a = class_getInstanceMethod([UIView class], @selector(setBackgroundColor:));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Method b = class_getInstanceMethod([UIView class], @selector(night:));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    将两个方法的实现进行对调&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    method_exchangeImplementations(a, b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;结果验证&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;在VC中，当执行&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;self.view.backgroundColor = [UIColor yellowColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;时，视图的颜色应该是`黑色`的。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-获取类的属性列表&quot;&gt;&lt;a href=&quot;#1-获取类的属性列表&quot; class=&quot;headerlink&quot; title=&quot;1.获取类的属性列表&quot;&gt;&lt;/a&gt;1.获取类的属性列表&lt;/h2&gt;&lt;h3 id=&quot;API&quot;&gt;&lt;a href=&quot;#API&quot; class=&quot;header
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
