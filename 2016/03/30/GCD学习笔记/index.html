@@ -4,30 +4,30 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>URL中特殊字符的转义 | 最爱冰红茶</title>
+  <title>GCD学习笔记（一） | 最爱冰红茶</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳
+  <meta name="description" content="时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！
 
-解决思路// 对URL进行转义
-- (NSString *)formatURLwithText:(NSString *)text {
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscape">
+什么是GCDGrand Central Dispath(GCD),就是异步执行任务的一种技术。简单地说就是GCD提供了极为简单的方法，实现了极为复杂繁琐的多线程编程。
+// 自定义一个线程
+let queue: dispatch_queue_t = dispatch_qu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="URL中特殊字符的转义">
-<meta property="og:url" content="http://yoursite.com/2016/03/30/URL中特殊字符的处理/index.html">
+<meta property="og:title" content="GCD学习笔记（一）">
+<meta property="og:url" content="http://yoursite.com/2016/03/30/GCD学习笔记/index.html">
 <meta property="og:site_name" content="最爱冰红茶">
-<meta property="og:description" content="在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳
+<meta property="og:description" content="时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！
 
-解决思路// 对URL进行转义
-- (NSString *)formatURLwithText:(NSString *)text {
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscape">
-<meta property="og:updated_time" content="2016-03-30T03:20:57.000Z">
+什么是GCDGrand Central Dispath(GCD),就是异步执行任务的一种技术。简单地说就是GCD提供了极为简单的方法，实现了极为复杂繁琐的多线程编程。
+// 自定义一个线程
+let queue: dispatch_queue_t = dispatch_qu">
+<meta property="og:updated_time" content="2016-03-30T14:08:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="URL中特殊字符的转义">
-<meta name="twitter:description" content="在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳
+<meta name="twitter:title" content="GCD学习笔记（一）">
+<meta name="twitter:description" content="时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！
 
-解决思路// 对URL进行转义
-- (NSString *)formatURLwithText:(NSString *)text {
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscape">
+什么是GCDGrand Central Dispath(GCD),就是异步执行任务的一种技术。简单地说就是GCD提供了极为简单的方法，实现了极为复杂繁琐的多线程编程。
+// 自定义一个线程
+let queue: dispatch_queue_t = dispatch_qu">
   
     <link rel="alternative" href="/atom.xml" title="最爱冰红茶" type="application/atom+xml">
   
@@ -171,11 +171,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-URL中特殊字符的处理" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-GCD学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/30/URL中特殊字符的处理/" class="article-date">
-  	<time datetime="2016-03-30T03:40:38.000Z" itemprop="datePublished">2016-03-30</time>
+      <a href="/2016/03/30/GCD学习笔记/" class="article-date">
+  	<time datetime="2016-03-30T13:06:18.000Z" itemprop="datePublished">2016-03-30</time>
 </a>
     </div>
   
@@ -188,7 +188,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      URL中特殊字符的转义
+      GCD学习笔记（一）
     </h1>
   
 
@@ -205,17 +205,29 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳</p>
+<p>时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！</p>
 </blockquote>
-<h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><pre><code>// 对URL进行转义
-- (NSString *)formatURLwithText:(NSString *)text {
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)text, NULL, (CFStringRef)@&quot;!*’();:@&amp;=+$,/?%#[]&quot;, kCFStringEncodingUTF8));
+<h3 id="什么是GCD"><a href="#什么是GCD" class="headerlink" title="什么是GCD"></a>什么是GCD</h3><p>Grand Central Dispath(GCD),就是异步执行任务的一种技术。简单地说就是GCD提供了极为简单的方法，实现了极为复杂繁琐的多线程编程。</p>
+<pre><code>// 自定义一个线程
+let queue: dispatch_queue_t = dispatch_queue_create(&quot;myqueue&quot;, nil)
+
+// 耗时的任务放到后台处理
+dispatch_async(queue) {
+    var num = Int()
+    for i in 1...900 {
+        num += i
+    }
+
+    // 在主线程中打印求和结果
+    dispatch_async(dispatch_get_main_queue(), { 
+        print(num)
+    })
 }
-</code></pre><p>上面代码是就是最近本的处理方法，关键在用的时机。</p>
-<p>生成sign值：通常的做法是对所有参数按key排序，然后拼接成a=x&amp;b=y…这样的字符串，然后RSA一下。但是如果encode一下，iOS端和安卓端出现不同的结果，那么服务端拿到以后是可以得到原串的，但是服务端encode一下所得到的结果会不一样，那么校验sign就会失败。</p>
-<p>但是，如果不对每个value进行转码，在服务端就无法通过&amp;来分割了，因为value中有&amp;时，若不转码就会出问题，因此encode是必须的。</p>
-<p>解决方法：生成sign时，是遍历所有的key-value，然后拼接，最后RSA。那么，生成sign时，我们只要不对value进行encode，而其他上传的参数值都encode，这样就可以解决我们的问题了。</p>
-<p>注意点：转义之后的URL不可再用encode；例如，value里面含有中文字段，正常情况下是要进行中文编码的，如果调用转义的方法后，就不需要在进行中文编码的。</p>
+</code></pre><p>以上就是一个很简单地GCD应用，开辟新的线程用来处理耗时的任务，在主线程中处理必要操作，比如UI的展示，网络请求结果的处理等。</p>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>多线程说白了，就像工厂里面的流水线，每条流水线都有各自的任务，流水线之间原则上没有太大的相关性。</p>
+<p>使用多线程的程序可以在某个线程和其他线程之间反复多次进行上下文切换，看上去就像一个CPU核能够并列的执行多个线程一样。当然，多个CPU核的情况下，是真的提供了多个CPU核并列执行多个线程的技术。</p>
+<h4 id="多线程的优点："><a href="#多线程的优点：" class="headerlink" title="多线程的优点："></a>多线程的优点：</h4><p>1、数据竞争（多个线程更新相同的资源会导致数据的不一致）；<br>2、死锁(停止等待事件的线程会导致多个线程相互持续等待)；<br>3、使用太多线程会消耗大量内存等。 </p>
+<h4 id="多线程的优点：-1"><a href="#多线程的优点：-1" class="headerlink" title="多线程的优点："></a>多线程的优点：</h4><p>使用多线程编程，在执行长时间的处理是仍可保证用户界面的响应性能。比如：程序启动的时候，最先执行的是主线程，用来描绘用户界面、处理触摸屏幕的事件等；而其他耗时操作，如数据请求、图片下载等则是开辟新的线程进行处理。这样可以避免妨碍主线程中NSRunLoop的执行，从而保证用户界面的响应性能。</p>
 
       
     </div>
@@ -225,18 +237,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/03/30/GCD学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          GCD学习笔记（一）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">高阶函数：map、flatMap、forEach、filter、reduce</div>
+    <a href="/2016/03/30/URL中特殊字符的处理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">URL中特殊字符的转义</div>
       <strong class="article-nav-caption">></strong>
     </a>
   

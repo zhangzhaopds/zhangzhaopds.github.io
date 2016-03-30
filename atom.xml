@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-30T03:20:57.000Z</updated>
+  <updated>2016-03-30T14:08:07.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GCD学习笔记（一）</title>
+    <link href="http://yoursite.com/2016/03/30/GCD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2016/03/30/GCD学习笔记/</id>
+    <published>2016-03-30T13:06:18.000Z</published>
+    <updated>2016-03-30T14:08:07.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;什么是GCD&quot;&gt;&lt;a href=&quot;#什么是GCD&quot; class=&quot;headerlink&quot; title=&quot;什么是GCD&quot;&gt;&lt;/a&gt;什么是GCD&lt;/h3&gt;&lt;p&gt;Grand Central Dispath(GCD),就是异步执行任务的一种技术。简单地说就是GCD提供了极为简单的方法，实现了极为复杂繁琐的多线程编程。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 自定义一个线程
+let queue: dispatch_queue_t = dispatch_queue_create(&amp;quot;myqueue&amp;quot;, nil)
+
+// 耗时的任务放到后台处理
+dispatch_async(queue) {
+    var num = Int()
+    for i in 1...900 {
+        num += i
+    }
+
+    // 在主线程中打印求和结果
+    dispatch_async(dispatch_get_main_queue(), { 
+        print(num)
+    })
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以上就是一个很简单地GCD应用，开辟新的线程用来处理耗时的任务，在主线程中处理必要操作，比如UI的展示，网络请求结果的处理等。&lt;/p&gt;
+&lt;h3 id=&quot;多线程&quot;&gt;&lt;a href=&quot;#多线程&quot; class=&quot;headerlink&quot; title=&quot;多线程&quot;&gt;&lt;/a&gt;多线程&lt;/h3&gt;&lt;p&gt;多线程说白了，就像工厂里面的流水线，每条流水线都有各自的任务，流水线之间原则上没有太大的相关性。&lt;/p&gt;
+&lt;p&gt;使用多线程的程序可以在某个线程和其他线程之间反复多次进行上下文切换，看上去就像一个CPU核能够并列的执行多个线程一样。当然，多个CPU核的情况下，是真的提供了多个CPU核并列执行多个线程的技术。&lt;/p&gt;
+&lt;h4 id=&quot;多线程的优点：&quot;&gt;&lt;a href=&quot;#多线程的优点：&quot; class=&quot;headerlink&quot; title=&quot;多线程的优点：&quot;&gt;&lt;/a&gt;多线程的优点：&lt;/h4&gt;&lt;p&gt;1、数据竞争（多个线程更新相同的资源会导致数据的不一致）；&lt;br&gt;2、死锁(停止等待事件的线程会导致多个线程相互持续等待)；&lt;br&gt;3、使用太多线程会消耗大量内存等。 &lt;/p&gt;
+&lt;h4 id=&quot;多线程的优点：-1&quot;&gt;&lt;a href=&quot;#多线程的优点：-1&quot; class=&quot;headerlink&quot; title=&quot;多线程的优点：&quot;&gt;&lt;/a&gt;多线程的优点：&lt;/h4&gt;&lt;p&gt;使用多线程编程，在执行长时间的处理是仍可保证用户界面的响应性能。比如：程序启动的时候，最先执行的是主线程，用来描绘用户界面、处理触摸屏幕的事件等；而其他耗时操作，如数据请求、图片下载等则是开辟新的线程进行处理。这样可以避免妨碍主线程中NSRunLoop的执行，从而保证用户界面的响应性能。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;什么是GCD&quot;&gt;&lt;a href=&quot;#什么是GCD&quot; class=&quot;hea
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>URL中特殊字符的转义</title>
