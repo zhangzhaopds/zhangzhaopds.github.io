@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>高阶函数：map、flatMap、forEach、filter、reduce | 最爱冰红茶</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="高阶函数：函数作为参数或者函数作为返回值。
+
+函数的写法：1.正常写法let res = numbers.sort({$0 &amp;lt; $1})
+2.Trailing Closurelet ree = numbers.sort{$0 &amp;lt; $1}
+常用实例map函数：map函数：当数组调用map函数时，闭包作为它的参数，闭包实现对数组单个元素进行某种规则的处理，最终map函数返回一个原数组元素">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高阶函数：map、flatMap、forEach、filter、reduce">
+<meta property="og:url" content="http://yoursite.com/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/index.html">
+<meta property="og:site_name" content="最爱冰红茶">
+<meta property="og:description" content="高阶函数：函数作为参数或者函数作为返回值。
+
+函数的写法：1.正常写法let res = numbers.sort({$0 &amp;lt; $1})
+2.Trailing Closurelet ree = numbers.sort{$0 &amp;lt; $1}
+常用实例map函数：map函数：当数组调用map函数时，闭包作为它的参数，闭包实现对数组单个元素进行某种规则的处理，最终map函数返回一个原数组元素">
+<meta property="og:updated_time" content="2016-03-15T07:08:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高阶函数：map、flatMap、forEach、filter、reduce">
+<meta name="twitter:description" content="高阶函数：函数作为参数或者函数作为返回值。
+
+函数的写法：1.正常写法let res = numbers.sort({$0 &amp;lt; $1})
+2.Trailing Closurelet ree = numbers.sort{$0 &amp;lt; $1}
+常用实例map函数：map函数：当数组调用map函数时，闭包作为它的参数，闭包实现对数组单个元素进行某种规则的处理，最终map函数返回一个原数组元素">
+  
+    <link rel="alternative" href="/atom.xml" title="最爱冰红茶" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Zhang Zhao</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Zhang Zhao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Zhang Zhao</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-高阶函数：map、flatMap、forEach、filter、reduce" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/" class="article-date">
+  	<time datetime="2016-03-15T03:40:38.000Z" itemprop="datePublished">2016-03-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      高阶函数：map、flatMap、forEach、filter、reduce
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>高阶函数：函数作为参数或者函数作为返回值。</p>
+</blockquote>
+<h3 id="函数的写法："><a href="#函数的写法：" class="headerlink" title="函数的写法："></a>函数的写法：</h3><h4 id="1-正常写法"><a href="#1-正常写法" class="headerlink" title="1.正常写法"></a>1.正常写法</h4><pre><code>let res = numbers.sort({$0 &lt; $1})
+</code></pre><h4 id="2-Trailing-Closure"><a href="#2-Trailing-Closure" class="headerlink" title="2.Trailing Closure"></a>2.Trailing Closure</h4><pre><code>let ree = numbers.sort{$0 &lt; $1}
+</code></pre><h3 id="常用实例"><a href="#常用实例" class="headerlink" title="常用实例"></a>常用实例</h3><h4 id="map函数："><a href="#map函数：" class="headerlink" title="map函数："></a>map函数：</h4><pre><code>map函数：当数组调用map函数时，闭包作为它的参数，闭包实现对数组单个元素进行某种规则的处理，最终map函数返回一个原数组元素被闭包处理过的新的数组（新的数组元素个数和原先的相等，数组类型可自定义，如数组类型由[Int],变为[String] 或者 [Bool]等）。
+
+let arr = [1, 2, 9, 4, 5]
+// 写法一：推荐写法
+let mrr1 = arr.map {
+    &quot;step.&quot; + String($0)
+}
+// 写法二：
+let mrr2 = arr.map { (a: Int) -&gt; String in
+    &quot;step.&quot; + String(a)
+}
+// 写法三：
+let mrr3 = arr.map ({ (a: Int) -&gt; String in
+    &quot;step.&quot; + String(a)
+})
+</code></pre><h4 id="flatMap函数："><a href="#flatMap函数：" class="headerlink" title="flatMap函数："></a>flatMap函数：</h4><pre><code>flatMap函数：功能和map函数基本相同，不同之处在于，flatMap生成的数组自动去除nil。
+
+// 1、去除nil
+let frr = [&quot;af&quot;, &quot;vf&quot;, &quot;&quot;]
+let frr1 = frr.flatMap { (a: String) -&gt; Int? in
+    if a.characters.count == 0 {
+            return nil
+    } else {
+        return a.characters.count
+    }
+}   // [2,2]
+
+// 2、对嵌套数组的拆分合并
+let fmp = [[2, 6, 4], [5, 3, 7]]
+let fmp1 = fmp.flatMap { (a: [Int]) -&gt; [Int] in
+    a
+}   // [2, 6, 4, 5, 3, 7]
+
+let fmp2 = fmp.map { (a: [Int]) -&gt; [Int] in
+    a
+}   // [[2, 6, 4], [5, 3, 7]]
+
+// 3、对不同类型数组的合并
+let c = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+let i = [1, 2]
+let fmp3 = i.flatMap { car in
+    c.map { num in
+        num + &quot;\(car)&quot;
+    }
+}   // [&quot;a1&quot;, &quot;b1&quot;, &quot;c1&quot;, &quot;a2&quot;, &quot;b2&quot;, &quot;c2&quot;]
+</code></pre><h4 id="filter函数："><a href="#filter函数：" class="headerlink" title="filter函数："></a>filter函数：</h4><pre><code>let err = arr.filter { (a: Int) -&gt; Bool in
+    a % 2 == 0
+}   // [2, 4]
+</code></pre><h4 id="forEach函数："><a href="#forEach函数：" class="headerlink" title="forEach函数："></a>forEach函数：</h4><pre><code>arr.forEach { (a: Int) -&gt; () in
+    print(a)
+}
+</code></pre><h4 id="reduce函数："><a href="#reduce函数：" class="headerlink" title="reduce函数："></a>reduce函数：</h4><pre><code>reduce函数：把数组元素合并成一个新的值, 新值类型不固定。有两个参数，第一个参数是返回值的初始值；第二个参数是一个处理数组元素的函数。
+
+// 返回Int
+let crr = arr.reduce(0) { (prevSum: Int, elemen: Int) in
+    return prevSum + elemen
+
+}
+// 返回String
+let crr2 = arr.reduce(&quot;&quot;) {
+      &quot;\($0)&quot; + &quot;\($1)&quot;
+}
+
+// 实现map和filter
+extension Array {
+    func mMap&lt;U&gt; (transform: Element -&gt; U) -&gt; [U] {
+    return reduce([], combine: { $0 + [transform($1)] })
+    }
+    func mFilter (includeElement: Element -&gt; Bool) -&gt; [Element] {
+        return reduce([]) { includeElement($1) ? $0 + [$1] : $0 }
+    }
+}
+
+// 利用 reduce 实现 map
+let ass = arr.reduce([]) { (a: [Int], element: Int) -&gt;[Int] in
+    var t = Array(a)
+    t.append(element * 2)
+    return t
+}
+
+// 利用 reduce 方法一次求出数组中奇数的和、以及偶数乘积
+let sss:(Int, Int) = arr.reduce((0, 1)) {
+    (a: (Int, Int), element: Int) -&gt; (Int, Int) in
+    if element % 2 == 0 {
+        return (a.0, a.1 * element)
+    } else {
+        return (a.0 + element, a.1)
+    }
+}
+
+// 利用 reduce 方法一次求出数组中偶数的平方和
+let kkk = arr.filter {
+        $0 % 2 == 0
+    }.map {
+        $0 * $0
+    }.reduce(0){
+        $0 + $1
+}
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/30/URL中特殊字符的处理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          URL中特殊字符的转义
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/09/NSURLSession-Swift/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NSURLSession_Swift</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Zhang Zhao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

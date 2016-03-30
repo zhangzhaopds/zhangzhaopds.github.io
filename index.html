@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>最爱冰红茶</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="最爱冰红茶">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="最爱冰红茶">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="最爱冰红茶">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="最爱冰红茶" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Zhang Zhao</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Zhang Zhao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Zhang Zhao</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+  
+    <article id="post-URL中特殊字符的处理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/30/URL中特殊字符的处理/" class="article-date">
+  	<time datetime="2016-03-30T03:40:38.000Z" itemprop="datePublished">2016-03-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/30/URL中特殊字符的处理/">URL中特殊字符的转义</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳</p>
+</blockquote>
+<h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><pre><code>// 对URL进行转义
+- (NSString *)formatURLwithText:(NSString *)text {
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)text, NULL, (CFStringRef)@&quot;!*’();:@&amp;=+$,/?%#[]&quot;, kCFStringEncodingUTF8));
+}
+</code></pre><p>上面代码是就是最近本的处理方法，关键在用的时机。</p>
+<p>生成sign值：通常的做法是对所有参数按key排序，然后拼接成a=x&amp;b=y…这样的字符串，然后RSA一下。但是如果encode一下，iOS端和安卓端出现不同的结果，那么服务端拿到以后是可以得到原串的，但是服务端encode一下所得到的结果会不一样，那么校验sign就会失败。</p>
+<p>但是，如果不对每个value进行转码，在服务端就无法通过&amp;来分割了，因为value中有&amp;时，若不转码就会出问题，因此encode是必须的。</p>
+<p>解决方法：生成sign时，是遍历所有的key-value，然后拼接，最后RSA。那么，生成sign时，我们只要不对value进行encode，而其他上传的参数值都encode，这样就可以解决我们的问题了。</p>
+<p>注意点：转义之后的URL不可再用encode；例如，value里面含有中文字段，正常情况下是要进行中文编码的，如果调用转义的方法后，就不需要在进行中文编码的。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-高阶函数：map、flatMap、forEach、filter、reduce" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/" class="article-date">
+  	<time datetime="2016-03-15T03:40:38.000Z" itemprop="datePublished">2016-03-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/">高阶函数：map、flatMap、forEach、filter、reduce</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>高阶函数：函数作为参数或者函数作为返回值。</p>
+</blockquote>
+<h3 id="函数的写法："><a href="#函数的写法：" class="headerlink" title="函数的写法："></a>函数的写法：</h3><h4 id="1-正常写法"><a href="#1-正常写法" class="headerlink" title="1.正常写法"></a>1.正常写法</h4><pre><code>let res = numbers.sort({$0 &lt; $1})
+</code></pre><h4 id="2-Trailing-Closure"><a href="#2-Trailing-Closure" class="headerlink" title="2.Trailing Closure"></a>2.Trailing Closure</h4><pre><code>let ree = numbers.sort{$0 &lt; $1}
+</code></pre><h3 id="常用实例"><a href="#常用实例" class="headerlink" title="常用实例"></a>常用实例</h3><h4 id="map函数："><a href="#map函数：" class="headerlink" title="map函数："></a>map函数：</h4><pre><code>map函数：当数组调用map函数时，闭包作为它的参数，闭包实现对数组单个元素进行某种规则的处理，最终map函数返回一个原数组元素被闭包处理过的新的数组（新的数组元素个数和原先的相等，数组类型可自定义，如数组类型由[Int],变为[String] 或者 [Bool]等）。
+
+let arr = [1, 2, 9, 4, 5]
+// 写法一：推荐写法
+let mrr1 = arr.map {
+    &quot;step.&quot; + String($0)
+}
+// 写法二：
+let mrr2 = arr.map { (a: Int) -&gt; String in
+    &quot;step.&quot; + String(a)
+}
+// 写法三：
+let mrr3 = arr.map ({ (a: Int) -&gt; String in
+    &quot;step.&quot; + String(a)
+})
+</code></pre><h4 id="flatMap函数："><a href="#flatMap函数：" class="headerlink" title="flatMap函数："></a>flatMap函数：</h4><pre><code>flatMap函数：功能和map函数基本相同，不同之处在于，flatMap生成的数组自动去除nil。
+
+// 1、去除nil
+let frr = [&quot;af&quot;, &quot;vf&quot;, &quot;&quot;]
+let frr1 = frr.flatMap { (a: String) -&gt; Int? in
+    if a.characters.count == 0 {
+            return nil
+    } else {
+        return a.characters.count
+    }
+}   // [2,2]
+
+// 2、对嵌套数组的拆分合并
+let fmp = [[2, 6, 4], [5, 3, 7]]
+let fmp1 = fmp.flatMap { (a: [Int]) -&gt; [Int] in
+    a
+}   // [2, 6, 4, 5, 3, 7]
+
+let fmp2 = fmp.map { (a: [Int]) -&gt; [Int] in
+    a
+}   // [[2, 6, 4], [5, 3, 7]]
+
+// 3、对不同类型数组的合并
+let c = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+let i = [1, 2]
+let fmp3 = i.flatMap { car in
+    c.map { num in
+        num + &quot;\(car)&quot;
+    }
+}   // [&quot;a1&quot;, &quot;b1&quot;, &quot;c1&quot;, &quot;a2&quot;, &quot;b2&quot;, &quot;c2&quot;]
+</code></pre><h4 id="filter函数："><a href="#filter函数：" class="headerlink" title="filter函数："></a>filter函数：</h4><pre><code>let err = arr.filter { (a: Int) -&gt; Bool in
+    a % 2 == 0
+}   // [2, 4]
+</code></pre><h4 id="forEach函数："><a href="#forEach函数：" class="headerlink" title="forEach函数："></a>forEach函数：</h4><pre><code>arr.forEach { (a: Int) -&gt; () in
+    print(a)
+}
+</code></pre><h4 id="reduce函数："><a href="#reduce函数：" class="headerlink" title="reduce函数："></a>reduce函数：</h4><pre><code>reduce函数：把数组元素合并成一个新的值, 新值类型不固定。有两个参数，第一个参数是返回值的初始值；第二个参数是一个处理数组元素的函数。
+
+// 返回Int
+let crr = arr.reduce(0) { (prevSum: Int, elemen: Int) in
+    return prevSum + elemen
+
+}
+// 返回String
+let crr2 = arr.reduce(&quot;&quot;) {
+      &quot;\($0)&quot; + &quot;\($1)&quot;
+}
+
+// 实现map和filter
+extension Array {
+    func mMap&lt;U&gt; (transform: Element -&gt; U) -&gt; [U] {
+    return reduce([], combine: { $0 + [transform($1)] })
+    }
+    func mFilter (includeElement: Element -&gt; Bool) -&gt; [Element] {
+        return reduce([]) { includeElement($1) ? $0 + [$1] : $0 }
+    }
+}
+
+// 利用 reduce 实现 map
+let ass = arr.reduce([]) { (a: [Int], element: Int) -&gt;[Int] in
+    var t = Array(a)
+    t.append(element * 2)
+    return t
+}
+
+// 利用 reduce 方法一次求出数组中奇数的和、以及偶数乘积
+let sss:(Int, Int) = arr.reduce((0, 1)) {
+    (a: (Int, Int), element: Int) -&gt; (Int, Int) in
+    if element % 2 == 0 {
+        return (a.0, a.1 * element)
+    } else {
+        return (a.0 + element, a.1)
+    }
+}
+
+// 利用 reduce 方法一次求出数组中偶数的平方和
+let kkk = arr.filter {
+        $0 % 2 == 0
+    }.map {
+        $0 * $0
+    }.reduce(0){
+        $0 + $1
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-NSURLSession-Swift" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/09/NSURLSession-Swift/" class="article-date">
+  	<time datetime="2016-03-09T06:46:51.000Z" itemprop="datePublished">2016-03-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/09/NSURLSession-Swift/">NSURLSession_Swift</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>一个简单地Swift语言的网络请求封装，包括数据请求、数据上传、图片下载、图片上传。</p>
+</blockquote>
+<p><a href="https://github.com/zhangzhaopds/NSURLSession_Swift.git" target="_blank" rel="external">本文链接</a></p>
+<h4 id="数据请求"><a href="#数据请求" class="headerlink" title="数据请求"></a>数据请求</h4><pre><code>/**
+ 数据请求
+
+ - parameter urlStr:  请求地址
+ - parameter reponse: 请求结果
+ */
+func get(urlStr: String, reponse: (result: AnyObject, response: NSURLResponse)-&gt;Void)-&gt;Void  {
+
+    if urlStr.isEmpty {
+        print(&quot;Request address cannot be empty&quot;)
+        return
+    }
+    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    let url: NSURL = NSURL.init(string: strEncode)!
+    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
+
+    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    let task: NSURLSessionDataTask = session.dataTaskWithRequest(request) { (data, resp, err) -&gt; Void in
+        if (err != nil) {
+            print(&quot;Data request failed: \(err?.code)&quot;)
+            return
+        }
+        do {
+            let json =
+            try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+            reponse(result: json, response: resp!)
+
+        } catch {
+        }
+    }
+    task.resume()
+}
+</code></pre><h4 id="数据下载"><a href="#数据下载" class="headerlink" title="数据下载"></a>数据下载</h4><pre><code>/**
+ 数据下载
+
+ - parameter urlStr:  请求地址
+ - parameter reponse: 数据本地保存地址
+ */
+func downLoad(urlStr: String, reponse:(location: String)-&gt;Void)-&gt;Void {
+    if urlStr.isEmpty {
+        print(&quot;Request address cannot be empty&quot;)
+        return
+    }
+    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    let url: NSURL = NSURL.init(string: strEncode)!
+    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
+    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    let downLoadTask: NSURLSessionDownloadTask = session.downloadTaskWithRequest(request) { (location, resp, err) -&gt; Void in
+        if (err != nil) {
+            print(&quot;DownLoadData request failed: \(err?.code)&quot;)
+            return
+        }
+        let caches: String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!
+
+        let file: String = caches.stringByAppendingString(&quot;/\(resp!.suggestedFilename!)&quot;)
+
+        if NSFileManager.defaultManager().fileExistsAtPath(file) {
+            if NSThread.isMainThread() {
+                reponse(location: file)
+            } else {
+                dispatch_async(dispatch_get_main_queue(), { () -&gt; Void in
+                    reponse(location: file)
+                })
+            }
+        } else {
+            do {
+                try NSFileManager.defaultManager().moveItemAtPath(location!.path!, toPath: file)
+                if NSThread.isMainThread() {
+                    reponse(location: file)
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), { () -&gt; Void in
+                        reponse(location: file)
+                    })
+                }
+            } catch {
+
+            }
+        }
+    }
+    downLoadTask.resume()
+}
+</code></pre><h4 id="JSON数据上传"><a href="#JSON数据上传" class="headerlink" title="JSON数据上传"></a>JSON数据上传</h4><pre><code>/**
+ 普通数据上传
+
+ - parameter urlStr:     上传地址
+ - parameter uploadData: 字典数据
+ - parameter reponse:    上传结果
+ */
+func upLoadData(urlStr: String, uploadData: AnyObject, reponse: (result: AnyObject, response: NSURLResponse)-&gt;Void)-&gt;Void {
+    if urlStr.isEmpty {
+        print(&quot;Request address cannot be empty&quot;)
+        return
+    }
+
+    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    let url: NSURL = NSURL.init(string: strEncode)!
+    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
+
+    request.addValue(&quot;application/json&quot;, forHTTPHeaderField: &quot;Content-Type&quot;)
+    request.addValue(&quot;application/json&quot;, forHTTPHeaderField: &quot;Accept&quot;)
+
+    request.HTTPMethod = &quot;POST&quot;
+    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+    request.timeoutInterval = 20
+    do {
+        let data: NSData =
+        try NSJSONSerialization.dataWithJSONObject(uploadData, options: NSJSONWritingOptions.PrettyPrinted)
+        let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let uploadTask: NSURLSessionUploadTask = session.uploadTaskWithRequest(request, fromData: data, completionHandler: { (result, resp, err) -&gt; Void in
+            if (err != nil) {
+                print(&quot;UpLoadData request failed: \(err?.code)&quot;)
+                return
+            }
+
+            do {
+                let json: AnyObject =
+                try NSJSONSerialization.JSONObjectWithData(result!, options: NSJSONReadingOptions.MutableContainers)
+                reponse(result: json, response: resp!)
+            } catch {
+
+            }
+
+        })
+        uploadTask.resume()
+    } catch {
+
+    }
+}
+</code></pre><h4 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h4><pre><code> /**
+ 图片上传
+
+ - parameter urlStr:     上传地址
+ - parameter uploadData: 图片数据
+ - parameter dataType:   图片类型
+ - parameter reponse:    上传结果
+ */
+func upLoadImage(urlStr: String, image: UIImage, dataType: DataType, reponse: (result: String, response: NSURLResponse)-&gt;Void)-&gt;Void {
+    if urlStr.isEmpty {
+        print(&quot;Request address cannot be empty&quot;)
+        return
+    }
+
+    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    let url: NSURL = NSURL.init(string: strEncode)!
+    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
+    var daa = NSData()
+    switch dataType {
+    case .JPEG:
+        request.addValue(&quot;image/jpeg&quot;, forHTTPHeaderField: &quot;Content-Type&quot;)
+        request.addValue(&quot;text/html&quot;, forHTTPHeaderField: &quot;Accept&quot;)
+        daa = UIImageJPEGRepresentation(image, 1)!
+    case .PNG:
+        request.addValue(&quot;image/png&quot;, forHTTPHeaderField: &quot;Content-Type&quot;)
+        request.addValue(&quot;text/html&quot;, forHTTPHeaderField: &quot;Accept&quot;)
+        daa = UIImagePNGRepresentation(image)!
+    }
+
+    request.HTTPMethod = &quot;POST&quot;
+    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+    request.timeoutInterval = 20
+    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+
+    let uploadTask: NSURLSessionUploadTask = session.uploadTaskWithRequest(request, fromData: daa, completionHandler: { (result, resp, err) -&gt; Void in
+
+        if (err != nil) {
+            print(&quot;UpLoadImage request failed: \(err?.code)&quot;)
+            return
+        }
+        let ss: String = String.init(data: result!, encoding: NSUTF8StringEncoding)!
+        reponse(result: ss, response: resp!)
+    })
+    uploadTask.resume()
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Fabric-Crashlytics" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/03/Fabric-Crashlytics/" class="article-date">
+  	<time datetime="2016-03-03T02:59:15.000Z" itemprop="datePublished">2016-03-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/03/Fabric-Crashlytics/">Fabric-Crashlytics</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Fabric是Twitter公司提供的一款，应用于移动应用开发，统计应用崩溃信息的工具。操作简单，使用方便。</p>
+</blockquote>
+<h3 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h3><h4 id="申请账号"><a href="#申请账号" class="headerlink" title="申请账号"></a>申请账号</h4><p>Crashlytics的服务是免费提供的，但是并不能直接注册使用，需要先申请，打开 <a href="http://try.crashlytics.com" target="_blank" rel="external">Crashlytic的官网</a> ，输入自己的邮箱申请使用。之后Fabric会发一封确认邮件，确认成功之后，还会发一封Welcome to Fabric的邮件，点击Get Started with Fabric，根据提示，现在安装Mac端的App，登陆并根据提示完成配置。</p>
+<h4 id="设置工程"><a href="#设置工程" class="headerlink" title="设置工程"></a>设置工程</h4><pre><code>1、点击&quot;+ New App&quot; 添加工程项目；
+2、根据提示配置&quot;Run Script&quot;。打开工程-&gt;Build Phases-&gt;Editor-&gt;Add Build Phase-&gt;Add Run Script Build Phase, 然后将Fabric提供的代码粘贴到Shell下， 然后Command+B;
+3、按照提示，将Fabric提供的frameworks(图标)拖到工程里，然后粘贴复制相关代码。
+</code></pre><h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><pre><code>1、可以直接使用Fabric提供的强行Crash代码进行测试，也可以自己写个。
+2、测试的时候需要脱离Xcode的调试环境。最简单的方法就是真机测试，但要注意的是，测试的时候手机和Xcode不要用数据线连接。测试之后，会收到Fabric的测试报告，出现Crash的具体位置，十分方便。
+3、用户也可以在AppStore中下载Fabric,在手机端查看测试报告。
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Spotlight" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/29/Spotlight/" class="article-date">
+  	<time datetime="2016-02-29T05:17:43.000Z" itemprop="datePublished">2016-02-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/29/Spotlight/">Spotlight</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>iOS9推出的Core Spotlight(CS)框架，利用CS做应用内搜索。<br><a href="https://github.com/zhangzhaopds/CoreSpotlight.git" target="_blank" rel="external">本文链接</a></p>
+</blockquote>
+<h4 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h4><pre><code>导入MobileCoreServices.framework和CoreSpotligt.framework
+</code></pre><h4 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h4><pre><code>// 设置spotlight
+- (void)setSpotligtht {
+    self.searchItemArr = [NSMutableArray array];
+    int i = 0;
+    for (NSDictionary *dic in self.dataArr) {
+
+        CSSearchableItemAttributeSet *searchItemSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:(NSString *)kUTTypeText];
+
+        // 标题
+        searchItemSet.title = [dic objectForKey:@&quot;title&quot;];
+
+        // 描述
+        searchItemSet.contentDescription = [dic objectForKey:@&quot;desc&quot;];
+        NSArray *arr = [[dic objectForKey:@&quot;picture&quot;] componentsSeparatedByString:@&quot;.&quot;];
+
+        // 设置照片路径
+        searchItemSet.thumbnailURL = [[NSBundle mainBundle] URLForResource:arr[0] withExtension:arr[1]];
+
+        // 搜索关键词 keywords(字符串形式) / contactKeywords(数组形式)
+        searchItemSet.keywords = [dic objectForKey:@&quot;title&quot;];
+
+        /*
+         uniqueIdentifier：这个参数唯一地标识Spotlight当前搜索项。你可以用你喜欢的方式构造这个唯一标示符。
+         domainIdentifier:使用这个参数对搜索项进行分组。
+         attributeSet：它就是我们刚刚设置属性时的属性设置对象。
+         */
+        CSSearchableItem *searchItem = [[CSSearchableItem alloc] initWithUniqueIdentifier:[NSString stringWithFormat:@&quot;com.spolight.%d&quot;, i] domainIdentifier:@&quot;books&quot; attributeSet:searchItemSet];
+        [self.searchItemArr addObject:searchItem];
+        i++;
+    }
+
+    [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:self.searchItemArr completionHandler:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@&quot;%@&quot;, error.localizedDescription);
+        }
+    }];
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-BLE-Central" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/26/BLE-Central/" class="article-date">
+  	<time datetime="2016-02-26T01:08:38.000Z" itemprop="datePublished">2016-02-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/26/BLE-Central/">BLE_Central</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>iOS蓝牙开发，中心模式开发。<a href="https://github.com/zhangzhaopds/BLE_Central.git" target="_blank" rel="external">相关DEMO</a>    <a href="https://github.com/zhangzhaopds/BluetoothStubOnOSX.git" target="_blank" rel="external">模拟外设</a></p>
+</blockquote>
+<h3 id="iOS链接外设的代码实现流程"><a href="#iOS链接外设的代码实现流程" class="headerlink" title="iOS链接外设的代码实现流程"></a>iOS链接外设的代码实现流程</h3><pre><code>1. 建立中心角色
+2. 扫描外设（discover）
+3. 连接外设(connect)
+4. 扫描外设中的服务和特征(discover)
+    - 4.1 获取外设的services
+    - 4.2 获取外设的Characteristics,获取Characteristics的值，获取Characteristics的Descriptor和Descriptor的值
+5. 与外设做数据交互(explore and interact)
+6. 订阅Characteristic的通知
+7. 断开连接(disconnect)
+</code></pre><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><h4 id="1-初始化-init"><a href="#1-初始化-init" class="headerlink" title="1.初始化(init)"></a>1.初始化(init)</h4><pre><code>#import &lt;CoreBluetooth/CoreBluetooth.h&gt;
+
+@interface ViewController ()&lt;CBCentralManagerDelegate&gt;
+
+@property (nonatomic, strong) manager *centralManager;
+
+@property (nonatomic, strong) CBPeripheral *peripheral;
+
+// CBCentralManagerOptionShowPowerAlertKey的作用是，当设备蓝牙未打开时打开
+NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], CBCentralManagerOptionShowPowerAlertKey, nil];
+
+// 初始化并设置委托和线程队列，默认main线程
+self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:options];
+</code></pre><h4 id="2-扫描外设-discover"><a href="#2-扫描外设-discover" class="headerlink" title="2.扫描外设(discover)"></a>2.扫描外设(discover)</h4><pre><code>-(void)centralManagerDidUpdateState:(CBCentralManager *)central{
+
+        switch (central.state) {
+            case CBCentralManagerStateUnknown:
+                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateUnknown&quot;);
+                break;
+            case CBCentralManagerStateResetting:
+                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateResetting&quot;);
+                break;
+            case CBCentralManagerStateUnsupported:
+                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateUnsupported&quot;);
+                break;
+            case CBCentralManagerStateUnauthorized:
+                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateUnauthorized&quot;);
+                break;
+            case CBCentralManagerStatePoweredOff:
+                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStatePoweredOff&quot;);
+                break;
+            case CBCentralManagerStatePoweredOn:
+                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStatePoweredOn&quot;);
+                //开始扫描周围的外设
+                /*
+                 第一个参数nil就是扫描周围所有的外设，扫描到外设后会进入
+                      - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI;
+                 */
+                [manager scanForPeripheralsWithServices:nil options:nil];
+
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    //扫描到设备会进入方法
+    -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
+
+        NSLog(@&quot;当扫描到设备:%@&quot;,peripheral.name);
+        //接下来可以连接设备
+
+    }
+</code></pre><h4 id="3-链接外设-connect"><a href="#3-链接外设-connect" class="headerlink" title="3.链接外设(connect)"></a>3.链接外设(connect)</h4><pre><code>//扫描到设备会进入方法
+ -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
+
+//连接设备（注意：这里使用self.peripheral,而不是peripheral,是因为如果peripheral被释放掉，将不会实现连接到外设的回调方法，也就是下面三个方法将不执行）
+     self.peripheral = peripheral;
+     [manager connectPeripheral:self.peripheral options:nil]; 
+ }
+
+ //连接到Peripherals-成功
+ - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
+     NSLog(@&quot;&gt;&gt;&gt;连接到名称为（%@）的设备-成功&quot;,peripheral.name);
+ }
+
+ //连接到Peripherals-失败
+ -(void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+     NSLog(@&quot;&gt;&gt;&gt;连接到名称为（%@）的设备-失败,原因:%@&quot;,[peripheral name],[error localizedDescription]);
+ }
+
+ //Peripherals断开连接
+ - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+     NSLog(@&quot;&gt;&gt;&gt;外设连接断开连接 %@: %@\n&quot;, [peripheral name], [error localizedDescription]);
+ }
+</code></pre><h4 id="4-获取外设的services"><a href="#4-获取外设的services" class="headerlink" title="4.获取外设的services"></a>4.获取外设的services</h4><pre><code>//连接到Peripherals-成功
+   - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
+   {
+       NSLog(@&quot;&gt;&gt;&gt;连接到名称为（%@）的设备-成功&quot;,peripheral.name);
+       //设置的peripheral委托CBPeripheralDelegate
+       //@interface ViewController : UIViewController&lt;CBCentralManagerDelegate,CBPeripheralDelegate&gt;
+       [peripheral setDelegate:self];
+       //扫描外设Services，成功后会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
+       [peripheral discoverServices:nil];
+
+   }
+
+   //扫描到Services
+   -(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
+       //  NSLog(@&quot;&gt;&gt;&gt;扫描到服务：%@&quot;,peripheral.services);
+       if (error)
+       {
+           NSLog(@&quot;&gt;&gt;&gt;Discovered services for %@ with error: %@&quot;, peripheral.name, [error localizedDescription]);
+           return;
+       }
+
+       for (CBService *service in peripheral.services) {
+                        NSLog(@&quot;%@&quot;,service.UUID);
+                        //扫描每个service的Characteristics，扫描到后会进入方法： -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
+                        [peripheral discoverCharacteristics:nil forService:service];
+                    }
+
+   }
+</code></pre><h4 id="5-获取外设的Characteristics-Descriptor"><a href="#5-获取外设的Characteristics-Descriptor" class="headerlink" title="5.获取外设的Characteristics,Descriptor"></a>5.获取外设的Characteristics,Descriptor</h4><pre><code>//扫描到Characteristics
+ -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
+     if (error)
+     {
+         NSLog(@&quot;error Discovered characteristics for %@ with error: %@&quot;, service.UUID, [error localizedDescription]);
+         return;
+     }
+
+     for (CBCharacteristic *characteristic in service.characteristics)
+     {
+         NSLog(@&quot;service:%@ 的 Characteristic: %@&quot;,service.UUID,characteristic.UUID);
+     }
+
+     //获取Characteristic的值，读到数据会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+     for (CBCharacteristic *characteristic in service.characteristics){
+         {
+             [peripheral readValueForCharacteristic:characteristic];
+         }
+     }
+
+     //搜索Characteristic的Descriptors，读到数据会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+     for (CBCharacteristic *characteristic in service.characteristics){
+         [peripheral discoverDescriptorsForCharacteristic:characteristic];
+     }
+
+
+ }
+
+//获取的charateristic的值
+-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
+    //打印出characteristic的UUID和值
+    //!注意，value的类型是NSData，具体开发时，会根据外设协议制定的方式去解析数据
+    NSLog(@&quot;characteristic uuid:%@  value:%@&quot;,characteristic.UUID,characteristic.value);
+
+}
+
+//搜索到Characteristic的Descriptors
+-(void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
+
+    //打印出Characteristic和他的Descriptors
+     NSLog(@&quot;characteristic uuid:%@&quot;,characteristic.UUID);
+    for (CBDescriptor *d in characteristic.descriptors) {
+        NSLog(@&quot;Descriptor uuid:%@&quot;,d.UUID);
+    }
+
+}
+//获取到Descriptors的值
+-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForDescriptor:(CBDescriptor *)descriptor error:(NSError *)error{
+    //打印出DescriptorsUUID 和value
+    //这个descriptor都是对于characteristic的描述，一般都是字符串，所以这里我们转换成字符串去解析
+    NSLog(@&quot;characteristic uuid:%@  value:%@&quot;,[NSString stringWithFormat:@&quot;%@&quot;,descriptor.UUID],descriptor.value);
+}
+</code></pre><h4 id="6-把数据写入到Characteristic中"><a href="#6-把数据写入到Characteristic中" class="headerlink" title="6.把数据写入到Characteristic中"></a>6.把数据写入到Characteristic中</h4><pre><code>//写数据
+-(void)writeCharacteristic:(CBPeripheral *)peripheral
+            characteristic:(CBCharacteristic *)characteristic
+                     value:(NSData *)value{
+
+    //打印出 characteristic 的权限，可以看到有很多种，这是一个NS_OPTIONS，就是可以同时用于好几个值，常见的有read，write，notify，indicate，知知道这几个基本就够用了，前连个是读写权限，后两个都是通知，两种不同的通知方式。
+    /*
+     typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
+     CBCharacteristicPropertyBroadcast                                                = 0x01,
+     CBCharacteristicPropertyRead                                                    = 0x02,
+     CBCharacteristicPropertyWriteWithoutResponse                                    = 0x04,
+     CBCharacteristicPropertyWrite                                                    = 0x08,
+     CBCharacteristicPropertyNotify                                                    = 0x10,
+     CBCharacteristicPropertyIndicate                                                = 0x20,
+     CBCharacteristicPropertyAuthenticatedSignedWrites                                = 0x40,
+     CBCharacteristicPropertyExtendedProperties                                        = 0x80,
+     CBCharacteristicPropertyNotifyEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)        = 0x100,
+     CBCharacteristicPropertyIndicateEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)    = 0x200
+     };
+
+     */
+    NSLog(@&quot;%lu&quot;, (unsigned long)characteristic.properties);
+
+
+    //只有 characteristic.properties 有write的权限才可以写
+    if(characteristic.properties &amp; CBCharacteristicPropertyWrite){
+        /*
+            最好一个type参数可以为CBCharacteristicWriteWithResponse或type:CBCharacteristicWriteWithResponse,区别是是否会有反馈
+        */
+        [peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+    }else{
+        NSLog(@&quot;该字段不可写！&quot;);
+    }
+
+
+}
+</code></pre><h4 id="7-订阅Characteristic的通知"><a href="#7-订阅Characteristic的通知" class="headerlink" title="7.订阅Characteristic的通知"></a>7.订阅Characteristic的通知</h4><pre><code>//设置通知
+-(void)notifyCharacteristic:(CBPeripheral *)peripheral
+            characteristic:(CBCharacteristic *)characteristic{
+    //设置通知，数据通知会进入：didUpdateValueForCharacteristic方法
+    [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+
+}
+
+//取消通知
+-(void)cancelNotifyCharacteristic:(CBPeripheral *)peripheral
+             characteristic:(CBCharacteristic *)characteristic{
+
+     [peripheral setNotifyValue:NO forCharacteristic:characteristic];
+}
+</code></pre><h4 id="7-断开连接-disconnect"><a href="#7-断开连接-disconnect" class="headerlink" title="7.断开连接(disconnect)"></a>7.断开连接(disconnect)</h4><pre><code>//停止扫描并断开连接
+-(void)disconnectPeripheral:(CBCentralManager *)centralManager
+                 peripheral:(CBPeripheral *)peripheral{
+    //停止扫描
+    [centralManager stopScan];
+    //断开连接
+    [centralManager cancelPeripheralConnection:peripheral];
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Refresh-Swift" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/29/Refresh-Swift/" class="article-date">
+  	<time datetime="2016-01-29T08:23:29.000Z" itemprop="datePublished">2016-01-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/29/Refresh-Swift/">Refresh-Swift</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Swift语言实现的数据刷新功能，类似于MJRefresh.(上拉加载，下拉刷新)</p>
+</blockquote>
+<p><a href="https://github.com/zhangzhaopds/Alamofire-Refresh.git" target="_blank" rel="external">本文DEMO</a></p>
+<h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_%E5%88%B7%E6%96%B0.png?imageView2/2/w/300" alt=""><img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_%E5%8A%A0%E8%BD%BD.png?imageView2/2/w/300" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-ActivityIndicator-Swift" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/28/ActivityIndicator-Swift/" class="article-date">
+  	<time datetime="2016-01-28T06:14:58.000Z" itemprop="datePublished">2016-01-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/28/ActivityIndicator-Swift/">ActivityIndicator-Swift</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://7xoz39.com1.z0.glb.clouddn.com/Blogactivity.png?imageView2/2/h/500" alt=""></p>
+<blockquote>
+<p>Swift实现简单的活动指示器。</p>
+</blockquote>
+<p><a href="https://github.com/zhangzhaopds/Indicator..git" target="_blank" rel="external">本文DEMO链接</a></p>
+<h3 id="主要代码展示"><a href="#主要代码展示" class="headerlink" title="主要代码展示"></a>主要代码展示</h3><p><code>1.创建活动指示器单例</code></p>
+<pre><code>class var shareIndicator: HTTPIndicator {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: HTTPIndicator?
+    }
+    dispatch_once(&amp;Static.onceToken, {() -&gt; Void in
+        Static.instance = HTTPIndicator()
+    })
+    return Static.instance!
+}
+</code></pre><p><code>2.设置活动指示器界面的大小（全屏显示、部分显现）</code></p>
+<pre><code>enum IndicatorSizeModel {
+    case Landscape      // 全屏
+    case FullScreen        // 非全屏
+}
+
+// 重写sizeModel的set方法
+var sizeModel: IndicatorSizeModel = .Landscape {
+    didSet {
+        switch sizeModel {
+        case .Landscape:
+            self.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64)
+            maskWindow!.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            indicatorImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+            indicatorImageView.transform = CGAffineTransformIdentity
+            loopImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+
+        case .FullScreen:
+            self.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            maskWindow?.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            indicatorImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2)
+            loopImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2)
+        } 
+    }
+}
+</code></pre><p><code>3.创建活动指示器图片，由两部分组成</code></p>
+<pre><code>// 中间部分
+lazy var indicatorImageView: UIImageView = {
+    let imageView = UIImageView(frame: CGRectMake(0, 0, 60 * kScreenWidthFactor, 60 * kScreenWidthFactor))
+    imageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+    imageView.image = UIImage(named: &quot;Indicator&quot;)
+    imageView.contentMode = UIViewContentMode.ScaleToFill
+    return imageView
+}()
+
+// 外部转圈部分
+lazy var loopImageView: UIImageView = {
+   let imageView = UIImageView(frame: CGRectMake(0, 0, 80 * kScreenWidthFactor, 80 * kScreenWidthFactor))
+    imageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+    imageView.image = UIImage(named: &quot;loopIndicator&quot;)
+    imageView.contentMode = UIViewContentMode.ScaleToFill
+    return imageView
+}()
+</code></pre><p><code>4.创建window对象，用来承载指示器</code></p>
+<pre><code>lazy var maskWindow : UIWindow? = {
+    let window = UIWindow(frame: CGRectMake(0, 0, kScreenWidth, kScreenHeight))
+    window.windowLevel = UIWindowLevelNormal
+    return window
+}()
+</code></pre><p><code>5.指示器的显现</code></p>
+<pre><code>class func show() {
+    shareIndicator.maskWindow?.makeKeyAndVisible()
+    shareIndicator.maskWindow?.addSubview(shareIndicator)
+    shareIndicator.beginAnimation()
+}
+</code></pre><p><code>6.指示器的取消</code></p>
+<p>因为新建了window对象来承载指示器，所以，当取消指示器的时候，一定要将新建的window移除。</p>
+<pre><code>class func dismiss() {
+    shareIndicator.endAnimationWithCompletion { () -&gt; Void in
+        shareIndicator.maskWindow?.resignKeyWindow()
+        shareIndicator.removeFromSuperview()
+
+        let originalWindow = UIApplication.sharedApplication().delegate?.window
+        originalWindow!?.makeKeyAndVisible()
+
+        shareIndicator.resetBounds()
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-ZXingObjC二维码" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/30/ZXingObjC二维码/" class="article-date">
+  	<time datetime="2015-12-30T06:53:05.000Z" itemprop="datePublished">2015-12-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/30/ZXingObjC二维码/">ZXingObjC</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>最近在做一个支付类的APP, 涉及到二维码的使用，上网查一些资料，发现网上的资料都N年之前了。也找到了一些大神的demo,但却是各种封装，一眼看不到重点，几经周折，才搞出来。本文是一个最简单的使用。</p>
+</blockquote>
+<p><a href="https://github.com/zhangzhaopds/-.git" target="_blank" rel="external">本文DEMO链接</a><br><a href="https://github.com/TheLevelUp/ZXingObjC" target="_blank" rel="external">ZXingObjC链接</a></p>
+<h2 id="1-基本应用"><a href="#1-基本应用" class="headerlink" title="1.基本应用"></a>1.基本应用</h2><h3 id="二维码扫描"><a href="#二维码扫描" class="headerlink" title="二维码扫描"></a>二维码扫描</h3><h4 id="cocoaPods导入ZXingObjC"><a href="#cocoaPods导入ZXingObjC" class="headerlink" title="cocoaPods导入ZXingObjC"></a><code>cocoaPods导入ZXingObjC</code></h4><pre><code>pod &apos;ZXingObjC&apos;, &apos;~&gt; 3.1.0&apos;
+</code></pre><h4 id="导入头文件"><a href="#导入头文件" class="headerlink" title="导入头文件"></a><code>导入头文件</code></h4><pre><code>#import &lt;ZXingObjC.h&gt;
+
+@interface ViewController () &lt;ZXCaptureDelegate&gt; //协议
+
+@property (nonatomic, strong) ZXCapture *capture; 
+@property (nonatomic, assign) BOOL isScan; //标记扫描状态
+
+@end    
+</code></pre><h4 id="初始化摄像头"><a href="#初始化摄像头" class="headerlink" title="初始化摄像头"></a><code>初始化摄像头</code></h4><pre><code>- (void)creatCapture {
+
+self.isScan = NO; 
+
+self.capture = [[ZXCapture alloc] init];
+
+self.capture.camera = self.capture.back; //后置摄像头
+
+self.capture.focusMode = AVCaptureFocusModeAutoFocus; //自动对焦
+
+self.capture.rotation = 90.0f;
+
+self.capture.layer.frame = CGRectMake(50, 60, self.view.frame.size.width - 100, 150);
+
+[self.view.layer addSublayer:self.capture.layer];
+
+self.capture.delegate = self; //协议的签订，用于对扫描结果进行处理
+}
+</code></pre><h4 id="扫描结果的处理"><a href="#扫描结果的处理" class="headerlink" title="扫描结果的处理"></a><code>扫描结果的处理</code></h4><pre><code>- (void)captureResult:(ZXCapture *)capture result:(ZXResult *)result {
+if (!result || self.isScan == YES ){
+    return;
+}
+self.isScan = YES;
+[self.capture stop];
+
+//震动提示（可不加）
+AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+
+//result就是扫描获取的结果，处理text属性外，还有其他的属性，如条码的类型等。
+NSLog(@&quot;%@&quot;,[NSString stringWithFormat:@&quot;%@&quot;, result.text]);
+}
+</code></pre><h3 id="二维码的生成"><a href="#二维码的生成" class="headerlink" title="二维码的生成"></a>二维码的生成</h3><h4 id="简单的几行代码"><a href="#简单的几行代码" class="headerlink" title="简单的几行代码"></a><code>简单的几行代码</code></h4><pre><code>ZXBitMatrix *rusult = [writer encode:@&quot;这里就是要用来生成二维码的文字&quot; format:kBarcodeFormatQRCode width:200 height:200 error:&amp;error];
+
+CGImageRef image = [[ZXImage imageWithMatrix:rusult] cgimage];
+
+// img就是生成的二维码图片
+UIImage *img = [UIImage imageWithCGImage:image];
+</code></pre><hr>
+<h2 id="2-自定义扫描视图"><a href="#2-自定义扫描视图" class="headerlink" title="2.自定义扫描视图"></a>2.自定义扫描视图</h2><p>代码就不一一粘贴了，主要的几个部分看一些，具体看<a href="https://github.com/zhangzhaopds/-.git" target="_blank" rel="external">demo</a></p>
+<h3 id="上下扫描的动画效果"><a href="#上下扫描的动画效果" class="headerlink" title="上下扫描的动画效果"></a>上下扫描的动画效果</h3><h4 id="初始化一个扫描线视图"><a href="#初始化一个扫描线视图" class="headerlink" title="初始化一个扫描线视图"></a><code>初始化一个扫描线视图</code></h4><pre><code>- (void)initQRLine {
+
+self.qrLine  = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width / 2 - self.transparentArea.width / 2, self.bounds.size.height / 2 - self.transparentArea.height / 2, self.transparentArea.width, 2)];
+
+//self.qrLine的照片让美工做个好看点的，demo中的是一个截屏图片
+self.qrLine.image = [UIImage imageNamed:@&quot;22&quot;];
+
+self.qrLine.contentMode = UIViewContentModeScaleAspectFill;
+
+[self addSubview:self.qrLine];
+
+self.qrLineY = self.qrLine.frame.origin.y;
+</code></pre><p>}</p>
+<h4 id="扫描线上下循环移动效果"><a href="#扫描线上下循环移动效果" class="headerlink" title="扫描线上下循环移动效果"></a><code>扫描线上下循环移动效果</code></h4><pre><code>添加一个计时器
+ NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:kQrLineanimateDuration target:self selector:@selector(show) userInfo:nil repeats:YES];
+
+ //实现计时器中的方法，使扫描线上下移动
+ - (void)show {
+
+[UIView animateWithDuration:kQrLineanimateDuration animations:^{
+
+    CGRect rect = self.qrLine.frame;
+    rect.origin.y = self.qrLineY;
+    self.qrLine.frame = rect;
+
+} completion:^(BOOL finished) {
+
+    CGFloat maxBorder = self.frame.size.height / 2 + self.transparentArea.height / 2 - 4;
+    if (self.qrLineY &gt; maxBorder) {
+
+        self.qrLineY = self.frame.size.height / 2 - self.transparentArea.height /2;
+    }
+    self.qrLineY++;
+}];
+}
+</code></pre><h3 id="扫描区域的四个角"><a href="#扫描区域的四个角" class="headerlink" title="扫描区域的四个角"></a>扫描区域的四个角</h3><pre><code>- (void)addCornerLineWithContext:(CGContextRef)ctx rect:(CGRect)rect{
+
+//画四个边角
+CGContextSetLineWidth(ctx, 2);
+CGContextSetRGBStrokeColor(ctx, 83 /255.0, 239/255.0, 111/255.0, 1);//绿色
+
+//左上角
+CGPoint poinsTopLeftA[] = {
+    CGPointMake(rect.origin.x + 0.7, rect.origin.y),
+    CGPointMake(rect.origin.x + 0.7 , rect.origin.y + 15)
+};
+
+CGPoint poinsTopLeftB[] = {CGPointMake(rect.origin.x, rect.origin.y + 0.7),CGPointMake(rect.origin.x + 15, rect.origin.y + 0.7)};
+[self addLine:poinsTopLeftA pointB:poinsTopLeftB ctx:ctx];
+
+//左下角
+CGPoint poinsBottomLeftA[] = {CGPointMake(rect.origin.x + 0.7, rect.origin.y + rect.size.height - 15),CGPointMake(rect.origin.x + 0.7,rect.origin.y + rect.size.height)};
+CGPoint poinsBottomLeftB[] = {CGPointMake(rect.origin.x , rect.origin.y + rect.size.height - 0.7) ,CGPointMake(rect.origin.x + 0.7 + 15, rect.origin.y + rect.size.height - 0.7)};
+[self addLine:poinsBottomLeftA pointB:poinsBottomLeftB ctx:ctx];
+
+//右上角
+CGPoint poinsTopRightA[] = {CGPointMake(rect.origin.x + rect.size.width - 15, rect.origin.y + 0.7),CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + 0.7 )};
+CGPoint poinsTopRightB[] = {CGPointMake(rect.origin.x + rect.size.width-0.7, rect.origin.y),CGPointMake(rect.origin.x + rect.size.width - 0.7, rect.origin.y + 15 + 0.7 )};
+[self addLine:poinsTopRightA pointB:poinsTopRightB ctx:ctx];
+
+CGPoint poinsBottomRightA[] = {CGPointMake(rect.origin.x + rect.size.width -0.7, rect.origin.y + rect.size.height - 15),CGPointMake(rect.origin.x - 0.7 + rect.size.width, rect.origin.y + rect.size.height )};
+CGPoint poinsBottomRightB[] = {CGPointMake(rect.origin.x + rect.size.width - 15 , rect.origin.y + rect.size.height-0.7),CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height - 0.7)};
+[self addLine:poinsBottomRightA pointB:poinsBottomRightB ctx:ctx];
+CGContextStrokePath(ctx);
+
+
+- (void)addLine:(CGPoint[])pointA pointB:(CGPoint[])pointB ctx:(CGContextRef)ctx {
+CGContextAddLines(ctx, pointA, 2);
+CGContextAddLines(ctx, pointB, 2);
+}
+</code></pre><hr>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-UITextView" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/09/UITextView/" class="article-date">
+  	<time datetime="2015-08-09T13:41:24.000Z" itemprop="datePublished">2015-08-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/09/UITextView/">UITextView</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>   UITextView的三种应用效果：<br>        1.链接地址在应用程序内跳转<br>        2.占位符（类似于UITextField的占位符效果）<br>        3.改变选中文本的属性</p>
+</blockquote>
+<h2 id="链接地址在应用程序内跳转"><a href="#链接地址在应用程序内跳转" class="headerlink" title="链接地址在应用程序内跳转"></a>链接地址在应用程序内跳转</h2><h3 id="核心API"><a href="#核心API" class="headerlink" title="核心API"></a>核心API</h3><p><a href="https://github.com/zhangzhaopds/UITextView.git" target="_blank" rel="external">DEMO</a></p>
+<pre><code>Class: UITextView
+
+/** UITextView的编辑状态, 默认YES. */
+@property(nonatomic, getter=isEditable) BOOL editable
+
+@property(nonatomic) UIDataDetectorTypes dataDetectorTypes
+
+/** 字典内存储链接文本的属性. */
+@property(nonatomic, copy) NSDictionary *linkTextAttributes
+
+/** 询问代理人, 是否可以跳转到指定的链接地址. */
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+</code></pre><h3 id="功能实现"><a href="#功能实现" class="headerlink" title="功能实现"></a>功能实现</h3><p>我们在UITextView里面点击链接地址时, 它是跳到浏览器里面的. 如果我们不想跳到浏览器, 想在自己的程序内部跳转显示, 该怎么做呢?</p>
+<pre><code>思路
+UITextView有一个代理方法是用来链接跳转动作是否执行的. 返回值是BOOL类型, 默认是YES. 
+* 当我们返回NO时, 它就不会跳转了. 
+* 在这个代理方法内, 我们执行其他的操作, 让链接地址的内容在程序内显示.
+</code></pre><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code>#import &quot;ViewController.h&quot;
+#import &quot;WebViewController.h&quot;
+
+/** 签订协议 */
+@interface ViewController ()&lt;UITextViewDelegate&gt;
+</code></pre><hr>
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+
+    [self layoutTextView];
+
+    /** 这个属性是UIViewController的属性, 当有Navicontroller的时候, 会自动向下调整UIScrollView及其子类的坐标位置, 默认为YES, 开启状态. */
+    /** 如果为YES, TextView里的内容会自动向下移动位置. 可以自己测试一下. */
+    self.automaticallyAdjustsScrollViewInsets = NO;
+}
+</code></pre><hr>
+<pre><code>- (void)layoutTextView {
+
+/** 第一种链接界面: 地址链接. */
+
+/** 创建UITextView的对象. 在这里我们并不需要textContainer, 设置成nil即可. */
+UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(30, 100, 300, 150) textContainer:nil];
+
+textView.text = @&quot;http://blog.csdn.net/sponge_cmz?viewmode=contents&quot;;
+textView.font = [UIFont systemFontOfSize:20];
+textView.layer.borderColor = [UIColor blackColor].CGColor;
+textView.layer.borderWidth = 1;
+
+/** 设置代理人, 我们要实现的效果, 需要用到代理方法. 在上面签订UITextViewDelegate协议. */
+textView.delegate = self;
+
+/** 链接地址能够跳转, textView的编辑状态必须为NO, 否则与普通文本无异. */
+textView.editable = NO;
+
+/** 设置自动检测类型为链接网址. */
+textView.dataDetectorTypes = UIDataDetectorTypeLink;
+
+/** 设置链接文字的属性. */
+textView.linkTextAttributes = @{NSForegroundColorAttributeName: [UIColor orangeColor]};
+
+[self.view addSubview:textView];
+
+/** 第二种连接界面: 文字链接 */
+UITextView *otherTextView = [[UITextView alloc] initWithFrame:CGRectMake(30, 350, 300, 150) textContainer:nil];
+
+/** font属性是设置text的字体, 但是它对attributedText的字体不起作用. */
+//    otherTextView.font = [UIFont systemFontOfSize:20];
+
+otherTextView.layer.borderColor = [UIColor blackColor].CGColor;
+otherTextView.layer.borderWidth = 1;
+otherTextView.delegate = self;
+otherTextView.editable = NO;
+
+/** 详细内容请见博文说明中提到的另外一篇博客. */
+NSAttributedString *linkAttribute = [[NSAttributedString alloc] initWithString:@&quot;百度&quot; attributes:@{NSLinkAttributeName: [NSURL URLWithString:@&quot;http://www.baidu.com&quot;], NSFontAttributeName:[UIFont systemFontOfSize:25]}];
+
+otherTextView.attributedText = linkAttribute;
+
+[self.view addSubview:otherTextView];
+
+}
+</code></pre><hr>
+<pre><code>/** 当点击链接时, 是否要跳转到浏览器. 默认返回YES. 想要实现在应用程序内部跳转, 只需要返回NO即可. */
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+
+/** 跳转到WebViewController的WebView上. */
+
+WebViewController *webContro = [[WebViewController alloc] init];
+
+UIWebView *web = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
+/** URL参数就是我们点击的链接地址. */
+[web loadRequest:[NSURLRequest requestWithURL:URL]];
+
+web.scalesPageToFit = YES;
+[webContro.view addSubview:web];
+
+[self.navigationController pushViewController:webContro animated:YES];
+
+/** 返回NO, 不跳转到浏览器. */
+return NO;
+}
+</code></pre><h2 id="占位符（类似于UITextField的占位符效果）"><a href="#占位符（类似于UITextField的占位符效果）" class="headerlink" title="占位符（类似于UITextField的占位符效果）"></a>占位符（类似于UITextField的占位符效果）</h2><h3 id="核心API-1"><a href="#核心API-1" class="headerlink" title="核心API"></a>核心API</h3><p><a href="https://github.com/zhangzhaopds/UITextView3.git" target="_blank" rel="external">DEMO</a></p>
+<pre><code>Class: UITextView
+/** 告诉代理人, 用户已经改变指定textView里面的text或者attributes. */
+- (void)textViewDidChange:(UITextView *)textView
+</code></pre><h3 id="功能实现-1"><a href="#功能实现-1" class="headerlink" title="功能实现"></a>功能实现</h3><p>我们在使用UITextView的时候发现, UITextView没有像UITextField一样的占位符. 如果我们想要在UITextView里面实现占位符的效果, 该怎么办呢?</p>
+<pre><code>思路:
+我们想要实现和UITextField一样的占位符效果, 那么我们就先看看UITextField是怎么实现的.
+
+.通过观察UITextField的图层, 我们发现, 占位符在一个单独的UILabel上.
+.我们让UITextField处于编辑状态, 再来看图层, 会发现在占位符label的上面又多了两层视图.
+.我们输入文字之后再看图层, 会发现占位符的lable没有了.
+.由此, 我们可以推测, 这个占位符label, 再输入之后, 就被隐藏了.
+.我们再来看UITextView的图层, 会发现它也有两个图层, 一个是UITextView, 一个是UITextContainerView. (还有两个滑条, 是UIImageView, 但是和我们实现的效果无关.)
+.那我们也可以仿照UITextField, 把一个label放到UITextContainerView的下面, 输入时就隐藏.
+.注: UITextView和UITextField 我是使用StoryBoard创建的, 所以在代码中没有创建的代码.
+</code></pre><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code>/** 签订协议. */
+@interface ViewController ()&lt;UITextViewDelegate&gt;
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (nonatomic, strong) UILabel *label_Placeholder; /**&lt; 用来显示占位符的label. */
+</code></pre><hr>
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    _textView.layer.borderColor = [UIColor blackColor].CGColor;
+    _textView.layer.borderWidth = 2;
+
+    /** 签订代理人, 实现效果需要用到代理方法. */
+    _textView.delegate = self;
+
+    /** 创建占位符label. */
+    self.label_Placeholder = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 200, 40)]; /**&lt; 坐标要根据实际情况做出调整. */
+
+    /** 使用属性文本. 详情请查看博文说明中提到的另一篇博客. */
+    _label_Placeholder.attributedText = [[NSAttributedString alloc] initWithString:@&quot;Hello World!&quot; attributes:@{NSFontAttributeName: _textView.font, NSForegroundColorAttributeName: [UIColor grayColor]}];
+
+    /** 我们之前说过了, textView上有UITextContainerView 和 两个UIImageView 子视图, 我们把label_Placeholder放到UITextContainerView的下面, 也就是textView的第一个子视图. */
+    [_textView insertSubview:_label_Placeholder atIndex:0];
+
+    /** 可以打印textView的子视图看一下. */
+    NSLog(@&quot;%@&quot;, [_textView subviews]);
+}
+</code></pre><hr>
+<pre><code>/** 当textView里面的内容发生改变时, 调用这个代理方法. */
+- (void)textViewDidChange:(UITextView *)textView{
+/** 判断条件是多次尝试的结果. 大家按照自己的想法, 尝试着写判断条件, 会更加理解为什么这么写了! */
+if (_textView.text.length != 0 &amp;&amp; _label_Placeholder.hidden == NO) {
+
+    _label_Placeholder.hidden = YES;
+
+} else if (_textView.text.length == 0) {
+
+    _label_Placeholder.hidden = NO;
+}
+</code></pre><h2 id="改变选中文本的属性"><a href="#改变选中文本的属性" class="headerlink" title="改变选中文本的属性"></a>改变选中文本的属性</h2><h3 id="核心API-2"><a href="#核心API-2" class="headerlink" title="核心API"></a>核心API</h3><p><a href="https://github.com/zhangzhaopds/UITextView--.git" target="_blank" rel="external">DEMO链接</a></p>
+<pre><code>Class : UITextViews
+
+/** 用户输入新的文本属性时, 会被存储在这个字典属性里. */
+@property(nonatomic, copy) NSDictionary *typingAttributes
+
+/** */
+@property(nonatomic, readonly, retain) NSTextStorage *textStorage
+
+/** 被选中的范围. */
+@property(nonatomic) NSRange selectedRange
+</code></pre><h3 id="功能实现-2"><a href="#功能实现-2" class="headerlink" title="功能实现"></a>功能实现</h3><p>我们在看小说或文档时, 可以对一些重点内容进行标注, 例如, 加下划线, 改变颜色之类的. 那么UITextView里的内容, 我们是如何进行标注的呢?</p>
+<pre><code>思路
+
+首先获取到被选中的文本, 之后改变这段文本的属性设置.
+</code></pre><h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre><code>@interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@property (nonatomic, strong) NSDictionary *oldAttributes; /** 用来接收textView文本的初始属性设置. */
+
+@end
+</code></pre><hr>
+<pre><code>- (void)viewDidLoad {
+[super viewDidLoad];
+
+/** 我们在textView的文本还未做出任何改变的时候, 将原始属性设置保存起来, 便于以后恢复. */
+
+/** 
+ * 初始化oldAttributes.
+ * typingAttributes : 在用户没有输入新的文本属性时, 里面会有一些默认的文本属性.
+ */
+self.oldAttributes = [NSDictionary dictionaryWithDictionary:[_textView typingAttributes]];
+
+/** 打印看一下里面存储的内容. */
+NSLog(@&quot;old: %@&quot;, _oldAttributes);
+
+}
+</code></pre><hr>
+<pre><code>/**
+ * textStorage : UITextView的属性, 是NSTextStorage类型.
+ * NSTextStorage 继承于NSMutableAttributedString类, 所以可以使用父类的方法.
+ * 
+ * selectedRange : UITextView的属性, 是NSRange类型.
+ * textView当前被选择的文本.
+ */
+</code></pre><hr>
+<pre><code>/** 改变字体的笔画宽度. */
+- (IBAction)wordWeight:(UIButton *)sender {
+
+    [_textView.textStorage addAttribute:NSStrokeWidthAttributeName value:@5 range:_textView.selectedRange];
+
+}
+</code></pre><hr>
+<pre><code>/** 给选中的文本添加黄色背景, 以及下划线. */
+- (IBAction)backgroundColor:(UIButton *)sender {
+
+/** 
+ * 上面使用的是addAttribute: value: rang: 的方法. 它只能添加一个属性.
+ * 如果我们要同时添加多个属性, 我们需要使用addAttributes: rang: 方法.
+ * 这个方法的第一个参数是一个字典, 可以在字典中存储多个属性.
+ */
+
+[_textView.textStorage addAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor], NSUnderlineStyleAttributeName: @2} range:_textView.selectedRange];
+
+/** 
+ * 要注意 addAttributes 和 setAttributes 的区别: 
+ * addAttributes 是添加属性, 不会将之前的属性移除掉, 它们是共同存在的.
+ * setAttributes 是设置属性, 会将之前的属性替换掉, 之前的属性将不会存在.
+ */
+
+//  [_textView.textStorage setAttributes:@{NSBackgroundColorAttributeName: [UIColor yellowColor], NSUnderlineStyleAttributeName: @2} range:_textView.selectedRange];
+}
+</code></pre><hr>
+<pre><code>/** 恢复到原来的文本状态. */
+- (IBAction)recoverAttribute:(UIButton *)sender {
+
+/** 我们想要恢复之前的属性, 也就是说不再使用做出改变的属性, 所以在这里我使用的是setAttributes: rang: 方法.  */
+[_textView.textStorage setAttributes:_oldAttributes range:_textView.selectedRange];
+
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Zhang Zhao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

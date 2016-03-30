@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>ActivityIndicator-Swift | 最爱冰红茶</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Swift实现简单的活动指示器。
+
+本文DEMO链接
+主要代码展示1.创建活动指示器单例
+class var shareIndicator: HTTPIndicator {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: HTTPIndicato">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ActivityIndicator-Swift">
+<meta property="og:url" content="http://yoursite.com/2016/01/28/ActivityIndicator-Swift/index.html">
+<meta property="og:site_name" content="最爱冰红茶">
+<meta property="og:description" content="Swift实现简单的活动指示器。
+
+本文DEMO链接
+主要代码展示1.创建活动指示器单例
+class var shareIndicator: HTTPIndicator {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: HTTPIndicato">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/Blogactivity.png?imageView2/2/h/500">
+<meta property="og:updated_time" content="2016-03-15T07:11:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ActivityIndicator-Swift">
+<meta name="twitter:description" content="Swift实现简单的活动指示器。
+
+本文DEMO链接
+主要代码展示1.创建活动指示器单例
+class var shareIndicator: HTTPIndicator {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: HTTPIndicato">
+<meta name="twitter:image" content="http://7xoz39.com1.z0.glb.clouddn.com/Blogactivity.png?imageView2/2/h/500">
+  
+    <link rel="alternative" href="/atom.xml" title="最爱冰红茶" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Zhang Zhao</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Zhang Zhao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Zhang Zhao</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-ActivityIndicator-Swift" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/28/ActivityIndicator-Swift/" class="article-date">
+  	<time datetime="2016-01-28T06:14:58.000Z" itemprop="datePublished">2016-01-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ActivityIndicator-Swift
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://7xoz39.com1.z0.glb.clouddn.com/Blogactivity.png?imageView2/2/h/500" alt=""></p>
+<blockquote>
+<p>Swift实现简单的活动指示器。</p>
+</blockquote>
+<p><a href="https://github.com/zhangzhaopds/Indicator..git" target="_blank" rel="external">本文DEMO链接</a></p>
+<h3 id="主要代码展示"><a href="#主要代码展示" class="headerlink" title="主要代码展示"></a>主要代码展示</h3><p><code>1.创建活动指示器单例</code></p>
+<pre><code>class var shareIndicator: HTTPIndicator {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: HTTPIndicator?
+    }
+    dispatch_once(&amp;Static.onceToken, {() -&gt; Void in
+        Static.instance = HTTPIndicator()
+    })
+    return Static.instance!
+}
+</code></pre><p><code>2.设置活动指示器界面的大小（全屏显示、部分显现）</code></p>
+<pre><code>enum IndicatorSizeModel {
+    case Landscape      // 全屏
+    case FullScreen        // 非全屏
+}
+
+// 重写sizeModel的set方法
+var sizeModel: IndicatorSizeModel = .Landscape {
+    didSet {
+        switch sizeModel {
+        case .Landscape:
+            self.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64)
+            maskWindow!.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            indicatorImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+            indicatorImageView.transform = CGAffineTransformIdentity
+            loopImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+
+        case .FullScreen:
+            self.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            maskWindow?.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            indicatorImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2)
+            loopImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2)
+        } 
+    }
+}
+</code></pre><p><code>3.创建活动指示器图片，由两部分组成</code></p>
+<pre><code>// 中间部分
+lazy var indicatorImageView: UIImageView = {
+    let imageView = UIImageView(frame: CGRectMake(0, 0, 60 * kScreenWidthFactor, 60 * kScreenWidthFactor))
+    imageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+    imageView.image = UIImage(named: &quot;Indicator&quot;)
+    imageView.contentMode = UIViewContentMode.ScaleToFill
+    return imageView
+}()
+
+// 外部转圈部分
+lazy var loopImageView: UIImageView = {
+   let imageView = UIImageView(frame: CGRectMake(0, 0, 80 * kScreenWidthFactor, 80 * kScreenWidthFactor))
+    imageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+    imageView.image = UIImage(named: &quot;loopIndicator&quot;)
+    imageView.contentMode = UIViewContentMode.ScaleToFill
+    return imageView
+}()
+</code></pre><p><code>4.创建window对象，用来承载指示器</code></p>
+<pre><code>lazy var maskWindow : UIWindow? = {
+    let window = UIWindow(frame: CGRectMake(0, 0, kScreenWidth, kScreenHeight))
+    window.windowLevel = UIWindowLevelNormal
+    return window
+}()
+</code></pre><p><code>5.指示器的显现</code></p>
+<pre><code>class func show() {
+    shareIndicator.maskWindow?.makeKeyAndVisible()
+    shareIndicator.maskWindow?.addSubview(shareIndicator)
+    shareIndicator.beginAnimation()
+}
+</code></pre><p><code>6.指示器的取消</code></p>
+<p>因为新建了window对象来承载指示器，所以，当取消指示器的时候，一定要将新建的window移除。</p>
+<pre><code>class func dismiss() {
+    shareIndicator.endAnimationWithCompletion { () -&gt; Void in
+        shareIndicator.maskWindow?.resignKeyWindow()
+        shareIndicator.removeFromSuperview()
+
+        let originalWindow = UIApplication.sharedApplication().delegate?.window
+        originalWindow!?.makeKeyAndVisible()
+
+        shareIndicator.resetBounds()
+    }
+}
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/29/Refresh-Swift/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Refresh-Swift
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/30/ZXingObjC二维码/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ZXingObjC</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Zhang Zhao
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
