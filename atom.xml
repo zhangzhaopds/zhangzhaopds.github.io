@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-30T14:08:07.000Z</updated>
+  <updated>2016-03-31T11:19:40.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CGD_API:DispatchQueue</title>
+    <link href="http://yoursite.com/2016/03/31/CGD-API-DispatchQueue/"/>
+    <id>http://yoursite.com/2016/03/31/CGD-API-DispatchQueue/</id>
+    <published>2016-03-31T10:35:06.000Z</published>
+    <updated>2016-03-31T11:19:40.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;关于 Dispatch Queue 和 Dispatch_queue_create 的介绍。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Dispatch-Queue&quot;&gt;&lt;a href=&quot;#Dispatch-Queue&quot; class=&quot;headerlink&quot; title=&quot;Dispatch Queue&quot;&gt;&lt;/a&gt;Dispatch Queue&lt;/h3&gt;&lt;p&gt;Dispatch Queue,字面意思就是执行处理的等待队列。将想要执行的任务，通过dispatch_async函数“追加”赋值在变量queue的“Dispatch Queue”中。放在dispatch_async函数的block里面的任务就可以在另个一线程中执行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dispatch_async(queue) { 
+        // 想要执行的任务
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Dispatch Queue 按照追加的顺序（先进先出FIFO）执行处理。&lt;/p&gt;
+&lt;p&gt;Dispatch Queue 分为两种：Serial Dispatch Queue 和 Concurrent Dispatch Queue。&lt;/p&gt;
+&lt;h4 id=&quot;Serial-Dispatch-Queue&quot;&gt;&lt;a href=&quot;#Serial-Dispatch-Queue&quot; class=&quot;headerlink&quot; title=&quot;Serial Dispatch Queue&quot;&gt;&lt;/a&gt;Serial Dispatch Queue&lt;/h4&gt;&lt;p&gt;Serial Dispatch Queue 等待处理结束。简单的理解，比方说，Dispatch Queue中有多个任务，那么这几个任务只能使用同一个线程，按照这几个任务添加的顺序，逐个处理。&lt;/p&gt;
+&lt;p&gt;优点：可以有效的避免数据多线程产生的数据竞争问题。因为一个Serial Dispatch Queue只能有一个线程。当然，如果你创建3000个这样的queue,就又会绕到多线程消耗大量内存的问题上来，会大幅度降低系统的响应性能。过犹不及。因此，Serial Dispatch Queue的生成个数应当仅限所必须的数量。&lt;/p&gt;
+&lt;h4 id=&quot;Concurrent-Dispatch-Queue&quot;&gt;&lt;a href=&quot;#Concurrent-Dispatch-Queue&quot; class=&quot;headerlink&quot; title=&quot;Concurrent Dispatch Queue&quot;&gt;&lt;/a&gt;Concurrent Dispatch Queue&lt;/h4&gt;&lt;p&gt;Concurrent Dispatch Queue 不等待处理。当在这种Dispatch Queue中有多个任务时，会有多个线程来处理这些任务。比方说，有3个线程A、B、C, 5个先后添加的任务a.b.c.d.e, 那么线程A就会处理任务a, 同时B处理b, C处理c; 如果线程B优先其他线程把任务处理完了，那么线程B就会去处理任务d; 下一个空余出来的线程就会去处理任务e, 直至任务都处理完成。&lt;/p&gt;
+&lt;h3 id=&quot;Dispatch-queue-create&quot;&gt;&lt;a href=&quot;#Dispatch-queue-create&quot; class=&quot;headerlink&quot; title=&quot;Dispatch_queue_create&quot;&gt;&lt;/a&gt;Dispatch_queue_create&lt;/h3&gt;&lt;p&gt;创建一个Dispatch_queue时会使用用到函数Dispatch_queue_create。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建一个Serial Dispatch Queue
+    let mySerialQueue: dispatch_queue_t = dispatch_queue_create(&amp;quot;com.SerialDispatchQueue&amp;quot;, nil)
+
+// 创建一个Concurrent Dispatch Queue
+    let myConcurrentQueue: dispatch_queue_t = dispatch_queue_create(&amp;quot;com.SerialDispatchQueue&amp;quot;, DISPATCH_QUEUE_CONCURRENT)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以上是创建这两种dispatch_queue的方法，区别在于第二个参数的设定，第一个参数是dispatch_queue的署名。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;关于 Dispatch Queue 和 Dispatch_queue_create 的介绍。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Dispatch-Queue&quot;&gt;&lt;a href=&quot;#Dispatch-Queue&quot; class=&quot;he
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>GCD学习笔记（一）</title>

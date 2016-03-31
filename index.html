@@ -160,6 +160,77 @@
 
       <div class="body-wrap">
   
+    <article id="post-CGD-API-DispatchQueue" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/31/CGD-API-DispatchQueue/" class="article-date">
+  	<time datetime="2016-03-31T10:35:06.000Z" itemprop="datePublished">2016-03-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/31/CGD-API-DispatchQueue/">CGD_API:DispatchQueue</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>关于 Dispatch Queue 和 Dispatch_queue_create 的介绍。</p>
+</blockquote>
+<h3 id="Dispatch-Queue"><a href="#Dispatch-Queue" class="headerlink" title="Dispatch Queue"></a>Dispatch Queue</h3><p>Dispatch Queue,字面意思就是执行处理的等待队列。将想要执行的任务，通过dispatch_async函数“追加”赋值在变量queue的“Dispatch Queue”中。放在dispatch_async函数的block里面的任务就可以在另个一线程中执行。</p>
+<pre><code>dispatch_async(queue) { 
+        // 想要执行的任务
+}
+</code></pre><p>Dispatch Queue 按照追加的顺序（先进先出FIFO）执行处理。</p>
+<p>Dispatch Queue 分为两种：Serial Dispatch Queue 和 Concurrent Dispatch Queue。</p>
+<h4 id="Serial-Dispatch-Queue"><a href="#Serial-Dispatch-Queue" class="headerlink" title="Serial Dispatch Queue"></a>Serial Dispatch Queue</h4><p>Serial Dispatch Queue 等待处理结束。简单的理解，比方说，Dispatch Queue中有多个任务，那么这几个任务只能使用同一个线程，按照这几个任务添加的顺序，逐个处理。</p>
+<p>优点：可以有效的避免数据多线程产生的数据竞争问题。因为一个Serial Dispatch Queue只能有一个线程。当然，如果你创建3000个这样的queue,就又会绕到多线程消耗大量内存的问题上来，会大幅度降低系统的响应性能。过犹不及。因此，Serial Dispatch Queue的生成个数应当仅限所必须的数量。</p>
+<h4 id="Concurrent-Dispatch-Queue"><a href="#Concurrent-Dispatch-Queue" class="headerlink" title="Concurrent Dispatch Queue"></a>Concurrent Dispatch Queue</h4><p>Concurrent Dispatch Queue 不等待处理。当在这种Dispatch Queue中有多个任务时，会有多个线程来处理这些任务。比方说，有3个线程A、B、C, 5个先后添加的任务a.b.c.d.e, 那么线程A就会处理任务a, 同时B处理b, C处理c; 如果线程B优先其他线程把任务处理完了，那么线程B就会去处理任务d; 下一个空余出来的线程就会去处理任务e, 直至任务都处理完成。</p>
+<h3 id="Dispatch-queue-create"><a href="#Dispatch-queue-create" class="headerlink" title="Dispatch_queue_create"></a>Dispatch_queue_create</h3><p>创建一个Dispatch_queue时会使用用到函数Dispatch_queue_create。</p>
+<pre><code>// 创建一个Serial Dispatch Queue
+    let mySerialQueue: dispatch_queue_t = dispatch_queue_create(&quot;com.SerialDispatchQueue&quot;, nil)
+
+// 创建一个Concurrent Dispatch Queue
+    let myConcurrentQueue: dispatch_queue_t = dispatch_queue_create(&quot;com.SerialDispatchQueue&quot;, DISPATCH_QUEUE_CONCURRENT)
+</code></pre><p>以上是创建这两种dispatch_queue的方法，区别在于第二个参数的设定，第一个参数是dispatch_queue的署名。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-GCD学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1285,181 +1356,6 @@ lazy var loopImageView: UIImageView = {
     }
 }
 </code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ZXingObjC二维码" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/30/ZXingObjC二维码/" class="article-date">
-  	<time datetime="2015-12-30T06:53:05.000Z" itemprop="datePublished">2015-12-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/30/ZXingObjC二维码/">ZXingObjC</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>最近在做一个支付类的APP, 涉及到二维码的使用，上网查一些资料，发现网上的资料都N年之前了。也找到了一些大神的demo,但却是各种封装，一眼看不到重点，几经周折，才搞出来。本文是一个最简单的使用。</p>
-</blockquote>
-<p><a href="https://github.com/zhangzhaopds/-.git" target="_blank" rel="external">本文DEMO链接</a><br><a href="https://github.com/TheLevelUp/ZXingObjC" target="_blank" rel="external">ZXingObjC链接</a></p>
-<h2 id="1-基本应用"><a href="#1-基本应用" class="headerlink" title="1.基本应用"></a>1.基本应用</h2><h3 id="二维码扫描"><a href="#二维码扫描" class="headerlink" title="二维码扫描"></a>二维码扫描</h3><h4 id="cocoaPods导入ZXingObjC"><a href="#cocoaPods导入ZXingObjC" class="headerlink" title="cocoaPods导入ZXingObjC"></a><code>cocoaPods导入ZXingObjC</code></h4><pre><code>pod &apos;ZXingObjC&apos;, &apos;~&gt; 3.1.0&apos;
-</code></pre><h4 id="导入头文件"><a href="#导入头文件" class="headerlink" title="导入头文件"></a><code>导入头文件</code></h4><pre><code>#import &lt;ZXingObjC.h&gt;
-
-@interface ViewController () &lt;ZXCaptureDelegate&gt; //协议
-
-@property (nonatomic, strong) ZXCapture *capture; 
-@property (nonatomic, assign) BOOL isScan; //标记扫描状态
-
-@end    
-</code></pre><h4 id="初始化摄像头"><a href="#初始化摄像头" class="headerlink" title="初始化摄像头"></a><code>初始化摄像头</code></h4><pre><code>- (void)creatCapture {
-
-self.isScan = NO; 
-
-self.capture = [[ZXCapture alloc] init];
-
-self.capture.camera = self.capture.back; //后置摄像头
-
-self.capture.focusMode = AVCaptureFocusModeAutoFocus; //自动对焦
-
-self.capture.rotation = 90.0f;
-
-self.capture.layer.frame = CGRectMake(50, 60, self.view.frame.size.width - 100, 150);
-
-[self.view.layer addSublayer:self.capture.layer];
-
-self.capture.delegate = self; //协议的签订，用于对扫描结果进行处理
-}
-</code></pre><h4 id="扫描结果的处理"><a href="#扫描结果的处理" class="headerlink" title="扫描结果的处理"></a><code>扫描结果的处理</code></h4><pre><code>- (void)captureResult:(ZXCapture *)capture result:(ZXResult *)result {
-if (!result || self.isScan == YES ){
-    return;
-}
-self.isScan = YES;
-[self.capture stop];
-
-//震动提示（可不加）
-AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-
-//result就是扫描获取的结果，处理text属性外，还有其他的属性，如条码的类型等。
-NSLog(@&quot;%@&quot;,[NSString stringWithFormat:@&quot;%@&quot;, result.text]);
-}
-</code></pre><h3 id="二维码的生成"><a href="#二维码的生成" class="headerlink" title="二维码的生成"></a>二维码的生成</h3><h4 id="简单的几行代码"><a href="#简单的几行代码" class="headerlink" title="简单的几行代码"></a><code>简单的几行代码</code></h4><pre><code>ZXBitMatrix *rusult = [writer encode:@&quot;这里就是要用来生成二维码的文字&quot; format:kBarcodeFormatQRCode width:200 height:200 error:&amp;error];
-
-CGImageRef image = [[ZXImage imageWithMatrix:rusult] cgimage];
-
-// img就是生成的二维码图片
-UIImage *img = [UIImage imageWithCGImage:image];
-</code></pre><hr>
-<h2 id="2-自定义扫描视图"><a href="#2-自定义扫描视图" class="headerlink" title="2.自定义扫描视图"></a>2.自定义扫描视图</h2><p>代码就不一一粘贴了，主要的几个部分看一些，具体看<a href="https://github.com/zhangzhaopds/-.git" target="_blank" rel="external">demo</a></p>
-<h3 id="上下扫描的动画效果"><a href="#上下扫描的动画效果" class="headerlink" title="上下扫描的动画效果"></a>上下扫描的动画效果</h3><h4 id="初始化一个扫描线视图"><a href="#初始化一个扫描线视图" class="headerlink" title="初始化一个扫描线视图"></a><code>初始化一个扫描线视图</code></h4><pre><code>- (void)initQRLine {
-
-self.qrLine  = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width / 2 - self.transparentArea.width / 2, self.bounds.size.height / 2 - self.transparentArea.height / 2, self.transparentArea.width, 2)];
-
-//self.qrLine的照片让美工做个好看点的，demo中的是一个截屏图片
-self.qrLine.image = [UIImage imageNamed:@&quot;22&quot;];
-
-self.qrLine.contentMode = UIViewContentModeScaleAspectFill;
-
-[self addSubview:self.qrLine];
-
-self.qrLineY = self.qrLine.frame.origin.y;
-</code></pre><p>}</p>
-<h4 id="扫描线上下循环移动效果"><a href="#扫描线上下循环移动效果" class="headerlink" title="扫描线上下循环移动效果"></a><code>扫描线上下循环移动效果</code></h4><pre><code>添加一个计时器
- NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:kQrLineanimateDuration target:self selector:@selector(show) userInfo:nil repeats:YES];
-
- //实现计时器中的方法，使扫描线上下移动
- - (void)show {
-
-[UIView animateWithDuration:kQrLineanimateDuration animations:^{
-
-    CGRect rect = self.qrLine.frame;
-    rect.origin.y = self.qrLineY;
-    self.qrLine.frame = rect;
-
-} completion:^(BOOL finished) {
-
-    CGFloat maxBorder = self.frame.size.height / 2 + self.transparentArea.height / 2 - 4;
-    if (self.qrLineY &gt; maxBorder) {
-
-        self.qrLineY = self.frame.size.height / 2 - self.transparentArea.height /2;
-    }
-    self.qrLineY++;
-}];
-}
-</code></pre><h3 id="扫描区域的四个角"><a href="#扫描区域的四个角" class="headerlink" title="扫描区域的四个角"></a>扫描区域的四个角</h3><pre><code>- (void)addCornerLineWithContext:(CGContextRef)ctx rect:(CGRect)rect{
-
-//画四个边角
-CGContextSetLineWidth(ctx, 2);
-CGContextSetRGBStrokeColor(ctx, 83 /255.0, 239/255.0, 111/255.0, 1);//绿色
-
-//左上角
-CGPoint poinsTopLeftA[] = {
-    CGPointMake(rect.origin.x + 0.7, rect.origin.y),
-    CGPointMake(rect.origin.x + 0.7 , rect.origin.y + 15)
-};
-
-CGPoint poinsTopLeftB[] = {CGPointMake(rect.origin.x, rect.origin.y + 0.7),CGPointMake(rect.origin.x + 15, rect.origin.y + 0.7)};
-[self addLine:poinsTopLeftA pointB:poinsTopLeftB ctx:ctx];
-
-//左下角
-CGPoint poinsBottomLeftA[] = {CGPointMake(rect.origin.x + 0.7, rect.origin.y + rect.size.height - 15),CGPointMake(rect.origin.x + 0.7,rect.origin.y + rect.size.height)};
-CGPoint poinsBottomLeftB[] = {CGPointMake(rect.origin.x , rect.origin.y + rect.size.height - 0.7) ,CGPointMake(rect.origin.x + 0.7 + 15, rect.origin.y + rect.size.height - 0.7)};
-[self addLine:poinsBottomLeftA pointB:poinsBottomLeftB ctx:ctx];
-
-//右上角
-CGPoint poinsTopRightA[] = {CGPointMake(rect.origin.x + rect.size.width - 15, rect.origin.y + 0.7),CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + 0.7 )};
-CGPoint poinsTopRightB[] = {CGPointMake(rect.origin.x + rect.size.width-0.7, rect.origin.y),CGPointMake(rect.origin.x + rect.size.width - 0.7, rect.origin.y + 15 + 0.7 )};
-[self addLine:poinsTopRightA pointB:poinsTopRightB ctx:ctx];
-
-CGPoint poinsBottomRightA[] = {CGPointMake(rect.origin.x + rect.size.width -0.7, rect.origin.y + rect.size.height - 15),CGPointMake(rect.origin.x - 0.7 + rect.size.width, rect.origin.y + rect.size.height )};
-CGPoint poinsBottomRightB[] = {CGPointMake(rect.origin.x + rect.size.width - 15 , rect.origin.y + rect.size.height-0.7),CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height - 0.7)};
-[self addLine:poinsBottomRightA pointB:poinsBottomRightB ctx:ctx];
-CGContextStrokePath(ctx);
-
-
-- (void)addLine:(CGPoint[])pointA pointB:(CGPoint[])pointB ctx:(CGContextRef)ctx {
-CGContextAddLines(ctx, pointA, 2);
-CGContextAddLines(ctx, pointB, 2);
-}
-</code></pre><hr>
-
       
     </div>
     

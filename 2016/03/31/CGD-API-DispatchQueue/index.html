@@ -4,30 +4,27 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>GCD学习笔记（一） | 最爱冰红茶</title>
+  <title>CGD_API:DispatchQueue | 最爱冰红茶</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！
+  <meta name="description" content="关于 Dispatch Queue 和 Dispatch_queue_create 的介绍。
 
-什么是GCDGrand Central Dispath(GCD),就是异步执行任务的一种技术。简单地说就是GCD提供了极为简单的方法，实现了极为复杂繁琐的多线程编程。
-// 自定义一个线程
-let queue: dispatch_queue_t = dispatch_qu">
+Dispatch QueueDispatch Queue,字面意思就是执行处理的等待队列。将想要执行的任务，通过dispatch_async函数“追加”赋值在变量queue的“Dispatch Queue”中。放在dispatch_async函数的block里面的任务就可以在另个一线程中执行。
+dis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GCD学习笔记（一）">
-<meta property="og:url" content="http://yoursite.com/2016/03/30/GCD学习笔记/index.html">
+<meta property="og:title" content="CGD_API:DispatchQueue">
+<meta property="og:url" content="http://yoursite.com/2016/03/31/CGD-API-DispatchQueue/index.html">
 <meta property="og:site_name" content="最爱冰红茶">
-<meta property="og:description" content="时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！
+<meta property="og:description" content="关于 Dispatch Queue 和 Dispatch_queue_create 的介绍。
 
-什么是GCDGrand Central Dispath(GCD),就是异步执行任务的一种技术。简单地说就是GCD提供了极为简单的方法，实现了极为复杂繁琐的多线程编程。
-// 自定义一个线程
-let queue: dispatch_queue_t = dispatch_qu">
-<meta property="og:updated_time" content="2016-03-30T14:08:07.000Z">
+Dispatch QueueDispatch Queue,字面意思就是执行处理的等待队列。将想要执行的任务，通过dispatch_async函数“追加”赋值在变量queue的“Dispatch Queue”中。放在dispatch_async函数的block里面的任务就可以在另个一线程中执行。
+dis">
+<meta property="og:updated_time" content="2016-03-31T11:19:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GCD学习笔记（一）">
-<meta name="twitter:description" content="时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！
+<meta name="twitter:title" content="CGD_API:DispatchQueue">
+<meta name="twitter:description" content="关于 Dispatch Queue 和 Dispatch_queue_create 的介绍。
 
-什么是GCDGrand Central Dispath(GCD),就是异步执行任务的一种技术。简单地说就是GCD提供了极为简单的方法，实现了极为复杂繁琐的多线程编程。
-// 自定义一个线程
-let queue: dispatch_queue_t = dispatch_qu">
+Dispatch QueueDispatch Queue,字面意思就是执行处理的等待队列。将想要执行的任务，通过dispatch_async函数“追加”赋值在变量queue的“Dispatch Queue”中。放在dispatch_async函数的block里面的任务就可以在另个一线程中执行。
+dis">
   
     <link rel="alternative" href="/atom.xml" title="最爱冰红茶" type="application/atom+xml">
   
@@ -171,11 +168,11 @@ let queue: dispatch_queue_t = dispatch_qu">
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-GCD学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-CGD-API-DispatchQueue" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/30/GCD学习笔记/" class="article-date">
-  	<time datetime="2016-03-30T13:06:18.000Z" itemprop="datePublished">2016-03-30</time>
+      <a href="/2016/03/31/CGD-API-DispatchQueue/" class="article-date">
+  	<time datetime="2016-03-31T10:35:06.000Z" itemprop="datePublished">2016-03-31</time>
 </a>
     </div>
   
@@ -188,7 +185,7 @@ let queue: dispatch_queue_t = dispatch_qu">
         
   
     <h1 class="article-title" itemprop="name">
-      GCD学习笔记（一）
+      CGD_API:DispatchQueue
     </h1>
   
 
@@ -205,29 +202,24 @@ let queue: dispatch_queue_t = dispatch_qu">
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！</p>
+<p>关于 Dispatch Queue 和 Dispatch_queue_create 的介绍。</p>
 </blockquote>
-<h3 id="什么是GCD"><a href="#什么是GCD" class="headerlink" title="什么是GCD"></a>什么是GCD</h3><p>Grand Central Dispath(GCD),就是异步执行任务的一种技术。简单地说就是GCD提供了极为简单的方法，实现了极为复杂繁琐的多线程编程。</p>
-<pre><code>// 自定义一个线程
-let queue: dispatch_queue_t = dispatch_queue_create(&quot;myqueue&quot;, nil)
-
-// 耗时的任务放到后台处理
-dispatch_async(queue) {
-    var num = Int()
-    for i in 1...900 {
-        num += i
-    }
-
-    // 在主线程中打印求和结果
-    dispatch_async(dispatch_get_main_queue(), { 
-        print(num)
-    })
+<h3 id="Dispatch-Queue"><a href="#Dispatch-Queue" class="headerlink" title="Dispatch Queue"></a>Dispatch Queue</h3><p>Dispatch Queue,字面意思就是执行处理的等待队列。将想要执行的任务，通过dispatch_async函数“追加”赋值在变量queue的“Dispatch Queue”中。放在dispatch_async函数的block里面的任务就可以在另个一线程中执行。</p>
+<pre><code>dispatch_async(queue) { 
+        // 想要执行的任务
 }
-</code></pre><p>以上就是一个很简单地GCD应用，开辟新的线程用来处理耗时的任务，在主线程中处理必要操作，比如UI的展示，网络请求结果的处理等。</p>
-<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>多线程说白了，就像工厂里面的流水线，每条流水线都有各自的任务，流水线之间原则上没有太大的相关性。</p>
-<p>使用多线程的程序可以在某个线程和其他线程之间反复多次进行上下文切换，看上去就像一个CPU核能够并列的执行多个线程一样。当然，多个CPU核的情况下，是真的提供了多个CPU核并列执行多个线程的技术。</p>
-<h4 id="多线程的优点："><a href="#多线程的优点：" class="headerlink" title="多线程的优点："></a>多线程的优点：</h4><p>1、数据竞争（多个线程更新相同的资源会导致数据的不一致）；<br>2、死锁(停止等待事件的线程会导致多个线程相互持续等待)；<br>3、使用太多线程会消耗大量内存等。 </p>
-<h4 id="多线程的优点：-1"><a href="#多线程的优点：-1" class="headerlink" title="多线程的优点："></a>多线程的优点：</h4><p>使用多线程编程，在执行长时间的处理是仍可保证用户界面的响应性能。比如：程序启动的时候，最先执行的是主线程，用来描绘用户界面、处理触摸屏幕的事件等；而其他耗时操作，如数据请求、图片下载等则是开辟新的线程进行处理。这样可以避免妨碍主线程中NSRunLoop的执行，从而保证用户界面的响应性能。</p>
+</code></pre><p>Dispatch Queue 按照追加的顺序（先进先出FIFO）执行处理。</p>
+<p>Dispatch Queue 分为两种：Serial Dispatch Queue 和 Concurrent Dispatch Queue。</p>
+<h4 id="Serial-Dispatch-Queue"><a href="#Serial-Dispatch-Queue" class="headerlink" title="Serial Dispatch Queue"></a>Serial Dispatch Queue</h4><p>Serial Dispatch Queue 等待处理结束。简单的理解，比方说，Dispatch Queue中有多个任务，那么这几个任务只能使用同一个线程，按照这几个任务添加的顺序，逐个处理。</p>
+<p>优点：可以有效的避免数据多线程产生的数据竞争问题。因为一个Serial Dispatch Queue只能有一个线程。当然，如果你创建3000个这样的queue,就又会绕到多线程消耗大量内存的问题上来，会大幅度降低系统的响应性能。过犹不及。因此，Serial Dispatch Queue的生成个数应当仅限所必须的数量。</p>
+<h4 id="Concurrent-Dispatch-Queue"><a href="#Concurrent-Dispatch-Queue" class="headerlink" title="Concurrent Dispatch Queue"></a>Concurrent Dispatch Queue</h4><p>Concurrent Dispatch Queue 不等待处理。当在这种Dispatch Queue中有多个任务时，会有多个线程来处理这些任务。比方说，有3个线程A、B、C, 5个先后添加的任务a.b.c.d.e, 那么线程A就会处理任务a, 同时B处理b, C处理c; 如果线程B优先其他线程把任务处理完了，那么线程B就会去处理任务d; 下一个空余出来的线程就会去处理任务e, 直至任务都处理完成。</p>
+<h3 id="Dispatch-queue-create"><a href="#Dispatch-queue-create" class="headerlink" title="Dispatch_queue_create"></a>Dispatch_queue_create</h3><p>创建一个Dispatch_queue时会使用用到函数Dispatch_queue_create。</p>
+<pre><code>// 创建一个Serial Dispatch Queue
+    let mySerialQueue: dispatch_queue_t = dispatch_queue_create(&quot;com.SerialDispatchQueue&quot;, nil)
+
+// 创建一个Concurrent Dispatch Queue
+    let myConcurrentQueue: dispatch_queue_t = dispatch_queue_create(&quot;com.SerialDispatchQueue&quot;, DISPATCH_QUEUE_CONCURRENT)
+</code></pre><p>以上是创建这两种dispatch_queue的方法，区别在于第二个参数的设定，第一个参数是dispatch_queue的署名。</p>
 
       
     </div>
@@ -237,18 +229,9 @@ dispatch_async(queue) {
     
 <nav id="article-nav">
   
-    <a href="/2016/03/31/CGD-API-DispatchQueue/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          CGD_API:DispatchQueue
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/03/30/URL中特殊字符的处理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">URL中特殊字符的转义</div>
+    <a href="/2016/03/30/GCD学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GCD学习笔记（一）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
