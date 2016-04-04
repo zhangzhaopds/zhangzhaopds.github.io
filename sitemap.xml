@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2016/03/30/GCD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://yoursite.com/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/</loc>
     
-    <lastmod>2016-03-31T11:23:18.000Z</lastmod>
+    <lastmod>2016-04-04T04:05:29.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/03/31/CGD-API-DispatchQueue/</loc>
     
-    <lastmod>2016-03-31T11:23:04.000Z</lastmod>
+    <lastmod>2016-04-04T03:58:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/03/30/GCD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2016-03-31T11:23:18.000Z</lastmod>
     
   </url>
   

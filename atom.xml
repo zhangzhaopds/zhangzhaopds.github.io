@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-31T11:23:04.000Z</updated>
+  <updated>2016-04-04T04:05:29.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,64 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CGD_API_DispatchQueue</title>
+    <title>GCD-API-Main/Global_Dispatch_Queue</title>
+    <link href="http://yoursite.com/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/"/>
+    <id>http://yoursite.com/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/</id>
+    <published>2016-04-04T03:21:17.000Z</published>
+    <updated>2016-04-04T04:05:29.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;获取系统标准提供的Dispatch Queue: Main Dispatch Queue 和 Global Dispatch Queue.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Main-Dispatch-Queue&quot;&gt;&lt;a href=&quot;#Main-Dispatch-Queue&quot; class=&quot;headerlink&quot; title=&quot;Main Dispatch Queue&quot;&gt;&lt;/a&gt;Main Dispatch Queue&lt;/h3&gt;&lt;p&gt;Main Dispatch Queue 正如其名称中含有的‘main’一样，是在主线程中执行Dispatch Queue。因为主线程只有一个，所以Main Dispatch Queue 自然就是 &lt;code&gt;Serial Dispatch Queue&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;追加到 Main Dispatch Queue 的处理在主线程的&lt;code&gt;RunLoop&lt;/code&gt;中执行。由于在主线程中执行，因此要将用户界面的界面更新等一些必须在主线程中执行的处理追加到 Main Dispatch Queue 使用。&lt;/p&gt;
+&lt;h3 id=&quot;Global-Dispatch-Queue&quot;&gt;&lt;a href=&quot;#Global-Dispatch-Queue&quot; class=&quot;headerlink&quot; title=&quot;Global Dispatch Queue&quot;&gt;&lt;/a&gt;Global Dispatch Queue&lt;/h3&gt;&lt;p&gt;Global Dispatch Queue 是所有的应用程序都能够使用的 &lt;code&gt;Concurrent Dispatch Queue&lt;/code&gt;。 没有必要通过 dispatch_queue_create 函数逐个生成 Concurrent Dispatch Queue。 只要获取 Global Dispatch Queue 使用就行。&lt;/p&gt;
+&lt;h3 id=&quot;获取方法&quot;&gt;&lt;a href=&quot;#获取方法&quot; class=&quot;headerlink&quot; title=&quot;获取方法&quot;&gt;&lt;/a&gt;获取方法&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;// 获取 Main Dispatch Queue
+let mainDispatchQueue: dispatch_queue_t = dispatch_get_main_queue()
+
+// 获取 Global Dispatch Queue(高优先级)
+let globalDispatchQueueHigh: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
+
+// 获取 Global Dispatch Queue(默认优先级)
+let globalDispatchQueueDefault = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+
+// 获取 Global Dispatch Queue(低优先级)
+let globalDispatchQueueLow = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
+
+// 获取 Global Dispatch Queue(后台优先级)
+let globalDispatchQueueBackground = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;常用例子&quot;&gt;&lt;a href=&quot;#常用例子&quot; class=&quot;headerlink&quot; title=&quot;常用例子&quot;&gt;&lt;/a&gt;常用例子&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;// 在默认优先级 Global Dispatch Queue 中执行 Block
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { 
+
+    // 可以并行执行的处理（如： 图片下载）
+
+    // 在 Main Dispatch Queue 中执行的 Block
+    dispatch_async(dispatch_get_main_queue(), { 
+
+        // 只能在主线程中执行的处理（如：将缓存在本地的图片呈现在界面中）
+
+    })
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;获取系统标准提供的Dispatch Queue: Main Dispatch Queue 和 Global Dispatch Queue.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;Main-Dispatch-Queue&quot;&gt;&lt;a href
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>GCD_API_DispatchQueue</title>
     <link href="http://yoursite.com/2016/03/31/CGD-API-DispatchQueue/"/>
     <id>http://yoursite.com/2016/03/31/CGD-API-DispatchQueue/</id>
     <published>2016-03-31T10:35:06.000Z</published>
-    <updated>2016-03-31T11:23:04.000Z</updated>
+    <updated>2016-04-04T03:58:05.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;关于 Dispatch Queue 和 Dispatch_queue_create 的介绍。&lt;/p&gt;
