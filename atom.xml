@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>最爱冰红茶</title>
+  <title>百度一下jms的博客</title>
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-04T04:05:29.000Z</updated>
+  <updated>2016-04-04T04:17:01.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>Zhang Zhao</name>
+    <name>最爱冰红茶</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>GCD-API-Main/Global_Dispatch_Queue</title>
+    <title>GCD_API_Main/Global_Dispatch_Queue</title>
     <link href="http://yoursite.com/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/"/>
     <id>http://yoursite.com/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/</id>
     <published>2016-04-04T03:21:17.000Z</published>
-    <updated>2016-04-04T04:05:29.000Z</updated>
+    <updated>2016-04-04T04:17:01.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;获取系统标准提供的Dispatch Queue: Main Dispatch Queue 和 Global Dispatch Queue.&lt;/p&gt;
