@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-04T04:17:01.000Z</updated>
+  <updated>2016-04-11T06:56:50.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MQTT消息推送</title>
+    <link href="http://yoursite.com/2016/04/11/MQTT%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/"/>
+    <id>http://yoursite.com/2016/04/11/MQTT消息推送/</id>
+    <published>2016-04-11T06:35:30.000Z</published>
+    <updated>2016-04-11T06:56:50.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光等推送更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jmesnil/MQTTKit.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MQTTKit&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/cerastes/article/details/36904893?utm_source=tuicool&amp;amp;utm_medium=referral&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DEMO_1&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/MTQQ-.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DEMO_2&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光等推送更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。&lt;/p&gt;
+&lt;/
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>GCD_API_Main/Global_Dispatch_Queue</title>
