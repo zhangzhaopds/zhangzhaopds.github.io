@@ -4,30 +4,39 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>MQTT应用内消息推送 | 百度一下jms的博客</title>
+  <title>Swift代码片段：GCD创建单例 | 百度一下jms的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光的应用内消息更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。MQTT本质上就是一个TCP长连接而已。
+  <meta name="description" content="Swift中利用GCD创建单例
 
-MQTTKitDEMO_1DEMO_2
-初始化MQTT// 获取设备uuid
-if Keychain.load(&amp;">
+class var sharedInstance: QRMakeVC {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: QRMakeVC? = nil
+    }
+    dispatch_once(&amp;amp;S">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MQTT应用内消息推送">
-<meta property="og:url" content="http://yoursite.com/2016/04/11/MQTT消息推送/index.html">
+<meta property="og:title" content="Swift代码片段：GCD创建单例">
+<meta property="og:url" content="http://yoursite.com/2016/04/28/Swift代码片段：单例/index.html">
 <meta property="og:site_name" content="百度一下jms的博客">
-<meta property="og:description" content="因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光的应用内消息更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。MQTT本质上就是一个TCP长连接而已。
+<meta property="og:description" content="Swift中利用GCD创建单例
 
-MQTTKitDEMO_1DEMO_2
-初始化MQTT// 获取设备uuid
-if Keychain.load(&amp;">
-<meta property="og:updated_time" content="2016-04-28T03:49:38.000Z">
+class var sharedInstance: QRMakeVC {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: QRMakeVC? = nil
+    }
+    dispatch_once(&amp;amp;S">
+<meta property="og:updated_time" content="2016-04-28T03:19:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MQTT应用内消息推送">
-<meta name="twitter:description" content="因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光的应用内消息更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。MQTT本质上就是一个TCP长连接而已。
+<meta name="twitter:title" content="Swift代码片段：GCD创建单例">
+<meta name="twitter:description" content="Swift中利用GCD创建单例
 
-MQTTKitDEMO_1DEMO_2
-初始化MQTT// 获取设备uuid
-if Keychain.load(&amp;">
+class var sharedInstance: QRMakeVC {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: QRMakeVC? = nil
+    }
+    dispatch_once(&amp;amp;S">
   
     <link rel="alternative" href="/atom.xml" title="百度一下jms的博客" type="application/atom+xml">
   
@@ -171,11 +180,11 @@ if Keychain.load(&amp;">
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-MQTT消息推送" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Swift代码片段：单例" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/11/MQTT消息推送/" class="article-date">
-  	<time datetime="2016-04-11T06:35:30.000Z" itemprop="datePublished">2016-04-11</time>
+      <a href="/2016/04/28/Swift代码片段：单例/" class="article-date">
+  	<time datetime="2016-04-28T03:14:32.000Z" itemprop="datePublished">2016-04-28</time>
 </a>
     </div>
   
@@ -188,7 +197,7 @@ if Keychain.load(&amp;">
         
   
     <h1 class="article-title" itemprop="name">
-      MQTT应用内消息推送
+      Swift代码片段：GCD创建单例
     </h1>
   
 
@@ -205,56 +214,17 @@ if Keychain.load(&amp;">
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光的应用内消息更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。MQTT本质上就是一个TCP长连接而已。</p>
+<p>Swift中利用GCD创建单例</p>
 </blockquote>
-<p><a href="https://github.com/jmesnil/MQTTKit.git" target="_blank" rel="external">MQTTKit</a><br><a href="http://blog.csdn.net/cerastes/article/details/36904893?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">DEMO_1</a><br><a href="https://github.com/zhangzhaopds/MTQQ-.git" target="_blank" rel="external">DEMO_2</a></p>
-<h3 id="初始化MQTT"><a href="#初始化MQTT" class="headerlink" title="初始化MQTT"></a>初始化MQTT</h3><pre><code>// 获取设备uuid
-if Keychain.load(&quot;kUUID&quot;) == nil {
-        let uuidRef: CFUUIDRef = CFUUIDCreate(kCFAllocatorDefault)
-        Keychain.save(&quot;kUUID&quot;, data: CFUUIDCreateString(kCFAllocatorDefault, uuidRef))
-}
-let uuid: String = Keychain.load(&quot;kUUID&quot;) as! String
-
-// clientId:用来区分接受消息的设备，此处我用的是设备的UUID,并保存在了钥匙串里，确保唯一性。
-mqtt = MQTTSession.init(clientId: uuid, userName: &quot;name&quot;, password: &quot;psw&quot;)
-mqtt?.connectToHost(&quot;111.111.111.111&quot;, port: 1111)
-mqtt?.setDelegate(self)
-</code></pre><h3 id="消息回调"><a href="#消息回调" class="headerlink" title="消息回调"></a>消息回调</h3><h4 id="链接状态回调"><a href="#链接状态回调" class="headerlink" title="链接状态回调"></a>链接状态回调</h4><pre><code>   // 链接状态回调
-   override func session(session: MQTTSession!, handleEvent eventCode: MQTTSessionEvent) {
-
-    switch eventCode {
-    case MQTTSessionEventConnected:
-        print(&quot;消息推送: connected&quot;)
-        // 链接成功后，订阅主题
-        self.mqtt?.subscribeTopic(&quot;TX_APP_PAY&quot;)
-    case MQTTSessionEventConnectionRefused:
-        print(&quot;消息推送: connection refused&quot;)
-    case MQTTSessionEventConnectionClosed:
-        print(&quot;消息推送: connection closed&quot;)
-    case MQTTSessionEventConnectionError:
-        print(&quot;消息推送: connection error&quot;)
-        print(&quot;         reconnecting...&quot;)
-
-        // 链接错误的话，尝试重新链接
-        self.mqtt?.connectToHost(&quot;111.111.111.111&quot;, port: 1111)
-    case MQTTSessionEventProtocolError:
-        print(&quot;消息推送: protocol error&quot;)
-    default:
-        break
+<pre><code>class var sharedInstance: QRMakeVC {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: QRMakeVC? = nil
     }
-}
-</code></pre><h4 id="接收到消息回调"><a href="#接收到消息回调" class="headerlink" title="接收到消息回调"></a>接收到消息回调</h4><pre><code>    // 接收到消息回调
-    override func session(session: MQTTSession!, newMessage data: NSData!, onTopic topic: String!) {
-
-    var dic = NSDictionary()
-    do {
-        dic =
-            try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-    } catch {
-
+    dispatch_once(&amp;Static.onceToken) {
+        Static.instance = QRMakeVC()
     }
-    print(&quot;推送内容：&quot;, dic)
-    print(&quot;推送主题：&quot;, topic)
+    return Static.instance!
 }
 </code></pre>
       
@@ -265,18 +235,18 @@ mqtt?.setDelegate(self)
     
 <nav id="article-nav">
   
-    <a href="/2016/04/28/Swift代码片段：单例/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/04/28/Swift代码片段：颜色值/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Swift代码片段：GCD创建单例
+          Swift代码片段：颜色值
         
       </div>
     </a>
   
   
-    <a href="/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">GCD_API_Main/Global_Dispatch_Queue</div>
+    <a href="/2016/04/11/MQTT消息推送/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MQTT应用内消息推送</div>
       <strong class="article-nav-caption">></strong>
     </a>
   

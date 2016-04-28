@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-11T06:56:50.000Z</updated>
+  <updated>2016-04-28T03:48:30.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,23 +16,146 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>MQTT消息推送</title>
-    <link href="http://yoursite.com/2016/04/11/MQTT%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/"/>
-    <id>http://yoursite.com/2016/04/11/MQTT消息推送/</id>
-    <published>2016-04-11T06:35:30.000Z</published>
-    <updated>2016-04-11T06:56:50.000Z</updated>
+    <title>Swift代码片段：颜色值</title>
+    <link href="http://yoursite.com/2016/04/28/Swift%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%EF%BC%9A%E9%A2%9C%E8%89%B2%E5%80%BC/"/>
+    <id>http://yoursite.com/2016/04/28/Swift代码片段：颜色值/</id>
+    <published>2016-04-28T03:36:40.000Z</published>
+    <updated>2016-04-28T03:48:30.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
-&lt;p&gt;因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光等推送更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。&lt;/p&gt;
+&lt;p&gt;利用延展，为UIColor添加颜色值的初始化方法，遍历构造器。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/jmesnil/MQTTKit.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MQTTKit&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/cerastes/article/details/36904893?utm_source=tuicool&amp;amp;utm_medium=referral&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DEMO_1&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/MTQQ-.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DEMO_2&lt;/a&gt;&lt;/p&gt;
-</content>
+&lt;pre&gt;&lt;code&gt;extension UIColor {
+        // 三色值
+      convenience init(red: Int, green: Int, blue: Int) {
+        assert(red &amp;gt;= 0 &amp;amp;&amp;amp; red &amp;lt;= 255, &amp;quot;Invalid red component&amp;quot;)
+        assert(green &amp;gt;= 0 &amp;amp;&amp;amp; green &amp;lt;= 255, &amp;quot;Invalid green component&amp;quot;)
+        assert(blue &amp;gt;= 0 &amp;amp;&amp;amp; blue &amp;lt;= 255, &amp;quot;Invalid blue component&amp;quot;)
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+      }
+
+      // 颜色值  0x6fd66b
+      convenience init(netHex:Int) {
+        self.init(red:(netHex &amp;gt;&amp;gt; 16) &amp;amp; 0xff, green:(netHex &amp;gt;&amp;gt; 8) &amp;amp; 0xff, blue:netHex &amp;amp; 0xff)
+      }
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光等推送更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。&lt;/p&gt;
-&lt;/
+&lt;p&gt;利用延展，为UIColor添加颜色值的初始化方法，遍历构造器。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;extension UIColor {
+        // 三色值
+      convenience init(red: 
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Swift代码片段：GCD创建单例</title>
+    <link href="http://yoursite.com/2016/04/28/Swift%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%EF%BC%9A%E5%8D%95%E4%BE%8B/"/>
+    <id>http://yoursite.com/2016/04/28/Swift代码片段：单例/</id>
+    <published>2016-04-28T03:14:32.000Z</published>
+    <updated>2016-04-28T03:19:27.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Swift中利用GCD创建单例&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;class var sharedInstance: QRMakeVC {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: QRMakeVC? = nil
+    }
+    dispatch_once(&amp;amp;Static.onceToken) {
+        Static.instance = QRMakeVC()
+    }
+    return Static.instance!
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Swift中利用GCD创建单例&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;class var sharedInstance: QRMakeVC {
+    struct Static {
+        static var onc
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MQTT应用内消息推送</title>
+    <link href="http://yoursite.com/2016/04/11/MQTT%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/"/>
+    <id>http://yoursite.com/2016/04/11/MQTT消息推送/</id>
+    <published>2016-04-11T06:35:30.000Z</published>
+    <updated>2016-04-28T03:49:38.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光的应用内消息更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。MQTT本质上就是一个TCP长连接而已。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jmesnil/MQTTKit.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MQTTKit&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/cerastes/article/details/36904893?utm_source=tuicool&amp;amp;utm_medium=referral&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DEMO_1&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/MTQQ-.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DEMO_2&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;初始化MQTT&quot;&gt;&lt;a href=&quot;#初始化MQTT&quot; class=&quot;headerlink&quot; title=&quot;初始化MQTT&quot;&gt;&lt;/a&gt;初始化MQTT&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;// 获取设备uuid
+if Keychain.load(&amp;quot;kUUID&amp;quot;) == nil {
+        let uuidRef: CFUUIDRef = CFUUIDCreate(kCFAllocatorDefault)
+        Keychain.save(&amp;quot;kUUID&amp;quot;, data: CFUUIDCreateString(kCFAllocatorDefault, uuidRef))
+}
+let uuid: String = Keychain.load(&amp;quot;kUUID&amp;quot;) as! String
+
+// clientId:用来区分接受消息的设备，此处我用的是设备的UUID,并保存在了钥匙串里，确保唯一性。
+mqtt = MQTTSession.init(clientId: uuid, userName: &amp;quot;name&amp;quot;, password: &amp;quot;psw&amp;quot;)
+mqtt?.connectToHost(&amp;quot;111.111.111.111&amp;quot;, port: 1111)
+mqtt?.setDelegate(self)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;消息回调&quot;&gt;&lt;a href=&quot;#消息回调&quot; class=&quot;headerlink&quot; title=&quot;消息回调&quot;&gt;&lt;/a&gt;消息回调&lt;/h3&gt;&lt;h4 id=&quot;链接状态回调&quot;&gt;&lt;a href=&quot;#链接状态回调&quot; class=&quot;headerlink&quot; title=&quot;链接状态回调&quot;&gt;&lt;/a&gt;链接状态回调&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;   // 链接状态回调
+   override func session(session: MQTTSession!, handleEvent eventCode: MQTTSessionEvent) {
+
+    switch eventCode {
+    case MQTTSessionEventConnected:
+        print(&amp;quot;消息推送: connected&amp;quot;)
+        // 链接成功后，订阅主题
+        self.mqtt?.subscribeTopic(&amp;quot;TX_APP_PAY&amp;quot;)
+    case MQTTSessionEventConnectionRefused:
+        print(&amp;quot;消息推送: connection refused&amp;quot;)
+    case MQTTSessionEventConnectionClosed:
+        print(&amp;quot;消息推送: connection closed&amp;quot;)
+    case MQTTSessionEventConnectionError:
+        print(&amp;quot;消息推送: connection error&amp;quot;)
+        print(&amp;quot;         reconnecting...&amp;quot;)
+
+        // 链接错误的话，尝试重新链接
+        self.mqtt?.connectToHost(&amp;quot;111.111.111.111&amp;quot;, port: 1111)
+    case MQTTSessionEventProtocolError:
+        print(&amp;quot;消息推送: protocol error&amp;quot;)
+    default:
+        break
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;接收到消息回调&quot;&gt;&lt;a href=&quot;#接收到消息回调&quot; class=&quot;headerlink&quot; title=&quot;接收到消息回调&quot;&gt;&lt;/a&gt;接收到消息回调&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;    // 接收到消息回调
+    override func session(session: MQTTSession!, newMessage data: NSData!, onTopic topic: String!) {
+
+    var dic = NSDictionary()
+    do {
+        dic =
+            try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+    } catch {
+
+    }
+    print(&amp;quot;推送内容：&amp;quot;, dic)
+    print(&amp;quot;推送主题：&amp;quot;, topic)
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光的应用内消息更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。MQTT
     
     </summary>
     

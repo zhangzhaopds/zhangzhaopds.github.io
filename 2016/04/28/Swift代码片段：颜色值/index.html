@@ -4,17 +4,33 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2016 | 百度一下jms的博客</title>
+  <title>Swift代码片段：颜色值 | 百度一下jms的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="百度一下jms的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2016/page/2/index.html">
+  <meta name="description" content="利用延展，为UIColor添加颜色值的初始化方法，遍历构造器。
+
+extension UIColor {
+        // 三色值
+      convenience init(red: Int, green: Int, blue: Int) {
+        assert(red &amp;gt;= 0 &amp;amp;&amp;amp; red &amp;lt;= 255, &amp;quot;Invalid red co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift代码片段：颜色值">
+<meta property="og:url" content="http://yoursite.com/2016/04/28/Swift代码片段：颜色值/index.html">
 <meta property="og:site_name" content="百度一下jms的博客">
-<meta property="og:description">
+<meta property="og:description" content="利用延展，为UIColor添加颜色值的初始化方法，遍历构造器。
+
+extension UIColor {
+        // 三色值
+      convenience init(red: Int, green: Int, blue: Int) {
+        assert(red &amp;gt;= 0 &amp;amp;&amp;amp; red &amp;lt;= 255, &amp;quot;Invalid red co">
+<meta property="og:updated_time" content="2016-04-28T03:48:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="百度一下jms的博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Swift代码片段：颜色值">
+<meta name="twitter:description" content="利用延展，为UIColor添加颜色值的初始化方法，遍历构造器。
+
+extension UIColor {
+        // 三色值
+      convenience init(red: Int, green: Int, blue: Int) {
+        assert(red &amp;gt;= 0 &amp;amp;&amp;amp; red &amp;lt;= 255, &amp;quot;Invalid red co">
   
     <link rel="alternative" href="/atom.xml" title="百度一下jms的博客" type="application/atom+xml">
   
@@ -158,134 +174,82 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Swift代码片段：颜色值" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/04/28/Swift代码片段：颜色值/" class="article-date">
+  	<time datetime="2016-04-28T03:36:40.000Z" itemprop="datePublished">2016-04-28</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Swift代码片段：颜色值
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/02/29/Spotlight/" class="archive-article-date">
-  	<time datetime="2016-02-29T05:17:43.000Z" itemprop="datePublished">Feb 29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/29/Spotlight/">Spotlight</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>利用延展，为UIColor添加颜色值的初始化方法，遍历构造器。</p>
+</blockquote>
+<pre><code>extension UIColor {
+        // 三色值
+      convenience init(red: Int, green: Int, blue: Int) {
+        assert(red &gt;= 0 &amp;&amp; red &lt;= 255, &quot;Invalid red component&quot;)
+        assert(green &gt;= 0 &amp;&amp; green &lt;= 255, &quot;Invalid green component&quot;)
+        assert(blue &gt;= 0 &amp;&amp; blue &lt;= 255, &quot;Invalid blue component&quot;)
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+      }
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      // 颜色值  0x6fd66b
+      convenience init(netHex:Int) {
+        self.init(red:(netHex &gt;&gt; 16) &amp; 0xff, green:(netHex &gt;&gt; 8) &amp; 0xff, blue:netHex &amp; 0xff)
+      }
+}
+</code></pre>
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/28/Swift代码片段：单例/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Swift代码片段：GCD创建单例</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/02/26/BLE-Central/" class="archive-article-date">
-  	<time datetime="2016-02-26T01:08:38.000Z" itemprop="datePublished">Feb 26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/26/BLE-Central/">BLE_Central</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/01/29/Refresh-Swift/" class="archive-article-date">
-  	<time datetime="2016-01-29T08:23:29.000Z" itemprop="datePublished">Jan 29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/01/29/Refresh-Swift/">Refresh-Swift</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/01/28/ActivityIndicator-Swift/" class="archive-article-date">
-  	<time datetime="2016-01-28T06:14:58.000Z" itemprop="datePublished">Jan 28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/01/28/ActivityIndicator-Swift/">ActivityIndicator-Swift</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2016/">&laquo; Prev</a><a class="page-number" href="/archives/2016/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 </div>
       <footer id="footer">
@@ -311,8 +275,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
