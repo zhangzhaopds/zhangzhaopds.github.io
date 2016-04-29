@@ -160,6 +160,82 @@
 
       <div class="body-wrap">
   
+    <article id="post-Typora" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/29/Typora/" class="article-date">
+  	<time datetime="2016-04-29T05:17:56.000Z" itemprop="datePublished">2016-04-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/29/Typora/">Typora</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="http://www.typora.io" target="_blank" rel="external">Typora</a>是一款非常方便的Markdown文档编辑器，相对于Mou来说，它的强大之处在于它的及时渲染, 将【写字】与【预览】这两件事情合并了。What You See Is What You Get.</p>
+</blockquote>
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><p>添加表格，只需Command+T即可。表格里面的文本对齐方式类似于office一样方便设置。</p>
+<table>
+<thead>
+<tr>
+<th>标题一</th>
+<th style="text-align:center">标题二</th>
+<th style="text-align:right">标题三</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左对齐</td>
+<td style="text-align:center">居中</td>
+<td style="text-align:right">右对齐</td>
+</tr>
+</tbody>
+</table>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>Typora 里代码和数学公式的输入，也做得一样出色。当插入代码区域时，你可以先选择代码的种类，Typora 基本支持了所有主流的代码高亮（C#、PHP、Java 等等），连 Swift 也不在例外。而数学公式更加，Typora 甚至连 Latex 都支持了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> custom: <span class="type">String</span> = <span class="string">"友谊的小船说翻就翻"</span></span><br></pre></td></tr></table></figure>
+<h4 id="照片"><a href="#照片" class="headerlink" title="照片"></a>照片</h4><p>对于图片可以直接进行拖拽，方便快捷。下面这个就是一张图片。</p>
+<p> <img src="http://7xoz39.com1.z0.glb.clouddn.com/zzTyporazhaopian.png" alt="Typorazhaopian"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Swift代码片段：颜色值" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1051,68 +1127,6 @@ func upLoadImage(urlStr: String, image: UIImage, dataType: DataType, reponse: (r
     })
     uploadTask.resume()
 }
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Fabric-Crashlytics" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/03/Fabric-Crashlytics/" class="article-date">
-  	<time datetime="2016-03-03T02:59:15.000Z" itemprop="datePublished">2016-03-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/03/Fabric-Crashlytics/">Fabric-Crashlytics</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Fabric是Twitter公司提供的一款，应用于移动应用开发，统计应用崩溃信息的工具。操作简单，使用方便。</p>
-</blockquote>
-<h3 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h3><h4 id="申请账号"><a href="#申请账号" class="headerlink" title="申请账号"></a>申请账号</h4><p>Crashlytics的服务是免费提供的，但是并不能直接注册使用，需要先申请，打开 <a href="http://try.crashlytics.com" target="_blank" rel="external">Crashlytic的官网</a> ，输入自己的邮箱申请使用。之后Fabric会发一封确认邮件，确认成功之后，还会发一封Welcome to Fabric的邮件，点击Get Started with Fabric，根据提示，现在安装Mac端的App，登陆并根据提示完成配置。</p>
-<h4 id="设置工程"><a href="#设置工程" class="headerlink" title="设置工程"></a>设置工程</h4><pre><code>1、点击&quot;+ New App&quot; 添加工程项目；
-2、根据提示配置&quot;Run Script&quot;。打开工程-&gt;Build Phases-&gt;Editor-&gt;Add Build Phase-&gt;Add Run Script Build Phase, 然后将Fabric提供的代码粘贴到Shell下， 然后Command+B;
-3、按照提示，将Fabric提供的frameworks(图标)拖到工程里，然后粘贴复制相关代码。
-</code></pre><h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><pre><code>1、可以直接使用Fabric提供的强行Crash代码进行测试，也可以自己写个。
-2、测试的时候需要脱离Xcode的调试环境。最简单的方法就是真机测试，但要注意的是，测试的时候手机和Xcode不要用数据线连接。测试之后，会收到Fabric的测试报告，出现Crash的具体位置，十分方便。
-3、用户也可以在AppStore中下载Fabric,在手机端查看测试报告。
 </code></pre>
       
     </div>

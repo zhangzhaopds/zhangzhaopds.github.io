@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-28T03:48:30.000Z</updated>
+  <updated>2016-04-29T05:42:54.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Typora</title>
+    <link href="http://yoursite.com/2016/04/29/Typora/"/>
+    <id>http://yoursite.com/2016/04/29/Typora/</id>
+    <published>2016-04-29T05:17:56.000Z</published>
+    <updated>2016-04-29T05:42:54.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.typora.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Typora&lt;/a&gt;是一款非常方便的Markdown文档编辑器，相对于Mou来说，它的强大之处在于它的及时渲染, 将【写字】与【预览】这两件事情合并了。What You See Is What You Get.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;表格&quot;&gt;&lt;a href=&quot;#表格&quot; class=&quot;headerlink&quot; title=&quot;表格&quot;&gt;&lt;/a&gt;表格&lt;/h4&gt;&lt;p&gt;添加表格，只需Command+T即可。表格里面的文本对齐方式类似于office一样方便设置。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;标题一&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;标题二&lt;/th&gt;
+&lt;th style=&quot;text-align:right&quot;&gt;标题三&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;左对齐&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;居中&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;右对齐&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h4&gt;&lt;p&gt;Typora 里代码和数学公式的输入，也做得一样出色。当插入代码区域时，你可以先选择代码的种类，Typora 基本支持了所有主流的代码高亮（C#、PHP、Java 等等），连 Swift 也不在例外。而数学公式更加，Typora 甚至连 Latex 都支持了。&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; custom: &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&quot;友谊的小船说翻就翻&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;照片&quot;&gt;&lt;a href=&quot;#照片&quot; class=&quot;headerlink&quot; title=&quot;照片&quot;&gt;&lt;/a&gt;照片&lt;/h4&gt;&lt;p&gt;对于图片可以直接进行拖拽，方便快捷。下面这个就是一张图片。&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/zzTyporazhaopian.png&quot; alt=&quot;Typorazhaopian&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.typora.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Typora&lt;/a&gt;是一款非常方便的Markdown文档编辑器，相对于Mou来说，它的强大之处在于它的及时渲染, 将【写字】
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Swift代码片段：颜色值</title>
