@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-29T05:42:54.000Z</updated>
+  <updated>2016-05-03T08:27:05.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Cookie</title>
+    <link href="http://yoursite.com/2016/05/03/Cookie/"/>
+    <id>http://yoursite.com/2016/05/03/Cookie/</id>
+    <published>2016-05-03T08:15:58.000Z</published>
+    <updated>2016-05-03T08:27:05.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;许多网站登录了一次之后，下次就不需要再次登录。这种操作很常见，然而网页与程序的逻辑是完全的不同，也就是说网页并不像程序那样拥有自己的存储路径。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Web端基本都是使用HTTP/HTTPS协议传输数据的。这种协议是无状态的协议。也就是说一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接。这就意味着服务器无法从连接上跟踪上次的状态。&lt;br&gt;所以为了解决以上问题，W3C组织提出了Cookie(甜饼)。&lt;/p&gt;
+&lt;p&gt;由于HTTP是一种无状态的协议，服务器单从网络连接上是无法知道客户身份。那如何解决呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是Cookie的工作原理&lt;/p&gt;
+&lt;p&gt;Cookie本质上是&lt;code&gt;一小段的文本信息&lt;/code&gt;，当客户端请求服务器的时候，如果服务器需要记录客户端状态，就会向客户端颁发一个Cookie。客户端会把Cookie保存起来，当客户端再次请求的时候，把网址以及保存下来的Cookie一同提交服务器，这样服务器就可以辨认用户的状态。&lt;/p&gt;
+&lt;h4 id=&quot;iOS中网络请求中的Cookie&quot;&gt;&lt;a href=&quot;#iOS中网络请求中的Cookie&quot; class=&quot;headerlink&quot; title=&quot;iOS中网络请求中的Cookie&quot;&gt;&lt;/a&gt;iOS中网络请求中的Cookie&lt;/h4&gt;&lt;p&gt;iOS中的网络请求对于Cookie的支持是非常强大的，当你访问一个网站的时候，NSURLRequest都会帮你记录访问站点的Cookie，而且当你下次访问这个网站的时候，NSURLRequest会带着上次保存下来的Cookie继续请求。&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 请求一个网址，即可分配到cookie&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; request: &lt;span class=&quot;type&quot;&gt;NSMutableURLRequest&lt;/span&gt; = &lt;span class=&quot;type&quot;&gt;NSMutableURLRequest&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;URL&lt;/span&gt;: &lt;span class=&quot;type&quot;&gt;NSURL&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(string: &lt;span class=&quot;string&quot;&gt;&quot;http://www.tongxingpay.com&quot;&lt;/span&gt;)!)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; sessionConfig: &lt;span class=&quot;type&quot;&gt;NSURLSessionConfiguration&lt;/span&gt; = &lt;span class=&quot;type&quot;&gt;NSURLSessionConfiguration&lt;/span&gt;.defaultSessionConfiguration()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; session: &lt;span class=&quot;type&quot;&gt;NSURLSession&lt;/span&gt; = &lt;span class=&quot;type&quot;&gt;NSURLSession&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;init&lt;/span&gt;(configuration: sessionConfig)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; task: &lt;span class=&quot;type&quot;&gt;NSURLSessionDataTask&lt;/span&gt; = session.dataTaskWithRequest(request) &amp;#123; (data, response, error) &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &lt;span class=&quot;comment&quot;&gt;// 打印 cookie&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &lt;span class=&quot;built_in&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;type&quot;&gt;NSHTTPCookieStorage&lt;/span&gt;.sharedHTTPCookieStorage().cookies)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      task.resume()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;许多网站登录了一次之后，下次就不需要再次登录。这种操作很常见，然而网页与程序的逻辑是完全的不同，也就是说网页并不像程序那样拥有自己的存储路径。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Web端基本都是使用HTTP/HTTPS协议传输数据的。这种协
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Typora</title>
