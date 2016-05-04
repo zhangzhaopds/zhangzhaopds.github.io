@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-04T08:51:16.000Z</updated>
+  <updated>2016-05-04T08:55:20.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/05/04/Mac%E4%B8%8A%E4%BD%BF%E7%94%A8Apache%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     <id>http://yoursite.com/2016/05/04/Mac上使用Apache搭建服务器/</id>
     <published>2016-05-04T08:08:24.000Z</published>
-    <updated>2016-05-04T08:51:16.000Z</updated>
+    <updated>2016-05-04T08:55:20.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;本来是要搞HLS(苹果的视频直播处理技术)的，而且已经将mp4文件分割成m3u8类型直播文件，最后要验证m3u8文件的时候，却发现是要利用服务器来处理的，所以只好查了些服务器的知识。因为Mac自带Apache，所以为了省事就直接学习了下就拿来用了。&lt;/p&gt;
@@ -41,7 +41,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;最后，浏览器中打开localhost,就可以看到自定义的html。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;当然，也可以利用Xcode创建一个工程，利用UIWebView进行验证。只需要将 localhost 换成 Mac当前连接的网络的IP就行。具体可看以下代码：&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;当然，也可以利用Xcode创建一个工程，利用UIWebView进行验证。只需要将 localhost 换成 Mac当前连接的网络的IP就行, URL最好是：&lt;a href=&quot;http://192.168.1.103，&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://192.168.1.103，&lt;/a&gt; 也可以是：&lt;a href=&quot;http://localhost。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost。&lt;/a&gt;  具体可看以下代码：&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;UIWebView *web = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [web setScalesPageToFit:YES];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [self.view addSubview:web];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&amp;quot;http://192.168.1.103&amp;quot;]]];	// 192.168.1.103 换成你的ip地址就行&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </content>

@@ -22,7 +22,7 @@
 开启apache命令：sudo apachectl start
 关闭apache命令：sudo apachectl stop
 重">
-<meta property="og:updated_time" content="2016-05-04T08:51:16.000Z">
+<meta property="og:updated_time" content="2016-05-04T08:55:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac上使用Apache搭建服务器">
 <meta name="twitter:description" content="本来是要搞HLS(苹果的视频直播处理技术)的，而且已经将mp4文件分割成m3u8类型直播文件，最后要验证m3u8文件的时候，却发现是要利用服务器来处理的，所以只好查了些服务器的知识。因为Mac自带Apache，所以为了省事就直接学习了下就拿来用了。
@@ -226,7 +226,7 @@
 </li>
 <li><p>最后，浏览器中打开localhost,就可以看到自定义的html。</p>
 </li>
-<li><p>当然，也可以利用Xcode创建一个工程，利用UIWebView进行验证。只需要将 localhost 换成 Mac当前连接的网络的IP就行。具体可看以下代码：</p>
+<li><p>当然，也可以利用Xcode创建一个工程，利用UIWebView进行验证。只需要将 localhost 换成 Mac当前连接的网络的IP就行, URL最好是：<a href="http://192.168.1.103，" target="_blank" rel="external">http://192.168.1.103，</a> 也可以是：<a href="http://localhost。" target="_blank" rel="external">http://localhost。</a>  具体可看以下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UIWebView *web = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];</span><br><span class="line">    [web setScalesPageToFit:YES];</span><br><span class="line">    [self.view addSubview:web];</span><br><span class="line">    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://192.168.1.103&quot;]]];	// 192.168.1.103 换成你的ip地址就行</span><br></pre></td></tr></table></figure></li>
 </ol>
 
