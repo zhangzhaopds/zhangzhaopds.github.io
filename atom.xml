@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-04T08:55:20.000Z</updated>
+  <updated>2016-05-05T03:10:38.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在Mac上搭建HLS视频直播</title>
+    <link href="http://yoursite.com/2016/05/05/%E5%9C%A8Mac%E4%B8%8A%E6%90%AD%E5%BB%BAHLS%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD/"/>
+    <id>http://yoursite.com/2016/05/05/在Mac上搭建HLS视频直播/</id>
+    <published>2016-05-05T01:59:16.000Z</published>
+    <updated>2016-05-05T03:10:38.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;HTTP Live Streaming(HLS)， 是苹果公司推出的视频直播协议，具体的内容可以到苹果开发者后台查看相关文档。简单地讲，就是将实时直播的视频，切割成大小基本相等的&lt;code&gt;.ts&lt;/code&gt; 文件和一个索引文件&lt;code&gt;prog_index.m3u8&lt;/code&gt;,然后通过索引文件来在web或者app中实现直播效果。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;目标-思路&quot;&gt;&lt;a href=&quot;#目标-思路&quot; class=&quot;headerlink&quot; title=&quot;目标/思路&quot;&gt;&lt;/a&gt;目标/思路&lt;/h3&gt;&lt;p&gt;本文目标：利用HLS技术，模拟一个视频直播平台。具体包括以下几个步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;通过&lt;code&gt;VLC&lt;/code&gt;模拟一个直播视频的输入源；&lt;/li&gt;
+&lt;li&gt;利用&lt;code&gt;mediastreamsegmenter&lt;/code&gt;将捕捉到的输入源视频切割成 .m3u8 格式文件；&lt;/li&gt;
+&lt;li&gt;利用&lt;code&gt;Apache&lt;/code&gt;搭建本地服务器，在Safari中打开localhost，实现直播效果。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;具体实现&quot;&gt;&lt;a href=&quot;#具体实现&quot; class=&quot;headerlink&quot; title=&quot;具体实现&quot;&gt;&lt;/a&gt;具体实现&lt;/h3&gt;&lt;h5 id=&quot;VLC-多媒体播放器&quot;&gt;&lt;a href=&quot;#VLC-多媒体播放器&quot; class=&quot;headerlink&quot; title=&quot;VLC: 多媒体播放器&quot;&gt;&lt;/a&gt;VLC: 多媒体播放器&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;直接在百度上输入VLC，搜索下载安装Mac版的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置VLC: 打开VLC —&amp;gt; Open media —&amp;gt; Browse选择视频输入源，即将要用来以直播的形式展现出来的视频；然后勾选 Streaming/Saving,点击Setting,进行设置；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/zzVLC01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/zzVLC02.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中，Address是当前Mac的ip地址，Port自定义。这个地址是输入源视频的地址，在切割视频的时候会用到这个地址。配置完成之后，点击ok, 然后如果你的视频很短，就不要着急点击open。&lt;/p&gt;
+&lt;h5 id=&quot;启动Apache本地服务器&quot;&gt;&lt;a href=&quot;#启动Apache本地服务器&quot; class=&quot;headerlink&quot; title=&quot;启动Apache本地服务器&quot;&gt;&lt;/a&gt;启动Apache本地服务器&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;打开Mac终端，执行指令 &lt;code&gt;sudo apachectl start&lt;/code&gt;, 在浏览器中打开 localhost，如果出现 &lt;code&gt;It works&lt;/code&gt;，则说明Apache打开成功；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在路径 &lt;code&gt;/Library/WebServer/Documents/&lt;/code&gt;下建立文件新文件，我建的是 Games；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在路径 &lt;code&gt;/Library/WebServer/Documents/&lt;/code&gt;下新建一个文件名为index.html文件，html里的内容为：&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;html&lt;/span&gt;&amp;gt;&lt;/span&gt;　　　　　　&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;head&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;meda&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;content&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;width=320;initial-scale=1.0;maximum-scale=1.0;user-scalable=0;&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;head&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;body&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;center&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;video&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Games/prog_index.m3u8&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;controls&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;autoplay&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;video&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;center&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;body&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;html&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;mediastreamsegmenter切割视频&quot;&gt;&lt;a href=&quot;#mediastreamsegmenter切割视频&quot; class=&quot;headerlink&quot; title=&quot;mediastreamsegmenter切割视频&quot;&gt;&lt;/a&gt;mediastreamsegmenter切割视频&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;这个是苹果公司提供的视频切割工具，可以在&lt;a href=&quot;https://developer.apple.com/streaming/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.apple.com/streaming/&lt;/a&gt;进行下载，需要开发者账号登陆；&lt;/li&gt;
+&lt;li&gt;在终端运行&lt;code&gt;mediastreamsegmenter -s 20 -D -f /Library/WebServer/Documents/Games 192.168.1.113:1234&lt;/code&gt;, 同时将运行VLC,即点击VLC中的Open。&lt;/li&gt;
+&lt;li&gt;在Safari中打开localhost, 刚开始出现的是一个含有错误字样的播放控制条，稍等一会，直播就开始了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;注意：VLC，mediastreamsegmenter，和Apache，在同一时间段，都要处于开启状态才可以在浏览器中看到直播效果。&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&quot;参考文档：&quot;&gt;&lt;a href=&quot;#参考文档：&quot; class=&quot;headerlink&quot; title=&quot;参考文档：&quot;&gt;&lt;/a&gt;参考文档：&lt;/h5&gt;&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/technotes/tn2224/_index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.apple.com/library/ios/technotes/tn2224/_index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/StreamingMediaGuide/Introduction/Introduction.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/StreamingMediaGuide/Introduction/Introduction.html&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;HTTP Live Streaming(HLS)， 是苹果公司推出的视频直播协议，具体的内容可以到苹果开发者后台查看相关文档。简单地讲，就是将实时直播的视频，切割成大小基本相等的&lt;code&gt;.ts&lt;/code&gt; 文件和一个索引文件&lt;code&gt;pro
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Mac上使用Apache搭建服务器</title>
@@ -1633,251 +1687,6 @@ NSLog(@&amp;quot;old: %@&amp;quot;, _oldAttributes);
       &lt;blockquote&gt;
 &lt;p&gt;   UITextView的三种应用效果：&lt;br&gt;        1.链接地址在应用程序内跳转&lt;br&gt;        2.占位符（类似于UITextField的占位符效果）&lt;br&gt;        3.改变选中文本的属性&lt;/p&gt;
 &lt;/blockquo
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title> NSAttributedString</title>
-    <link href="http://yoursite.com/2015/03/20/NSAttributedString/"/>
-    <id>http://yoursite.com/2015/03/20/NSAttributedString/</id>
-    <published>2015-03-20T11:14:35.000Z</published>
-    <updated>2016-03-15T07:09:55.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;NSAttributedString 可以非常方便的实现文字排版和图文混排功能. 共有21中效果(API), 本文将较详细的介绍21种的属性的使用&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;API&quot;&gt;&lt;a href=&quot;#API&quot; class=&quot;headerlink&quot; title=&quot;API&quot;&gt;&lt;/a&gt;API&lt;/h3&gt;&lt;h4 id=&quot;文本API&quot;&gt;&lt;a href=&quot;#文本API&quot; class=&quot;headerlink&quot; title=&quot;文本API:&quot;&gt;&lt;/a&gt;文本API:&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;Character Attributes , NSAttributedString 共有21个属性
-&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSFontAttributeName               -&amp;gt;设置字体属性，默认值：字体：Helvetica(Neue) 字号：12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSParagraphStyleAttributeName     -&amp;gt;设置文本段落排版格式，取值为 NSParagraphStyle 对象(详情见下面的API说明)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSForegroundColorAttributeName    -&amp;gt;设置字体颜色，取值为 UIColor对象，默认值为黑色&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSBackgroundColorAttributeName    -&amp;gt;设置字体所在区域背景颜色，取值为 UIColor对象，默认值为nil, 透明色&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSLigatureAttributeName           -&amp;gt;设置连体属性，取值为NSNumber 对象(整数)，0 表示没有连体字符，1 表示使用默认的连体字符&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSKernAttributeName               -&amp;gt;设置字符间距，取值为 NSNumber 对象（整数），正值间距加宽，负值间距变窄&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSStrikethroughStyleAttributeName -&amp;gt;设置删除线，取值为 NSNumber 对象（整数）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSStrikethroughColorAttributeName -&amp;gt;设置删除线颜色，取值为 UIColor 对象，默认值为黑色&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSUnderlineStyleAttributeName     -&amp;gt;设置下划线，取值为 NSNumber 对象（整数），枚举常量 NSUnderlineStyle中的值，与删除线类似&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSUnderlineColorAttributeName    -&amp;gt;设置下划线颜色，取值为 UIColor 对象，默认值为黑色&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSStrokeWidthAttributeName       -&amp;gt;设置笔画宽度(粗细)，取值为 NSNumber 对象（整数），负值填充效果，正值中空效果&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSStrokeColorAttributeName       -&amp;gt;填充部分颜色，不是字体颜色，取值为 UIColor 对象&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSShadowAttributeName            -&amp;gt;设置阴影属性，取值为 NSShadow 对象&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSTextEffectAttributeName        -&amp;gt;设置文本特殊效果，取值为 NSString 对象，目前只有图版印刷效果可用&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSBaselineOffsetAttributeName    -&amp;gt;设置基线偏移值，取值为 NSNumber （float）,正值上偏，负值下偏&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSObliquenessAttributeName       -&amp;gt;设置字形倾斜度，取值为 NSNumber （float）,正值右倾，负值左倾&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSExpansionAttributeName         -&amp;gt;设置文本横向拉伸属性，取值为 NSNumber （float）,正值横向拉伸文本，负值横向压缩文本&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSWritingDirectionAttributeName  -&amp;gt;设置文字书写方向，从左向右书写或者从右向左书写&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSVerticalGlyphFormAttributeName -&amp;gt;设置文字排版方向，取值为 NSNumber 对象(整数)，0 表示横排文本，1 表示竖排文本&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSLinkAttributeName              -&amp;gt;设置链接属性，点击后调用浏览器打开指定URL地址&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSAttachmentAttributeName        -&amp;gt;设置文本附件,取值为NSTextAttachment对象,常用于文字图片混排&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;段落API&quot;&gt;&lt;a href=&quot;#段落API&quot; class=&quot;headerlink&quot; title=&quot;段落API:&quot;&gt;&lt;/a&gt;段落API:&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;NSParagraphStyleAttributeName
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;值为NSParagraphStyle，设置段落属性，默认值为[NSParagraphStyle defaultParagraphStyle]返回的值。&lt;br&gt;NSMutableParagraphStyle与NSParagraphStyle包括一下属性&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;alignment                -&amp;gt;对齐方式
-firstLineHeadIndent      -&amp;gt;首行缩进
-headIndent               -&amp;gt;缩进
-tailIndent               -&amp;gt;尾部缩进
-lineBreakMode            -&amp;gt;断行方式
-maximumLineHeight        -&amp;gt;最大行高
-minimumLineHeight        -&amp;gt;最低行高
-lineSpacing              -&amp;gt;行距
-paragraphSpacing         -&amp;gt;段距
-paragraphSpacingBefore   -&amp;gt;段首空间
-baseWritingDirection     -&amp;gt;句子方向
-lineHeightMultiple       -&amp;gt;可变行高,乘因数。
-hyphenationFactor        -&amp;gt;连字符属性
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, 320, 400)];
-
-self.titleLabel.numberOfLines = 0;
-
-self.titleLabel.layer.borderColor = [UIColor grayColor].CGColor;
-
-self.titleLabel.layer.borderWidth = 0.5;
-self.titleLabel.textAlignment = NSTextAlignmentLeft;
-[self.view addSubview:self.titleLabel];
-
-NSString *string = @&amp;quot;An NSAttributedString object manages character strings and associated sets of attributes (for example, font and kerning) that apply to individual characters or ranges of characters in the string. An association of characters and their attributes is called an attributed string. &amp;quot;;
-这句话就是对这个类的一个最简明扼要的概括。
-NSAttributedString管理一个字符串，以及与该字符串中的
-单个字符或某些范围的字符串相关的属性。它有一个子类NSMutableAttributedString具体实现时,NSAttributedString
-维护了一个NSString，用来保存最原始的字符串，另有一个NSDictionary用来保存各个子串/字符的属性。        
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;创建&quot;&gt;&lt;a href=&quot;#创建&quot; class=&quot;headerlink&quot; title=&quot;创建&quot;&gt;&lt;/a&gt;创建&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark - NSMutableAttributedString 创建
-三种初始化方法,NSMutableAttributedString没有初始化方法,使用父类初始化方法, 使用initWithString:, initWithString:attributes:, 或者 initWithAttributedString: 
-
-NSAttributedString *attStri = [[NSAttributedString alloc] initWithString:string attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:30]}];
-
-NSMutableAttributedString *mAttStri = [[NSMutableAttributedString alloc] initWithString:string];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;字体属性&quot;&gt;&lt;a href=&quot;#字体属性&quot; class=&quot;headerlink&quot; title=&quot;字体属性&quot;&gt;&lt;/a&gt;字体属性&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 1. NSFontAttributeName 设置字体属性
-/* 字体大小 及 字体类型 */
-NSRange font_range = [string rangeOfString:@&amp;quot;An&amp;quot;];
-[mAttStri addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:30] range:font_range];
-[mAttStri addAttribute:NSFontAttributeName value:[UIFont fontWithName:@&amp;quot;Courier-BoldOblique&amp;quot; size:17.0] range:NSMakeRange(10, 10)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;文本段落排版格式&quot;&gt;&lt;a href=&quot;#文本段落排版格式&quot; class=&quot;headerlink&quot; title=&quot;文本段落排版格式&quot;&gt;&lt;/a&gt;文本段落排版格式&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 2. NSParagraphStyleAttributeName 设置文本段落排版格式
-NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-style.firstLineHeadIndent = 20;
-style.lineSpacing = 10;
-[mAttStri addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, mAttStri.length / 2)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;字体颜色&quot;&gt;&lt;a href=&quot;#字体颜色&quot; class=&quot;headerlink&quot; title=&quot;字体颜色&quot;&gt;&lt;/a&gt;字体颜色&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 3. NSForegroundColorAttributeName 设置字体颜色
-/* 值为UIColor，字体颜色，默认为黑色. */
-[mAttStri addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, mAttStri.length)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;字体所在区域背景颜色&quot;&gt;&lt;a href=&quot;#字体所在区域背景颜色&quot; class=&quot;headerlink&quot; title=&quot;字体所在区域背景颜色&quot;&gt;&lt;/a&gt;字体所在区域背景颜色&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 4. NSBackgroundColorAttributeName 设置字体所在区域背景颜色
-/* 值为UIColor，字体背景色，默认透明. */
-[mAttStri addAttribute:NSBackgroundColorAttributeName value:[UIColor grayColor] range:NSMakeRange(0, 20)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;连体属性&quot;&gt;&lt;a href=&quot;#连体属性&quot; class=&quot;headerlink&quot; title=&quot;连体属性&quot;&gt;&lt;/a&gt;连体属性&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 5. NSLigatureAttributeName 设置连体属性
-/* 取值为NSNumber 对象(整数). 0 表示没有连体字符, 1 表示使用默认的连体字符. 一般中文用不到，在英文中可能出现相邻字母连笔的情况 */
-[mAttStri addAttribute:NSLigatureAttributeName value:@0 range:NSMakeRange(0, mAttStri.length)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;字符间距&quot;&gt;&lt;a href=&quot;#字符间距&quot; class=&quot;headerlink&quot; title=&quot;字符间距&quot;&gt;&lt;/a&gt;字符间距&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 6. NSKernAttributeName 设置字符间距
-/* 值为浮点数NSNumber，字距属性，默认值为0。*/
-[mAttStri addAttribute:NSKernAttributeName value:@3 range:NSMakeRange(0, mAttStri.length)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;删除线&quot;&gt;&lt;a href=&quot;#删除线&quot; class=&quot;headerlink&quot; title=&quot;删除线&quot;&gt;&lt;/a&gt;删除线&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 7. NSStrikethroughStyleAttributeName 设置删除线
-/* 值为整型NSNumber，可取值为
-    enum {
-
-    NSUnderlineStyleNone = 0×00,
-
-    NSUnderlineStyleSingle = 0×01,
-
-    }; 设置删除线。
-*/
-[mAttStri addAttribute:NSStrikethroughStyleAttributeName value:@3 range:NSMakeRange(3, 7)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;删除线颜色&quot;&gt;&lt;a href=&quot;#删除线颜色&quot; class=&quot;headerlink&quot; title=&quot;删除线颜色&quot;&gt;&lt;/a&gt;删除线颜色&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 8. NSStrikethroughColorAttributeName 设置删除线颜色
-/* 这个属性的值是一个UIColor对象. */
-[mAttStri addAttribute:NSStrikethroughColorAttributeName value:[UIColor blueColor] range:NSMakeRange(3, 3)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;下划线&quot;&gt;&lt;a href=&quot;#下划线&quot; class=&quot;headerlink&quot; title=&quot;下划线&quot;&gt;&lt;/a&gt;下划线&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 9. NSUnderlineStyleAttributeName 设置下划线
-/* 取值为 NSNumber 对象（整数），枚举常量 NSUnderlineStyle中的值，与删除线类似 */
-[mAttStri addAttribute:NSUnderlineStyleAttributeName value:@2 range:NSMakeRange(6, 5)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;下划线颜色&quot;&gt;&lt;a href=&quot;#下划线颜色&quot; class=&quot;headerlink&quot; title=&quot;下划线颜色&quot;&gt;&lt;/a&gt;下划线颜色&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 10. NSUnderlineColorAttributeName 设置下划线颜色
-/* 这个属性的值是一个UIColor对象.默认值为nil. */
-[mAttStri addAttribute:NSUnderlineColorAttributeName value:[UIColor blackColor] range:NSMakeRange(6, 5)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;笔画粗细&quot;&gt;&lt;a href=&quot;#笔画粗细&quot; class=&quot;headerlink&quot; title=&quot;笔画粗细&quot;&gt;&lt;/a&gt;笔画粗细&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 11. NSStrokeWidthAttributeName 设置笔画宽度(粗细)
-/* 值为浮点数NSNumber。设置笔画的粗细。负值填充效果，正值中空效果. */
-[mAttStri addAttribute:NSStrokeWidthAttributeName value:@10 range:NSMakeRange(50, 30)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;填充部分颜色-不是字体颜色&quot;&gt;&lt;a href=&quot;#填充部分颜色-不是字体颜色&quot; class=&quot;headerlink&quot; title=&quot;填充部分颜色(不是字体颜色)&quot;&gt;&lt;/a&gt;填充部分颜色(不是字体颜色)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 12. NSStrokeColorAttributeName 填充部分颜色，
-/* 不是字体颜色，取值为 UIColor 对象 默认值为nil，设置的属性同ForegroundColor。*/
-[mAttStri addAttribute:NSStrokeColorAttributeName value:[UIColor orangeColor] range:NSMakeRange(50, 20)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;阴影属性&quot;&gt;&lt;a href=&quot;#阴影属性&quot; class=&quot;headerlink&quot; title=&quot;阴影属性&quot;&gt;&lt;/a&gt;阴影属性&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 13. NSShadowAttributeName 设置阴影属性
-
-/* 值为NSShadow，设置笔画的阴影，默认值为nil。*/
-NSShadow *shadow = [[NSShadow alloc]init];
-shadow.shadowOffset = CGSizeMake(10, 10);
-shadow.shadowColor = [UIColor greenColor];
-[mAttStri addAttribute:NSShadowAttributeName value:shadow range:NSMakeRange(20, 10)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;文本特效&quot;&gt;&lt;a href=&quot;#文本特效&quot; class=&quot;headerlink&quot; title=&quot;文本特效&quot;&gt;&lt;/a&gt;文本特效&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 14. NSTextEffectAttributeName 设置文本特殊效果
-/* 这个属性的值是一个NSString对象。使用此属性指定的文字效果，如NSTextEffectLetterpressStyle。此属性的默认值为nil，表示没有文本效应。*/
-[mAttStri addAttribute:NSTextEffectAttributeName value:NSTextEffectLetterpressStyle range:NSMakeRange(80, 10)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;基线偏移值&quot;&gt;&lt;a href=&quot;#基线偏移值&quot; class=&quot;headerlink&quot; title=&quot;基线偏移值&quot;&gt;&lt;/a&gt;基线偏移值&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 15. NSBaselineOffsetAttributeName 设置基线偏移值
-/* 此属性的值是包含一个浮点值的NSNumber对象,表示的字符从基线偏移的NSNumber对象，默认值是0。正值上偏，负值下偏 */
-[mAttStri addAttribute:NSBaselineOffsetAttributeName value:@5 range:NSMakeRange(112, 10)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;字形-左倾-右倾&quot;&gt;&lt;a href=&quot;#字形-左倾-右倾&quot; class=&quot;headerlink&quot; title=&quot;字形(左倾 右倾)&quot;&gt;&lt;/a&gt;字形(左倾 右倾)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 16. NSObliquenessAttributeName 设置字形倾斜度取值为 NSNumber （float）,正值右倾，负值左倾
-/* 此属性的值是包含一个浮点值的NSNumber对象。默认值为0，表示没有倾斜, 正值右倾，负值左倾。 */
-[mAttStri addAttribute:NSObliquenessAttributeName value:@0.8 range:NSMakeRange(135, 15)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;文本横向-拉伸-压缩&quot;&gt;&lt;a href=&quot;#文本横向-拉伸-压缩&quot; class=&quot;headerlink&quot; title=&quot;文本横向 拉伸 压缩&quot;&gt;&lt;/a&gt;文本横向 拉伸 压缩&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 17. NSExpansionAttributeName 设置文本横向拉伸属性
-/* 取值为 NSNumber(float), 正值横向拉伸文本, 负值横向压缩文本 */
-NSRange range =  [string rangeOfString:@&amp;quot;An association of&amp;quot;];
-[mAttStri addAttribute:NSExpansionAttributeName value:@1.0 range:range];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;文字书写方向&quot;&gt;&lt;a href=&quot;#文字书写方向&quot; class=&quot;headerlink&quot; title=&quot;文字书写方向&quot;&gt;&lt;/a&gt;文字书写方向&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 18. NSWritingDirectionAttributeName 设置文字书写方向
-/** 
- * 取值为包含NSNumber对象的数组. 从左向右书写或者从右向左书写.
- *
- * The values of the NSNumber objects should be 0, 1, 2, or 3, for LRE, RLE, LRO, or RLO respectively, and combinations of NSWritingDirectionLeftToRight and NSWritingDirectionRightToLeft with NSTextWritingDirectionEmbedding or NSTextWritingDirectionOverride, as shown in Values of NSWritingDirectionAttributeName and equivalent markup.
- */
-NSRange rang2 = [string rangeOfString:@&amp;quot;characters and their&amp;quot;];
-[mAttStri addAttribute:NSWritingDirectionAttributeName value:@[@3] range:rang2];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;文字排版方向-水平、垂直&quot;&gt;&lt;a href=&quot;#文字排版方向-水平、垂直&quot; class=&quot;headerlink&quot; title=&quot;文字排版方向(水平、垂直)&quot;&gt;&lt;/a&gt;文字排版方向(水平、垂直)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 19. NSVerticalGlyphFormAttributeName 设置文字排版方向
-/**
- * 值为整型NSNumber，0为水平排版的字，1为垂直排版的字。注意,在iOS中, 总是以横向排版
- *
- * In iOS, horizontal text is always used and specifying a different value is undefined.
- */
-[mAttStri addAttribute:NSVerticalGlyphFormAttributeName value:@1 range:NSMakeRange(1, 10)];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;超链接&quot;&gt;&lt;a href=&quot;#超链接&quot; class=&quot;headerlink&quot; title=&quot;超链接&quot;&gt;&lt;/a&gt;超链接&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 20. NSLinkAttributeName 设置链接属性
-/**
- * 此属性的值是NSURL对象（首选）或一个NSString对象。此属性的默认值为nil，表示没有链接。
- * UILabel无法使用该属性, 可以使用UITextView 控件.
- */
-UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 450, 320, 60)];
-[self.view addSubview:textView];
-textView.backgroundColor  = [UIColor lightGrayColor];
-
-NSString *strLink = @&amp;quot;百度链接&amp;quot;;
-NSAttributedString *attStr  = [[NSAttributedString alloc] initWithString:strLink attributes:@{NSLinkAttributeName: [NSURL URLWithString:@&amp;quot;http://www.baidu.com&amp;quot;]}];
-
-textView.editable = NO;
-
-/* 签订协议, 指定代理人之后. 但点击链接时, 会回调协议方法 (- textView:shouldInteractWithURL:inRange:) */
-textView.delegate = self;
-
-textView.attributedText = attStr;
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;文本附件&quot;&gt;&lt;a href=&quot;#文本附件&quot; class=&quot;headerlink&quot; title=&quot;文本附件&quot;&gt;&lt;/a&gt;文本附件&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark ** 21. NSAttachmentAttributeName 设置文本附件
-/* 这个属性的值是一个NSTextAttachment对象。此属性的默认值为nil，表示无附件。*/
-
-/**
- * 关于NSTextAttachment类的简单说明
- *
- * NSTextAttachment 类有一个指定的初始化方法(- initWithData:ofType:), 需要指定附件文档的数据和附件文件的类型. 如果附件文档数据指定nil, 那么系统将会默认指定为image对象作为值. 因此, 也可以通过这个特性实现图文混排.
- * 下面就以附件为image对象来说明NSAttachmentAttributeName的使用.
- */
-
-UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 550, 320, 60)];
-label.backgroundColor = [UIColor yellowColor];
-[self.view addSubview:label];
-
-/* 下面实现在百度两个汉字之间插入一个照片 */
-NSString *stiAtt = @&amp;quot;百度&amp;quot;;
-
-NSTextAttachment *attach = [[NSTextAttachment alloc] initWithData:nil ofType:nil];
-attach.bounds = CGRectMake(0, 0, 50, 50);
-attach.image = [UIImage imageNamed:@&amp;quot;baidu.jpg&amp;quot;];
-
-NSAttributedString *strAtt = [NSAttributedString attributedStringWithAttachment:attach];
-
-NSMutableAttributedString *strMatt = [[NSMutableAttributedString alloc] initWithString:stiAtt];
-
-[strMatt insertAttributedString:strAtt atIndex:1];
-
-label.attributedText = strMatt;
-
-self.titleLabel.attributedText = mAttStri;
-[self.titleLabel sizeToFit];
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h4 id=&quot;UITextView协议&quot;&gt;&lt;a href=&quot;#UITextView协议&quot; class=&quot;headerlink&quot; title=&quot;UITextView协议&quot;&gt;&lt;/a&gt;UITextView协议&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#pragma mark - textView delegate 
--(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
-NSLog(@&amp;quot;%s&amp;quot;, __func__);
-NSLog(@&amp;quot;url: %@&amp;quot;, URL);
-return YES;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;NSAttributedString 可以非常方便的实现文字排版和图文混排功能. 共有21中效果(API), 本文将较详细的介绍21种的属性的使用&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;API&quot;&gt;&lt;a href=&quot;#API&quot; clas
     
     </summary>
     
