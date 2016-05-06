@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-06T03:46:01.000Z</updated>
+  <updated>2016-05-06T05:37:35.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,13 +20,15 @@
     <link href="http://yoursite.com/2016/05/06/%E5%A4%A7%E7%89%9B%E4%BB%AC%E7%9A%84%E5%8D%9A%E5%AE%A2%E9%9B%86/"/>
     <id>http://yoursite.com/2016/05/06/大牛们的博客集/</id>
     <published>2016-05-06T03:40:28.000Z</published>
-    <updated>2016-05-06T03:46:01.000Z</updated>
+    <updated>2016-05-06T05:37:35.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;活到老，学到老，学无止境！&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;唐巧的技术博客     &lt;a href=&quot;http://blog.devtang.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.devtang.com/atom.xml&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;YYKit    &lt;a href=&quot;http://blog.ibireme.com/about/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.ibireme.com/about/&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;OneV’s Den     &lt;a href=&quot;http://onevcat.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://onevcat.com/atom.xml&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -117,6 +119,9 @@
 &lt;li&gt;&lt;p&gt;煲仔饭     &lt;a href=&quot;http://ivoryxiong.org/feed.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ivoryxiong.org/feed.xml&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;里脊串的开发随笔     &lt;a href=&quot;http://adad184.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://adad184.com/atom.xml&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;标哥的技术博客    &lt;a href=&quot;http://www.henishuo.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.henishuo.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;​&lt;/p&gt;
 &lt;p&gt;​&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
