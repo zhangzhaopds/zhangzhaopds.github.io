@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-06T06:38:24.000Z</updated>
+  <updated>2016-05-11T09:35:38.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Swift中protocol的三种实现以及mutating关键词</title>
+    <link href="http://yoursite.com/2016/05/11/Swift%E4%B8%ADprotocol%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AE%9E%E7%8E%B0%E4%BB%A5%E5%8F%8Amutating%E5%85%B3%E9%94%AE%E8%AF%8D/"/>
+    <id>http://yoursite.com/2016/05/11/Swift中protocol的三种实现以及mutating关键词/</id>
+    <published>2016-05-11T09:12:21.000Z</published>
+    <updated>2016-05-11T09:35:38.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Swift中&lt;code&gt;protocol&lt;/code&gt;除了可以被&lt;code&gt;class&lt;/code&gt;实现外，也可以被&lt;code&gt;struct&lt;/code&gt;和&lt;code&gt;enum&lt;/code&gt;实现。而&lt;code&gt;mutating&lt;/code&gt;关键词则出现在当你用&lt;code&gt;struct&lt;/code&gt;或者&lt;code&gt;enum&lt;/code&gt;来实现协议并且在协议方法中修改变量的值得时候，用&lt;code&gt;mutating&lt;/code&gt;来修饰协议方法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;首先，定义一个protocol&quot;&gt;&lt;a href=&quot;#首先，定义一个protocol&quot; class=&quot;headerlink&quot; title=&quot;首先，定义一个protocol&quot;&gt;&lt;/a&gt;首先，定义一个protocol&lt;/h4&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 协议&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protocol&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;VehicleProtocol&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 颜色&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; color: &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;&amp;#123;&lt;span class=&quot;keyword&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  	&lt;span class=&quot;comment&quot;&gt;// 改变颜色(假定changeColor()方法要改变 color 的值，则需要用 mutating 关键词修饰)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;mutating&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;changeColor&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;结构体实现协议&quot;&gt;&lt;a href=&quot;#结构体实现协议&quot; class=&quot;headerlink&quot; title=&quot;结构体实现协议&quot;&gt;&lt;/a&gt;结构体实现协议&lt;/h4&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 结构体实现协议&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;StructProtocol&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;VehicleProtocol&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; color: &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt; = &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.blueColor()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 此处需要 mutating 关键词修饰&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;mutating&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;changeColor&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        color = &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.redColor()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;类实现协议&quot;&gt;&lt;a href=&quot;#类实现协议&quot; class=&quot;headerlink&quot; title=&quot;类实现协议&quot;&gt;&lt;/a&gt;类实现协议&lt;/h4&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 类实现协议&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ClassProtocol&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;VehicleProtocol&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; color: &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt; = &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.blueColor()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 此处 不需要使用 mutating 关键词来修饰&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;changeColor&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        color = &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.greenColor()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;枚举实现协议&quot;&gt;&lt;a href=&quot;#枚举实现协议&quot; class=&quot;headerlink&quot; title=&quot;枚举实现协议&quot;&gt;&lt;/a&gt;枚举实现协议&lt;/h4&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 枚举实现协议&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;EnumProtocol&lt;/span&gt;: &lt;span class=&quot;title&quot;&gt;VehicleProtocol&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; first(&lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; color: &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;get&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; .first(&lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.blueColor()):&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.blueColor()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; .first(&lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.redColor()):&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.purpleColor()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.whiteColor()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; .first(&lt;span class=&quot;number&quot;&gt;_&lt;/span&gt;):&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt; = .first(newValue)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 此处需要 mutating 关键词修饰&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;mutating&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;changeColor&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; .first(&lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.blueColor()):&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt; = .first(&lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.redColor())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt; = .first(&lt;span class=&quot;type&quot;&gt;UIColor&lt;/span&gt;.whiteColor())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/Protocol_mutating.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本文代码链接：https://github.com/zhangzhaopds/Protocol_mutating.git&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Swift中&lt;code&gt;protocol&lt;/code&gt;除了可以被&lt;code&gt;class&lt;/code&gt;实现外，也可以被&lt;code&gt;struct&lt;/code&gt;和&lt;code&gt;enum&lt;/code&gt;实现。而&lt;code&gt;mutating&lt;/code&gt;关键词则
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>大牛们的博客集</title>
@@ -1409,150 +1436,6 @@ lazy var loopImageView: UIImageView = {
 &lt;blockquote&gt;
 &lt;p&gt;Swift实现简单的活动指示器。&lt;/p&gt;
 &lt;/b
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ZXingObjC</title>
-    <link href="http://yoursite.com/2015/12/30/ZXingObjC%E4%BA%8C%E7%BB%B4%E7%A0%81/"/>
-    <id>http://yoursite.com/2015/12/30/ZXingObjC二维码/</id>
-    <published>2015-12-30T06:53:05.000Z</published>
-    <updated>2016-03-15T07:12:22.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;最近在做一个支付类的APP, 涉及到二维码的使用，上网查一些资料，发现网上的资料都N年之前了。也找到了一些大神的demo,但却是各种封装，一眼看不到重点，几经周折，才搞出来。本文是一个最简单的使用。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/-.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本文DEMO链接&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/TheLevelUp/ZXingObjC&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ZXingObjC链接&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-基本应用&quot;&gt;&lt;a href=&quot;#1-基本应用&quot; class=&quot;headerlink&quot; title=&quot;1.基本应用&quot;&gt;&lt;/a&gt;1.基本应用&lt;/h2&gt;&lt;h3 id=&quot;二维码扫描&quot;&gt;&lt;a href=&quot;#二维码扫描&quot; class=&quot;headerlink&quot; title=&quot;二维码扫描&quot;&gt;&lt;/a&gt;二维码扫描&lt;/h3&gt;&lt;h4 id=&quot;cocoaPods导入ZXingObjC&quot;&gt;&lt;a href=&quot;#cocoaPods导入ZXingObjC&quot; class=&quot;headerlink&quot; title=&quot;cocoaPods导入ZXingObjC&quot;&gt;&lt;/a&gt;&lt;code&gt;cocoaPods导入ZXingObjC&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;pod &amp;apos;ZXingObjC&amp;apos;, &amp;apos;~&amp;gt; 3.1.0&amp;apos;
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;导入头文件&quot;&gt;&lt;a href=&quot;#导入头文件&quot; class=&quot;headerlink&quot; title=&quot;导入头文件&quot;&gt;&lt;/a&gt;&lt;code&gt;导入头文件&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#import &amp;lt;ZXingObjC.h&amp;gt;
-
-@interface ViewController () &amp;lt;ZXCaptureDelegate&amp;gt; //协议
-
-@property (nonatomic, strong) ZXCapture *capture; 
-@property (nonatomic, assign) BOOL isScan; //标记扫描状态
-
-@end    
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;初始化摄像头&quot;&gt;&lt;a href=&quot;#初始化摄像头&quot; class=&quot;headerlink&quot; title=&quot;初始化摄像头&quot;&gt;&lt;/a&gt;&lt;code&gt;初始化摄像头&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;- (void)creatCapture {
-
-self.isScan = NO; 
-
-self.capture = [[ZXCapture alloc] init];
-
-self.capture.camera = self.capture.back; //后置摄像头
-
-self.capture.focusMode = AVCaptureFocusModeAutoFocus; //自动对焦
-
-self.capture.rotation = 90.0f;
-
-self.capture.layer.frame = CGRectMake(50, 60, self.view.frame.size.width - 100, 150);
-
-[self.view.layer addSublayer:self.capture.layer];
-
-self.capture.delegate = self; //协议的签订，用于对扫描结果进行处理
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;扫描结果的处理&quot;&gt;&lt;a href=&quot;#扫描结果的处理&quot; class=&quot;headerlink&quot; title=&quot;扫描结果的处理&quot;&gt;&lt;/a&gt;&lt;code&gt;扫描结果的处理&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;- (void)captureResult:(ZXCapture *)capture result:(ZXResult *)result {
-if (!result || self.isScan == YES ){
-    return;
-}
-self.isScan = YES;
-[self.capture stop];
-
-//震动提示（可不加）
-AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-
-//result就是扫描获取的结果，处理text属性外，还有其他的属性，如条码的类型等。
-NSLog(@&amp;quot;%@&amp;quot;,[NSString stringWithFormat:@&amp;quot;%@&amp;quot;, result.text]);
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;二维码的生成&quot;&gt;&lt;a href=&quot;#二维码的生成&quot; class=&quot;headerlink&quot; title=&quot;二维码的生成&quot;&gt;&lt;/a&gt;二维码的生成&lt;/h3&gt;&lt;h4 id=&quot;简单的几行代码&quot;&gt;&lt;a href=&quot;#简单的几行代码&quot; class=&quot;headerlink&quot; title=&quot;简单的几行代码&quot;&gt;&lt;/a&gt;&lt;code&gt;简单的几行代码&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;ZXBitMatrix *rusult = [writer encode:@&amp;quot;这里就是要用来生成二维码的文字&amp;quot; format:kBarcodeFormatQRCode width:200 height:200 error:&amp;amp;error];
-
-CGImageRef image = [[ZXImage imageWithMatrix:rusult] cgimage];
-
-// img就是生成的二维码图片
-UIImage *img = [UIImage imageWithCGImage:image];
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h2 id=&quot;2-自定义扫描视图&quot;&gt;&lt;a href=&quot;#2-自定义扫描视图&quot; class=&quot;headerlink&quot; title=&quot;2.自定义扫描视图&quot;&gt;&lt;/a&gt;2.自定义扫描视图&lt;/h2&gt;&lt;p&gt;代码就不一一粘贴了，主要的几个部分看一些，具体看&lt;a href=&quot;https://github.com/zhangzhaopds/-.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;demo&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;上下扫描的动画效果&quot;&gt;&lt;a href=&quot;#上下扫描的动画效果&quot; class=&quot;headerlink&quot; title=&quot;上下扫描的动画效果&quot;&gt;&lt;/a&gt;上下扫描的动画效果&lt;/h3&gt;&lt;h4 id=&quot;初始化一个扫描线视图&quot;&gt;&lt;a href=&quot;#初始化一个扫描线视图&quot; class=&quot;headerlink&quot; title=&quot;初始化一个扫描线视图&quot;&gt;&lt;/a&gt;&lt;code&gt;初始化一个扫描线视图&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;- (void)initQRLine {
-
-self.qrLine  = [[UIImageView alloc] initWithFrame:CGRectMake(self.bounds.size.width / 2 - self.transparentArea.width / 2, self.bounds.size.height / 2 - self.transparentArea.height / 2, self.transparentArea.width, 2)];
-
-//self.qrLine的照片让美工做个好看点的，demo中的是一个截屏图片
-self.qrLine.image = [UIImage imageNamed:@&amp;quot;22&amp;quot;];
-
-self.qrLine.contentMode = UIViewContentModeScaleAspectFill;
-
-[self addSubview:self.qrLine];
-
-self.qrLineY = self.qrLine.frame.origin.y;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}&lt;/p&gt;
-&lt;h4 id=&quot;扫描线上下循环移动效果&quot;&gt;&lt;a href=&quot;#扫描线上下循环移动效果&quot; class=&quot;headerlink&quot; title=&quot;扫描线上下循环移动效果&quot;&gt;&lt;/a&gt;&lt;code&gt;扫描线上下循环移动效果&lt;/code&gt;&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;添加一个计时器
- NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:kQrLineanimateDuration target:self selector:@selector(show) userInfo:nil repeats:YES];
-
- //实现计时器中的方法，使扫描线上下移动
- - (void)show {
-
-[UIView animateWithDuration:kQrLineanimateDuration animations:^{
-
-    CGRect rect = self.qrLine.frame;
-    rect.origin.y = self.qrLineY;
-    self.qrLine.frame = rect;
-
-} completion:^(BOOL finished) {
-
-    CGFloat maxBorder = self.frame.size.height / 2 + self.transparentArea.height / 2 - 4;
-    if (self.qrLineY &amp;gt; maxBorder) {
-
-        self.qrLineY = self.frame.size.height / 2 - self.transparentArea.height /2;
-    }
-    self.qrLineY++;
-}];
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;扫描区域的四个角&quot;&gt;&lt;a href=&quot;#扫描区域的四个角&quot; class=&quot;headerlink&quot; title=&quot;扫描区域的四个角&quot;&gt;&lt;/a&gt;扫描区域的四个角&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;- (void)addCornerLineWithContext:(CGContextRef)ctx rect:(CGRect)rect{
-
-//画四个边角
-CGContextSetLineWidth(ctx, 2);
-CGContextSetRGBStrokeColor(ctx, 83 /255.0, 239/255.0, 111/255.0, 1);//绿色
-
-//左上角
-CGPoint poinsTopLeftA[] = {
-    CGPointMake(rect.origin.x + 0.7, rect.origin.y),
-    CGPointMake(rect.origin.x + 0.7 , rect.origin.y + 15)
-};
-
-CGPoint poinsTopLeftB[] = {CGPointMake(rect.origin.x, rect.origin.y + 0.7),CGPointMake(rect.origin.x + 15, rect.origin.y + 0.7)};
-[self addLine:poinsTopLeftA pointB:poinsTopLeftB ctx:ctx];
-
-//左下角
-CGPoint poinsBottomLeftA[] = {CGPointMake(rect.origin.x + 0.7, rect.origin.y + rect.size.height - 15),CGPointMake(rect.origin.x + 0.7,rect.origin.y + rect.size.height)};
-CGPoint poinsBottomLeftB[] = {CGPointMake(rect.origin.x , rect.origin.y + rect.size.height - 0.7) ,CGPointMake(rect.origin.x + 0.7 + 15, rect.origin.y + rect.size.height - 0.7)};
-[self addLine:poinsBottomLeftA pointB:poinsBottomLeftB ctx:ctx];
-
-//右上角
-CGPoint poinsTopRightA[] = {CGPointMake(rect.origin.x + rect.size.width - 15, rect.origin.y + 0.7),CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + 0.7 )};
-CGPoint poinsTopRightB[] = {CGPointMake(rect.origin.x + rect.size.width-0.7, rect.origin.y),CGPointMake(rect.origin.x + rect.size.width - 0.7, rect.origin.y + 15 + 0.7 )};
-[self addLine:poinsTopRightA pointB:poinsTopRightB ctx:ctx];
-
-CGPoint poinsBottomRightA[] = {CGPointMake(rect.origin.x + rect.size.width -0.7, rect.origin.y + rect.size.height - 15),CGPointMake(rect.origin.x - 0.7 + rect.size.width, rect.origin.y + rect.size.height )};
-CGPoint poinsBottomRightB[] = {CGPointMake(rect.origin.x + rect.size.width - 15 , rect.origin.y + rect.size.height-0.7),CGPointMake(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height - 0.7)};
-[self addLine:poinsBottomRightA pointB:poinsBottomRightB ctx:ctx];
-CGContextStrokePath(ctx);
-
-
-- (void)addLine:(CGPoint[])pointA pointB:(CGPoint[])pointB ctx:(CGContextRef)ctx {
-CGContextAddLines(ctx, pointA, 2);
-CGContextAddLines(ctx, pointB, 2);
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;最近在做一个支付类的APP, 涉及到二维码的使用，上网查一些资料，发现网上的资料都N年之前了。也找到了一些大神的demo,但却是各种封装，一眼看不到重点，几经周折，才搞出来。本文是一个最简单的使用。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a 
     
     </summary>
     
