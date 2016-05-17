@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/05/17/TypeEncodings/</loc>
+    
+    <lastmod>2016-05-17T04:49:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/05/11/Swift%E4%B8%ADprotocol%E7%9A%84%E4%B8%89%E7%A7%8D%E5%AE%9E%E7%8E%B0%E4%BB%A5%E5%8F%8Amutating%E5%85%B3%E9%94%AE%E8%AF%8D/</loc>
     
     <lastmod>2016-05-11T09:35:38.000Z</lastmod>
