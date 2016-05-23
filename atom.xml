@@ -5,15 +5,70 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-17T07:05:19.000Z</updated>
+  <updated>2016-05-23T04:43:42.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>最爱冰红茶</name>
+    <name>百度一下jms</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP学习笔记（1）—基础</title>
+    <link href="http://yoursite.com/2016/05/23/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2016/05/23/PHP学习笔记——基础/</id>
+    <published>2016-05-23T03:52:29.000Z</published>
+    <updated>2016-05-23T04:43:42.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;努力学习，天天向上！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;echo-和-print&quot;&gt;&lt;a href=&quot;#echo-和-print&quot; class=&quot;headerlink&quot; title=&quot;echo 和 print&quot;&gt;&lt;/a&gt;echo 和 print&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;echo: 能够输出一个以上的字符串；&lt;/li&gt;
+&lt;li&gt;print: 只能输出一个字符串，并始终返回1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$txt1 = &lt;span class=&quot;string&quot;&gt;&quot;Learn php&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$txt2 = &lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Volvo&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;BMW&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;SAAB&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;($txt1);	&lt;span class=&quot;comment&quot;&gt;// Learn php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;my car is &amp;#123;$txt2[1]&amp;#125;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);	&lt;span class=&quot;comment&quot;&gt;// my car is BMW&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;my &quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;car &quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;is &quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;BMW&quot;&lt;/span&gt;;	&lt;span class=&quot;comment&quot;&gt;// my car is BMW&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;my car is &amp;#123;$txt2[0]&amp;#125;&quot;&lt;/span&gt;);		&lt;span class=&quot;comment&quot;&gt;// my car is Volvo&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// print &quot;my car is &amp;#123;$txt2[2]&amp;lt;br&amp;gt;&amp;#125;&quot;; // 注意字符串中能包含 HTML 标记,如&amp;lt;br&amp;gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// print(&quot;Hello&quot;, &quot;world&quot;); 	// print 只能输出一个字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;var-dump&quot;&gt;&lt;a href=&quot;#var-dump&quot; class=&quot;headerlink&quot; title=&quot;var_dump()&quot;&gt;&lt;/a&gt;var_dump()&lt;/h4&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump(&lt;span class=&quot;number&quot;&gt;-444&lt;/span&gt;);		&lt;span class=&quot;comment&quot;&gt;// 整型 int(-444)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);		&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump(&lt;span class=&quot;number&quot;&gt;4.456&lt;/span&gt;);	&lt;span class=&quot;comment&quot;&gt;// 浮点类型 float(4.456)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);		&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump(&lt;span class=&quot;number&quot;&gt;0x34&lt;/span&gt;);		&lt;span class=&quot;comment&quot;&gt;// 十六进制 int(52) &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);		&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump(&lt;span class=&quot;number&quot;&gt;076&lt;/span&gt;);		&lt;span class=&quot;comment&quot;&gt;// 八进制 int(62)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);		&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump(&lt;span class=&quot;number&quot;&gt;2.4e-3&lt;/span&gt;);	&lt;span class=&quot;comment&quot;&gt;// float(0.0024)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump($txt2);	&lt;span class=&quot;comment&quot;&gt;// 数组 array(3) &amp;#123; [0]=&amp;gt; string(5) &quot;Volvo&quot; [1]=&amp;gt; string(3) &quot;BMW&quot; [2]=&amp;gt; string(4) &quot;SAAB&quot; &amp;#125; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump($null);	&lt;span class=&quot;comment&quot;&gt;// NULL&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h4&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 字符串长度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;字符串长度：&quot;&lt;/span&gt;, strlen(&lt;span class=&quot;string&quot;&gt;&quot;HELLO&quot;&lt;/span&gt;);		&lt;span class=&quot;comment&quot;&gt;// 5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 文本检索&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;文本检索：&quot;&lt;/span&gt;, strpos(&lt;span class=&quot;string&quot;&gt;&quot;Hello world&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;world&quot;&lt;/span&gt;);	&lt;span class=&quot;comment&quot;&gt;// 6&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;文本检索：&quot;&lt;/span&gt;, strpos(&lt;span class=&quot;string&quot;&gt;&quot;Hello world&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;III&quot;&lt;/span&gt;);		&lt;span class=&quot;comment&quot;&gt;// &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;define&quot;&gt;&lt;a href=&quot;#define&quot; class=&quot;headerlink&quot; title=&quot;define()&quot;&gt;&lt;/a&gt;define()&lt;/h4&gt;&lt;p&gt;常量：常量用define()定义，且一旦被定义就无法更改或者撤销定义。常量以字符或者下划线开头（常量名称前面没有$符号）。类似OC中的宏。&lt;/p&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;define(&lt;span class=&quot;string&quot;&gt;&quot;BGCOLOR&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;green&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;BGCOLOR: &quot;&lt;/span&gt;,BGCOLOR;	&lt;span class=&quot;comment&quot;&gt;// BGCOLOR: green&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;字符串运算符&quot;&gt;&lt;a href=&quot;#字符串运算符&quot; class=&quot;headerlink&quot; title=&quot;字符串运算符&quot;&gt;&lt;/a&gt;字符串运算符&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;. 串接&lt;/p&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$one = &lt;span class=&quot;string&quot;&gt;&quot;Hello&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$two = $one.&lt;span class=&quot;string&quot;&gt;&quot; world&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;($two);		&lt;span class=&quot;comment&quot;&gt;// Hello world&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;.= 串接赋值&lt;/p&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$one .= &lt;span class=&quot;string&quot;&gt;&quot; world&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;($one);  	&lt;span class=&quot;comment&quot;&gt;// Hello world&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;递增&quot;&gt;&lt;a href=&quot;#递增&quot; class=&quot;headerlink&quot; title=&quot;递增&quot;&gt;&lt;/a&gt;递增&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;++$x:     先递增，后返回;  &lt;/li&gt;
+&lt;li&gt;$x++:      先返回，后递增;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$x = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; ++$x;		&lt;span class=&quot;comment&quot;&gt;// 11&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$y = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; $y++;		&lt;span class=&quot;comment&quot;&gt;// 10&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;比较运算符&quot;&gt;&lt;a href=&quot;#比较运算符&quot; class=&quot;headerlink&quot; title=&quot;比较运算符&quot;&gt;&lt;/a&gt;比较运算符&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;==： 等于（如果$x等于$y,则返回true）        &lt;/li&gt;
+&lt;li&gt;===：全等（如果 $x 等于 $y，且它们类型相同，则返回 true。）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$p = &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$q = &lt;span class=&quot;string&quot;&gt;&quot;100&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump($p == $q);		&lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; $p === $q;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump($p === $q);	&lt;span class=&quot;comment&quot;&gt;// false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;逻辑运算符&quot;&gt;&lt;a href=&quot;#逻辑运算符&quot; class=&quot;headerlink&quot; title=&quot;逻辑运算符&quot;&gt;&lt;/a&gt;逻辑运算符&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;xor: 异或（如果 $x 和 $y 有且仅有一个为 true，则返回 true。）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var_dump(&lt;span class=&quot;number&quot;&gt;34&lt;/span&gt;&amp;gt;&lt;span class=&quot;number&quot;&gt;45&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;xor&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;33&lt;/span&gt; == &lt;span class=&quot;number&quot;&gt;33&lt;/span&gt;);		&lt;span class=&quot;comment&quot;&gt;// true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;数组运算符&quot;&gt;&lt;a href=&quot;#数组运算符&quot; class=&quot;headerlink&quot; title=&quot;数组运算符&quot;&gt;&lt;/a&gt;数组运算符&lt;/h4&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$array_1 = &lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;a&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;red&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;b&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;green&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$array_2 = &lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;a&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;yellow&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;d&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;blue&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$array_3 = &lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;a&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;yellow&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;d&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;blue&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$array_4 = &lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;d&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;blue&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;a&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;yellow&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// key被覆盖，但value值不会呗覆盖&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump($array_1 + $array_2);	&lt;span class=&quot;comment&quot;&gt;// array(3) &amp;#123; [&quot;a&quot;]=&amp;gt; string(3) &quot;red&quot; [&quot;b&quot;]=&amp;gt; string(5) &quot;green&quot; [&quot;d&quot;]=&amp;gt; string(4) &quot;blue&quot; &amp;#125; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 如果 $x 和 $y 拥有相同的键/值对，则返回 true。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump($array_1 == $array_3);	&lt;span class=&quot;comment&quot;&gt;// bool(false) &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump($array_2 == $array_3);	&lt;span class=&quot;comment&quot;&gt;// bool(true) &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 如果 $x 和 $y 拥有相同的键/值对，且顺序相同类型相同，则返回 true。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump($array_3 === $array_4);  &lt;span class=&quot;comment&quot;&gt;// bool(false)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var_dump($array_3 === $array_2);  &lt;span class=&quot;comment&quot;&gt;// // bool(true) &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;努力学习，天天向上！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;echo-和-print&quot;&gt;&lt;a href=&quot;#echo-和-print&quot; class=&quot;headerlink&quot; title=&quot;echo 和 print&quot;&gt;&lt;/a&gt;echo 
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>移动端数据库Realm</title>
@@ -1254,251 +1309,6 @@ func upLoadImage(urlStr: String, image: UIImage, dataType: DataType, reponse: (r
     
       &lt;blockquote&gt;
 &lt;p&gt;iOS9推出的Core Spotlight(CS)框架，利用CS做应用内搜索。&lt;br&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/CoreSpotlight.git&quot; target=&quot;_blank&quot; rel=&quot;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>BLE_Central</title>
-    <link href="http://yoursite.com/2016/02/26/BLE-Central/"/>
-    <id>http://yoursite.com/2016/02/26/BLE-Central/</id>
-    <published>2016-02-26T01:08:38.000Z</published>
-    <updated>2016-03-15T07:10:27.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;iOS蓝牙开发，中心模式开发。&lt;a href=&quot;https://github.com/zhangzhaopds/BLE_Central.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;相关DEMO&lt;/a&gt;    &lt;a href=&quot;https://github.com/zhangzhaopds/BluetoothStubOnOSX.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;模拟外设&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;iOS链接外设的代码实现流程&quot;&gt;&lt;a href=&quot;#iOS链接外设的代码实现流程&quot; class=&quot;headerlink&quot; title=&quot;iOS链接外设的代码实现流程&quot;&gt;&lt;/a&gt;iOS链接外设的代码实现流程&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;1. 建立中心角色
-2. 扫描外设（discover）
-3. 连接外设(connect)
-4. 扫描外设中的服务和特征(discover)
-    - 4.1 获取外设的services
-    - 4.2 获取外设的Characteristics,获取Characteristics的值，获取Characteristics的Descriptor和Descriptor的值
-5. 与外设做数据交互(explore and interact)
-6. 订阅Characteristic的通知
-7. 断开连接(disconnect)
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;实现步骤&quot;&gt;&lt;a href=&quot;#实现步骤&quot; class=&quot;headerlink&quot; title=&quot;实现步骤&quot;&gt;&lt;/a&gt;实现步骤&lt;/h3&gt;&lt;h4 id=&quot;1-初始化-init&quot;&gt;&lt;a href=&quot;#1-初始化-init&quot; class=&quot;headerlink&quot; title=&quot;1.初始化(init)&quot;&gt;&lt;/a&gt;1.初始化(init)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;#import &amp;lt;CoreBluetooth/CoreBluetooth.h&amp;gt;
-
-@interface ViewController ()&amp;lt;CBCentralManagerDelegate&amp;gt;
-
-@property (nonatomic, strong) manager *centralManager;
-
-@property (nonatomic, strong) CBPeripheral *peripheral;
-
-// CBCentralManagerOptionShowPowerAlertKey的作用是，当设备蓝牙未打开时打开
-NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], CBCentralManagerOptionShowPowerAlertKey, nil];
-
-// 初始化并设置委托和线程队列，默认main线程
-self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:options];
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;2-扫描外设-discover&quot;&gt;&lt;a href=&quot;#2-扫描外设-discover&quot; class=&quot;headerlink&quot; title=&quot;2.扫描外设(discover)&quot;&gt;&lt;/a&gt;2.扫描外设(discover)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;-(void)centralManagerDidUpdateState:(CBCentralManager *)central{
-
-        switch (central.state) {
-            case CBCentralManagerStateUnknown:
-                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStateUnknown&amp;quot;);
-                break;
-            case CBCentralManagerStateResetting:
-                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStateResetting&amp;quot;);
-                break;
-            case CBCentralManagerStateUnsupported:
-                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStateUnsupported&amp;quot;);
-                break;
-            case CBCentralManagerStateUnauthorized:
-                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStateUnauthorized&amp;quot;);
-                break;
-            case CBCentralManagerStatePoweredOff:
-                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStatePoweredOff&amp;quot;);
-                break;
-            case CBCentralManagerStatePoweredOn:
-                NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;CBCentralManagerStatePoweredOn&amp;quot;);
-                //开始扫描周围的外设
-                /*
-                 第一个参数nil就是扫描周围所有的外设，扫描到外设后会进入
-                      - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI;
-                 */
-                [manager scanForPeripheralsWithServices:nil options:nil];
-
-                break;
-            default:
-                break;
-        }
-
-    }
-
-    //扫描到设备会进入方法
-    -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
-
-        NSLog(@&amp;quot;当扫描到设备:%@&amp;quot;,peripheral.name);
-        //接下来可以连接设备
-
-    }
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;3-链接外设-connect&quot;&gt;&lt;a href=&quot;#3-链接外设-connect&quot; class=&quot;headerlink&quot; title=&quot;3.链接外设(connect)&quot;&gt;&lt;/a&gt;3.链接外设(connect)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//扫描到设备会进入方法
- -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
-
-//连接设备（注意：这里使用self.peripheral,而不是peripheral,是因为如果peripheral被释放掉，将不会实现连接到外设的回调方法，也就是下面三个方法将不执行）
-     self.peripheral = peripheral;
-     [manager connectPeripheral:self.peripheral options:nil]; 
- }
-
- //连接到Peripherals-成功
- - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-     NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;连接到名称为（%@）的设备-成功&amp;quot;,peripheral.name);
- }
-
- //连接到Peripherals-失败
- -(void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-     NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;连接到名称为（%@）的设备-失败,原因:%@&amp;quot;,[peripheral name],[error localizedDescription]);
- }
-
- //Peripherals断开连接
- - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-     NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;外设连接断开连接 %@: %@\n&amp;quot;, [peripheral name], [error localizedDescription]);
- }
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;4-获取外设的services&quot;&gt;&lt;a href=&quot;#4-获取外设的services&quot; class=&quot;headerlink&quot; title=&quot;4.获取外设的services&quot;&gt;&lt;/a&gt;4.获取外设的services&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//连接到Peripherals-成功
-   - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
-   {
-       NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;连接到名称为（%@）的设备-成功&amp;quot;,peripheral.name);
-       //设置的peripheral委托CBPeripheralDelegate
-       //@interface ViewController : UIViewController&amp;lt;CBCentralManagerDelegate,CBPeripheralDelegate&amp;gt;
-       [peripheral setDelegate:self];
-       //扫描外设Services，成功后会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
-       [peripheral discoverServices:nil];
-
-   }
-
-   //扫描到Services
-   -(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
-       //  NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;扫描到服务：%@&amp;quot;,peripheral.services);
-       if (error)
-       {
-           NSLog(@&amp;quot;&amp;gt;&amp;gt;&amp;gt;Discovered services for %@ with error: %@&amp;quot;, peripheral.name, [error localizedDescription]);
-           return;
-       }
-
-       for (CBService *service in peripheral.services) {
-                        NSLog(@&amp;quot;%@&amp;quot;,service.UUID);
-                        //扫描每个service的Characteristics，扫描到后会进入方法： -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
-                        [peripheral discoverCharacteristics:nil forService:service];
-                    }
-
-   }
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;5-获取外设的Characteristics-Descriptor&quot;&gt;&lt;a href=&quot;#5-获取外设的Characteristics-Descriptor&quot; class=&quot;headerlink&quot; title=&quot;5.获取外设的Characteristics,Descriptor&quot;&gt;&lt;/a&gt;5.获取外设的Characteristics,Descriptor&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//扫描到Characteristics
- -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
-     if (error)
-     {
-         NSLog(@&amp;quot;error Discovered characteristics for %@ with error: %@&amp;quot;, service.UUID, [error localizedDescription]);
-         return;
-     }
-
-     for (CBCharacteristic *characteristic in service.characteristics)
-     {
-         NSLog(@&amp;quot;service:%@ 的 Characteristic: %@&amp;quot;,service.UUID,characteristic.UUID);
-     }
-
-     //获取Characteristic的值，读到数据会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
-     for (CBCharacteristic *characteristic in service.characteristics){
-         {
-             [peripheral readValueForCharacteristic:characteristic];
-         }
-     }
-
-     //搜索Characteristic的Descriptors，读到数据会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
-     for (CBCharacteristic *characteristic in service.characteristics){
-         [peripheral discoverDescriptorsForCharacteristic:characteristic];
-     }
-
-
- }
-
-//获取的charateristic的值
--(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
-    //打印出characteristic的UUID和值
-    //!注意，value的类型是NSData，具体开发时，会根据外设协议制定的方式去解析数据
-    NSLog(@&amp;quot;characteristic uuid:%@  value:%@&amp;quot;,characteristic.UUID,characteristic.value);
-
-}
-
-//搜索到Characteristic的Descriptors
--(void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
-
-    //打印出Characteristic和他的Descriptors
-     NSLog(@&amp;quot;characteristic uuid:%@&amp;quot;,characteristic.UUID);
-    for (CBDescriptor *d in characteristic.descriptors) {
-        NSLog(@&amp;quot;Descriptor uuid:%@&amp;quot;,d.UUID);
-    }
-
-}
-//获取到Descriptors的值
--(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForDescriptor:(CBDescriptor *)descriptor error:(NSError *)error{
-    //打印出DescriptorsUUID 和value
-    //这个descriptor都是对于characteristic的描述，一般都是字符串，所以这里我们转换成字符串去解析
-    NSLog(@&amp;quot;characteristic uuid:%@  value:%@&amp;quot;,[NSString stringWithFormat:@&amp;quot;%@&amp;quot;,descriptor.UUID],descriptor.value);
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;6-把数据写入到Characteristic中&quot;&gt;&lt;a href=&quot;#6-把数据写入到Characteristic中&quot; class=&quot;headerlink&quot; title=&quot;6.把数据写入到Characteristic中&quot;&gt;&lt;/a&gt;6.把数据写入到Characteristic中&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//写数据
--(void)writeCharacteristic:(CBPeripheral *)peripheral
-            characteristic:(CBCharacteristic *)characteristic
-                     value:(NSData *)value{
-
-    //打印出 characteristic 的权限，可以看到有很多种，这是一个NS_OPTIONS，就是可以同时用于好几个值，常见的有read，write，notify，indicate，知知道这几个基本就够用了，前连个是读写权限，后两个都是通知，两种不同的通知方式。
-    /*
-     typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
-     CBCharacteristicPropertyBroadcast                                                = 0x01,
-     CBCharacteristicPropertyRead                                                    = 0x02,
-     CBCharacteristicPropertyWriteWithoutResponse                                    = 0x04,
-     CBCharacteristicPropertyWrite                                                    = 0x08,
-     CBCharacteristicPropertyNotify                                                    = 0x10,
-     CBCharacteristicPropertyIndicate                                                = 0x20,
-     CBCharacteristicPropertyAuthenticatedSignedWrites                                = 0x40,
-     CBCharacteristicPropertyExtendedProperties                                        = 0x80,
-     CBCharacteristicPropertyNotifyEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)        = 0x100,
-     CBCharacteristicPropertyIndicateEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)    = 0x200
-     };
-
-     */
-    NSLog(@&amp;quot;%lu&amp;quot;, (unsigned long)characteristic.properties);
-
-
-    //只有 characteristic.properties 有write的权限才可以写
-    if(characteristic.properties &amp;amp; CBCharacteristicPropertyWrite){
-        /*
-            最好一个type参数可以为CBCharacteristicWriteWithResponse或type:CBCharacteristicWriteWithResponse,区别是是否会有反馈
-        */
-        [peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-    }else{
-        NSLog(@&amp;quot;该字段不可写！&amp;quot;);
-    }
-
-
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;7-订阅Characteristic的通知&quot;&gt;&lt;a href=&quot;#7-订阅Characteristic的通知&quot; class=&quot;headerlink&quot; title=&quot;7.订阅Characteristic的通知&quot;&gt;&lt;/a&gt;7.订阅Characteristic的通知&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//设置通知
--(void)notifyCharacteristic:(CBPeripheral *)peripheral
-            characteristic:(CBCharacteristic *)characteristic{
-    //设置通知，数据通知会进入：didUpdateValueForCharacteristic方法
-    [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-
-}
-
-//取消通知
--(void)cancelNotifyCharacteristic:(CBPeripheral *)peripheral
-             characteristic:(CBCharacteristic *)characteristic{
-
-     [peripheral setNotifyValue:NO forCharacteristic:characteristic];
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;7-断开连接-disconnect&quot;&gt;&lt;a href=&quot;#7-断开连接-disconnect&quot; class=&quot;headerlink&quot; title=&quot;7.断开连接(disconnect)&quot;&gt;&lt;/a&gt;7.断开连接(disconnect)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;//停止扫描并断开连接
--(void)disconnectPeripheral:(CBCentralManager *)centralManager
-                 peripheral:(CBPeripheral *)peripheral{
-    //停止扫描
-    [centralManager stopScan];
-    //断开连接
-    [centralManager cancelPeripheralConnection:peripheral];
-}
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;iOS蓝牙开发，中心模式开发。&lt;a href=&quot;https://github.com/zhangzhaopds/BLE_Central.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;相关DEMO&lt;/a&gt;    &lt;a hre
     
     </summary>
     
