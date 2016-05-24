@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-24T02:07:11.000Z</updated>
+  <updated>2016-05-24T09:17:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>RTSP_H264</title>
+    <link href="http://yoursite.com/2016/05/24/RTSP-H264/"/>
+    <id>http://yoursite.com/2016/05/24/RTSP-H264/</id>
+    <published>2016-05-24T09:04:54.000Z</published>
+    <updated>2016-05-24T09:17:00.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;基于RTSP协议实现的iOS端推流，只是搜集到的资料，对于非科班出身的我正在努力学习相关知识。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;文档链接&quot;&gt;&lt;a href=&quot;#文档链接&quot; class=&quot;headerlink&quot; title=&quot;文档链接&quot;&gt;&lt;/a&gt;文档链接&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/RTSP.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/zhangzhaopds/RTSP.git&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;简单测试&quot;&gt;&lt;a href=&quot;#简单测试&quot; class=&quot;headerlink&quot; title=&quot;简单测试&quot;&gt;&lt;/a&gt;简单测试&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;从文档链接下载工程，并在真机上运行。&lt;/li&gt;
+&lt;li&gt;在MAC上运行VLC(需要预先安装); Open media —&amp;gt; Network —&amp;gt; URL(输入真机上显示的地址，如&lt;code&gt;rtsp://192.168.1.119/&lt;/code&gt;) —&amp;gt; Open。如果成功，就可以在VLC中看到手机中拍摄到的视频。&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;基于RTSP协议实现的iOS端推流，只是搜集到的资料，对于非科班出身的我正在努力学习相关知识。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;文档链接&quot;&gt;&lt;a href=&quot;#文档链接&quot; class=&quot;headerlink&quot; title=&quot;文档
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>PHP学习笔记（2）-日期</title>
@@ -1269,37 +1298,6 @@ func upLoadImage(urlStr: String, image: UIImage, dataType: DataType, reponse: (r
 &lt;p&gt;一个简单地Swift语言的网络请求封装，包括数据请求、数据上传、图片下载、图片上传。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/NSURLSession_Swift.
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Fabric-Crashlytics</title>
-    <link href="http://yoursite.com/2016/03/03/Fabric-Crashlytics/"/>
-    <id>http://yoursite.com/2016/03/03/Fabric-Crashlytics/</id>
-    <published>2016-03-03T02:59:15.000Z</published>
-    <updated>2016-03-15T07:12:13.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;Fabric是Twitter公司提供的一款，应用于移动应用开发，统计应用崩溃信息的工具。操作简单，使用方便。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;使用介绍&quot;&gt;&lt;a href=&quot;#使用介绍&quot; class=&quot;headerlink&quot; title=&quot;使用介绍&quot;&gt;&lt;/a&gt;使用介绍&lt;/h3&gt;&lt;h4 id=&quot;申请账号&quot;&gt;&lt;a href=&quot;#申请账号&quot; class=&quot;headerlink&quot; title=&quot;申请账号&quot;&gt;&lt;/a&gt;申请账号&lt;/h4&gt;&lt;p&gt;Crashlytics的服务是免费提供的，但是并不能直接注册使用，需要先申请，打开 &lt;a href=&quot;http://try.crashlytics.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Crashlytic的官网&lt;/a&gt; ，输入自己的邮箱申请使用。之后Fabric会发一封确认邮件，确认成功之后，还会发一封Welcome to Fabric的邮件，点击Get Started with Fabric，根据提示，现在安装Mac端的App，登陆并根据提示完成配置。&lt;/p&gt;
-&lt;h4 id=&quot;设置工程&quot;&gt;&lt;a href=&quot;#设置工程&quot; class=&quot;headerlink&quot; title=&quot;设置工程&quot;&gt;&lt;/a&gt;设置工程&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;1、点击&amp;quot;+ New App&amp;quot; 添加工程项目；
-2、根据提示配置&amp;quot;Run Script&amp;quot;。打开工程-&amp;gt;Build Phases-&amp;gt;Editor-&amp;gt;Add Build Phase-&amp;gt;Add Run Script Build Phase, 然后将Fabric提供的代码粘贴到Shell下， 然后Command+B;
-3、按照提示，将Fabric提供的frameworks(图标)拖到工程里，然后粘贴复制相关代码。
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;测试&quot;&gt;&lt;a href=&quot;#测试&quot; class=&quot;headerlink&quot; title=&quot;测试&quot;&gt;&lt;/a&gt;测试&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;1、可以直接使用Fabric提供的强行Crash代码进行测试，也可以自己写个。
-2、测试的时候需要脱离Xcode的调试环境。最简单的方法就是真机测试，但要注意的是，测试的时候手机和Xcode不要用数据线连接。测试之后，会收到Fabric的测试报告，出现Crash的具体位置，十分方便。
-3、用户也可以在AppStore中下载Fabric,在手机端查看测试报告。
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Fabric是Twitter公司提供的一款，应用于移动应用开发，统计应用崩溃信息的工具。操作简单，使用方便。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;使用介绍&quot;&gt;&lt;a href=&quot;#使用介绍&quot; class=&quot;headerlink&quot; ti
     
     </summary>
     
