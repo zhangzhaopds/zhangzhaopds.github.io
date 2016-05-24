@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>PHP学习笔记（2）-日期 | 百度一下jms的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="总体感觉，php的字符串转日期的功能很强大。
+
+123456789101112131415161718&amp;lt;?php	date_default_timezone_set(&quot;Asia/Shanghai&quot;);	echo &quot;今天是 &quot;.date(&quot;Y.m.d&quot;) .&quot;&amp;lt;br&amp;gt;&quot;;	echo &quot;今天是 &quot;.date(&quot;l&quot;).&quot;&amp;lt;br&amp;gt;&quot;;			// l - 表示周里的某天">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP学习笔记（2）-日期">
+<meta property="og:url" content="http://yoursite.com/2016/05/24/PHP学习笔记2-日期/index.html">
+<meta property="og:site_name" content="百度一下jms的博客">
+<meta property="og:description" content="总体感觉，php的字符串转日期的功能很强大。
+
+123456789101112131415161718&amp;lt;?php	date_default_timezone_set(&quot;Asia/Shanghai&quot;);	echo &quot;今天是 &quot;.date(&quot;Y.m.d&quot;) .&quot;&amp;lt;br&amp;gt;&quot;;	echo &quot;今天是 &quot;.date(&quot;l&quot;).&quot;&amp;lt;br&amp;gt;&quot;;			// l - 表示周里的某天">
+<meta property="og:updated_time" content="2016-05-24T02:07:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP学习笔记（2）-日期">
+<meta name="twitter:description" content="总体感觉，php的字符串转日期的功能很强大。
+
+123456789101112131415161718&amp;lt;?php	date_default_timezone_set(&quot;Asia/Shanghai&quot;);	echo &quot;今天是 &quot;.date(&quot;Y.m.d&quot;) .&quot;&amp;lt;br&amp;gt;&quot;;	echo &quot;今天是 &quot;.date(&quot;l&quot;).&quot;&amp;lt;br&amp;gt;&quot;;			// l - 表示周里的某天">
+  
+    <link rel="alternative" href="/atom.xml" title="百度一下jms的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">百度一下jms</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">百度一下jms</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">百度一下jms</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-PHP学习笔记2-日期" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/24/PHP学习笔记2-日期/" class="article-date">
+  	<time datetime="2016-05-24T01:58:29.000Z" itemprop="datePublished">2016-05-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP学习笔记（2）-日期
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>总体感觉，php的字符串转日期的功能很强大。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	date_default_timezone_set(<span class="string">"Asia/Shanghai"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"今天是 "</span>.date(<span class="string">"Y.m.d"</span>) .<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"今天是 "</span>.date(<span class="string">"l"</span>).<span class="string">"&lt;br&gt;"</span>;			<span class="comment">// l - 表示周里的某天</span></span><br><span class="line">	</span><br><span class="line">	$d = mktime(<span class="number">9</span>, <span class="number">22</span>, <span class="number">44</span>, <span class="number">5</span>, <span class="number">23</span>, <span class="number">2016</span>);	<span class="comment">// 时间戳创建日期</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"创建日期 "</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, $d).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	</span><br><span class="line">	$y = strtotime(<span class="string">"10:38pm April 15 2015"</span>);	<span class="comment">// 字符串转换日期</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"创建日期 "</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, $y).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	</span><br><span class="line">	$tomorrow = strtotime(<span class="string">"tomorrow"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"明天是："</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, $tomorrow).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	$nextSat = strtotime(<span class="string">"next Saturday"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"下个周六："</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, $nextSat).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	$months = strtotime(<span class="string">"+3 Months"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"三个月后："</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, $months).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Y - 年，四位数字; 如: “1999”</li>
+<li>y - 年，二位数字; 如: “99”</li>
+<li>z - 一年中的第几天; 如: “0” 至 “365”</li>
+<li>F - 月份，英文全名; 如: “January”</li>
+<li>m - 月份，二位数字，若不足二位则在前面补零; 如: “01” 至 “12”</li>
+<li>n - 月份，二位数字，若不足二位则不补零; 如: “1” 至 “12”</li>
+<li>M - 月份，三个英文字母; 如: “Jan”</li>
+<li>t - 指定月份的天数; 如: “28” 至 “31”</li>
+<li>d - 几日，二位数字，若不足二位则前面补零; 如: “01” 至 “31”</li>
+<li>j - 几日，二位数字，若不足二位不补零; 如: “1” 至 “31”</li>
+<li>h - 12 小时制的小时; 如: “01” 至 “12”</li>
+<li>H - 24 小时制的小时; 如: “00” 至 “23”</li>
+<li>g - 12 小时制的小时，不足二位不补零; 如: “1” 至 12”</li>
+<li>G - 24 小时制的小时，不足二位不补零; 如: “0” 至 “23”</li>
+<li>i - 分钟; 如: “00” 至 “59”</li>
+<li>s - 秒; 如: “00” 至 “59”</li>
+<li>S - 字尾加英文序数，二个英文字母; 如: “th”，”nd”</li>
+<li>U - 总秒数</li>
+<li>D - 星期几，三个英文字母; 如: “Fri”</li>
+<li>l - 星期几，英文全名; 如: “Friday”</li>
+<li>w - 数字型的星期几，如: “0” (星期日) 至 “6” (星期六)</li>
+<li>a - “am” 或是 “pm”</li>
+<li>A - “AM” 或是 “PM”</li>
+</ul>
+<h3 id="参考地址："><a href="#参考地址：" class="headerlink" title="参考地址："></a>参考地址：</h3><p><a href="http://www.sjyhome.com/php/date.html" target="_blank" rel="external">http://www.sjyhome.com/php/date.html</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/23/PHP学习笔记——基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP学习笔记（1）—基础</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 百度一下jms
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

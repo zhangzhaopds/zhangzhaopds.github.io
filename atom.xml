@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-23T04:43:42.000Z</updated>
+  <updated>2016-05-24T02:07:11.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PHP学习笔记（2）-日期</title>
+    <link href="http://yoursite.com/2016/05/24/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02-%E6%97%A5%E6%9C%9F/"/>
+    <id>http://yoursite.com/2016/05/24/PHP学习笔记2-日期/</id>
+    <published>2016-05-24T01:58:29.000Z</published>
+    <updated>2016-05-24T02:07:11.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;总体感觉，php的字符串转日期的功能很强大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;lt;?php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	date_default_timezone_set(&lt;span class=&quot;string&quot;&gt;&quot;Asia/Shanghai&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;今天是 &quot;&lt;/span&gt;.date(&lt;span class=&quot;string&quot;&gt;&quot;Y.m.d&quot;&lt;/span&gt;) .&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;今天是 &quot;&lt;/span&gt;.date(&lt;span class=&quot;string&quot;&gt;&quot;l&quot;&lt;/span&gt;).&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;			&lt;span class=&quot;comment&quot;&gt;// l - 表示周里的某天&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	$d = mktime(&lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;22&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;44&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;23&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2016&lt;/span&gt;);	&lt;span class=&quot;comment&quot;&gt;// 时间戳创建日期&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;创建日期 &quot;&lt;/span&gt;.date(&lt;span class=&quot;string&quot;&gt;&quot;Y-m-d h:i:sa&quot;&lt;/span&gt;, $d).&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	$y = strtotime(&lt;span class=&quot;string&quot;&gt;&quot;10:38pm April 15 2015&quot;&lt;/span&gt;);	&lt;span class=&quot;comment&quot;&gt;// 字符串转换日期&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;创建日期 &quot;&lt;/span&gt;.date(&lt;span class=&quot;string&quot;&gt;&quot;Y-m-d h:i:sa&quot;&lt;/span&gt;, $y).&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	$tomorrow = strtotime(&lt;span class=&quot;string&quot;&gt;&quot;tomorrow&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;明天是：&quot;&lt;/span&gt;.date(&lt;span class=&quot;string&quot;&gt;&quot;Y-m-d h:i:sa&quot;&lt;/span&gt;, $tomorrow).&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	$nextSat = strtotime(&lt;span class=&quot;string&quot;&gt;&quot;next Saturday&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;下个周六：&quot;&lt;/span&gt;.date(&lt;span class=&quot;string&quot;&gt;&quot;Y-m-d h:i:sa&quot;&lt;/span&gt;, $nextSat).&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	$months = strtotime(&lt;span class=&quot;string&quot;&gt;&quot;+3 Months&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;三个月后：&quot;&lt;/span&gt;.date(&lt;span class=&quot;string&quot;&gt;&quot;Y-m-d h:i:sa&quot;&lt;/span&gt;, $months).&lt;span class=&quot;string&quot;&gt;&quot;&amp;lt;br&amp;gt;&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;Y - 年，四位数字; 如: “1999”&lt;/li&gt;
+&lt;li&gt;y - 年，二位数字; 如: “99”&lt;/li&gt;
+&lt;li&gt;z - 一年中的第几天; 如: “0” 至 “365”&lt;/li&gt;
+&lt;li&gt;F - 月份，英文全名; 如: “January”&lt;/li&gt;
+&lt;li&gt;m - 月份，二位数字，若不足二位则在前面补零; 如: “01” 至 “12”&lt;/li&gt;
+&lt;li&gt;n - 月份，二位数字，若不足二位则不补零; 如: “1” 至 “12”&lt;/li&gt;
+&lt;li&gt;M - 月份，三个英文字母; 如: “Jan”&lt;/li&gt;
+&lt;li&gt;t - 指定月份的天数; 如: “28” 至 “31”&lt;/li&gt;
+&lt;li&gt;d - 几日，二位数字，若不足二位则前面补零; 如: “01” 至 “31”&lt;/li&gt;
+&lt;li&gt;j - 几日，二位数字，若不足二位不补零; 如: “1” 至 “31”&lt;/li&gt;
+&lt;li&gt;h - 12 小时制的小时; 如: “01” 至 “12”&lt;/li&gt;
+&lt;li&gt;H - 24 小时制的小时; 如: “00” 至 “23”&lt;/li&gt;
+&lt;li&gt;g - 12 小时制的小时，不足二位不补零; 如: “1” 至 12”&lt;/li&gt;
+&lt;li&gt;G - 24 小时制的小时，不足二位不补零; 如: “0” 至 “23”&lt;/li&gt;
+&lt;li&gt;i - 分钟; 如: “00” 至 “59”&lt;/li&gt;
+&lt;li&gt;s - 秒; 如: “00” 至 “59”&lt;/li&gt;
+&lt;li&gt;S - 字尾加英文序数，二个英文字母; 如: “th”，”nd”&lt;/li&gt;
+&lt;li&gt;U - 总秒数&lt;/li&gt;
+&lt;li&gt;D - 星期几，三个英文字母; 如: “Fri”&lt;/li&gt;
+&lt;li&gt;l - 星期几，英文全名; 如: “Friday”&lt;/li&gt;
+&lt;li&gt;w - 数字型的星期几，如: “0” (星期日) 至 “6” (星期六)&lt;/li&gt;
+&lt;li&gt;a - “am” 或是 “pm”&lt;/li&gt;
+&lt;li&gt;A - “AM” 或是 “PM”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;参考地址：&quot;&gt;&lt;a href=&quot;#参考地址：&quot; class=&quot;headerlink&quot; title=&quot;参考地址：&quot;&gt;&lt;/a&gt;参考地址：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.sjyhome.com/php/date.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.sjyhome.com/php/date.html&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;总体感觉，php的字符串转日期的功能很强大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>PHP学习笔记（1）—基础</title>
@@ -1249,66 +1300,6 @@ func upLoadImage(urlStr: String, image: UIImage, dataType: DataType, reponse: (r
 &lt;p&gt;Fabric是Twitter公司提供的一款，应用于移动应用开发，统计应用崩溃信息的工具。操作简单，使用方便。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;使用介绍&quot;&gt;&lt;a href=&quot;#使用介绍&quot; class=&quot;headerlink&quot; ti
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Spotlight</title>
-    <link href="http://yoursite.com/2016/02/29/Spotlight/"/>
-    <id>http://yoursite.com/2016/02/29/Spotlight/</id>
-    <published>2016-02-29T05:17:43.000Z</published>
-    <updated>2016-03-15T07:12:00.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;iOS9推出的Core Spotlight(CS)框架，利用CS做应用内搜索。&lt;br&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/CoreSpotlight.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本文链接&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;框架&quot;&gt;&lt;a href=&quot;#框架&quot; class=&quot;headerlink&quot; title=&quot;框架&quot;&gt;&lt;/a&gt;框架&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;导入MobileCoreServices.framework和CoreSpotligt.framework
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;主要代码&quot;&gt;&lt;a href=&quot;#主要代码&quot; class=&quot;headerlink&quot; title=&quot;主要代码&quot;&gt;&lt;/a&gt;主要代码&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;// 设置spotlight
-- (void)setSpotligtht {
-    self.searchItemArr = [NSMutableArray array];
-    int i = 0;
-    for (NSDictionary *dic in self.dataArr) {
-
-        CSSearchableItemAttributeSet *searchItemSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:(NSString *)kUTTypeText];
-
-        // 标题
-        searchItemSet.title = [dic objectForKey:@&amp;quot;title&amp;quot;];
-
-        // 描述
-        searchItemSet.contentDescription = [dic objectForKey:@&amp;quot;desc&amp;quot;];
-        NSArray *arr = [[dic objectForKey:@&amp;quot;picture&amp;quot;] componentsSeparatedByString:@&amp;quot;.&amp;quot;];
-
-        // 设置照片路径
-        searchItemSet.thumbnailURL = [[NSBundle mainBundle] URLForResource:arr[0] withExtension:arr[1]];
-
-        // 搜索关键词 keywords(字符串形式) / contactKeywords(数组形式)
-        searchItemSet.keywords = [dic objectForKey:@&amp;quot;title&amp;quot;];
-
-        /*
-         uniqueIdentifier：这个参数唯一地标识Spotlight当前搜索项。你可以用你喜欢的方式构造这个唯一标示符。
-         domainIdentifier:使用这个参数对搜索项进行分组。
-         attributeSet：它就是我们刚刚设置属性时的属性设置对象。
-         */
-        CSSearchableItem *searchItem = [[CSSearchableItem alloc] initWithUniqueIdentifier:[NSString stringWithFormat:@&amp;quot;com.spolight.%d&amp;quot;, i] domainIdentifier:@&amp;quot;books&amp;quot; attributeSet:searchItemSet];
-        [self.searchItemArr addObject:searchItem];
-        i++;
-    }
-
-    [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:self.searchItemArr completionHandler:^(NSError * _Nullable error) {
-        if (error) {
-            NSLog(@&amp;quot;%@&amp;quot;, error.localizedDescription);
-        }
-    }];
-}
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;iOS9推出的Core Spotlight(CS)框架，利用CS做应用内搜索。&lt;br&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/CoreSpotlight.git&quot; target=&quot;_blank&quot; rel=&quot;
     
     </summary>
     
