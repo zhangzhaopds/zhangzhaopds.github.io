@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>PHP学习笔记（3）-json数据生成 | 百度一下jms的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="学习php的最初想法，就是利用PHP来生成iOS开发所需要的json数据，今天终于弄出了点眉目了。
+
+效果
+操作：启动本地服务器Apache,浏览器中打开 http://localhost/php/php_3.php?name=zhangzhao；
+
+结果：
+)
+
+
+实现代码1234567891011121314151617181920212223242526272829303132333435">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP学习笔记（3）-json数据生成">
+<meta property="og:url" content="http://yoursite.com/2016/05/25/PHP学习笔记（3）-json数据生成/index.html">
+<meta property="og:site_name" content="百度一下jms的博客">
+<meta property="og:description" content="学习php的最初想法，就是利用PHP来生成iOS开发所需要的json数据，今天终于弄出了点眉目了。
+
+效果
+操作：启动本地服务器Apache,浏览器中打开 http://localhost/php/php_3.php?name=zhangzhao；
+
+结果：
+)
+
+
+实现代码1234567891011121314151617181920212223242526272829303132333435">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/phpjson.png">
+<meta property="og:updated_time" content="2016-05-25T04:54:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP学习笔记（3）-json数据生成">
+<meta name="twitter:description" content="学习php的最初想法，就是利用PHP来生成iOS开发所需要的json数据，今天终于弄出了点眉目了。
+
+效果
+操作：启动本地服务器Apache,浏览器中打开 http://localhost/php/php_3.php?name=zhangzhao；
+
+结果：
+)
+
+
+实现代码1234567891011121314151617181920212223242526272829303132333435">
+<meta name="twitter:image" content="http://7xoz39.com1.z0.glb.clouddn.com/phpjson.png">
+  
+    <link rel="alternative" href="/atom.xml" title="百度一下jms的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">百度一下jms</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">百度一下jms</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">百度一下jms</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-PHP学习笔记（3）-json数据生成" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/25/PHP学习笔记（3）-json数据生成/" class="article-date">
+  	<time datetime="2016-05-25T03:43:52.000Z" itemprop="datePublished">2016-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP学习笔记（3）-json数据生成
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>学习php的最初想法，就是利用PHP来生成iOS开发所需要的json数据，今天终于弄出了点眉目了。</p>
+</blockquote>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><ol>
+<li><p>操作：启动本地服务器Apache,浏览器中打开 <code>http://localhost/php/php_3.php?name=zhangzhao</code>；</p>
+</li>
+<li><p>结果：</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/phpjson.png" alt="">)</p>
+</li>
+</ol>
+<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html;charset=utf-8"</span>/&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		<span class="meta">&lt;?php</span> </span><br><span class="line">  			<span class="comment">// 	$_GET[]： 获取URL中的请求参数的值(get请求)；</span></span><br><span class="line">			$arr1 = <span class="keyword">array</span>(<span class="string">"name"</span>=&gt;$_GET[<span class="string">"name"</span>], </span><br><span class="line">						<span class="string">"sex"</span>=&gt;$_GET[<span class="string">"sex"</span>], </span><br><span class="line">						<span class="string">"dealCode"</span>=&gt;<span class="string">"10000"</span>, </span><br><span class="line">						<span class="string">"dealMsg"</span>=&gt;<span class="string">"成功"</span>,</span><br><span class="line">						<span class="string">"list"</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">							<span class="string">"address1"</span>=&gt;<span class="string">"成都"</span>,</span><br><span class="line">							<span class="string">"address2"</span>=&gt;<span class="string">"重庆"</span>,</span><br><span class="line">							<span class="string">"citys"</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">								<span class="string">"city1"</span>=&gt;<span class="string">"纬度"</span>,</span><br><span class="line">								<span class="string">"city2"</span>=&gt;<span class="string">"经度"</span>,</span><br><span class="line">							),</span><br><span class="line">						),</span><br><span class="line">						<span class="string">"key"</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">							<span class="string">"key1"</span>=&gt;<span class="string">"12345666"</span>,</span><br><span class="line">						));</span><br><span class="line">			<span class="comment">// 利用递归函数，对json数据中的value值编码urlencode()</span></span><br><span class="line"> 			<span class="function"><span class="keyword">function</span> <span class="title">arrayRecursive</span><span class="params">(&amp;$array, $function, $apply_to_keys_also = false)</span></span>&#123;</span><br><span class="line"> 				<span class="keyword">static</span> $recursive_counter = <span class="number">0</span>;</span><br><span class="line"> 				<span class="keyword">if</span> (++$recursive_counter &gt; <span class="number">1000</span>) &#123;</span><br><span class="line"> 					<span class="keyword">die</span>(<span class="string">'possible deep recursion attack'</span>);</span><br><span class="line">    			&#125;</span><br><span class="line">				<span class="keyword">foreach</span> ($array <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">					<span class="keyword">if</span> (is_array($value)) &#123;</span><br><span class="line">						arrayRecursive($array[$key], $function, $apply_to_keys_also);</span><br><span class="line">					&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">						$array[$key] = $function($value);</span><br><span class="line">        			&#125;</span><br><span class="line">                                                                                                                                       </span><br><span class="line">					<span class="keyword">if</span> ($apply_to_keys_also &amp;&amp; is_string($key)) &#123;</span><br><span class="line">						$new_key = $function($key);</span><br><span class="line">							<span class="keyword">if</span> ($new_key != $key) &#123;</span><br><span class="line">							$array[$new_key] = $array[$key];</span><br><span class="line">							<span class="keyword">unset</span>($array[$key]);</span><br><span class="line">            			&#125;</span><br><span class="line">        			&#125;</span><br><span class="line">    			&#125;</span><br><span class="line">    			$recursive_counter--;</span><br><span class="line">			&#125;</span><br><span class="line">                                                                                                                                      </span><br><span class="line"> 			<span class="function"><span class="keyword">function</span> <span class="title">JSON</span><span class="params">($array)</span> </span>&#123;</span><br><span class="line"> 				arrayRecursive($array, <span class="string">'urlencode'</span>, <span class="keyword">true</span>);</span><br><span class="line"> 				$json = json_encode($array);</span><br><span class="line"> 				<span class="keyword">return</span> urldecode($json);</span><br><span class="line">			&#125;</span><br><span class="line">                                                                                                                                   				<span class="keyword">echo</span> JSON($arr1);</span><br><span class="line">		<span class="meta">?&gt;</span></span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>使用：启动Apache服务器，将此php文件放置到Sites文件夹下，浏览器中打开本地服务器，或直接输入如<a href="http://localhost/text.php?name=zhangsan&amp;sex=male，参数可不添加。" target="_blank" rel="external">http://localhost/text.php?name=zhangsan&amp;sex=male，参数可不添加。</a></p>
+<h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h3><p>在json_encode之前，把所有数组内所有内容都用urlencode()处理一下，然用json_encode()转换成json字符串，最后再用urldecode()将编码过的中文转回来；否则，会出现类似<code>&quot;name&quot;:&quot;\u4e2d\u56fd&quot;.....</code>的乱码。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/24/RTSP-H264/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RTSP_H264_Server</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 百度一下jms
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

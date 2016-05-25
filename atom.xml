@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-24T09:17:00.000Z</updated>
+  <updated>2016-05-25T04:54:32.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>RTSP_H264</title>
+    <title>PHP学习笔记（3）-json数据生成</title>
+    <link href="http://yoursite.com/2016/05/25/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%883%EF%BC%89-json%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90/"/>
+    <id>http://yoursite.com/2016/05/25/PHP学习笔记（3）-json数据生成/</id>
+    <published>2016-05-25T03:43:52.000Z</published>
+    <updated>2016-05-25T04:54:32.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;学习php的最初想法，就是利用PHP来生成iOS开发所需要的json数据，今天终于弄出了点眉目了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;效果&quot;&gt;&lt;a href=&quot;#效果&quot; class=&quot;headerlink&quot; title=&quot;效果&quot;&gt;&lt;/a&gt;效果&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;操作：启动本地服务器Apache,浏览器中打开 &lt;code&gt;http://localhost/php/php_3.php?name=zhangzhao&lt;/code&gt;；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/phpjson.png&quot; alt=&quot;&quot;&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;实现代码&quot;&gt;&lt;a href=&quot;#实现代码&quot; class=&quot;headerlink&quot; title=&quot;实现代码&quot;&gt;&lt;/a&gt;实现代码&lt;/h3&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;53&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;54&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;55&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;56&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;lt;meta http-equiv=&lt;span class=&quot;string&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt; content=&lt;span class=&quot;string&quot;&gt;&quot;text/html;charset=utf-8&quot;&lt;/span&gt;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;meta&quot;&gt;&amp;lt;?php&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  			&lt;span class=&quot;comment&quot;&gt;// 	$_GET[]： 获取URL中的请求参数的值(get请求)；&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			$arr1 = &lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;=&amp;gt;$_GET[&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;], &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;						&lt;span class=&quot;string&quot;&gt;&quot;sex&quot;&lt;/span&gt;=&amp;gt;$_GET[&lt;span class=&quot;string&quot;&gt;&quot;sex&quot;&lt;/span&gt;], &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;						&lt;span class=&quot;string&quot;&gt;&quot;dealCode&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;10000&quot;&lt;/span&gt;, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;						&lt;span class=&quot;string&quot;&gt;&quot;dealMsg&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;成功&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;						&lt;span class=&quot;string&quot;&gt;&quot;list&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;							&lt;span class=&quot;string&quot;&gt;&quot;address1&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;成都&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;							&lt;span class=&quot;string&quot;&gt;&quot;address2&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;重庆&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;							&lt;span class=&quot;string&quot;&gt;&quot;citys&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;								&lt;span class=&quot;string&quot;&gt;&quot;city1&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;纬度&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;								&lt;span class=&quot;string&quot;&gt;&quot;city2&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;经度&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;							),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;						),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;						&lt;span class=&quot;string&quot;&gt;&quot;key&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;keyword&quot;&gt;array&lt;/span&gt;(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;							&lt;span class=&quot;string&quot;&gt;&quot;key1&quot;&lt;/span&gt;=&amp;gt;&lt;span class=&quot;string&quot;&gt;&quot;12345666&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;						));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&lt;span class=&quot;comment&quot;&gt;// 利用递归函数，对json数据中的value值编码urlencode()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 			&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;arrayRecursive&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&amp;amp;$array, $function, $apply_to_keys_also = false)&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 				&lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; $recursive_counter = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 				&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (++$recursive_counter &amp;gt; &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 					&lt;span class=&quot;keyword&quot;&gt;die&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;possible deep recursion attack&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				&lt;span class=&quot;keyword&quot;&gt;foreach&lt;/span&gt; ($array &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; $key =&amp;gt; $value) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;					&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (is_array($value)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;						arrayRecursive($array[$key], $function, $apply_to_keys_also);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;					&amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;						$array[$key] = $function($value);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                                                                                                                       &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;					&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ($apply_to_keys_also &amp;amp;&amp;amp; is_string($key)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;						$new_key = $function($key);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;							&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ($new_key != $key) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;							$array[$new_key] = $array[$key];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;							&lt;span class=&quot;keyword&quot;&gt;unset&lt;/span&gt;($array[$key]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    			$recursive_counter--;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                                                                                                                      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 			&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;($array)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 				arrayRecursive($array, &lt;span class=&quot;string&quot;&gt;&#39;urlencode&#39;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 				$json = json_encode($array);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 				&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; urldecode($json);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                                                                                                                   				&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt; JSON($arr1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;使用：启动Apache服务器，将此php文件放置到Sites文件夹下，浏览器中打开本地服务器，或直接输入如&lt;a href=&quot;http://localhost/text.php?name=zhangsan&amp;amp;sex=male，参数可不添加。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost/text.php?name=zhangsan&amp;amp;sex=male，参数可不添加。&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;注意点：&quot;&gt;&lt;a href=&quot;#注意点：&quot; class=&quot;headerlink&quot; title=&quot;注意点：&quot;&gt;&lt;/a&gt;注意点：&lt;/h3&gt;&lt;p&gt;在json_encode之前，把所有数组内所有内容都用urlencode()处理一下，然用json_encode()转换成json字符串，最后再用urldecode()将编码过的中文转回来；否则，会出现类似&lt;code&gt;&amp;quot;name&amp;quot;:&amp;quot;\u4e2d\u56fd&amp;quot;.....&lt;/code&gt;的乱码。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;学习php的最初想法，就是利用PHP来生成iOS开发所需要的json数据，今天终于弄出了点眉目了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;效果&quot;&gt;&lt;a href=&quot;#效果&quot; class=&quot;headerlink&quot; title=&quot;效果&quot;&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>RTSP_H264_Server</title>
     <link href="http://yoursite.com/2016/05/24/RTSP-H264/"/>
     <id>http://yoursite.com/2016/05/24/RTSP-H264/</id>
     <published>2016-05-24T09:04:54.000Z</published>
-    <updated>2016-05-24T09:17:00.000Z</updated>
+    <updated>2016-05-25T01:36:37.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;基于RTSP协议实现的iOS端推流，只是搜集到的资料，对于非科班出身的我正在努力学习相关知识。&lt;/p&gt;
@@ -1100,204 +1134,6 @@ let kkk = arr.filter {
 &lt;p&gt;高阶函数：函数作为参数或者函数作为返回值。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;函数的写法：&quot;&gt;&lt;a href=&quot;#函数的写法：&quot; class=&quot;headerlink&quot; title=&quot;函数的写法：&quot;&gt;&lt;/a&gt;函数的写法：&lt;/h3&gt;&lt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>NSURLSession_Swift</title>
-    <link href="http://yoursite.com/2016/03/09/NSURLSession-Swift/"/>
-    <id>http://yoursite.com/2016/03/09/NSURLSession-Swift/</id>
-    <published>2016-03-09T06:46:51.000Z</published>
-    <updated>2016-03-15T07:12:35.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;一个简单地Swift语言的网络请求封装，包括数据请求、数据上传、图片下载、图片上传。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/NSURLSession_Swift.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本文链接&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&quot;数据请求&quot;&gt;&lt;a href=&quot;#数据请求&quot; class=&quot;headerlink&quot; title=&quot;数据请求&quot;&gt;&lt;/a&gt;数据请求&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;/**
- 数据请求
-
- - parameter urlStr:  请求地址
- - parameter reponse: 请求结果
- */
-func get(urlStr: String, reponse: (result: AnyObject, response: NSURLResponse)-&amp;gt;Void)-&amp;gt;Void  {
-
-    if urlStr.isEmpty {
-        print(&amp;quot;Request address cannot be empty&amp;quot;)
-        return
-    }
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-
-    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-    let task: NSURLSessionDataTask = session.dataTaskWithRequest(request) { (data, resp, err) -&amp;gt; Void in
-        if (err != nil) {
-            print(&amp;quot;Data request failed: \(err?.code)&amp;quot;)
-            return
-        }
-        do {
-            let json =
-            try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-            reponse(result: json, response: resp!)
-
-        } catch {
-        }
-    }
-    task.resume()
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;数据下载&quot;&gt;&lt;a href=&quot;#数据下载&quot; class=&quot;headerlink&quot; title=&quot;数据下载&quot;&gt;&lt;/a&gt;数据下载&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;/**
- 数据下载
-
- - parameter urlStr:  请求地址
- - parameter reponse: 数据本地保存地址
- */
-func downLoad(urlStr: String, reponse:(location: String)-&amp;gt;Void)-&amp;gt;Void {
-    if urlStr.isEmpty {
-        print(&amp;quot;Request address cannot be empty&amp;quot;)
-        return
-    }
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-    let downLoadTask: NSURLSessionDownloadTask = session.downloadTaskWithRequest(request) { (location, resp, err) -&amp;gt; Void in
-        if (err != nil) {
-            print(&amp;quot;DownLoadData request failed: \(err?.code)&amp;quot;)
-            return
-        }
-        let caches: String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!
-
-        let file: String = caches.stringByAppendingString(&amp;quot;/\(resp!.suggestedFilename!)&amp;quot;)
-
-        if NSFileManager.defaultManager().fileExistsAtPath(file) {
-            if NSThread.isMainThread() {
-                reponse(location: file)
-            } else {
-                dispatch_async(dispatch_get_main_queue(), { () -&amp;gt; Void in
-                    reponse(location: file)
-                })
-            }
-        } else {
-            do {
-                try NSFileManager.defaultManager().moveItemAtPath(location!.path!, toPath: file)
-                if NSThread.isMainThread() {
-                    reponse(location: file)
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), { () -&amp;gt; Void in
-                        reponse(location: file)
-                    })
-                }
-            } catch {
-
-            }
-        }
-    }
-    downLoadTask.resume()
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;JSON数据上传&quot;&gt;&lt;a href=&quot;#JSON数据上传&quot; class=&quot;headerlink&quot; title=&quot;JSON数据上传&quot;&gt;&lt;/a&gt;JSON数据上传&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;/**
- 普通数据上传
-
- - parameter urlStr:     上传地址
- - parameter uploadData: 字典数据
- - parameter reponse:    上传结果
- */
-func upLoadData(urlStr: String, uploadData: AnyObject, reponse: (result: AnyObject, response: NSURLResponse)-&amp;gt;Void)-&amp;gt;Void {
-    if urlStr.isEmpty {
-        print(&amp;quot;Request address cannot be empty&amp;quot;)
-        return
-    }
-
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-
-    request.addValue(&amp;quot;application/json&amp;quot;, forHTTPHeaderField: &amp;quot;Content-Type&amp;quot;)
-    request.addValue(&amp;quot;application/json&amp;quot;, forHTTPHeaderField: &amp;quot;Accept&amp;quot;)
-
-    request.HTTPMethod = &amp;quot;POST&amp;quot;
-    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-    request.timeoutInterval = 20
-    do {
-        let data: NSData =
-        try NSJSONSerialization.dataWithJSONObject(uploadData, options: NSJSONWritingOptions.PrettyPrinted)
-        let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let uploadTask: NSURLSessionUploadTask = session.uploadTaskWithRequest(request, fromData: data, completionHandler: { (result, resp, err) -&amp;gt; Void in
-            if (err != nil) {
-                print(&amp;quot;UpLoadData request failed: \(err?.code)&amp;quot;)
-                return
-            }
-
-            do {
-                let json: AnyObject =
-                try NSJSONSerialization.JSONObjectWithData(result!, options: NSJSONReadingOptions.MutableContainers)
-                reponse(result: json, response: resp!)
-            } catch {
-
-            }
-
-        })
-        uploadTask.resume()
-    } catch {
-
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;图片上传&quot;&gt;&lt;a href=&quot;#图片上传&quot; class=&quot;headerlink&quot; title=&quot;图片上传&quot;&gt;&lt;/a&gt;图片上传&lt;/h4&gt;&lt;pre&gt;&lt;code&gt; /**
- 图片上传
-
- - parameter urlStr:     上传地址
- - parameter uploadData: 图片数据
- - parameter dataType:   图片类型
- - parameter reponse:    上传结果
- */
-func upLoadImage(urlStr: String, image: UIImage, dataType: DataType, reponse: (result: String, response: NSURLResponse)-&amp;gt;Void)-&amp;gt;Void {
-    if urlStr.isEmpty {
-        print(&amp;quot;Request address cannot be empty&amp;quot;)
-        return
-    }
-
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-    var daa = NSData()
-    switch dataType {
-    case .JPEG:
-        request.addValue(&amp;quot;image/jpeg&amp;quot;, forHTTPHeaderField: &amp;quot;Content-Type&amp;quot;)
-        request.addValue(&amp;quot;text/html&amp;quot;, forHTTPHeaderField: &amp;quot;Accept&amp;quot;)
-        daa = UIImageJPEGRepresentation(image, 1)!
-    case .PNG:
-        request.addValue(&amp;quot;image/png&amp;quot;, forHTTPHeaderField: &amp;quot;Content-Type&amp;quot;)
-        request.addValue(&amp;quot;text/html&amp;quot;, forHTTPHeaderField: &amp;quot;Accept&amp;quot;)
-        daa = UIImagePNGRepresentation(image)!
-    }
-
-    request.HTTPMethod = &amp;quot;POST&amp;quot;
-    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-    request.timeoutInterval = 20
-    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-
-    let uploadTask: NSURLSessionUploadTask = session.uploadTaskWithRequest(request, fromData: daa, completionHandler: { (result, resp, err) -&amp;gt; Void in
-
-        if (err != nil) {
-            print(&amp;quot;UpLoadImage request failed: \(err?.code)&amp;quot;)
-            return
-        }
-        let ss: String = String.init(data: result!, encoding: NSUTF8StringEncoding)!
-        reponse(result: ss, response: resp!)
-    })
-    uploadTask.resume()
-}
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;一个简单地Swift语言的网络请求封装，包括数据请求、数据上传、图片下载、图片上传。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/NSURLSession_Swift.
     
     </summary>
     
