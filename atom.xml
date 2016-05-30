@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-30T04:27:10.000Z</updated>
+  <updated>2016-05-30T08:07:38.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MySQL配置问题</title>
+    <link href="http://yoursite.com/2016/05/30/MySQL%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2016/05/30/MySQL配置问题/</id>
+    <published>2016-05-30T07:56:19.000Z</published>
+    <updated>2016-05-30T08:07:38.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;我在Mac上为PHP配置MySQL，遇到的一些问题，记录下。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;问题1-mysql-connect-No-such-file-or-directory-in…&quot;&gt;&lt;a href=&quot;#问题1-mysql-connect-No-such-file-or-directory-in…&quot; class=&quot;headerlink&quot; title=&quot;问题1:    mysql_connect():No such file or directory in…&quot;&gt;&lt;/a&gt;问题1:    mysql_connect():No such file or directory in…&lt;/h2&gt;&lt;p&gt;运行代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;lt;?php&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	$con = mysql_connect(&lt;span class=&quot;string&quot;&gt;&quot;localhost:3306&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;root&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;123456&quot;&lt;/span&gt;) &lt;span class=&quot;keyword&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;die&lt;/span&gt;(mysql_error());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (mysql_query(&lt;span class=&quot;string&quot;&gt;&quot;CREATE my_first_db&quot;&lt;/span&gt;, $con)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;Database created&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&lt;span class=&quot;keyword&quot;&gt;echo&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;error creating database: &quot;&lt;/span&gt;.mysql_error());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	mysql_close($con);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;出现下图的警告：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/mysqlnofile.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;原因：&lt;/p&gt;
+&lt;p&gt;php默认是在 &lt;code&gt;/var/mysql/mysql.sock&lt;/code&gt;中查找&lt;code&gt;mysql.sock&lt;/code&gt;， 而Mac上MySQL再安装时自动放在了&lt;code&gt;/tmp/mysql.sock&lt;/code&gt;，路径不同，所以造成这个原因。&lt;/p&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;终端执行：&lt;code&gt;cd /tmp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;终端执行：&lt;code&gt;ln -s /tmp/mysql.sock mysql.sock&lt;/code&gt; ,这段命令是基于我的 &lt;code&gt;mysql.default_socket&lt;/code&gt;是&lt;code&gt;/var/mysql/mysql.sock&lt;/code&gt;才选择这段命令，具体可看下文的链接。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;关于这个警告的详细参考：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/4219970/warning-mysql-connect-2002-no-such-file-or-directory-trying-to-connect-vi&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/4219970/warning-mysql-connect-2002-no-such-file-or-directory-trying-to-connect-vi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://verysimple.com/2009/01/07/php-on-os-cant-connect-to-local-mysql-server-through-socket-varmysqlmysqlsock/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://verysimple.com/2009/01/07/php-on-os-cant-connect-to-local-mysql-server-through-socket-varmysqlmysqlsock/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;问题2-mysql-connect-Too-many-levels-of-symbolic-links-in…&quot;&gt;&lt;a href=&quot;#问题2-mysql-connect-Too-many-levels-of-symbolic-links-in…&quot; class=&quot;headerlink&quot; title=&quot;问题2:    mysql_connect(): Too many levels of symbolic links in…&quot;&gt;&lt;/a&gt;问题2:    mysql_connect(): Too many levels of symbolic links in…&lt;/h2&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;我在Mac上为PHP配置MySQL，遇到的一些问题，记录下。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;问题1-mysql-connect-No-such-file-or-directory-in…&quot;&gt;&lt;a href=&quot;#问题1-mysq
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>UserAgent（UA）</title>
@@ -1004,39 +1042,6 @@ dispatch_async(queue) {
 &lt;p&gt;时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;什么是GCD&quot;&gt;&lt;a href=&quot;#什么是GCD&quot; class=&quot;hea
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>URL中特殊字符的转义</title>
-    <link href="http://yoursite.com/2016/03/30/URL%E4%B8%AD%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E7%9A%84%E5%A4%84%E7%90%86/"/>
-    <id>http://yoursite.com/2016/03/30/URL中特殊字符的处理/</id>
-    <published>2016-03-30T03:40:38.000Z</published>
-    <updated>2016-03-30T03:20:57.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;解决思路&quot;&gt;&lt;a href=&quot;#解决思路&quot; class=&quot;headerlink&quot; title=&quot;解决思路&quot;&gt;&lt;/a&gt;解决思路&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;// 对URL进行转义
-- (NSString *)formatURLwithText:(NSString *)text {
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)text, NULL, (CFStringRef)@&amp;quot;!*’();:@&amp;amp;=+$,/?%#[]&amp;quot;, kCFStringEncodingUTF8));
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;上面代码是就是最近本的处理方法，关键在用的时机。&lt;/p&gt;
-&lt;p&gt;生成sign值：通常的做法是对所有参数按key排序，然后拼接成a=x&amp;amp;b=y…这样的字符串，然后RSA一下。但是如果encode一下，iOS端和安卓端出现不同的结果，那么服务端拿到以后是可以得到原串的，但是服务端encode一下所得到的结果会不一样，那么校验sign就会失败。&lt;/p&gt;
-&lt;p&gt;但是，如果不对每个value进行转码，在服务端就无法通过&amp;amp;来分割了，因为value中有&amp;amp;时，若不转码就会出问题，因此encode是必须的。&lt;/p&gt;
-&lt;p&gt;解决方法：生成sign时，是遍历所有的key-value，然后拼接，最后RSA。那么，生成sign时，我们只要不对value进行encode，而其他上传的参数值都encode，这样就可以解决我们的问题了。&lt;/p&gt;
-&lt;p&gt;注意点：转义之后的URL不可再用encode；例如，value里面含有中文字段，正常情况下是要进行中文编码的，如果调用转义的方法后，就不需要在进行中文编码的。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;解决思路&quot;&gt;&lt;a href=&quot;#解决思路&quot; class=&quot;headerlink&quot; title
     
     </summary>
     
