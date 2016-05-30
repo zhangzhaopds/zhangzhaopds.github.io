@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-25T04:54:32.000Z</updated>
+  <updated>2016-05-30T04:27:10.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UserAgent（UA）</title>
+    <link href="http://yoursite.com/2016/05/30/UserAgent%EF%BC%88UA%EF%BC%89/"/>
+    <id>http://yoursite.com/2016/05/30/UserAgent（UA）/</id>
+    <published>2016-05-30T03:34:22.000Z</published>
+    <updated>2016-05-30T04:27:10.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://baike.baidu.com/link?url=pJzzqcBEOetxz50EXL30hniOYmoOBoyQ9_6fXulczRjJNN704CyvgMLPdVgT8rLogRCZTw6pOMEf9mIp_wImtgqsOqIePEoEab3rEF9kHhiYIGWmZxipvgU_L6G8lcVbL3dVBUAGLYTE14V7HxT9Ka&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;UserAgent（UA）&lt;/a&gt;用户代理，是浏览器系统信息，主要在浏览器打开链接的时候获取到。UA的应用场景不太多，我们这边的需求是为商户生成一个收款二维码，商户的用户通过支付宝、微信或者百度钱包等APP中的扫一扫功能，扫描二维码跳转到H5界面，输入金额，然后将APP的名字（作为支付方式）和金额等信息发送到收银台，完成支付。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;获取方法&quot;&gt;&lt;a href=&quot;#获取方法&quot; class=&quot;headerlink&quot; title=&quot;获取方法&quot;&gt;&lt;/a&gt;获取方法&lt;/h3&gt;&lt;h4 id=&quot;1、HTML中获取UA&quot;&gt;&lt;a href=&quot;#1、HTML中获取UA&quot; class=&quot;headerlink&quot; title=&quot;1、HTML中获取UA&quot;&gt;&lt;/a&gt;1、HTML中获取UA&lt;/h4&gt;&lt;p&gt;方法：&lt;code&gt;var ua = navigator.userAgent;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;结果：&lt;code&gt;Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13F69 BaiduWallet-5.7.0.1-IOS-walletapp_750_1334_iPhone_9.3.2_9.3.2_2.1.0_2.1.0.4&lt;/code&gt;,这个是苹果手机上面的百度钱包扫一扫功能BaiduWallet-5.7.0.1。&lt;/p&gt;
+&lt;h4 id=&quot;2、PHP中获取UA&quot;&gt;&lt;a href=&quot;#2、PHP中获取UA&quot; class=&quot;headerlink&quot; title=&quot;2、PHP中获取UA&quot;&gt;&lt;/a&gt;2、PHP中获取UA&lt;/h4&gt;&lt;p&gt;方法：&lt;code&gt;$Agent = $_SERVER[&amp;#39;HTTP_USER_AGENT&amp;#39;];&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;结果：&lt;code&gt;Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13F69 BaiduWallet-5.7.0.1-IOS-walletapp_750_1334_iPhone_9.3.2_9.3.2_2.1.0_2.1.0.4&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;注意：&quot;&gt;&lt;a href=&quot;#注意：&quot; class=&quot;headerlink&quot; title=&quot;注意：&quot;&gt;&lt;/a&gt;注意：&lt;/h3&gt;&lt;p&gt;只有当APP利用内置的浏览器打开链接的时候，才能获取app的相关信息。如支付宝和京东钱包的扫一扫打开的url是无法在UA中查看到app的信息的,因为它们将这个链接推给了手机默认浏览器，并不是在APP自身当中打开。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://baike.baidu.com/link?url=pJzzqcBEOetxz50EXL30hniOYmoOBoyQ9_6fXulczRjJNN704CyvgMLPdVgT8rLogRCZTw6pOMEf9mIp_wI
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>PHP学习笔记（3）-json数据生成</title>
@@ -1010,130 +1037,6 @@ dispatch_async(queue) {
 &lt;p&gt;在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;解决思路&quot;&gt;&lt;a href=&quot;#解决思路&quot; class=&quot;headerlink&quot; title
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>高阶函数：map、flatMap、forEach、filter、reduce</title>
-    <link href="http://yoursite.com/2016/03/15/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%EF%BC%9Amap%E3%80%81flatMap%E3%80%81forEach%E3%80%81filter%E3%80%81reduce/"/>
-    <id>http://yoursite.com/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/</id>
-    <published>2016-03-15T03:40:38.000Z</published>
-    <updated>2016-03-15T07:08:33.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;高阶函数：函数作为参数或者函数作为返回值。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;函数的写法：&quot;&gt;&lt;a href=&quot;#函数的写法：&quot; class=&quot;headerlink&quot; title=&quot;函数的写法：&quot;&gt;&lt;/a&gt;函数的写法：&lt;/h3&gt;&lt;h4 id=&quot;1-正常写法&quot;&gt;&lt;a href=&quot;#1-正常写法&quot; class=&quot;headerlink&quot; title=&quot;1.正常写法&quot;&gt;&lt;/a&gt;1.正常写法&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;let res = numbers.sort({$0 &amp;lt; $1})
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;2-Trailing-Closure&quot;&gt;&lt;a href=&quot;#2-Trailing-Closure&quot; class=&quot;headerlink&quot; title=&quot;2.Trailing Closure&quot;&gt;&lt;/a&gt;2.Trailing Closure&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;let ree = numbers.sort{$0 &amp;lt; $1}
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;常用实例&quot;&gt;&lt;a href=&quot;#常用实例&quot; class=&quot;headerlink&quot; title=&quot;常用实例&quot;&gt;&lt;/a&gt;常用实例&lt;/h3&gt;&lt;h4 id=&quot;map函数：&quot;&gt;&lt;a href=&quot;#map函数：&quot; class=&quot;headerlink&quot; title=&quot;map函数：&quot;&gt;&lt;/a&gt;map函数：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;map函数：当数组调用map函数时，闭包作为它的参数，闭包实现对数组单个元素进行某种规则的处理，最终map函数返回一个原数组元素被闭包处理过的新的数组（新的数组元素个数和原先的相等，数组类型可自定义，如数组类型由[Int],变为[String] 或者 [Bool]等）。
-
-let arr = [1, 2, 9, 4, 5]
-// 写法一：推荐写法
-let mrr1 = arr.map {
-    &amp;quot;step.&amp;quot; + String($0)
-}
-// 写法二：
-let mrr2 = arr.map { (a: Int) -&amp;gt; String in
-    &amp;quot;step.&amp;quot; + String(a)
-}
-// 写法三：
-let mrr3 = arr.map ({ (a: Int) -&amp;gt; String in
-    &amp;quot;step.&amp;quot; + String(a)
-})
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;flatMap函数：&quot;&gt;&lt;a href=&quot;#flatMap函数：&quot; class=&quot;headerlink&quot; title=&quot;flatMap函数：&quot;&gt;&lt;/a&gt;flatMap函数：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;flatMap函数：功能和map函数基本相同，不同之处在于，flatMap生成的数组自动去除nil。
-
-// 1、去除nil
-let frr = [&amp;quot;af&amp;quot;, &amp;quot;vf&amp;quot;, &amp;quot;&amp;quot;]
-let frr1 = frr.flatMap { (a: String) -&amp;gt; Int? in
-    if a.characters.count == 0 {
-            return nil
-    } else {
-        return a.characters.count
-    }
-}   // [2,2]
-
-// 2、对嵌套数组的拆分合并
-let fmp = [[2, 6, 4], [5, 3, 7]]
-let fmp1 = fmp.flatMap { (a: [Int]) -&amp;gt; [Int] in
-    a
-}   // [2, 6, 4, 5, 3, 7]
-
-let fmp2 = fmp.map { (a: [Int]) -&amp;gt; [Int] in
-    a
-}   // [[2, 6, 4], [5, 3, 7]]
-
-// 3、对不同类型数组的合并
-let c = [&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]
-let i = [1, 2]
-let fmp3 = i.flatMap { car in
-    c.map { num in
-        num + &amp;quot;\(car)&amp;quot;
-    }
-}   // [&amp;quot;a1&amp;quot;, &amp;quot;b1&amp;quot;, &amp;quot;c1&amp;quot;, &amp;quot;a2&amp;quot;, &amp;quot;b2&amp;quot;, &amp;quot;c2&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;filter函数：&quot;&gt;&lt;a href=&quot;#filter函数：&quot; class=&quot;headerlink&quot; title=&quot;filter函数：&quot;&gt;&lt;/a&gt;filter函数：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;let err = arr.filter { (a: Int) -&amp;gt; Bool in
-    a % 2 == 0
-}   // [2, 4]
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;forEach函数：&quot;&gt;&lt;a href=&quot;#forEach函数：&quot; class=&quot;headerlink&quot; title=&quot;forEach函数：&quot;&gt;&lt;/a&gt;forEach函数：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;arr.forEach { (a: Int) -&amp;gt; () in
-    print(a)
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;reduce函数：&quot;&gt;&lt;a href=&quot;#reduce函数：&quot; class=&quot;headerlink&quot; title=&quot;reduce函数：&quot;&gt;&lt;/a&gt;reduce函数：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;reduce函数：把数组元素合并成一个新的值, 新值类型不固定。有两个参数，第一个参数是返回值的初始值；第二个参数是一个处理数组元素的函数。
-
-// 返回Int
-let crr = arr.reduce(0) { (prevSum: Int, elemen: Int) in
-    return prevSum + elemen
-
-}
-// 返回String
-let crr2 = arr.reduce(&amp;quot;&amp;quot;) {
-      &amp;quot;\($0)&amp;quot; + &amp;quot;\($1)&amp;quot;
-}
-
-// 实现map和filter
-extension Array {
-    func mMap&amp;lt;U&amp;gt; (transform: Element -&amp;gt; U) -&amp;gt; [U] {
-    return reduce([], combine: { $0 + [transform($1)] })
-    }
-    func mFilter (includeElement: Element -&amp;gt; Bool) -&amp;gt; [Element] {
-        return reduce([]) { includeElement($1) ? $0 + [$1] : $0 }
-    }
-}
-
-// 利用 reduce 实现 map
-let ass = arr.reduce([]) { (a: [Int], element: Int) -&amp;gt;[Int] in
-    var t = Array(a)
-    t.append(element * 2)
-    return t
-}
-
-// 利用 reduce 方法一次求出数组中奇数的和、以及偶数乘积
-let sss:(Int, Int) = arr.reduce((0, 1)) {
-    (a: (Int, Int), element: Int) -&amp;gt; (Int, Int) in
-    if element % 2 == 0 {
-        return (a.0, a.1 * element)
-    } else {
-        return (a.0 + element, a.1)
-    }
-}
-
-// 利用 reduce 方法一次求出数组中偶数的平方和
-let kkk = arr.filter {
-        $0 % 2 == 0
-    }.map {
-        $0 * $0
-    }.reduce(0){
-        $0 + $1
-}
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;高阶函数：函数作为参数或者函数作为返回值。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;函数的写法：&quot;&gt;&lt;a href=&quot;#函数的写法：&quot; class=&quot;headerlink&quot; title=&quot;函数的写法：&quot;&gt;&lt;/a&gt;函数的写法：&lt;/h3&gt;&lt;
     
     </summary>
     
