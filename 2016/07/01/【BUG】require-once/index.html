@@ -4,17 +4,33 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives | 百度一下jms的博客</title>
+  <title>【BUG】require_once | 百度一下jms的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="莫道君行早，更有早行人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="百度一下jms的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/4/index.html">
+  <meta name="description" content="GOOD GOOD STUDY,  DAY DAY UP !
+
+【场景】: PHP中，调用支付宝手机网站支付API；
+【问题】: 利用require_once调用同一目录下的文件alipay.config.php, require_once(&amp;quot;alipay.config.php&amp;quot;);报路径错误。
+【原因】: 编译器问题。
+【解决】: require_once($_SERVER">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【BUG】require_once">
+<meta property="og:url" content="http://yoursite.com/2016/07/01/【BUG】require-once/index.html">
 <meta property="og:site_name" content="百度一下jms的博客">
-<meta property="og:description" content="莫道君行早，更有早行人">
+<meta property="og:description" content="GOOD GOOD STUDY,  DAY DAY UP !
+
+【场景】: PHP中，调用支付宝手机网站支付API；
+【问题】: 利用require_once调用同一目录下的文件alipay.config.php, require_once(&amp;quot;alipay.config.php&amp;quot;);报路径错误。
+【原因】: 编译器问题。
+【解决】: require_once($_SERVER">
+<meta property="og:updated_time" content="2016-07-01T07:13:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="百度一下jms的博客">
-<meta name="twitter:description" content="莫道君行早，更有早行人">
+<meta name="twitter:title" content="【BUG】require_once">
+<meta name="twitter:description" content="GOOD GOOD STUDY,  DAY DAY UP !
+
+【场景】: PHP中，调用支付宝手机网站支付API；
+【问题】: 利用require_once调用同一目录下的文件alipay.config.php, require_once(&amp;quot;alipay.config.php&amp;quot;);报路径错误。
+【原因】: 编译器问题。
+【解决】: require_once($_SERVER">
   
     <link rel="alternative" href="/atom.xml" title="百度一下jms的博客" type="application/atom+xml">
   
@@ -158,171 +174,73 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-【BUG】require-once" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/01/28/ActivityIndicator-Swift/" class="archive-article-date">
-  	<time datetime="2016-01-28T06:14:58.000Z" itemprop="datePublished">Jan 28</time>
+    <div class="article-meta">
+      <a href="/2016/07/01/【BUG】require-once/" class="article-date">
+  	<time datetime="2016-07-01T06:58:41.000Z" itemprop="datePublished">2016-07-01</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/01/28/ActivityIndicator-Swift/">ActivityIndicator-Swift</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【BUG】require_once
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+      </header>
       
-        </div></section>
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
+    
+    <div class="article-entry" itemprop="articleBody">
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
+        <blockquote>
+<p>GOOD GOOD STUDY,  DAY DAY UP !</p>
+</blockquote>
+<p>【场景】: PHP中，调用支付宝手机网站支付API；</p>
+<p>【问题】: 利用require_once调用<code>同一目录</code>下的文件alipay.config.php, <code>require_once(&quot;alipay.config.php&quot;);</code>报路径错误。</p>
+<p>【原因】: 编译器问题。</p>
+<p>【解决】: <code>require_once($_SERVER[&#39;DOCUMENT_ROOT&#39;].&quot;/tongxingpay/alipay.config.php&quot;);</code></p>
+<p>【参考】:<a href="http://stackoverflow.com/questions/5364233/php-fatal-error-failed-opening-required-file" target="_blank" rel="external">http://stackoverflow.com/questions/5364233/php-fatal-error-failed-opening-required-file</a></p>
+
+      
+    </div>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/12/30/ZXingObjC二维码/" class="archive-article-date">
-  	<time datetime="2015-12-30T06:53:05.000Z" itemprop="datePublished">Dec 30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/30/ZXingObjC二维码/">ZXingObjC</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/06/11/【BUG】layer与subView添加顺序/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【BUG】layer与subView层次顺序</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/09/UITextView/" class="archive-article-date">
-  	<time datetime="2015-08-09T13:41:24.000Z" itemprop="datePublished">Aug 9</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/09/UITextView/">UITextView</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/03/20/NSAttributedString/" class="archive-article-date">
-  	<time datetime="2015-03-20T11:14:35.000Z" itemprop="datePublished">Mar 20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/20/NSAttributedString/"> NSAttributedString</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/03/06/runtime的那些巧用/" class="archive-article-date">
-  	<time datetime="2015-03-06T13:53:22.000Z" itemprop="datePublished">Mar 6</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/06/runtime的那些巧用/">Runtime</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span>
-    </nav>
-  
 
 </div>
       <footer id="footer">
@@ -348,8 +266,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

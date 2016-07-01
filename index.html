@@ -160,11 +160,11 @@
 
       <div class="body-wrap">
   
-    <article id="post-【BUG】layer与subView添加顺序" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-【BUG】require-once" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/01/【BUG】layer与subView添加顺序/" class="article-date">
-  	<time datetime="2016-07-01T06:14:46.000Z" itemprop="datePublished">2016-07-01</time>
+      <a href="/2016/07/01/【BUG】require-once/" class="article-date">
+  	<time datetime="2016-07-01T06:58:41.000Z" itemprop="datePublished">2016-07-01</time>
 </a>
     </div>
   
@@ -177,7 +177,67 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/01/【BUG】layer与subView添加顺序/">【BUG】layer与subView层次顺序</a>
+      <a class="article-title" href="/2016/07/01/【BUG】require-once/">【BUG】require_once</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>GOOD GOOD STUDY,  DAY DAY UP !</p>
+</blockquote>
+<p>【场景】: PHP中，调用支付宝手机网站支付API；</p>
+<p>【问题】: 利用require_once调用<code>同一目录</code>下的文件alipay.config.php, <code>require_once(&quot;alipay.config.php&quot;);</code>报路径错误。</p>
+<p>【原因】: 编译器问题。</p>
+<p>【解决】: <code>require_once($_SERVER[&#39;DOCUMENT_ROOT&#39;].&quot;/tongxingpay/alipay.config.php&quot;);</code></p>
+<p>【参考】:<a href="http://stackoverflow.com/questions/5364233/php-fatal-error-failed-opening-required-file" target="_blank" rel="external">http://stackoverflow.com/questions/5364233/php-fatal-error-failed-opening-required-file</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-【BUG】layer与subView添加顺序" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/11/【BUG】layer与subView添加顺序/" class="article-date">
+  	<time datetime="2016-06-11T06:14:46.000Z" itemprop="datePublished">2016-06-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/11/【BUG】layer与subView添加顺序/">【BUG】layer与subView层次顺序</a>
     </h1>
   
 
@@ -746,207 +806,6 @@
 <p><strong>目标是取代SQLite。</strong></p>
 </blockquote>
 <p><img src="http://7xoz39.com1.z0.glb.clouddn.com/zzRealm.png" alt=""></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-TypeEncodings" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/17/TypeEncodings/" class="article-date">
-  	<time datetime="2016-05-17T04:48:59.000Z" itemprop="datePublished">2016-05-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/17/TypeEncodings/">TypeEncodings</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Type_Encodings是运行时系统的辅助工具。编译器将函数返回值、参数类型以及实现编译成特定的字符。例如：<code>v@:</code>表示：参数类型为静态类型或者id类型，无返回值的一个方法实现。</p>
-</blockquote>
-<h3 id="encode"><a href="#encode" class="headerlink" title="@encode()"></a>@encode()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char *buf1 = @encode(void);     // buf1 = v</span><br><span class="line">char *buf2 = @encode(float);    // buf2 = f</span><br><span class="line">char *buf3 = @encode(NSArray);  // buf3 = &#123;NSArray=#&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Objective-C-type-encodings"><a href="#Objective-C-type-encodings" class="headerlink" title="Objective-C type encodings"></a>Objective-C type encodings</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">Code</th>
-<th style="text-align:center">Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">c</td>
-<td style="text-align:center">A char</td>
-</tr>
-<tr>
-<td style="text-align:center">i</td>
-<td style="text-align:center">An int</td>
-</tr>
-<tr>
-<td style="text-align:center">s</td>
-<td style="text-align:center">A short</td>
-</tr>
-<tr>
-<td style="text-align:center">l</td>
-<td style="text-align:center">A long</td>
-</tr>
-<tr>
-<td style="text-align:center">q</td>
-<td style="text-align:center">A long long</td>
-</tr>
-<tr>
-<td style="text-align:center">c</td>
-<td style="text-align:center">An unsigned char</td>
-</tr>
-<tr>
-<td style="text-align:center">I</td>
-<td style="text-align:center">An unsigned int</td>
-</tr>
-<tr>
-<td style="text-align:center">S</td>
-<td style="text-align:center">An unsigned short</td>
-</tr>
-<tr>
-<td style="text-align:center">L</td>
-<td style="text-align:center">An unsigned long</td>
-</tr>
-<tr>
-<td style="text-align:center">Q</td>
-<td style="text-align:center">An unsigned long long</td>
-</tr>
-<tr>
-<td style="text-align:center">f</td>
-<td style="text-align:center">A float</td>
-</tr>
-<tr>
-<td style="text-align:center">d</td>
-<td style="text-align:center">A double</td>
-</tr>
-<tr>
-<td style="text-align:center">B</td>
-<td style="text-align:center">A C++ bool or a C99 _Bool</td>
-</tr>
-<tr>
-<td style="text-align:center">v</td>
-<td style="text-align:center">A void</td>
-</tr>
-<tr>
-<td style="text-align:center">*</td>
-<td style="text-align:center">A character string (char *)</td>
-</tr>
-<tr>
-<td style="text-align:center">@</td>
-<td style="text-align:center">An object (whether statically typed or typed id)</td>
-</tr>
-<tr>
-<td style="text-align:center">#</td>
-<td style="text-align:center">A class object (Class)</td>
-</tr>
-<tr>
-<td style="text-align:center">:</td>
-<td style="text-align:center">A method selector (SEL)</td>
-</tr>
-<tr>
-<td style="text-align:center">[array type]</td>
-<td style="text-align:center">An array</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Code</th>
-<th style="text-align:center">Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">{name=type…}</td>
-<td style="text-align:center">A structure</td>
-</tr>
-<tr>
-<td style="text-align:center">(name=type…)</td>
-<td style="text-align:center">A union</td>
-</tr>
-<tr>
-<td style="text-align:center">bnum</td>
-<td style="text-align:center">A bit field of num bits</td>
-</tr>
-<tr>
-<td style="text-align:center">^type</td>
-<td style="text-align:center">A pointer to type</td>
-</tr>
-<tr>
-<td style="text-align:center">?</td>
-<td style="text-align:center">An unknown type (among other things, this code is used for function pointers)</td>
-</tr>
-<tr>
-<td style="text-align:center">r</td>
-<td style="text-align:center">const</td>
-</tr>
-<tr>
-<td style="text-align:center">n</td>
-<td style="text-align:center">in</td>
-</tr>
-<tr>
-<td style="text-align:center">N</td>
-<td style="text-align:center">inout</td>
-</tr>
-<tr>
-<td style="text-align:center">o</td>
-<td style="text-align:center">out</td>
-</tr>
-<tr>
-<td style="text-align:center">O</td>
-<td style="text-align:center">bycopy</td>
-</tr>
-<tr>
-<td style="text-align:center">R</td>
-<td style="text-align:center">byref</td>
-</tr>
-<tr>
-<td style="text-align:center">V</td>
-<td style="text-align:center">oneway</td>
-</tr>
-</tbody>
-</table>
-<p>**OC不支持<code>long double</code>类型的编码。 <code>@encode(long double)</code>返回值是d, 与<code>@encode(double)</code>编码结果一样</p>
 
       
     </div>
