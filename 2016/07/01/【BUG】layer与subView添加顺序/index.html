@@ -4,17 +4,30 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives | 百度一下jms的博客</title>
+  <title>【BUG】layer与subView层次顺序 | 百度一下jms的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="莫道君行早，更有早行人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="百度一下jms的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/4/index.html">
+  <meta name="description" content="GOOD GOOD STUDY,  DAY DAY UP!
+
+【场景】:  Swift语言环境中，自定义二维码扫描界面;
+【问题】: 调用系统摄像头，添加自定义扫描动画视图，在模拟器中可以看到自定义的视图，但在真机测试时却无自定义视图;
+【原因】: 先在VC视图添加自定义动画子视图，之后将摄像头capture添加到了VC视图的layer层；添加子视图，那么子视图的layer层也就相应地添加到了父">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【BUG】layer与subView层次顺序">
+<meta property="og:url" content="http://yoursite.com/2016/07/01/【BUG】layer与subView添加顺序/index.html">
 <meta property="og:site_name" content="百度一下jms的博客">
-<meta property="og:description" content="莫道君行早，更有早行人">
+<meta property="og:description" content="GOOD GOOD STUDY,  DAY DAY UP!
+
+【场景】:  Swift语言环境中，自定义二维码扫描界面;
+【问题】: 调用系统摄像头，添加自定义扫描动画视图，在模拟器中可以看到自定义的视图，但在真机测试时却无自定义视图;
+【原因】: 先在VC视图添加自定义动画子视图，之后将摄像头capture添加到了VC视图的layer层；添加子视图，那么子视图的layer层也就相应地添加到了父">
+<meta property="og:updated_time" content="2016-07-01T06:48:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="百度一下jms的博客">
-<meta name="twitter:description" content="莫道君行早，更有早行人">
+<meta name="twitter:title" content="【BUG】layer与subView层次顺序">
+<meta name="twitter:description" content="GOOD GOOD STUDY,  DAY DAY UP!
+
+【场景】:  Swift语言环境中，自定义二维码扫描界面;
+【问题】: 调用系统摄像头，添加自定义扫描动画视图，在模拟器中可以看到自定义的视图，但在真机测试时却无自定义视图;
+【原因】: 先在VC视图添加自定义动画子视图，之后将摄像头capture添加到了VC视图的layer层；添加子视图，那么子视图的layer层也就相应地添加到了父">
   
     <link rel="alternative" href="/atom.xml" title="百度一下jms的博客" type="application/atom+xml">
   
@@ -158,134 +171,72 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-【BUG】layer与subView添加顺序" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/07/01/【BUG】layer与subView添加顺序/" class="article-date">
+  	<time datetime="2016-07-01T06:14:46.000Z" itemprop="datePublished">2016-07-01</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【BUG】layer与subView层次顺序
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/12/30/ZXingObjC二维码/" class="archive-article-date">
-  	<time datetime="2015-12-30T06:53:05.000Z" itemprop="datePublished">Dec 30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/12/30/ZXingObjC二维码/">ZXingObjC</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>GOOD GOOD STUDY,  DAY DAY UP!</p>
+</blockquote>
+<p>【场景】:  Swift语言环境中，自定义二维码扫描界面;</p>
+<p>【问题】: 调用系统摄像头，添加自定义扫描动画视图，在模拟器中可以看到自定义的视图，但在真机测试时却无自定义视图;</p>
+<p>【原因】: 先在VC视图添加自定义动画子视图，之后将摄像头capture添加到了VC视图的layer层；添加子视图，那么子视图的layer层也就相应地添加到了父视图的layer层，子layer之间的遮盖造成视图的无法显现。</p>
+<p>【修复】: 调整两者的添加顺序</p>
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/31/BCrypt随机盐值加密/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">BCrypt随机盐值加密</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/09/UITextView/" class="archive-article-date">
-  	<time datetime="2015-08-09T13:41:24.000Z" itemprop="datePublished">Aug 9</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/09/UITextView/">UITextView</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/03/20/NSAttributedString/" class="archive-article-date">
-  	<time datetime="2015-03-20T11:14:35.000Z" itemprop="datePublished">Mar 20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/20/NSAttributedString/"> NSAttributedString</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/03/06/runtime的那些巧用/" class="archive-article-date">
-  	<time datetime="2015-03-06T13:53:22.000Z" itemprop="datePublished">Mar 6</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/03/06/runtime的那些巧用/">Runtime</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span>
-    </nav>
-  
 
 </div>
       <footer id="footer">
@@ -311,8 +262,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
