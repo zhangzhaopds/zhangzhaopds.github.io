@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-01T07:13:55.000Z</updated>
+  <updated>2016-07-11T03:10:37.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Extension]-Array</title>
+    <link href="http://yoursite.com/2016/07/11/Extension-Array/"/>
+    <id>http://yoursite.com/2016/07/11/Extension-Array/</id>
+    <published>2016-07-11T03:07:19.000Z</published>
+    <updated>2016-07-11T03:10:37.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Swift中Array的实用延展。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;接受数组为下标输入的读取延展&quot;&gt;&lt;a href=&quot;#接受数组为下标输入的读取延展&quot; class=&quot;headerlink&quot; title=&quot;接受数组为下标输入的读取延展&quot;&gt;&lt;/a&gt;接受数组为下标输入的读取延展&lt;/h3&gt;&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Array&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 接受数组为下标输入的读取延展&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;subscript&lt;/span&gt;(input: [&lt;span class=&quot;type&quot;&gt;Int&lt;/span&gt;])-&amp;gt;&lt;span class=&quot;type&quot;&gt;ArraySlice&lt;/span&gt;&amp;lt;&lt;span class=&quot;type&quot;&gt;Element&lt;/span&gt;&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;get&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; result = &lt;span class=&quot;type&quot;&gt;ArraySlice&lt;/span&gt;&amp;lt;&lt;span class=&quot;type&quot;&gt;Element&lt;/span&gt;&amp;gt;()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; input &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;comment&quot;&gt;// 断言 true继续往下走， false则打印且终止&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;assert&lt;/span&gt;(i &amp;lt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Index out of range&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                result.append(&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;[i])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; result&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;set&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (index, i) &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; input.&lt;span class=&quot;built_in&quot;&gt;enumerate&lt;/span&gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;built_in&quot;&gt;assert&lt;/span&gt;(i &amp;lt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;built_in&quot;&gt;count&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;Index out of range&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;[i] = newValue[index]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; myArr = [&lt;span class=&quot;string&quot;&gt;&quot;ni&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;hao&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;wa&quot;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;myArr[[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// myArr = [&quot;ni&quot;, &quot;hao&quot;, &quot;wa&quot;]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;myArr[[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;]] = [&lt;span class=&quot;string&quot;&gt;&quot;zzz&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;hhh&quot;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// myArr = [&quot;ni&quot;, &quot;zzz&quot;, &quot;hhh&quot;]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Swift中Array的实用延展。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;接受数组为下标输入的读取延展&quot;&gt;&lt;a href=&quot;#接受数组为下标输入的读取延展&quot; class=&quot;headerlink&quot; title=&quot;接受数组为下标输入的读取
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>【BUG】require_once</title>
@@ -934,77 +958,6 @@
 &lt;pre&gt;&lt;code&gt;class var sharedInstance: QRMakeVC {
     struct Static {
         static var onc
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MQTT应用内消息推送</title>
-    <link href="http://yoursite.com/2016/04/11/MQTT%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/"/>
-    <id>http://yoursite.com/2016/04/11/MQTT消息推送/</id>
-    <published>2016-04-11T06:35:30.000Z</published>
-    <updated>2016-04-28T03:49:38.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光的应用内消息更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。MQTT本质上就是一个TCP长连接而已。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/jmesnil/MQTTKit.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MQTTKit&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://blog.csdn.net/cerastes/article/details/36904893?utm_source=tuicool&amp;amp;utm_medium=referral&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DEMO_1&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/MTQQ-.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DEMO_2&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;初始化MQTT&quot;&gt;&lt;a href=&quot;#初始化MQTT&quot; class=&quot;headerlink&quot; title=&quot;初始化MQTT&quot;&gt;&lt;/a&gt;初始化MQTT&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;// 获取设备uuid
-if Keychain.load(&amp;quot;kUUID&amp;quot;) == nil {
-        let uuidRef: CFUUIDRef = CFUUIDCreate(kCFAllocatorDefault)
-        Keychain.save(&amp;quot;kUUID&amp;quot;, data: CFUUIDCreateString(kCFAllocatorDefault, uuidRef))
-}
-let uuid: String = Keychain.load(&amp;quot;kUUID&amp;quot;) as! String
-
-// clientId:用来区分接受消息的设备，此处我用的是设备的UUID,并保存在了钥匙串里，确保唯一性。
-mqtt = MQTTSession.init(clientId: uuid, userName: &amp;quot;name&amp;quot;, password: &amp;quot;psw&amp;quot;)
-mqtt?.connectToHost(&amp;quot;111.111.111.111&amp;quot;, port: 1111)
-mqtt?.setDelegate(self)
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;消息回调&quot;&gt;&lt;a href=&quot;#消息回调&quot; class=&quot;headerlink&quot; title=&quot;消息回调&quot;&gt;&lt;/a&gt;消息回调&lt;/h3&gt;&lt;h4 id=&quot;链接状态回调&quot;&gt;&lt;a href=&quot;#链接状态回调&quot; class=&quot;headerlink&quot; title=&quot;链接状态回调&quot;&gt;&lt;/a&gt;链接状态回调&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;   // 链接状态回调
-   override func session(session: MQTTSession!, handleEvent eventCode: MQTTSessionEvent) {
-
-    switch eventCode {
-    case MQTTSessionEventConnected:
-        print(&amp;quot;消息推送: connected&amp;quot;)
-        // 链接成功后，订阅主题
-        self.mqtt?.subscribeTopic(&amp;quot;TX_APP_PAY&amp;quot;)
-    case MQTTSessionEventConnectionRefused:
-        print(&amp;quot;消息推送: connection refused&amp;quot;)
-    case MQTTSessionEventConnectionClosed:
-        print(&amp;quot;消息推送: connection closed&amp;quot;)
-    case MQTTSessionEventConnectionError:
-        print(&amp;quot;消息推送: connection error&amp;quot;)
-        print(&amp;quot;         reconnecting...&amp;quot;)
-
-        // 链接错误的话，尝试重新链接
-        self.mqtt?.connectToHost(&amp;quot;111.111.111.111&amp;quot;, port: 1111)
-    case MQTTSessionEventProtocolError:
-        print(&amp;quot;消息推送: protocol error&amp;quot;)
-    default:
-        break
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;接收到消息回调&quot;&gt;&lt;a href=&quot;#接收到消息回调&quot; class=&quot;headerlink&quot; title=&quot;接收到消息回调&quot;&gt;&lt;/a&gt;接收到消息回调&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;    // 接收到消息回调
-    override func session(session: MQTTSession!, newMessage data: NSData!, onTopic topic: String!) {
-
-    var dic = NSDictionary()
-    do {
-        dic =
-            try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-    } catch {
-
-    }
-    print(&amp;quot;推送内容：&amp;quot;, dic)
-    print(&amp;quot;推送主题：&amp;quot;, topic)
-}
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光的应用内消息更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。MQTT
     
     </summary>
     
