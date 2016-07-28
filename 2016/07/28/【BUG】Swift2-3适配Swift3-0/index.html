@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>【BUG】Swift2.3适配Swift3.0 | 百度一下jms的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="升级Xcode8.0Beta版，看着公司Swift版本的项目200多个报红，那种酸爽也就苹果能给。慢慢改吧！改的东西很多，但基本都不难，记录几个花费较长时间的Bug。
+
+NO.1【报错】“Use Legacy Swift Language Version” (SWIFT_VERSION) is required to be configured correctly for targets whi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【BUG】Swift2.3适配Swift3.0">
+<meta property="og:url" content="http://yoursite.com/2016/07/28/【BUG】Swift2-3适配Swift3-0/index.html">
+<meta property="og:site_name" content="百度一下jms的博客">
+<meta property="og:description" content="升级Xcode8.0Beta版，看着公司Swift版本的项目200多个报红，那种酸爽也就苹果能给。慢慢改吧！改的东西很多，但基本都不难，记录几个花费较长时间的Bug。
+
+NO.1【报错】“Use Legacy Swift Language Version” (SWIFT_VERSION) is required to be configured correctly for targets whi">
+<meta property="og:updated_time" content="2016-07-28T06:09:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【BUG】Swift2.3适配Swift3.0">
+<meta name="twitter:description" content="升级Xcode8.0Beta版，看着公司Swift版本的项目200多个报红，那种酸爽也就苹果能给。慢慢改吧！改的东西很多，但基本都不难，记录几个花费较长时间的Bug。
+
+NO.1【报错】“Use Legacy Swift Language Version” (SWIFT_VERSION) is required to be configured correctly for targets whi">
+  
+    <link rel="alternative" href="/atom.xml" title="百度一下jms的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">百度一下jms</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">百度一下jms</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">百度一下jms</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-【BUG】Swift2-3适配Swift3-0" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/28/【BUG】Swift2-3适配Swift3-0/" class="article-date">
+  	<time datetime="2016-07-28T05:36:36.000Z" itemprop="datePublished">2016-07-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【BUG】Swift2.3适配Swift3.0
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>升级Xcode8.0Beta版，看着公司Swift版本的项目200多个报红，那种酸爽也就苹果能给。慢慢改吧！改的东西很多，但基本都不难，记录几个花费较长时间的Bug。</p>
+</blockquote>
+<h3 id="NO-1"><a href="#NO-1" class="headerlink" title="NO.1"></a>NO.1</h3><p>【报错】“Use Legacy Swift Language Version” (SWIFT_VERSION) is required to be configured correctly for targets which use Swift. Use the [Edit &gt; Convert &gt; To Current Swift Syntax…] menu to choose a Swift version or use the Build Settings editor to configure the build setting directly.</p>
+<p>【解决方法】设置 Build Settings —-&gt; Use Legacy Swift Language Version —-&gt; YES/NO，改为NO或者YES</p>
+<h3 id="NO-2"><a href="#NO-2" class="headerlink" title="NO.2"></a>NO.2</h3><p>【报错】“ambiguous referenc to member datask(with: completionhandler:)”</p>
+<p>【解决方法】这个是在<code>URLSessionDataTask</code>中遇到的，属于类型不明确的报错。</p>
+<p>修改前的代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> task: <span class="type">URLSessionDataTask</span> = session.dataTask(with: request) &#123; (data, resp, err) <span class="keyword">in</span> 	&#125;</span><br></pre></td></tr></table></figure>
+<p>修改后的代码:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> task: <span class="type">URLSessionDataTask</span> = session.dataTask(with: request <span class="keyword">as</span> <span class="type">URLRequest</span>) &#123; (data, resp, err) <span class="keyword">in</span> &#125;</span><br><span class="line"><span class="comment">// 由于request是NSMutableURLRequest类型，在request 后面添加了 as URLRequest</span></span><br></pre></td></tr></table></figure>
+<h3 id="NO-3"><a href="#NO-3" class="headerlink" title="NO.3"></a>NO.3</h3><p>【报错】”Cannot pass immutable value of type ‘NSDate?’ as inout argument”</p>
+<p>【解决方法】<code>var beginDate:  NSDate? = NSDate()</code></p>
+<p>修改前的代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> beginDate:  <span class="type">Date</span>?</span><br><span class="line"><span class="keyword">var</span> endDate: <span class="type">Date</span>?</span><br><span class="line"><span class="keyword">let</span> calendar: <span class="type">Calendar</span> = <span class="type">Calendar</span>.current</span><br><span class="line"><span class="keyword">let</span> ok: <span class="type">Bool</span> = calendar.range(of: <span class="type">Calendar</span>.<span class="type">Unit</span>.month, start: &amp;beginDate, interval: &amp;interval, <span class="keyword">for</span>: newDate <span class="keyword">as</span> <span class="type">Date</span>)</span><br></pre></td></tr></table></figure>
+<p>修改后的代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> beginDate:  <span class="type">NSDate</span>? = <span class="type">NSDate</span>()</span><br><span class="line"><span class="keyword">var</span> endDate: <span class="type">NSDate</span>? = <span class="type">NSDate</span>()</span><br><span class="line"><span class="keyword">let</span> calendar: <span class="type">Calendar</span> = <span class="type">Calendar</span>.current</span><br><span class="line"><span class="keyword">let</span> ok: <span class="type">Bool</span> = calendar.range(of: <span class="type">Calendar</span>.<span class="type">Unit</span>.month, start: &amp;beginDate, interval: &amp;interval, <span class="keyword">for</span>: newDate <span class="keyword">as</span> <span class="type">Date</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="相关参考"><a href="#相关参考" class="headerlink" title="相关参考"></a>相关参考</h3><p><a href="http://adcdownload.apple.com/Developer_Tools/Xcode_8_beta_3/Release_Notes_for_Xcode_8_beta_3.pdf" target="_blank" rel="external">http://adcdownload.apple.com/Developer_Tools/Xcode_8_beta_3/Release_Notes_for_Xcode_8_beta_3.pdf</a></p>
+<p><a href="https://forums.developer.apple.com/thread/49635" target="_blank" rel="external">https://forums.developer.apple.com/thread/49635</a></p>
+<p><a href="http://stackoverflow.com/questions/37812286/swift-3-urlsession-shared-ambiguous-reference-to-member-datataskwithcomplet" target="_blank" rel="external">http://stackoverflow.com/questions/37812286/swift-3-urlsession-shared-ambiguous-reference-to-member-datataskwithcomplet</a></p>
+<p><a href="http://stackoverflow.com/questions/37946990/cgrectmake-cgpointmake-cgsizemake-cgrectzero-cgpointzero-is-unavailable-in" target="_blank" rel="external">http://stackoverflow.com/questions/37946990/cgrectmake-cgpointmake-cgsizemake-cgrectzero-cgpointzero-is-unavailable-in</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/11/Extension-Array/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[Extension]-Array</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 百度一下jms
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

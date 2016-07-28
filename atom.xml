@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-11T03:10:37.000Z</updated>
+  <updated>2016-07-28T06:09:57.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【BUG】Swift2.3适配Swift3.0</title>
+    <link href="http://yoursite.com/2016/07/28/%E3%80%90BUG%E3%80%91Swift2-3%E9%80%82%E9%85%8DSwift3-0/"/>
+    <id>http://yoursite.com/2016/07/28/【BUG】Swift2-3适配Swift3-0/</id>
+    <published>2016-07-28T05:36:36.000Z</published>
+    <updated>2016-07-28T06:09:57.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;升级Xcode8.0Beta版，看着公司Swift版本的项目200多个报红，那种酸爽也就苹果能给。慢慢改吧！改的东西很多，但基本都不难，记录几个花费较长时间的Bug。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;NO-1&quot;&gt;&lt;a href=&quot;#NO-1&quot; class=&quot;headerlink&quot; title=&quot;NO.1&quot;&gt;&lt;/a&gt;NO.1&lt;/h3&gt;&lt;p&gt;【报错】“Use Legacy Swift Language Version” (SWIFT_VERSION) is required to be configured correctly for targets which use Swift. Use the [Edit &amp;gt; Convert &amp;gt; To Current Swift Syntax…] menu to choose a Swift version or use the Build Settings editor to configure the build setting directly.&lt;/p&gt;
+&lt;p&gt;【解决方法】设置 Build Settings —-&amp;gt; Use Legacy Swift Language Version —-&amp;gt; YES/NO，改为NO或者YES&lt;/p&gt;
+&lt;h3 id=&quot;NO-2&quot;&gt;&lt;a href=&quot;#NO-2&quot; class=&quot;headerlink&quot; title=&quot;NO.2&quot;&gt;&lt;/a&gt;NO.2&lt;/h3&gt;&lt;p&gt;【报错】“ambiguous referenc to member datask(with: completionhandler:)”&lt;/p&gt;
+&lt;p&gt;【解决方法】这个是在&lt;code&gt;URLSessionDataTask&lt;/code&gt;中遇到的，属于类型不明确的报错。&lt;/p&gt;
+&lt;p&gt;修改前的代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; task: &lt;span class=&quot;type&quot;&gt;URLSessionDataTask&lt;/span&gt; = session.dataTask(with: request) &amp;#123; (data, resp, err) &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; 	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;修改后的代码:&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; task: &lt;span class=&quot;type&quot;&gt;URLSessionDataTask&lt;/span&gt; = session.dataTask(with: request &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;URLRequest&lt;/span&gt;) &amp;#123; (data, resp, err) &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 由于request是NSMutableURLRequest类型，在request 后面添加了 as URLRequest&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;NO-3&quot;&gt;&lt;a href=&quot;#NO-3&quot; class=&quot;headerlink&quot; title=&quot;NO.3&quot;&gt;&lt;/a&gt;NO.3&lt;/h3&gt;&lt;p&gt;【报错】”Cannot pass immutable value of type ‘NSDate?’ as inout argument”&lt;/p&gt;
+&lt;p&gt;【解决方法】&lt;code&gt;var beginDate:  NSDate? = NSDate()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;修改前的代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; beginDate:  &lt;span class=&quot;type&quot;&gt;Date&lt;/span&gt;?&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; endDate: &lt;span class=&quot;type&quot;&gt;Date&lt;/span&gt;?&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; calendar: &lt;span class=&quot;type&quot;&gt;Calendar&lt;/span&gt; = &lt;span class=&quot;type&quot;&gt;Calendar&lt;/span&gt;.current&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; ok: &lt;span class=&quot;type&quot;&gt;Bool&lt;/span&gt; = calendar.range(of: &lt;span class=&quot;type&quot;&gt;Calendar&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;Unit&lt;/span&gt;.month, start: &amp;amp;beginDate, interval: &amp;amp;interval, &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;: newDate &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Date&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;修改后的代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; beginDate:  &lt;span class=&quot;type&quot;&gt;NSDate&lt;/span&gt;? = &lt;span class=&quot;type&quot;&gt;NSDate&lt;/span&gt;()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; endDate: &lt;span class=&quot;type&quot;&gt;NSDate&lt;/span&gt;? = &lt;span class=&quot;type&quot;&gt;NSDate&lt;/span&gt;()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; calendar: &lt;span class=&quot;type&quot;&gt;Calendar&lt;/span&gt; = &lt;span class=&quot;type&quot;&gt;Calendar&lt;/span&gt;.current&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; ok: &lt;span class=&quot;type&quot;&gt;Bool&lt;/span&gt; = calendar.range(of: &lt;span class=&quot;type&quot;&gt;Calendar&lt;/span&gt;.&lt;span class=&quot;type&quot;&gt;Unit&lt;/span&gt;.month, start: &amp;amp;beginDate, interval: &amp;amp;interval, &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;: newDate &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;Date&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;相关参考&quot;&gt;&lt;a href=&quot;#相关参考&quot; class=&quot;headerlink&quot; title=&quot;相关参考&quot;&gt;&lt;/a&gt;相关参考&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://adcdownload.apple.com/Developer_Tools/Xcode_8_beta_3/Release_Notes_for_Xcode_8_beta_3.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://adcdownload.apple.com/Developer_Tools/Xcode_8_beta_3/Release_Notes_for_Xcode_8_beta_3.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://forums.developer.apple.com/thread/49635&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://forums.developer.apple.com/thread/49635&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/37812286/swift-3-urlsession-shared-ambiguous-reference-to-member-datataskwithcomplet&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/37812286/swift-3-urlsession-shared-ambiguous-reference-to-member-datataskwithcomplet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/37946990/cgrectmake-cgpointmake-cgsizemake-cgrectzero-cgpointzero-is-unavailable-in&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/37946990/cgrectmake-cgpointmake-cgsizemake-cgrectzero-cgpointzero-is-unavailable-in&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;升级Xcode8.0Beta版，看着公司Swift版本的项目200多个报红，那种酸爽也就苹果能给。慢慢改吧！改的东西很多，但基本都不难，记录几个花费较长时间的Bug。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;NO-1&quot;&gt;&lt;a href=
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>[Extension]-Array</title>
@@ -922,42 +964,6 @@
 &lt;pre&gt;&lt;code&gt;extension UIColor {
         // 三色值
       convenience init(red: 
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Swift代码片段：GCD创建单例</title>
-    <link href="http://yoursite.com/2016/04/28/Swift%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%EF%BC%9A%E5%8D%95%E4%BE%8B/"/>
-    <id>http://yoursite.com/2016/04/28/Swift代码片段：单例/</id>
-    <published>2016-04-28T03:14:32.000Z</published>
-    <updated>2016-04-28T03:19:27.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;Swift中利用GCD创建单例&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;class var sharedInstance: QRMakeVC {
-    struct Static {
-        static var onceToken: dispatch_once_t = 0
-        static var instance: QRMakeVC? = nil
-    }
-    dispatch_once(&amp;amp;Static.onceToken) {
-        Static.instance = QRMakeVC()
-    }
-    return Static.instance!
-}
-&lt;/code&gt;&lt;/pre&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Swift中利用GCD创建单例&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre&gt;&lt;code&gt;class var sharedInstance: QRMakeVC {
-    struct Static {
-        static var onc
     
     </summary>
     

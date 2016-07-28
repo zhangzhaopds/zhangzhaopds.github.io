@@ -160,6 +160,71 @@
 
       <div class="body-wrap">
   
+    <article id="post-Swift代码片段：单例" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/28/Swift代码片段：单例/" class="article-date">
+  	<time datetime="2016-04-28T03:14:32.000Z" itemprop="datePublished">2016-04-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/28/Swift代码片段：单例/">Swift代码片段：GCD创建单例</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Swift中利用GCD创建单例</p>
+</blockquote>
+<pre><code>class var sharedInstance: QRMakeVC {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: QRMakeVC? = nil
+    }
+    dispatch_once(&amp;Static.onceToken) {
+        Static.instance = QRMakeVC()
+    }
+    return Static.instance!
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-MQTT消息推送" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1071,284 +1136,6 @@ func upLoadImage(urlStr: String, image: UIImage, dataType: DataType, reponse: (r
             NSLog(@&quot;%@&quot;, error.localizedDescription);
         }
     }];
-}
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-BLE-Central" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/26/BLE-Central/" class="article-date">
-  	<time datetime="2016-02-26T01:08:38.000Z" itemprop="datePublished">2016-02-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/26/BLE-Central/">BLE_Central</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>iOS蓝牙开发，中心模式开发。<a href="https://github.com/zhangzhaopds/BLE_Central.git" target="_blank" rel="external">相关DEMO</a>    <a href="https://github.com/zhangzhaopds/BluetoothStubOnOSX.git" target="_blank" rel="external">模拟外设</a></p>
-</blockquote>
-<h3 id="iOS链接外设的代码实现流程"><a href="#iOS链接外设的代码实现流程" class="headerlink" title="iOS链接外设的代码实现流程"></a>iOS链接外设的代码实现流程</h3><pre><code>1. 建立中心角色
-2. 扫描外设（discover）
-3. 连接外设(connect)
-4. 扫描外设中的服务和特征(discover)
-    - 4.1 获取外设的services
-    - 4.2 获取外设的Characteristics,获取Characteristics的值，获取Characteristics的Descriptor和Descriptor的值
-5. 与外设做数据交互(explore and interact)
-6. 订阅Characteristic的通知
-7. 断开连接(disconnect)
-</code></pre><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><h4 id="1-初始化-init"><a href="#1-初始化-init" class="headerlink" title="1.初始化(init)"></a>1.初始化(init)</h4><pre><code>#import &lt;CoreBluetooth/CoreBluetooth.h&gt;
-
-@interface ViewController ()&lt;CBCentralManagerDelegate&gt;
-
-@property (nonatomic, strong) manager *centralManager;
-
-@property (nonatomic, strong) CBPeripheral *peripheral;
-
-// CBCentralManagerOptionShowPowerAlertKey的作用是，当设备蓝牙未打开时打开
-NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], CBCentralManagerOptionShowPowerAlertKey, nil];
-
-// 初始化并设置委托和线程队列，默认main线程
-self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:options];
-</code></pre><h4 id="2-扫描外设-discover"><a href="#2-扫描外设-discover" class="headerlink" title="2.扫描外设(discover)"></a>2.扫描外设(discover)</h4><pre><code>-(void)centralManagerDidUpdateState:(CBCentralManager *)central{
-
-        switch (central.state) {
-            case CBCentralManagerStateUnknown:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateUnknown&quot;);
-                break;
-            case CBCentralManagerStateResetting:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateResetting&quot;);
-                break;
-            case CBCentralManagerStateUnsupported:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateUnsupported&quot;);
-                break;
-            case CBCentralManagerStateUnauthorized:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateUnauthorized&quot;);
-                break;
-            case CBCentralManagerStatePoweredOff:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStatePoweredOff&quot;);
-                break;
-            case CBCentralManagerStatePoweredOn:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStatePoweredOn&quot;);
-                //开始扫描周围的外设
-                /*
-                 第一个参数nil就是扫描周围所有的外设，扫描到外设后会进入
-                      - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI;
-                 */
-                [manager scanForPeripheralsWithServices:nil options:nil];
-
-                break;
-            default:
-                break;
-        }
-
-    }
-
-    //扫描到设备会进入方法
-    -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
-
-        NSLog(@&quot;当扫描到设备:%@&quot;,peripheral.name);
-        //接下来可以连接设备
-
-    }
-</code></pre><h4 id="3-链接外设-connect"><a href="#3-链接外设-connect" class="headerlink" title="3.链接外设(connect)"></a>3.链接外设(connect)</h4><pre><code>//扫描到设备会进入方法
- -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
-
-//连接设备（注意：这里使用self.peripheral,而不是peripheral,是因为如果peripheral被释放掉，将不会实现连接到外设的回调方法，也就是下面三个方法将不执行）
-     self.peripheral = peripheral;
-     [manager connectPeripheral:self.peripheral options:nil]; 
- }
-
- //连接到Peripherals-成功
- - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-     NSLog(@&quot;&gt;&gt;&gt;连接到名称为（%@）的设备-成功&quot;,peripheral.name);
- }
-
- //连接到Peripherals-失败
- -(void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-     NSLog(@&quot;&gt;&gt;&gt;连接到名称为（%@）的设备-失败,原因:%@&quot;,[peripheral name],[error localizedDescription]);
- }
-
- //Peripherals断开连接
- - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-     NSLog(@&quot;&gt;&gt;&gt;外设连接断开连接 %@: %@\n&quot;, [peripheral name], [error localizedDescription]);
- }
-</code></pre><h4 id="4-获取外设的services"><a href="#4-获取外设的services" class="headerlink" title="4.获取外设的services"></a>4.获取外设的services</h4><pre><code>//连接到Peripherals-成功
-   - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
-   {
-       NSLog(@&quot;&gt;&gt;&gt;连接到名称为（%@）的设备-成功&quot;,peripheral.name);
-       //设置的peripheral委托CBPeripheralDelegate
-       //@interface ViewController : UIViewController&lt;CBCentralManagerDelegate,CBPeripheralDelegate&gt;
-       [peripheral setDelegate:self];
-       //扫描外设Services，成功后会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
-       [peripheral discoverServices:nil];
-
-   }
-
-   //扫描到Services
-   -(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
-       //  NSLog(@&quot;&gt;&gt;&gt;扫描到服务：%@&quot;,peripheral.services);
-       if (error)
-       {
-           NSLog(@&quot;&gt;&gt;&gt;Discovered services for %@ with error: %@&quot;, peripheral.name, [error localizedDescription]);
-           return;
-       }
-
-       for (CBService *service in peripheral.services) {
-                        NSLog(@&quot;%@&quot;,service.UUID);
-                        //扫描每个service的Characteristics，扫描到后会进入方法： -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
-                        [peripheral discoverCharacteristics:nil forService:service];
-                    }
-
-   }
-</code></pre><h4 id="5-获取外设的Characteristics-Descriptor"><a href="#5-获取外设的Characteristics-Descriptor" class="headerlink" title="5.获取外设的Characteristics,Descriptor"></a>5.获取外设的Characteristics,Descriptor</h4><pre><code>//扫描到Characteristics
- -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
-     if (error)
-     {
-         NSLog(@&quot;error Discovered characteristics for %@ with error: %@&quot;, service.UUID, [error localizedDescription]);
-         return;
-     }
-
-     for (CBCharacteristic *characteristic in service.characteristics)
-     {
-         NSLog(@&quot;service:%@ 的 Characteristic: %@&quot;,service.UUID,characteristic.UUID);
-     }
-
-     //获取Characteristic的值，读到数据会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
-     for (CBCharacteristic *characteristic in service.characteristics){
-         {
-             [peripheral readValueForCharacteristic:characteristic];
-         }
-     }
-
-     //搜索Characteristic的Descriptors，读到数据会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
-     for (CBCharacteristic *characteristic in service.characteristics){
-         [peripheral discoverDescriptorsForCharacteristic:characteristic];
-     }
-
-
- }
-
-//获取的charateristic的值
--(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
-    //打印出characteristic的UUID和值
-    //!注意，value的类型是NSData，具体开发时，会根据外设协议制定的方式去解析数据
-    NSLog(@&quot;characteristic uuid:%@  value:%@&quot;,characteristic.UUID,characteristic.value);
-
-}
-
-//搜索到Characteristic的Descriptors
--(void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
-
-    //打印出Characteristic和他的Descriptors
-     NSLog(@&quot;characteristic uuid:%@&quot;,characteristic.UUID);
-    for (CBDescriptor *d in characteristic.descriptors) {
-        NSLog(@&quot;Descriptor uuid:%@&quot;,d.UUID);
-    }
-
-}
-//获取到Descriptors的值
--(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForDescriptor:(CBDescriptor *)descriptor error:(NSError *)error{
-    //打印出DescriptorsUUID 和value
-    //这个descriptor都是对于characteristic的描述，一般都是字符串，所以这里我们转换成字符串去解析
-    NSLog(@&quot;characteristic uuid:%@  value:%@&quot;,[NSString stringWithFormat:@&quot;%@&quot;,descriptor.UUID],descriptor.value);
-}
-</code></pre><h4 id="6-把数据写入到Characteristic中"><a href="#6-把数据写入到Characteristic中" class="headerlink" title="6.把数据写入到Characteristic中"></a>6.把数据写入到Characteristic中</h4><pre><code>//写数据
--(void)writeCharacteristic:(CBPeripheral *)peripheral
-            characteristic:(CBCharacteristic *)characteristic
-                     value:(NSData *)value{
-
-    //打印出 characteristic 的权限，可以看到有很多种，这是一个NS_OPTIONS，就是可以同时用于好几个值，常见的有read，write，notify，indicate，知知道这几个基本就够用了，前连个是读写权限，后两个都是通知，两种不同的通知方式。
-    /*
-     typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
-     CBCharacteristicPropertyBroadcast                                                = 0x01,
-     CBCharacteristicPropertyRead                                                    = 0x02,
-     CBCharacteristicPropertyWriteWithoutResponse                                    = 0x04,
-     CBCharacteristicPropertyWrite                                                    = 0x08,
-     CBCharacteristicPropertyNotify                                                    = 0x10,
-     CBCharacteristicPropertyIndicate                                                = 0x20,
-     CBCharacteristicPropertyAuthenticatedSignedWrites                                = 0x40,
-     CBCharacteristicPropertyExtendedProperties                                        = 0x80,
-     CBCharacteristicPropertyNotifyEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)        = 0x100,
-     CBCharacteristicPropertyIndicateEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)    = 0x200
-     };
-
-     */
-    NSLog(@&quot;%lu&quot;, (unsigned long)characteristic.properties);
-
-
-    //只有 characteristic.properties 有write的权限才可以写
-    if(characteristic.properties &amp; CBCharacteristicPropertyWrite){
-        /*
-            最好一个type参数可以为CBCharacteristicWriteWithResponse或type:CBCharacteristicWriteWithResponse,区别是是否会有反馈
-        */
-        [peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-    }else{
-        NSLog(@&quot;该字段不可写！&quot;);
-    }
-
-
-}
-</code></pre><h4 id="7-订阅Characteristic的通知"><a href="#7-订阅Characteristic的通知" class="headerlink" title="7.订阅Characteristic的通知"></a>7.订阅Characteristic的通知</h4><pre><code>//设置通知
--(void)notifyCharacteristic:(CBPeripheral *)peripheral
-            characteristic:(CBCharacteristic *)characteristic{
-    //设置通知，数据通知会进入：didUpdateValueForCharacteristic方法
-    [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-
-}
-
-//取消通知
--(void)cancelNotifyCharacteristic:(CBPeripheral *)peripheral
-             characteristic:(CBCharacteristic *)characteristic{
-
-     [peripheral setNotifyValue:NO forCharacteristic:characteristic];
-}
-</code></pre><h4 id="7-断开连接-disconnect"><a href="#7-断开连接-disconnect" class="headerlink" title="7.断开连接(disconnect)"></a>7.断开连接(disconnect)</h4><pre><code>//停止扫描并断开连接
--(void)disconnectPeripheral:(CBCentralManager *)centralManager
-                 peripheral:(CBPeripheral *)peripheral{
-    //停止扫描
-    [centralManager stopScan];
-    //断开连接
-    [centralManager cancelPeripheralConnection:peripheral];
 }
 </code></pre>
       
