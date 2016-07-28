@@ -160,6 +160,63 @@
 
       <div class="body-wrap">
   
+    <article id="post-layer层CornerRadius影响shadow的实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/28/layer层CornerRadius影响shadow的实现/" class="article-date">
+  	<time datetime="2016-07-28T06:30:03.000Z" itemprop="datePublished">2016-07-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/28/layer层CornerRadius影响shadow的实现/">layer层CornerRadius影响shadow的实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>手动设置视图的圆角效果(cornerRadius)，会屏蔽视图的投影效果(Shadow)。问题总是在解决后，才发现仅仅只是个纸老虎！展示下代码，一看就明白。</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">let</span> imageShadow = <span class="type">UIImageView</span>.<span class="keyword">init</span>(frame: <span class="type">CGRectMake</span>(<span class="number">50</span>, <span class="number">50</span>, <span class="type">UIScreen</span>.mainScreen().bounds.width - <span class="number">100</span>, <span class="type">UIScreen</span>.mainScreen().bounds.width - <span class="number">100</span>))</span><br><span class="line">        <span class="keyword">self</span>.view.addSubview(imageShadow)</span><br><span class="line">        imageShadow.image = <span class="type">UIImage</span>(named: <span class="string">"IMG_0412.JPG"</span>)</span><br><span class="line">        imageShadow.layer.shadowColor = <span class="type">UIColor</span>.<span class="keyword">init</span>(red: <span class="number">238</span>/<span class="number">225.0</span>, green: <span class="number">100</span>/<span class="number">255.0</span>, blue: <span class="number">81</span>/<span class="number">255.0</span>, alpha: <span class="number">1</span>).<span class="type">CGColor</span></span><br><span class="line">        imageShadow.layer.shadowOffset = <span class="type">CGSizeMake</span>(<span class="number">0</span>, <span class="number">3.0</span>)</span><br><span class="line">        imageShadow.layer.shadowOpacity = <span class="number">0.2</span>   <span class="comment">// 透明度</span></span><br><span class="line">        imageShadow.layer.shadowRadius = <span class="number">6.0</span>    <span class="comment">// 半径</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">/**</span><br><span class="line">         注意点： 控件的圆角属性，会影响控件的投影的实现。例如：加入下面的设置圆角属性的代码，将看不到控件的投影效果。</span><br><span class="line">         */</span></span><br><span class="line"><span class="comment">//        imageShadow.layer.cornerRadius = 5</span></span><br><span class="line"><span class="comment">//        imageShadow.layer.masksToBounds = true</span></span><br></pre></td></tr></table></figure>
+<h3 id="效果图对比"><a href="#效果图对比" class="headerlink" title="效果图对比"></a>效果图对比</h3><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/shadow.png" alt="http://7xoz39.com1.z0.glb.clouddn.com/shadow.png"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-【BUG】Swift2-3适配Swift3-0" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -709,88 +766,6 @@
 <li>从文档链接下载工程，并在真机上运行。</li>
 <li>在MAC上运行VLC(需要预先安装); Open media —&gt; Network —&gt; URL(输入真机上显示的地址，如<code>rtsp://192.168.1.119/</code>) —&gt; Open。如果成功，就可以在VLC中看到手机中拍摄到的视频。</li>
 </ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-PHP学习笔记2-日期" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/24/PHP学习笔记2-日期/" class="article-date">
-  	<time datetime="2016-05-24T01:58:29.000Z" itemprop="datePublished">2016-05-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/24/PHP学习笔记2-日期/">PHP学习笔记（2）-日期</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>总体感觉，php的字符串转日期的功能很强大。</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	date_default_timezone_set(<span class="string">"Asia/Shanghai"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"今天是 "</span>.date(<span class="string">"Y.m.d"</span>) .<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"今天是 "</span>.date(<span class="string">"l"</span>).<span class="string">"&lt;br&gt;"</span>;			<span class="comment">// l - 表示周里的某天</span></span><br><span class="line">	</span><br><span class="line">	$d = mktime(<span class="number">9</span>, <span class="number">22</span>, <span class="number">44</span>, <span class="number">5</span>, <span class="number">23</span>, <span class="number">2016</span>);	<span class="comment">// 时间戳创建日期</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"创建日期 "</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, $d).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	</span><br><span class="line">	$y = strtotime(<span class="string">"10:38pm April 15 2015"</span>);	<span class="comment">// 字符串转换日期</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"创建日期 "</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, $y).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	</span><br><span class="line">	$tomorrow = strtotime(<span class="string">"tomorrow"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"明天是："</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, $tomorrow).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	$nextSat = strtotime(<span class="string">"next Saturday"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"下个周六："</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, $nextSat).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	$months = strtotime(<span class="string">"+3 Months"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"三个月后："</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, $months).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>Y - 年，四位数字; 如: “1999”</li>
-<li>y - 年，二位数字; 如: “99”</li>
-<li>z - 一年中的第几天; 如: “0” 至 “365”</li>
-<li>F - 月份，英文全名; 如: “January”</li>
-<li>m - 月份，二位数字，若不足二位则在前面补零; 如: “01” 至 “12”</li>
-<li>n - 月份，二位数字，若不足二位则不补零; 如: “1” 至 “12”</li>
-<li>M - 月份，三个英文字母; 如: “Jan”</li>
-<li>t - 指定月份的天数; 如: “28” 至 “31”</li>
-<li>d - 几日，二位数字，若不足二位则前面补零; 如: “01” 至 “31”</li>
-<li>j - 几日，二位数字，若不足二位不补零; 如: “1” 至 “31”</li>
-<li>h - 12 小时制的小时; 如: “01” 至 “12”</li>
-<li>H - 24 小时制的小时; 如: “00” 至 “23”</li>
-<li>g - 12 小时制的小时，不足二位不补零; 如: “1” 至 12”</li>
-<li>G - 24 小时制的小时，不足二位不补零; 如: “0” 至 “23”</li>
-<li>i - 分钟; 如: “00” 至 “59”</li>
-<li>s - 秒; 如: “00” 至 “59”</li>
-<li>S - 字尾加英文序数，二个英文字母; 如: “th”，”nd”</li>
-<li>U - 总秒数</li>
-<li>D - 星期几，三个英文字母; 如: “Fri”</li>
-<li>l - 星期几，英文全名; 如: “Friday”</li>
-<li>w - 数字型的星期几，如: “0” (星期日) 至 “6” (星期六)</li>
-<li>a - “am” 或是 “pm”</li>
-<li>A - “AM” 或是 “PM”</li>
-</ul>
-<h3 id="参考地址："><a href="#参考地址：" class="headerlink" title="参考地址："></a>参考地址：</h3><p><a href="http://www.sjyhome.com/php/date.html" target="_blank" rel="external">http://www.sjyhome.com/php/date.html</a></p>
 
       
     </div>
