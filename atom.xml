@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-28T06:49:26.000Z</updated>
+  <updated>2016-08-31T06:00:26.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【MacOS开发】HotKey(快捷键)</title>
+    <link href="http://yoursite.com/2016/08/31/%E3%80%90MacOS%E5%BC%80%E5%8F%91%E3%80%91HotKey/"/>
+    <id>http://yoursite.com/2016/08/31/【MacOS开发】HotKey/</id>
+    <published>2016-08-31T05:37:44.000Z</published>
+    <updated>2016-08-31T06:00:26.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;在MacOS开发中，设置快捷键是必不可少的，这里总结了两种方法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;方法一：在IB中快速设置&quot;&gt;&lt;a href=&quot;#方法一：在IB中快速设置&quot; class=&quot;headerlink&quot; title=&quot;方法一：在IB中快速设置&quot;&gt;&lt;/a&gt;方法一：在IB中快速设置&lt;/h3&gt;&lt;p&gt;如果将快捷键设置为MacAPP默认的，用户不可以更改的快捷键，推荐使用这种方法，十分便捷。具体就是在StoryBoard中为NSMenuItem设置KeyEquivalent属性，简单直接。如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/hotkeyIb.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;方法二：代码实现快捷键设置&quot;&gt;&lt;a href=&quot;#方法二：代码实现快捷键设置&quot; class=&quot;headerlink&quot; title=&quot;方法二：代码实现快捷键设置&quot;&gt;&lt;/a&gt;方法二：代码实现快捷键设置&lt;/h3&gt;&lt;p&gt;允许用户设置快捷键的话，推荐使用这种方法。首先引入&lt;code&gt;Carbon.framework&lt;/code&gt;, 具体方法如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// 注册快捷键&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)costomHotKey &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // 1、声明相关参数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    EventHotKeyRef myHotKeyRef;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    EventHotKeyID myHotKeyID;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    EventTypeSpec myEvenType;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    myEvenType.eventClass = kEventClassKeyboard;    // 键盘类型&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    myEvenType.eventKind = kEventHotKeyPressed;     // 按压事件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // 2、定义快捷键&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    myHotKeyID.signature = &amp;apos;yuus&amp;apos;;  // 自定义签名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    myHotKeyID.id = 4;              // 快捷键ID&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // 3、注册快捷键&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // 参数一：keyCode; 如18代表1，19代表2，21代表4，49代表空格键，36代表回车键&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // 快捷键：command+4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    RegisterEventHotKey(21, cmdKey, myHotKeyID, GetApplicationEventTarget(), 0, &amp;amp;myHotKeyRef);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // 快捷键：command+option+4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//    RegisterEventHotKey(21, cmdKey + optionKey, myHotKeyID, GetApplicationEventTarget(), 0, &amp;amp;myHotKeyRef);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // 5、注册回调函数，响应快捷键&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    InstallApplicationEventHandler(&amp;amp;hotKeyHandler, 1, &amp;amp;myEvenType, NULL, NULL);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 4、自定义C类型的回调函数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;OSStatus &lt;span class=&quot;title&quot;&gt;hotKeyHandler&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(EventHandlerCallRef nextHandler, EventRef anEvent, &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; *userData)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    EventHotKeyID hotKeyRef;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    GetEventParameter(anEvent, kEventParamDirectObject, typeEventHotKeyID, &lt;span class=&quot;literal&quot;&gt;NULL&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;sizeof&lt;/span&gt;(hotKeyRef), &lt;span class=&quot;literal&quot;&gt;NULL&lt;/span&gt;, &amp;amp;hotKeyRef);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; hotKeyId = hotKeyRef.id;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; (hotKeyId) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;// do something&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            NSLog(@&lt;span class=&quot;string&quot;&gt;&quot;%d&quot;&lt;/span&gt;, hotKeyId);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; noErr;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;相关链接：&quot;&gt;&lt;a href=&quot;#相关链接：&quot; class=&quot;headerlink&quot; title=&quot;相关链接：&quot;&gt;&lt;/a&gt;相关链接：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/KeyEquivalentDemo.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本文DEMO https://github.com/zhangzhaopds/KeyEquivalentDemo.git&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://alvinzhu.me/blog/2013/11/05/cocoakai-fa-an-jian-shi-jian-jian-ting/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考 http://alvinzhu.me/blog/2013/11/05/cocoakai-fa-an-jian-shi-jian-jian-ting/&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;在MacOS开发中，设置快捷键是必不可少的，这里总结了两种方法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;方法一：在IB中快速设置&quot;&gt;&lt;a href=&quot;#方法一：在IB中快速设置&quot; class=&quot;headerlink&quot; title=&quot;方
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>layer层CornerRadius影响shadow的实现</title>
@@ -912,49 +943,6 @@
 &lt;p&gt;许多网站登录了一次之后，下次就不需要再次登录。这种操作很常见，然而网页与程序的逻辑是完全的不同，也就是说网页并不像程序那样拥有自己的存储路径。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Web端基本都是使用HTTP/HTTPS协议传输数据的。这种协
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Typora</title>
-    <link href="http://yoursite.com/2016/04/29/Typora/"/>
-    <id>http://yoursite.com/2016/04/29/Typora/</id>
-    <published>2016-04-29T05:17:56.000Z</published>
-    <updated>2016-04-29T05:42:54.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.typora.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Typora&lt;/a&gt;是一款非常方便的Markdown文档编辑器，相对于Mou来说，它的强大之处在于它的及时渲染, 将【写字】与【预览】这两件事情合并了。What You See Is What You Get.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;表格&quot;&gt;&lt;a href=&quot;#表格&quot; class=&quot;headerlink&quot; title=&quot;表格&quot;&gt;&lt;/a&gt;表格&lt;/h4&gt;&lt;p&gt;添加表格，只需Command+T即可。表格里面的文本对齐方式类似于office一样方便设置。&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;标题一&lt;/th&gt;
-&lt;th style=&quot;text-align:center&quot;&gt;标题二&lt;/th&gt;
-&lt;th style=&quot;text-align:right&quot;&gt;标题三&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;左对齐&lt;/td&gt;
-&lt;td style=&quot;text-align:center&quot;&gt;居中&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;右对齐&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h4 id=&quot;代码&quot;&gt;&lt;a href=&quot;#代码&quot; class=&quot;headerlink&quot; title=&quot;代码&quot;&gt;&lt;/a&gt;代码&lt;/h4&gt;&lt;p&gt;Typora 里代码和数学公式的输入，也做得一样出色。当插入代码区域时，你可以先选择代码的种类，Typora 基本支持了所有主流的代码高亮（C#、PHP、Java 等等），连 Swift 也不在例外。而数学公式更加，Typora 甚至连 Latex 都支持了。&lt;/p&gt;
-&lt;figure class=&quot;highlight swift&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; custom: &lt;span class=&quot;type&quot;&gt;String&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&quot;友谊的小船说翻就翻&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;照片&quot;&gt;&lt;a href=&quot;#照片&quot; class=&quot;headerlink&quot; title=&quot;照片&quot;&gt;&lt;/a&gt;照片&lt;/h4&gt;&lt;p&gt;对于图片可以直接进行拖拽，方便快捷。下面这个就是一张图片。&lt;/p&gt;
-&lt;p&gt; &lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/zzTyporazhaopian.png&quot; alt=&quot;Typorazhaopian&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.typora.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Typora&lt;/a&gt;是一款非常方便的Markdown文档编辑器，相对于Mou来说，它的强大之处在于它的及时渲染, 将【写字】
     
     </summary>
     
