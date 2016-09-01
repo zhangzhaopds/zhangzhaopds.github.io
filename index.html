@@ -160,6 +160,83 @@
 
       <div class="body-wrap">
   
+    <article id="post-【RN】ReactNative基础配置" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/01/【RN】ReactNative基础配置/" class="article-date">
+  	<time datetime="2016-09-01T07:14:13.000Z" itemprop="datePublished">2016-09-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/01/【RN】ReactNative基础配置/">【RN】ReactNative基础配置</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Facebook开源的ReactNative被炒得越来越热了，InfoQ上面关于ReactNative的文章也越来越多，既然大神们那么推崇，肯定有她火的原因，所以静下心来学习学习。</p>
+</blockquote>
+<h3 id="必备工具"><a href="#必备工具" class="headerlink" title="必备工具"></a>必备工具</h3><ol>
+<li>Xcode（ReactNative的最终实现还是需要走Xcode, 只是UI部分等可以使用js来实现）</li>
+<li>The React Native command line tools（React Native命令行工具，用于工程的初始创建）</li>
+<li>node.js（是一个基于 Chrome V8 引擎的 JavaScript 运行环境。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。Node.js 的包管理器 npm，是全球最大的开源库生态系统。）</li>
+<li>Watchman（用来监视文件并且记录文件的改动情况）</li>
+</ol>
+<h3 id="编辑环境"><a href="#编辑环境" class="headerlink" title="编辑环境"></a>编辑环境</h3><p>对于React Native的开发，Facebook官方推荐使用Atom+Nuclide的组合,最主要这个组合适合Mac开发环境。</p>
+<h4 id="下载Atom"><a href="#下载Atom" class="headerlink" title="下载Atom"></a>下载Atom</h4><p><a href="https://atom.io" target="_blank" rel="external">Atom地址</a></p>
+<h4 id="安装nuclide"><a href="#安装nuclide" class="headerlink" title="安装nuclide"></a>安装nuclide</h4><p><a href="https://nuclide.io/docs/editor/setup/#quick-install" target="_blank" rel="external">参考链接 https://nuclide.io/docs/editor/setup/#quick-install</a></p>
+<p>在终端执行以下命令：</p>
+<p><code>$ apm install nuclide</code></p>
+<h4 id="安装node、watchman"><a href="#安装node、watchman" class="headerlink" title="安装node、watchman"></a>安装node、watchman</h4><p><code>brew install watchman</code></p>
+<p><code>brew install node</code></p>
+<h4 id="安装React-Native"><a href="#安装React-Native" class="headerlink" title="安装React Native"></a>安装React Native</h4><p><code>npm install -g react-native-cli</code> 或者</p>
+<p><code>sudo npm install -g react-native-cli</code> (以管理员的身份安装，需要输入管理员密码)</p>
+<p>到此，准备工作完成，接下来就是测试一下</p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p><code>react-native init AwesomeProject</code> 这个过程较慢，需要耐心等待；<br><code>cd AwesomeProject</code><br><code>react-native run-ios</code></p>
+<p>工程在终端启动后的效果：</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/intit.png" alt=""></p>
+<h4 id="Xcode运行"><a href="#Xcode运行" class="headerlink" title="Xcode运行"></a>Xcode运行</h4><p>执行完上面的步骤之后，用Xcode打开并运行AwesomeProject.xcodeproj文件，选择模拟器，运行。效果如下：</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/comp.png" alt=""></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://facebook.github.io/react-native/releases/next/docs/getting-started.html" target="_blank" rel="external">https://facebook.github.io/react-native/releases/next/docs/getting-started.html</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-【MacOS开发】HotKey" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -708,71 +785,6 @@
 <h4 id="2、PHP中获取UA"><a href="#2、PHP中获取UA" class="headerlink" title="2、PHP中获取UA"></a>2、PHP中获取UA</h4><p>方法：<code>$Agent = $_SERVER[&#39;HTTP_USER_AGENT&#39;];</code></p>
 <p>结果：<code>Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13F69 BaiduWallet-5.7.0.1-IOS-walletapp_750_1334_iPhone_9.3.2_9.3.2_2.1.0_2.1.0.4</code></p>
 <h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>只有当APP利用内置的浏览器打开链接的时候，才能获取app的相关信息。如支付宝和京东钱包的扫一扫打开的url是无法在UA中查看到app的信息的,因为它们将这个链接推给了手机默认浏览器，并不是在APP自身当中打开。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-PHP学习笔记（3）-json数据生成" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/25/PHP学习笔记（3）-json数据生成/" class="article-date">
-  	<time datetime="2016-05-25T03:43:52.000Z" itemprop="datePublished">2016-05-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/25/PHP学习笔记（3）-json数据生成/">PHP学习笔记（3）-json数据生成</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>学习php的最初想法，就是利用PHP来生成iOS开发所需要的json数据，今天终于弄出了点眉目了。</p>
-</blockquote>
-<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><ol>
-<li><p>操作：启动本地服务器Apache,浏览器中打开 <code>http://localhost/php/php_3.php?name=zhangzhao</code>；</p>
-</li>
-<li><p>结果：</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/phpjson.png" alt="">)</p>
-</li>
-</ol>
-<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html;charset=utf-8"</span>/&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		<span class="meta">&lt;?php</span> </span><br><span class="line">  			<span class="comment">// 	$_GET[]： 获取URL中的请求参数的值(get请求)；</span></span><br><span class="line">			$arr1 = <span class="keyword">array</span>(<span class="string">"name"</span>=&gt;$_GET[<span class="string">"name"</span>], </span><br><span class="line">						<span class="string">"sex"</span>=&gt;$_GET[<span class="string">"sex"</span>], </span><br><span class="line">						<span class="string">"dealCode"</span>=&gt;<span class="string">"10000"</span>, </span><br><span class="line">						<span class="string">"dealMsg"</span>=&gt;<span class="string">"成功"</span>,</span><br><span class="line">						<span class="string">"list"</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">							<span class="string">"address1"</span>=&gt;<span class="string">"成都"</span>,</span><br><span class="line">							<span class="string">"address2"</span>=&gt;<span class="string">"重庆"</span>,</span><br><span class="line">							<span class="string">"citys"</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">								<span class="string">"city1"</span>=&gt;<span class="string">"纬度"</span>,</span><br><span class="line">								<span class="string">"city2"</span>=&gt;<span class="string">"经度"</span>,</span><br><span class="line">							),</span><br><span class="line">						),</span><br><span class="line">						<span class="string">"key"</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">							<span class="string">"key1"</span>=&gt;<span class="string">"12345666"</span>,</span><br><span class="line">						));</span><br><span class="line">			<span class="comment">// 利用递归函数，对json数据中的value值编码urlencode()</span></span><br><span class="line"> 			<span class="function"><span class="keyword">function</span> <span class="title">arrayRecursive</span><span class="params">(&amp;$array, $function, $apply_to_keys_also = false)</span></span>&#123;</span><br><span class="line"> 				<span class="keyword">static</span> $recursive_counter = <span class="number">0</span>;</span><br><span class="line"> 				<span class="keyword">if</span> (++$recursive_counter &gt; <span class="number">1000</span>) &#123;</span><br><span class="line"> 					<span class="keyword">die</span>(<span class="string">'possible deep recursion attack'</span>);</span><br><span class="line">    			&#125;</span><br><span class="line">				<span class="keyword">foreach</span> ($array <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">					<span class="keyword">if</span> (is_array($value)) &#123;</span><br><span class="line">						arrayRecursive($array[$key], $function, $apply_to_keys_also);</span><br><span class="line">					&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">						$array[$key] = $function($value);</span><br><span class="line">        			&#125;</span><br><span class="line">                                                                                                                                       </span><br><span class="line">					<span class="keyword">if</span> ($apply_to_keys_also &amp;&amp; is_string($key)) &#123;</span><br><span class="line">						$new_key = $function($key);</span><br><span class="line">							<span class="keyword">if</span> ($new_key != $key) &#123;</span><br><span class="line">							$array[$new_key] = $array[$key];</span><br><span class="line">							<span class="keyword">unset</span>($array[$key]);</span><br><span class="line">            			&#125;</span><br><span class="line">        			&#125;</span><br><span class="line">    			&#125;</span><br><span class="line">    			$recursive_counter--;</span><br><span class="line">			&#125;</span><br><span class="line">                                                                                                                                      </span><br><span class="line"> 			<span class="function"><span class="keyword">function</span> <span class="title">JSON</span><span class="params">($array)</span> </span>&#123;</span><br><span class="line"> 				arrayRecursive($array, <span class="string">'urlencode'</span>, <span class="keyword">true</span>);</span><br><span class="line"> 				$json = json_encode($array);</span><br><span class="line"> 				<span class="keyword">return</span> urldecode($json);</span><br><span class="line">			&#125;</span><br><span class="line">                                                                                                                                   				<span class="keyword">echo</span> JSON($arr1);</span><br><span class="line">		<span class="meta">?&gt;</span></span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>使用：启动Apache服务器，将此php文件放置到Sites文件夹下，浏览器中打开本地服务器，或直接输入如<a href="http://localhost/text.php?name=zhangsan&amp;sex=male，参数可不添加。" target="_blank" rel="external">http://localhost/text.php?name=zhangsan&amp;sex=male，参数可不添加。</a></p>
-<h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h3><p>在json_encode之前，把所有数组内所有内容都用urlencode()处理一下，然用json_encode()转换成json字符串，最后再用urldecode()将编码过的中文转回来；否则，会出现类似<code>&quot;name&quot;:&quot;\u4e2d\u56fd&quot;.....</code>的乱码。</p>
 
       
     </div>

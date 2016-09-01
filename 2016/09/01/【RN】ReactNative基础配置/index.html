@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>【RN】ReactNative基础配置 | 百度一下jms的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Facebook开源的ReactNative被炒得越来越热了，InfoQ上面关于ReactNative的文章也越来越多，既然大神们那么推崇，肯定有她火的原因，所以静下心来学习学习。
+
+必备工具
+Xcode（ReactNative的最终实现还是需要走Xcode, 只是UI部分等可以使用js来实现）
+The React Native command line tools（React Native命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【RN】ReactNative基础配置">
+<meta property="og:url" content="http://yoursite.com/2016/09/01/【RN】ReactNative基础配置/index.html">
+<meta property="og:site_name" content="百度一下jms的博客">
+<meta property="og:description" content="Facebook开源的ReactNative被炒得越来越热了，InfoQ上面关于ReactNative的文章也越来越多，既然大神们那么推崇，肯定有她火的原因，所以静下心来学习学习。
+
+必备工具
+Xcode（ReactNative的最终实现还是需要走Xcode, 只是UI部分等可以使用js来实现）
+The React Native command line tools（React Native命令">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/intit.png">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/comp.png">
+<meta property="og:updated_time" content="2016-09-01T08:03:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【RN】ReactNative基础配置">
+<meta name="twitter:description" content="Facebook开源的ReactNative被炒得越来越热了，InfoQ上面关于ReactNative的文章也越来越多，既然大神们那么推崇，肯定有她火的原因，所以静下心来学习学习。
+
+必备工具
+Xcode（ReactNative的最终实现还是需要走Xcode, 只是UI部分等可以使用js来实现）
+The React Native command line tools（React Native命令">
+<meta name="twitter:image" content="http://7xoz39.com1.z0.glb.clouddn.com/intit.png">
+  
+    <link rel="alternative" href="/atom.xml" title="百度一下jms的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">百度一下jms</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">百度一下jms</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">百度一下jms</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-【RN】ReactNative基础配置" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/01/【RN】ReactNative基础配置/" class="article-date">
+  	<time datetime="2016-09-01T07:14:13.000Z" itemprop="datePublished">2016-09-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【RN】ReactNative基础配置
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Facebook开源的ReactNative被炒得越来越热了，InfoQ上面关于ReactNative的文章也越来越多，既然大神们那么推崇，肯定有她火的原因，所以静下心来学习学习。</p>
+</blockquote>
+<h3 id="必备工具"><a href="#必备工具" class="headerlink" title="必备工具"></a>必备工具</h3><ol>
+<li>Xcode（ReactNative的最终实现还是需要走Xcode, 只是UI部分等可以使用js来实现）</li>
+<li>The React Native command line tools（React Native命令行工具，用于工程的初始创建）</li>
+<li>node.js（是一个基于 Chrome V8 引擎的 JavaScript 运行环境。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。Node.js 的包管理器 npm，是全球最大的开源库生态系统。）</li>
+<li>Watchman（用来监视文件并且记录文件的改动情况）</li>
+</ol>
+<h3 id="编辑环境"><a href="#编辑环境" class="headerlink" title="编辑环境"></a>编辑环境</h3><p>对于React Native的开发，Facebook官方推荐使用Atom+Nuclide的组合,最主要这个组合适合Mac开发环境。</p>
+<h4 id="下载Atom"><a href="#下载Atom" class="headerlink" title="下载Atom"></a>下载Atom</h4><p><a href="https://atom.io" target="_blank" rel="external">Atom地址</a></p>
+<h4 id="安装nuclide"><a href="#安装nuclide" class="headerlink" title="安装nuclide"></a>安装nuclide</h4><p><a href="https://nuclide.io/docs/editor/setup/#quick-install" target="_blank" rel="external">参考链接 https://nuclide.io/docs/editor/setup/#quick-install</a></p>
+<p>在终端执行以下命令：</p>
+<p><code>$ apm install nuclide</code></p>
+<h4 id="安装node、watchman"><a href="#安装node、watchman" class="headerlink" title="安装node、watchman"></a>安装node、watchman</h4><p><code>brew install watchman</code></p>
+<p><code>brew install node</code></p>
+<h4 id="安装React-Native"><a href="#安装React-Native" class="headerlink" title="安装React Native"></a>安装React Native</h4><p><code>npm install -g react-native-cli</code> 或者</p>
+<p><code>sudo npm install -g react-native-cli</code> (以管理员的身份安装，需要输入管理员密码)</p>
+<p>到此，准备工作完成，接下来就是测试一下</p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p><code>react-native init AwesomeProject</code> 这个过程较慢，需要耐心等待；<br><code>cd AwesomeProject</code><br><code>react-native run-ios</code></p>
+<p>工程在终端启动后的效果：</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/intit.png" alt=""></p>
+<h4 id="Xcode运行"><a href="#Xcode运行" class="headerlink" title="Xcode运行"></a>Xcode运行</h4><p>执行完上面的步骤之后，用Xcode打开并运行AwesomeProject.xcodeproj文件，选择模拟器，运行。效果如下：</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/comp.png" alt=""></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://facebook.github.io/react-native/releases/next/docs/getting-started.html" target="_blank" rel="external">https://facebook.github.io/react-native/releases/next/docs/getting-started.html</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/31/【MacOS开发】HotKey/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【MacOS开发】HotKey(快捷键)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 百度一下jms
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
