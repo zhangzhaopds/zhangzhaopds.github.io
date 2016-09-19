@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/07/28/%E3%80%90BUG%E3%80%91Swift2-3%E9%80%82%E9%85%8DSwift3-0/</loc>
+    
+    <lastmod>2016-09-19T01:21:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/09/01/%E3%80%90RN%E3%80%91ReactNative%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2016-09-01T08:03:22.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2016/08/31/%E3%80%90MacOS%E5%BC%80%E5%8F%91%E3%80%91HotKey/</loc>
     
     <lastmod>2016-08-31T06:00:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/07/28/%E3%80%90BUG%E3%80%91Swift2-3%E9%80%82%E9%85%8DSwift3-0/</loc>
-    
-    <lastmod>2016-07-29T01:45:48.000Z</lastmod>
     
   </url>
   
