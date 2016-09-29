@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-01T08:03:22.000Z</updated>
+  <updated>2016-09-29T08:06:06.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【android】RecyclerView中动态添加子控件和改变ViewHolder高度</title>
+    <link href="http://yoursite.com/2016/09/29/%E3%80%90android%E3%80%91RecyclerView%E4%B8%AD%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0%E5%AD%90%E6%8E%A7%E4%BB%B6%E5%92%8C%E6%94%B9%E5%8F%98ViewHolder%E9%AB%98%E5%BA%A6/"/>
+    <id>http://yoursite.com/2016/09/29/【android】RecyclerView中动态添加子控件和改变ViewHolder高度/</id>
+    <published>2016-09-29T07:41:43.000Z</published>
+    <updated>2016-09-29T08:06:06.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;想要跨平台，就要对平台有了解，最近在看android开发。在为RecyclerView中&lt;code&gt;动态添加子控件&lt;/code&gt;和&lt;code&gt;改变ViewHolder高度&lt;/code&gt;时遇到了几个坑，费了不少时间填坑，所以记录一下。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;这个是效果图：&quot;&gt;&lt;a href=&quot;#这个是效果图：&quot; class=&quot;headerlink&quot; title=&quot;这个是效果图：&quot;&gt;&lt;/a&gt;这个是效果图：&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/zhangzhaopds/RecyclerView_demo.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本文demo链接：https://github.com/zhangzhaopds/RecyclerView_demo.git&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;点击cell，那么cell的高度就会增加一倍，同时，在cell上面添加一个控件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xoz39.com1.z0.glb.clouddn.com/android_recyclerview.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;关于改变高度的注意点：&quot;&gt;&lt;a href=&quot;#关于改变高度的注意点：&quot; class=&quot;headerlink&quot; title=&quot;关于改变高度的注意点：&quot;&gt;&lt;/a&gt;关于改变高度的注意点：&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;在线性布局或者相对布局动态设置宽高时，要先看有没有外层布局，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;如果有要看外层布局是什么，是LinearLayout，则要用LinearLayout.LayoutParams，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;如果是RelativeLayout则要用RelativeLayout.LayoutParams，而不是看你要控制的是什么布局，如果外层没有布局文件则要用FrameLayout.LayoutParams。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;关于新增控件的注意点：&quot;&gt;&lt;a href=&quot;#关于新增控件的注意点：&quot; class=&quot;headerlink&quot; title=&quot;关于新增控件的注意点：&quot;&gt;&lt;/a&gt;关于新增控件的注意点：&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;如果父视图是RelativeLayout 或者 FrameLayout，无法动态添加控件，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;解决的办法是新建一个LinearLayout，然后把textView添加给它，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;再把这个LinearLayout添加给父视图：&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;主要的代码：&quot;&gt;&lt;a href=&quot;#主要的代码：&quot; class=&quot;headerlink&quot; title=&quot;主要的代码：&quot;&gt;&lt;/a&gt;主要的代码：&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;holder.mTextView.setOnClickListener(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; View.OnClickListener() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(View v)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                clickedArr.set(position, !clickedArr.get(position));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (clickedArr.get(position)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    TextView showView = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; TextView(currentView.getContext());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    showView.setTextColor(Color.WHITE);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    showView.setText(&lt;span class=&quot;string&quot;&gt;&quot;新增的位置:&quot;&lt;/span&gt; + position + &lt;span class=&quot;string&quot;&gt;&quot;, 高度增加一倍&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;				   &lt;span class=&quot;comment&quot;&gt;// 改变高度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    FrameLayout.LayoutParams linearParams =  (FrameLayout.LayoutParams)relativesArr.get(position).getLayoutParams();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    linearParams.height = &lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    relativesArr.get(position).setLayoutParams(linearParams);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;					&lt;span class=&quot;comment&quot;&gt;// 新增控件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    LinearLayout.LayoutParams param1 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LinearLayout.LayoutParams(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                            ViewGroup.LayoutParams.MATCH_PARENT, &lt;span class=&quot;number&quot;&gt;40&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    param1.setMargins(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;120&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    showView.setLayoutParams(param1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    LinearLayout linear = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LinearLayout(currentView.getContext());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    linear.setOrientation(LinearLayout.VERTICAL);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    linear.addView(showView);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    subViewsArr.set(position, linear);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    relativesArr.get(position).addView(linear);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    Log.i(&lt;span class=&quot;string&quot;&gt;&quot;Card&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;onClick: cuo &quot;&lt;/span&gt; + clickedArr.get(position));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                  &lt;span class=&quot;comment&quot;&gt;// 移除控件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    relativesArr.get(position).removeView(subViewsArr.get(position));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                  &lt;span class=&quot;comment&quot;&gt;// 返回原先高度100&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    FrameLayout.LayoutParams linearParams =  (FrameLayout.LayoutParams)relativesArr.get(position).getLayoutParams();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    linearParams.height = &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    relativesArr.get(position).setLayoutParams(linearParams);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;想要跨平台，就要对平台有了解，最近在看android开发。在为RecyclerView中&lt;code&gt;动态添加子控件&lt;/code&gt;和&lt;code&gt;改变ViewHolder高度&lt;/code&gt;时遇到了几个坑，费了不少时间填坑，所以记录一下。&lt;/p&gt;
+&lt;/b
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>【RN】ReactNative基础配置</title>
@@ -928,47 +957,6 @@
     
       &lt;blockquote&gt;
 &lt;p&gt;HTTP Live Streaming(HLS)， 是苹果公司推出的视频直播协议，具体的内容可以到苹果开发者后台查看相关文档。简单地讲，就是将实时直播的视频，切割成大小基本相等的&lt;code&gt;.ts&lt;/code&gt; 文件和一个索引文件&lt;code&gt;pro
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Mac上使用Apache搭建服务器</title>
-    <link href="http://yoursite.com/2016/05/04/Mac%E4%B8%8A%E4%BD%BF%E7%94%A8Apache%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    <id>http://yoursite.com/2016/05/04/Mac上使用Apache搭建服务器/</id>
-    <published>2016-05-04T08:08:24.000Z</published>
-    <updated>2016-05-04T08:55:20.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;本来是要搞HLS(苹果的视频直播处理技术)的，而且已经将mp4文件分割成m3u8类型直播文件，最后要验证m3u8文件的时候，却发现是要利用服务器来处理的，所以只好查了些服务器的知识。因为Mac自带Apache，所以为了省事就直接学习了下就拿来用了。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;启用Apache&quot;&gt;&lt;a href=&quot;#启用Apache&quot; class=&quot;headerlink&quot; title=&quot;启用Apache&quot;&gt;&lt;/a&gt;启用Apache&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;开启apache命令：sudo apachectl start&lt;/li&gt;
-&lt;li&gt;关闭apache命令：sudo apachectl stop&lt;/li&gt;
-&lt;li&gt;重启apache命令：sudo apachectl restart&lt;/li&gt;
-&lt;li&gt;开启apache后，可以直接在浏览器中访问 localhost, 如果出现“It works”，表示运行正常。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&quot;具体使用：&quot;&gt;&lt;a href=&quot;#具体使用：&quot; class=&quot;headerlink&quot; title=&quot;具体使用：&quot;&gt;&lt;/a&gt;具体使用：&lt;/h4&gt;&lt;p&gt;目标：在浏览器中打开localhost，显示自定义的web页面。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;在Mac的Finder中，利用前往文件夹，进入路径&lt;code&gt;/Library/WebServer/Documents&lt;/code&gt;，这是默认的根路径，里面有三个文件：index.html.en, PoweredByMacOSX.gif, PoweredByMacOSXLarge.gif。这三个文件不用管，放在那里就行。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;利用Coda，或者eclipse创建一个html文件，内容自己定义就行。然后将这个html文件名字改为index.html, 只能是这个名字，除非你利用vim更改Apache的httpd.conf文件，重新配置首页文件名。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;将创建的index.html文件保存到 &lt;code&gt;/Library/WebServer/Documents&lt;/code&gt;下。因为这是个私有文件夹，是需要root权限的，所有每次更改这个文件夹都是需要输入Mac密码的，除非Mac没有设定密码。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;最后，浏览器中打开localhost,就可以看到自定义的html。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;当然，也可以利用Xcode创建一个工程，利用UIWebView进行验证。只需要将 localhost 换成 Mac当前连接的网络的IP就行, URL最好是：&lt;a href=&quot;http://192.168.1.103，&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://192.168.1.103，&lt;/a&gt; 也可以是：&lt;a href=&quot;http://localhost。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost。&lt;/a&gt;  具体可看以下代码：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;UIWebView *web = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [web setScalesPageToFit:YES];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [self.view addSubview:web];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&amp;quot;http://192.168.1.103&amp;quot;]]];	// 192.168.1.103 换成你的ip地址就行&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本来是要搞HLS(苹果的视频直播处理技术)的，而且已经将mp4文件分割成m3u8类型直播文件，最后要验证m3u8文件的时候，却发现是要利用服务器来处理的，所以只好查了些服务器的知识。因为Mac自带Apache，所以为了省事就直接学习了下就拿来用了。
     
     </summary>
     
