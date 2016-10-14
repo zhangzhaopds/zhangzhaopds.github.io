@@ -160,6 +160,65 @@
 
       <div class="body-wrap">
   
+    <article id="apple-Error" class="article article-type-apple" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/14/Error/" class="article-date">
+  	<time datetime="2016-10-14T02:13:12.000Z" itemprop="datePublished">2016-10-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/14/Error/">Apple LLVM 8.0 Error</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>早上打开项目，冒出了6个红点，报错【Apple LLVM 8.0 Error】，然后就开始goole了。解决方案很多，但并非都适合自己的项目。</p>
+</blockquote>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/llvm80.png" alt=""></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xoz39.com1.z0.glb.clouddn.com/llvm81.png" alt=""></h3><p>Delete之后，记得clean一下，然后编译运行就OK了</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://stackoverflow.com/questions/26772504/apple-llvm-6-0-error-clang-failed-with-exit-code-1" target="_blank" rel="external">http://stackoverflow.com/questions/26772504/apple-llvm-6-0-error-clang-failed-with-exit-code-1</a></p>
+<p><a href="http://stackoverflow.com/questions/24052293/apple-llvm-6-0-error" target="_blank" rel="external">http://stackoverflow.com/questions/24052293/apple-llvm-6-0-error</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-【android】RecyclerView中动态添加子控件和改变ViewHolder高度" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -724,77 +783,6 @@
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="php-password-hash-password-verify"><a href="#php-password-hash-password-verify" class="headerlink" title="php:  password_hash, password_verify"></a>php:  password_hash, password_verify</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	<span class="comment">// hash值</span></span><br><span class="line">	$hashVal = password_hash(<span class="string">"123456"</span>, PASSWORD_DEFAULT);</span><br><span class="line">	<span class="comment">// $2y$10$QJlsKG/RUU2TEgQcj6.D2e8.QYeBJptiUce9g/IaxxU2GjRpapkA2</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// $hashVal = '$2a$10$zpOCjNBFm1XQ7JvmErIkbeXg4KYbD.TOx0NXyPZhqZCjy9N8OxGQO';</span></span><br><span class="line">		</span><br><span class="line">	<span class="keyword">echo</span>($hashVal.<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">	<span class="comment">// 验证</span></span><br><span class="line">	<span class="keyword">if</span> (password_verify(<span class="string">"123456"</span>, $hashVal)) &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"true"</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"false"</span>);</span><br><span class="line">	&#125;	</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="iOS实现DEMO："><a href="#iOS实现DEMO：" class="headerlink" title="iOS实现DEMO："></a>iOS实现DEMO：</h3><p><a href="https://github.com/zhangzhaopds/BCrypt.git" target="_blank" rel="external">https://github.com/zhangzhaopds/BCrypt.git</a></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ibm.com/developerworks/cn/web/wa-php-renewed_2/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/web/wa-php-renewed_2/</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL配置问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/30/MySQL配置问题/" class="article-date">
-  	<time datetime="2016-05-30T07:56:19.000Z" itemprop="datePublished">2016-05-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/30/MySQL配置问题/">MySQL配置问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>我在Mac上为PHP配置MySQL，遇到的一些问题，记录下。</p>
-</blockquote>
-<h2 id="问题1-mysql-connect-No-such-file-or-directory-in…"><a href="#问题1-mysql-connect-No-such-file-or-directory-in…" class="headerlink" title="问题1:    mysql_connect():No such file or directory in…"></a>问题1:    mysql_connect():No such file or directory in…</h2><p>运行代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	$con = mysql_connect(<span class="string">"localhost:3306"</span>, <span class="string">"root"</span>, <span class="string">"123456"</span>) <span class="keyword">or</span> <span class="keyword">die</span>(mysql_error());</span><br><span class="line">	<span class="keyword">if</span> (mysql_query(<span class="string">"CREATE DATABASE my_first_db"</span>, $con)) &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"Database created"</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"error creating database: "</span>.mysql_error());</span><br><span class="line">	&#125;</span><br><span class="line">	mysql_close($con);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>出现下图的警告：</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/mysqlnofile.png" alt=""></p>
-<p>原因：</p>
-<p>php默认是在 <code>/var/mysql/mysql.sock</code>中查找<code>mysql.sock</code>， 而Mac上MySQL再安装时自动放在了<code>/tmp/mysql.sock</code>，路径不同，所以造成这个原因。</p>
-<p>解决方法：</p>
-<ol>
-<li>终端执行：<code>cd /tmp</code></li>
-<li>终端执行：<code>ln -s /tmp/mysql.sock mysql.sock</code> ,这段命令是基于我的 <code>mysql.default_socket</code>是<code>/var/mysql/mysql.sock</code>才选择这段命令，具体可看下文的链接。</li>
-</ol>
-<p>关于这个警告的详细参考：</p>
-<p><a href="http://stackoverflow.com/questions/4219970/warning-mysql-connect-2002-no-such-file-or-directory-trying-to-connect-vi" target="_blank" rel="external">http://stackoverflow.com/questions/4219970/warning-mysql-connect-2002-no-such-file-or-directory-trying-to-connect-vi</a></p>
-<p><a href="http://verysimple.com/2009/01/07/php-on-os-cant-connect-to-local-mysql-server-through-socket-varmysqlmysqlsock/" target="_blank" rel="external">http://verysimple.com/2009/01/07/php-on-os-cant-connect-to-local-mysql-server-through-socket-varmysqlmysqlsock/</a></p>
-<h2 id="问题2-mysql-connect-Too-many-levels-of-symbolic-links-in…"><a href="#问题2-mysql-connect-Too-many-levels-of-symbolic-links-in…" class="headerlink" title="问题2:    mysql_connect(): Too many levels of symbolic links in…"></a>问题2:    mysql_connect(): Too many levels of symbolic links in…</h2><p>在系统偏好设置里面将MySQL设置成开机启动，然后重启电脑，就OK了。说白了，就是第一个问题解决了，然后重启了下电脑而已。</p>
-<p>大坑、小坑都要跳一边 ！！！！！！！！！！！！</p>
 
       
     </div>
