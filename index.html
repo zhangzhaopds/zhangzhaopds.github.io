@@ -160,6 +160,65 @@
 
       <div class="body-wrap">
   
+    <article id="post-Compiling" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/21/Compiling/" class="article-date">
+  	<time datetime="2016-10-21T15:26:40.000Z" itemprop="datePublished">2016-10-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/21/Compiling/">Compiling Swift source files</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>自从项目提交到AppStore之后，一直在学习Android的东西，今天因为要改个接口，就打开了那个Swift版本的项目，结果Xcode就一直处于编译状态 <code>Compiling Swift source files</code>，等了半天没有结束；我把新添加的内容删除，回归到提交AppStroe时的样子，编译很慢，但最终通过了，然后在Command+R也很快，回归正常。然后就Google，遇到了各种各样的解决方案，但真没适合我的。</p>
+</blockquote>
+<p>【Compiling Swift source files】编译很慢；</p>
+<p>【解决】Edit Scheme —&gt; Build Configuration，设置为【Debug】</p>
+<p>【总结：自己很二逼】app打包的时候将BuildConfiguration设置为了Release，回头继续码代码的时候忘了设置Debug了，为此白白浪费了2个多小时，够二！</p>
+<p><a href="http://stackoverflow.com/questions/39476239/xcode-build-stuck-on-compiling-swift-source-files" target="_blank" rel="external">相关参考：http://stackoverflow.com/questions/39476239/xcode-build-stuck-on-compiling-swift-source-files</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="apple-Error" class="article article-type-apple" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -711,78 +770,6 @@
 <p>【问题】: 调用系统摄像头，添加自定义扫描动画视图，在模拟器中可以看到自定义的视图，但在真机测试时却无自定义视图;</p>
 <p>【原因】: 先在VC视图添加自定义动画子视图，之后将摄像头capture添加到了VC视图的layer层；添加子视图，那么子视图的layer层也就相应地添加到了父视图的layer层，子layer之间的遮盖造成视图的无法显现。</p>
 <p>【修复】: 调整两者的添加顺序</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-BCrypt随机盐值加密" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/31/BCrypt随机盐值加密/" class="article-date">
-  	<time datetime="2016-05-31T02:39:12.000Z" itemprop="datePublished">2016-05-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/31/BCrypt随机盐值加密/">BCrypt随机盐值加密</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>朋友做的一个军检项目中用到<code>BCrypt</code>的加密处理，之前没用过，所以就查了些相关资料。简单的理解就是：BCrypt是一个利用<code>随机盐值</code>进行<code>hash</code>的加密方式。</p>
-</blockquote>
-<h2 id="相关概念："><a href="#相关概念：" class="headerlink" title="相关概念："></a>相关概念：</h2><ul>
-<li>哈希算法<ul>
-<li>获取一个任何长度的字符串并采用一致的方式创建一个<em>哈希值</em>：一种固定长度的字符串表示。每次传入同一个原始字符串，您都会收到相同的哈希值。这是一个单向过程，您无法从中获得原始字符串。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>盐值<ul>
-<li>在原始的密码后面添加自定义的尽量随机的长字串，然后进行哈希，这个长字串就是盐值（Salt）。</li>
-<li>有时候，为了减轻开发压力，程序员会统一使用一个salt值（固定盐值，储存在某个地方），而不是每个用户都生成私有的salt值。</li>
-<li>盐值越复杂、越随机，密码被破解的几率就越小。</li>
-</ul>
-</li>
-</ul>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="php-password-hash-password-verify"><a href="#php-password-hash-password-verify" class="headerlink" title="php:  password_hash, password_verify"></a>php:  password_hash, password_verify</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">	<span class="comment">// hash值</span></span><br><span class="line">	$hashVal = password_hash(<span class="string">"123456"</span>, PASSWORD_DEFAULT);</span><br><span class="line">	<span class="comment">// $2y$10$QJlsKG/RUU2TEgQcj6.D2e8.QYeBJptiUce9g/IaxxU2GjRpapkA2</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// $hashVal = '$2a$10$zpOCjNBFm1XQ7JvmErIkbeXg4KYbD.TOx0NXyPZhqZCjy9N8OxGQO';</span></span><br><span class="line">		</span><br><span class="line">	<span class="keyword">echo</span>($hashVal.<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">	<span class="comment">// 验证</span></span><br><span class="line">	<span class="keyword">if</span> (password_verify(<span class="string">"123456"</span>, $hashVal)) &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"true"</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"false"</span>);</span><br><span class="line">	&#125;	</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="iOS实现DEMO："><a href="#iOS实现DEMO：" class="headerlink" title="iOS实现DEMO："></a>iOS实现DEMO：</h3><p><a href="https://github.com/zhangzhaopds/BCrypt.git" target="_blank" rel="external">https://github.com/zhangzhaopds/BCrypt.git</a></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ibm.com/developerworks/cn/web/wa-php-renewed_2/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/web/wa-php-renewed_2/</a></p>
 
       
     </div>

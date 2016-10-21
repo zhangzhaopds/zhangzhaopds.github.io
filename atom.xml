@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-14T02:32:52.000Z</updated>
+  <updated>2016-10-21T15:46:11.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Compiling Swift source files</title>
+    <link href="http://yoursite.com/2016/10/21/Compiling/"/>
+    <id>http://yoursite.com/2016/10/21/Compiling/</id>
+    <published>2016-10-21T15:26:40.000Z</published>
+    <updated>2016-10-21T15:46:11.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;自从项目提交到AppStore之后，一直在学习Android的东西，今天因为要改个接口，就打开了那个Swift版本的项目，结果Xcode就一直处于编译状态 &lt;code&gt;Compiling Swift source files&lt;/code&gt;，等了半天没有结束；我把新添加的内容删除，回归到提交AppStroe时的样子，编译很慢，但最终通过了，然后在Command+R也很快，回归正常。然后就Google，遇到了各种各样的解决方案，但真没适合我的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;【Compiling Swift source files】编译很慢；&lt;/p&gt;
+&lt;p&gt;【解决】Edit Scheme —&amp;gt; Build Configuration，设置为【Debug】&lt;/p&gt;
+&lt;p&gt;【总结：自己很二逼】app打包的时候将BuildConfiguration设置为了Release，回头继续码代码的时候忘了设置Debug了，为此白白浪费了2个多小时，够二！&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/39476239/xcode-build-stuck-on-compiling-swift-source-files&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;相关参考：http://stackoverflow.com/questions/39476239/xcode-build-stuck-on-compiling-swift-source-files&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;自从项目提交到AppStore之后，一直在学习Android的东西，今天因为要改个接口，就打开了那个Swift版本的项目，结果Xcode就一直处于编译状态 &lt;code&gt;Compiling Swift source files&lt;/code&gt;，等了半天
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Apple LLVM 8.0 Error</title>
@@ -805,132 +831,6 @@
     
       &lt;blockquote&gt;
 &lt;p&gt;Swift中&lt;code&gt;protocol&lt;/code&gt;除了可以被&lt;code&gt;class&lt;/code&gt;实现外，也可以被&lt;code&gt;struct&lt;/code&gt;和&lt;code&gt;enum&lt;/code&gt;实现。而&lt;code&gt;mutating&lt;/code&gt;关键词则
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>大牛们的博客集</title>
-    <link href="http://yoursite.com/2016/05/06/%E5%A4%A7%E7%89%9B%E4%BB%AC%E7%9A%84%E5%8D%9A%E5%AE%A2%E9%9B%86/"/>
-    <id>http://yoursite.com/2016/05/06/大牛们的博客集/</id>
-    <published>2016-05-06T03:40:28.000Z</published>
-    <updated>2016-05-06T06:38:24.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;活到老，学到老，学无止境！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;Github备忘录&quot;&gt;&lt;a href=&quot;#Github备忘录&quot; class=&quot;headerlink&quot; title=&quot;Github备忘录&quot;&gt;&lt;/a&gt;Github备忘录&lt;/h3&gt;&lt;p&gt;一个涵盖了iOS开发各个方面知识的github链接集合，整体来说比较全面：&lt;a href=&quot;http://github.ibireme.com/github/list/ios/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://github.ibireme.com/github/list/ios/&lt;/a&gt;，来自于于YYKit的博客&lt;/p&gt;
-&lt;h3 id=&quot;Blogs备忘录&quot;&gt;&lt;a href=&quot;#Blogs备忘录&quot; class=&quot;headerlink&quot; title=&quot;Blogs备忘录&quot;&gt;&lt;/a&gt;Blogs备忘录&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;唐巧的技术博客     &lt;a href=&quot;http://blog.devtang.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.devtang.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;YYKit &lt;a href=&quot;http://blog.ibireme.com/about/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.ibireme.com/about/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;OneV’s Den     &lt;a href=&quot;http://onevcat.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://onevcat.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;破船之家     &lt;a href=&quot;http://beyondvincent.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://beyondvincent.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;NSHipster     &lt;a href=&quot;http://nshipster.cn/feed.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://nshipster.cn/feed.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Limboy 无网不剩     &lt;a href=&quot;http://feeds.feedburner.com/lzyy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://feeds.feedburner.com/lzyy&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Lex iOS notes     &lt;a href=&quot;http://ios.lextang.com/rss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ios.lextang.com/rss&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;念茜的博客     &lt;a href=&quot;http://nianxi.net/feed.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://nianxi.net/feed.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Xcode Dev     &lt;a href=&quot;http://blog.xcodev.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.xcodev.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Ted’s Homepage     &lt;a href=&quot;http://wufawei.com/feed&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wufawei.com/feed&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;txx’s blog     &lt;a href=&quot;http://blog.t-xx.me/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.t-xx.me/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;KEVIN BLOG     &lt;a href=&quot;http://imkevin.me/rss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://imkevin.me/rss&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;阿毛的蛋疼地     &lt;a href=&quot;http://www.xiangwangfeng.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.xiangwangfeng.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;亚庆的 Blog     &lt;a href=&quot;http://billwang1990.github.io/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://billwang1990.github.io/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Nonomori     &lt;a href=&quot;http://nonomori.farbox.com/feed&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://nonomori.farbox.com/feed&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;言无不尽     &lt;a href=&quot;http://tang3w.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://tang3w.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Wonderffee’s Blog     &lt;a href=&quot;http://wonderffee.github.io/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wonderffee.github.io/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;I’m TualatriX     &lt;a href=&quot;http://imtx.me/feed/latest/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://imtx.me/feed/latest/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;vclwei     &lt;a href=&quot;http://vclwei.com/posts.rss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://vclwei.com/posts.rss&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Cocoabit     &lt;a href=&quot;http://blog.cocoabit.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.cocoabit.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;nixzhu on scriptogr.am     &lt;a href=&quot;http://nixzhu.me/feed&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://nixzhu.me/feed&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;不会开机的男孩     &lt;a href=&quot;http://studentdeng.github.io/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://studentdeng.github.io/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Nico     &lt;a href=&quot;http://www.taofengping.com/rss.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.taofengping.com/rss.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;阿峰的技术窝窝     &lt;a href=&quot;http://hufeng825.github.io/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://hufeng825.github.io/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;answer_huang     &lt;a href=&quot;http://answerhuang.duapp.com/index.php/feed/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://answerhuang.duapp.com/index.php/feed/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;webfrogs     &lt;a href=&quot;http://webfrogs.me/feed/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://webfrogs.me/feed/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;代码手工艺人     &lt;a href=&quot;http://joeyio.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://joeyio.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Lancy’s Blog     &lt;a href=&quot;http://gracelancy.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gracelancy.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;I’m Allen     &lt;a href=&quot;http://www.imallen.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.imallen.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Travis’ Blog     &lt;a href=&quot;http://imi.im/feed&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://imi.im/feed&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;王中周的技术博客     &lt;a href=&quot;http://wangzz.github.io/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wangzz.github.io/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;会写代码的猪     &lt;a href=&quot;http://gaosboy.com/feed/atom/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gaosboy.com/feed/atom/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;克伟的博客     &lt;a href=&quot;http://feed.cnblogs.com/blog/u/23857/rss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://feed.cnblogs.com/blog/u/23857/rss&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;摇滚诗人     &lt;a href=&quot;http://feed.cnblogs.com/blog/u/35410/rss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://feed.cnblogs.com/blog/u/35410/rss&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Luke’s Homepage     &lt;a href=&quot;http://geeklu.com/feed/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://geeklu.com/feed/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;萧宸宇     &lt;a href=&quot;http://iiiyu.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://iiiyu.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Yuan博客     &lt;a href=&quot;http://www.heyuan110.com/?feed=rss2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.heyuan110.com/?feed=rss2&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Shining IO     &lt;a href=&quot;http://shiningio.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://shiningio.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;YIFEIYANG—易飞扬的博客     &lt;a href=&quot;http://www.yifeiyang.net/feed&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.yifeiyang.net/feed&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;KooFrank’s Blog     &lt;a href=&quot;http://koofrank.com/rss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://koofrank.com/rss&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;hello it works     &lt;a href=&quot;http://helloitworks.com/feed&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://helloitworks.com/feed&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;码农人生     &lt;a href=&quot;http://msching.github.io/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://msching.github.io/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;玉令天下的Blog     &lt;a href=&quot;http://yulingtianxia.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://yulingtianxia.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;不掏蜂窝的熊     &lt;a href=&quot;http://www.hotobear.com/?feed=rss2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.hotobear.com/?feed=rss2&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;猫·仁波切     &lt;a href=&quot;https://andelf.github.io/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://andelf.github.io/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;煲仔饭     &lt;a href=&quot;http://ivoryxiong.org/feed.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ivoryxiong.org/feed.xml&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;里脊串的开发随笔     &lt;a href=&quot;http://adad184.com/atom.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://adad184.com/atom.xml&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;标哥的技术博客&lt;a href=&quot;http://www.henishuo.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.henishuo.com&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;​&lt;/p&gt;
-&lt;p&gt;​&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;活到老，学到老，学无止境！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;Github备忘录&quot;&gt;&lt;a href=&quot;#Github备忘录&quot; class=&quot;headerlink&quot; title=&quot;Github备忘录&quot;&gt;&lt;/a&gt;Github备忘录&lt;/
     
     </summary>
     
