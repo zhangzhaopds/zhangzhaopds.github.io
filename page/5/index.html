@@ -62,7 +62,7 @@
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
 						<li>菜单</li>
-						<li>標籤</li>
+						<li>标签</li>
 						
 						
 					</ul>
@@ -79,6 +79,14 @@
 							<li><a href="/">主页</a></li>
 				        
 							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/archives/OC">OC</a></li>
+				        
+							<li><a href="/archives/Swift">Swift</a></li>
+				        
+							<li><a href="/archives/Android">Android</a></li>
+				        
+							<li><a href="/archives/ReactNative">ReactNative</a></li>
 				        
 						</ul>
 					</nav>
@@ -100,7 +108,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/1/" style="font-size: 10px;">1</a> <a href="/tags/3/" style="font-size: 10px;">3</a> <a href="/tags/4/" style="font-size: 10px;">4</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a>
 					</div>
 				</section>
 				
@@ -138,6 +146,14 @@
 		        
 					<li><a href="/archives">所有文章</a></li>
 		        
+					<li><a href="/archives/OC">OC</a></li>
+		        
+					<li><a href="/archives/Swift">Swift</a></li>
+		        
+					<li><a href="/archives/Android">Android</a></li>
+		        
+					<li><a href="/archives/ReactNative">ReactNative</a></li>
+		        
 		        <div class="clearfix"></div>
 				</ul>
 			</nav>
@@ -159,6 +175,142 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-ActivityIndicator-Swift" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/28/ActivityIndicator-Swift/" class="article-date">
+  	<time datetime="2016-01-28T06:14:58.000Z" itemprop="datePublished">2016-01-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/28/ActivityIndicator-Swift/">ActivityIndicator-Swift</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://7xoz39.com1.z0.glb.clouddn.com/Blogactivity.png?imageView2/2/h/500" alt=""></p>
+<blockquote>
+<p>Swift实现简单的活动指示器。</p>
+</blockquote>
+<p><a href="https://github.com/zhangzhaopds/Indicator..git" target="_blank" rel="external">本文DEMO链接</a></p>
+<h3 id="主要代码展示"><a href="#主要代码展示" class="headerlink" title="主要代码展示"></a>主要代码展示</h3><p><code>1.创建活动指示器单例</code></p>
+<pre><code>class var shareIndicator: HTTPIndicator {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: HTTPIndicator?
+    }
+    dispatch_once(&amp;Static.onceToken, {() -&gt; Void in
+        Static.instance = HTTPIndicator()
+    })
+    return Static.instance!
+}
+</code></pre><p><code>2.设置活动指示器界面的大小（全屏显示、部分显现）</code></p>
+<pre><code>enum IndicatorSizeModel {
+    case Landscape      // 全屏
+    case FullScreen        // 非全屏
+}
+
+// 重写sizeModel的set方法
+var sizeModel: IndicatorSizeModel = .Landscape {
+    didSet {
+        switch sizeModel {
+        case .Landscape:
+            self.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64)
+            maskWindow!.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            indicatorImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+            indicatorImageView.transform = CGAffineTransformIdentity
+            loopImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+
+        case .FullScreen:
+            self.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            maskWindow?.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
+            indicatorImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2)
+            loopImageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2)
+        } 
+    }
+}
+</code></pre><p><code>3.创建活动指示器图片，由两部分组成</code></p>
+<pre><code>// 中间部分
+lazy var indicatorImageView: UIImageView = {
+    let imageView = UIImageView(frame: CGRectMake(0, 0, 60 * kScreenWidthFactor, 60 * kScreenWidthFactor))
+    imageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+    imageView.image = UIImage(named: &quot;Indicator&quot;)
+    imageView.contentMode = UIViewContentMode.ScaleToFill
+    return imageView
+}()
+
+// 外部转圈部分
+lazy var loopImageView: UIImageView = {
+   let imageView = UIImageView(frame: CGRectMake(0, 0, 80 * kScreenWidthFactor, 80 * kScreenWidthFactor))
+    imageView.center = CGPointMake(kScreenWidth / 2, kScreenHeight / 2 - 32)
+    imageView.image = UIImage(named: &quot;loopIndicator&quot;)
+    imageView.contentMode = UIViewContentMode.ScaleToFill
+    return imageView
+}()
+</code></pre><p><code>4.创建window对象，用来承载指示器</code></p>
+<pre><code>lazy var maskWindow : UIWindow? = {
+    let window = UIWindow(frame: CGRectMake(0, 0, kScreenWidth, kScreenHeight))
+    window.windowLevel = UIWindowLevelNormal
+    return window
+}()
+</code></pre><p><code>5.指示器的显现</code></p>
+<pre><code>class func show() {
+    shareIndicator.maskWindow?.makeKeyAndVisible()
+    shareIndicator.maskWindow?.addSubview(shareIndicator)
+    shareIndicator.beginAnimation()
+}
+</code></pre><p><code>6.指示器的取消</code></p>
+<p>因为新建了window对象来承载指示器，所以，当取消指示器的时候，一定要将新建的window移除。</p>
+<pre><code>class func dismiss() {
+    shareIndicator.endAnimationWithCompletion { () -&gt; Void in
+        shareIndicator.maskWindow?.resignKeyWindow()
+        shareIndicator.removeFromSuperview()
+
+        let originalWindow = UIApplication.sharedApplication().delegate?.window
+        originalWindow!?.makeKeyAndVisible()
+
+        shareIndicator.resetBounds()
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-ZXingObjC二维码" class="article article-type-post" itemscope itemprop="blogPost">
   
