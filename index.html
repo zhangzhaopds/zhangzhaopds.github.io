@@ -159,6 +159,65 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-hexo主题yilia的头像无法显现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/18/hexo主题yilia的头像无法显现/">hexo主题yilia的头像无法显现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>一直懒得整理博客，旧版的yilia主题的头像无法显现。</p>
+</blockquote>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>在路径 <code>yilia/layout/_partial/left-col.ejs</code> 下，打开 left-col.ejs;</p>
+<p>修改第6、8行的：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;img lazy-src=&#34;&#60;%=theme.avatar%&#62;&#34; class=&#34;js-avatar &#34;&#62;&#10;&#60;img src=&#34;&#60;%=theme.avatar%&#62;&#34; class=&#34;js-avatar &#34; style=&#34;width: 100%;height: 100%;opacity: 1;&#34;&#62;</span><br></pre></td></tr></table></figure>
+<p>为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;img src=&#34;&#60;%=theme.avatar%&#62;&#34; class=&#34;js-avatar show&#34;&#62;&#10;&#60;img src=&#34;&#60;%=theme.avatar%&#62;&#34; class=&#34;js-avatar show&#34; style=&#34;width: 100%;height: 100%;opacity: 1;&#34;&#62;</span><br></pre></td></tr></table></figure>
+<p>最后重新部署就行了。</p>
+<p>最新的yilia主题没有这个问题。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/18/hexo主题yilia的头像无法显现/" class="archive-article-date">
+  	<time datetime="2016-11-18T05:50:17.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-18</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yilia/">yilia</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-MQTT-Android" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -718,63 +777,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【BUG】require-once" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/01/【BUG】require-once/">【BUG】require_once</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>GOOD GOOD STUDY,  DAY DAY UP !</p>
-</blockquote>
-<p>【场景】: PHP中，调用支付宝手机网站支付API；</p>
-<p>【问题】: 利用require_once调用<code>同一目录</code>下的文件alipay.config.php, <code>require_once(&quot;alipay.config.php&quot;);</code>报路径错误。</p>
-<p>【原因】: 编译器问题。</p>
-<p>【解决】: <code>require_once($_SERVER[&#39;DOCUMENT_ROOT&#39;].&quot;/tongxingpay/alipay.config.php&quot;);</code></p>
-<p>【参考】:<a href="http://stackoverflow.com/questions/5364233/php-fatal-error-failed-opening-required-file" target="_blank" rel="external">http://stackoverflow.com/questions/5364233/php-fatal-error-failed-opening-required-file</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/07/01/【BUG】require-once/" class="archive-article-date">
-  	<time datetime="2016-07-01T06:58:41.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-07-01</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/PHP/">PHP</a>
 	</div>
 
 
