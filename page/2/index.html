@@ -110,7 +110,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/3标签/" style="font-size: 10px;">3标签</a> <a href="/tags/MQTT/" style="font-size: 10px;">MQTT</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/标签/" style="font-size: 10px;">标签</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a>
+						<a href="/tags/3标签/" style="font-size: 10px;">3标签</a> <a href="/tags/Compiling/" style="font-size: 10px;">Compiling</a> <a href="/tags/MQTT/" style="font-size: 10px;">MQTT</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/标签/" style="font-size: 10px;">标签</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a>
 					</div>
 				</section>
 				
@@ -179,61 +179,6 @@
 </nav>
 
       <div class="body-wrap">
-  
-    <article id="post-Extension-Array" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/11/Extension-Array/" class="article-date">
-  	<time datetime="2016-07-11T03:07:19.000Z" itemprop="datePublished">2016-07-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/11/Extension-Array/">[Extension]-Array</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Swift中Array的实用延展。</p>
-</blockquote>
-<h3 id="接受数组为下标输入的读取延展"><a href="#接受数组为下标输入的读取延展" class="headerlink" title="接受数组为下标输入的读取延展"></a>接受数组为下标输入的读取延展</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Array</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 接受数组为下标输入的读取延展</span></span><br><span class="line">    <span class="keyword">subscript</span>(input: [<span class="type">Int</span>])-&gt;<span class="type">ArraySlice</span>&lt;<span class="type">Element</span>&gt; &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> result = <span class="type">ArraySlice</span>&lt;<span class="type">Element</span>&gt;()</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> input &#123;</span><br><span class="line">                <span class="comment">// 断言 true继续往下走， false则打印且终止</span></span><br><span class="line">                <span class="built_in">assert</span>(i &lt; <span class="keyword">self</span>.<span class="built_in">count</span>, <span class="string">"Index out of range"</span>)</span><br><span class="line">                result.append(<span class="keyword">self</span>[i])</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (index, i) <span class="keyword">in</span> input.<span class="built_in">enumerate</span>() &#123;</span><br><span class="line">                <span class="built_in">assert</span>(i &lt; <span class="keyword">self</span>.<span class="built_in">count</span>, <span class="string">"Index out of range"</span>)</span><br><span class="line">                <span class="keyword">self</span>[i] = newValue[index]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> myArr = [<span class="string">"ni"</span>, <span class="string">"hao"</span>, <span class="string">"wa"</span>]</span><br><span class="line"></span><br><span class="line">myArr[[<span class="number">1</span>,<span class="number">2</span>]]</span><br><span class="line"><span class="comment">// myArr = ["ni", "hao", "wa"]</span></span><br><span class="line"></span><br><span class="line">myArr[[<span class="number">1</span>,<span class="number">2</span>]] = [<span class="string">"zzz"</span>, <span class="string">"hhh"</span>]</span><br><span class="line"><span class="comment">// myArr = ["ni", "zzz", "hhh"]</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
   
     <article id="post-【BUG】require-once" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -825,6 +770,63 @@
 </ul>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var_dump(<span class="number">34</span>&gt;<span class="number">45</span> <span class="keyword">xor</span> <span class="number">33</span> == <span class="number">33</span>);		<span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <h4 id="数组运算符"><a href="#数组运算符" class="headerlink" title="数组运算符"></a>数组运算符</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$array_1</span> = <span class="keyword">array</span>(<span class="string">"a"</span>=&gt;<span class="string">"red"</span>, <span class="string">"b"</span>=&gt;<span class="string">"green"</span>);</span><br><span class="line"><span class="variable">$array_2</span> = <span class="keyword">array</span>(<span class="string">"a"</span>=&gt;<span class="string">"yellow"</span>, <span class="string">"d"</span>=&gt;<span class="string">"blue"</span>);</span><br><span class="line"><span class="variable">$array_3</span> = <span class="keyword">array</span>(<span class="string">"a"</span>=&gt;<span class="string">"yellow"</span>, <span class="string">"d"</span>=&gt;<span class="string">"blue"</span>);</span><br><span class="line"><span class="variable">$array_4</span> = <span class="keyword">array</span>(<span class="string">"d"</span>=&gt;<span class="string">"blue"</span>, <span class="string">"a"</span>=&gt;<span class="string">"yellow"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// key被覆盖，但value值不会呗覆盖</span></span><br><span class="line">var_dump(<span class="variable">$array_1</span> + <span class="variable">$array_2</span>);	<span class="comment">// array(3) &#123; ["a"]=&gt; string(3) "red" ["b"]=&gt; string(5) "green" ["d"]=&gt; string(4) "blue" &#125; </span></span><br><span class="line"><span class="keyword">echo</span>(<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果 $x 和 $y 拥有相同的键/值对，则返回 true。</span></span><br><span class="line">var_dump(<span class="variable">$array_1</span> == <span class="variable">$array_3</span>);	<span class="comment">// bool(false) </span></span><br><span class="line"><span class="keyword">echo</span>(<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line"></span><br><span class="line">var_dump(<span class="variable">$array_2</span> == <span class="variable">$array_3</span>);	<span class="comment">// bool(true) </span></span><br><span class="line"><span class="keyword">echo</span>(<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果 $x 和 $y 拥有相同的键/值对，且顺序相同类型相同，则返回 true。</span></span><br><span class="line">var_dump(<span class="variable">$array_3</span> === <span class="variable">$array_4</span>);  <span class="comment">// bool(false)</span></span><br><span class="line"><span class="keyword">echo</span>(<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line"></span><br><span class="line">var_dump(<span class="variable">$array_3</span> === <span class="variable">$array_2</span>);  <span class="comment">// // bool(true) </span></span><br><span class="line"><span class="keyword">echo</span>(<span class="string">"&lt;br&gt;"</span>);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-移动端数据库Realm" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/17/移动端数据库Realm/" class="article-date">
+  	<time datetime="2016-05-17T06:57:20.000Z" itemprop="datePublished">2016-05-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/17/移动端数据库Realm/">移动端数据库Realm</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="https://realm.io/cn/" target="_blank" rel="external">Realm</a>是一个跨平台移动数据库引擎，支持iOS、OS X（Objective-C和Swift）以及Android。</p>
+<p><strong>目标是取代SQLite。</strong></p>
+</blockquote>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/zzRealm.png" alt=""></p>
+
       
     </div>
     

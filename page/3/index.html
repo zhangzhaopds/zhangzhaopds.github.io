@@ -110,7 +110,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/3标签/" style="font-size: 10px;">3标签</a> <a href="/tags/MQTT/" style="font-size: 10px;">MQTT</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/标签/" style="font-size: 10px;">标签</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a>
+						<a href="/tags/3标签/" style="font-size: 10px;">3标签</a> <a href="/tags/Compiling/" style="font-size: 10px;">Compiling</a> <a href="/tags/MQTT/" style="font-size: 10px;">MQTT</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/标签/" style="font-size: 10px;">标签</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a>
 					</div>
 				</section>
 				
@@ -179,63 +179,6 @@
 </nav>
 
       <div class="body-wrap">
-  
-    <article id="post-移动端数据库Realm" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/17/移动端数据库Realm/" class="article-date">
-  	<time datetime="2016-05-17T06:57:20.000Z" itemprop="datePublished">2016-05-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/17/移动端数据库Realm/">移动端数据库Realm</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="https://realm.io/cn/" target="_blank" rel="external">Realm</a>是一个跨平台移动数据库引擎，支持iOS、OS X（Objective-C和Swift）以及Android。</p>
-<p><strong>目标是取代SQLite。</strong></p>
-</blockquote>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/zzRealm.png" alt=""></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
   
     <article id="post-TypeEncodings" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1059,6 +1002,110 @@
         Static.instance = QRMakeVC()
     }
     return Static.instance!
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-MQTT消息推送" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/11/MQTT消息推送/" class="article-date">
+  	<time datetime="2016-04-11T06:35:30.000Z" itemprop="datePublished">2016-04-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/11/MQTT消息推送/">MQTT应用内消息推送</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光的应用内消息更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。MQTT本质上就是一个TCP长连接而已。</p>
+</blockquote>
+<p><a href="https://github.com/jmesnil/MQTTKit.git" target="_blank" rel="external">MQTTKit</a><br><a href="http://blog.csdn.net/cerastes/article/details/36904893?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">DEMO_1</a><br><a href="https://github.com/zhangzhaopds/MTQQ-.git" target="_blank" rel="external">DEMO_2</a></p>
+<h3 id="初始化MQTT"><a href="#初始化MQTT" class="headerlink" title="初始化MQTT"></a>初始化MQTT</h3><pre><code>// 获取设备uuid
+if Keychain.load(&quot;kUUID&quot;) == nil {
+        let uuidRef: CFUUIDRef = CFUUIDCreate(kCFAllocatorDefault)
+        Keychain.save(&quot;kUUID&quot;, data: CFUUIDCreateString(kCFAllocatorDefault, uuidRef))
+}
+let uuid: String = Keychain.load(&quot;kUUID&quot;) as! String
+
+// clientId:用来区分接受消息的设备，此处我用的是设备的UUID,并保存在了钥匙串里，确保唯一性。
+mqtt = MQTTSession.init(clientId: uuid, userName: &quot;name&quot;, password: &quot;psw&quot;)
+mqtt?.connectToHost(&quot;111.111.111.111&quot;, port: 1111)
+mqtt?.setDelegate(self)
+</code></pre><h3 id="消息回调"><a href="#消息回调" class="headerlink" title="消息回调"></a>消息回调</h3><h4 id="链接状态回调"><a href="#链接状态回调" class="headerlink" title="链接状态回调"></a>链接状态回调</h4><pre><code>   // 链接状态回调
+   override func session(session: MQTTSession!, handleEvent eventCode: MQTTSessionEvent) {
+
+    switch eventCode {
+    case MQTTSessionEventConnected:
+        print(&quot;消息推送: connected&quot;)
+        // 链接成功后，订阅主题
+        self.mqtt?.subscribeTopic(&quot;TX_APP_PAY&quot;)
+    case MQTTSessionEventConnectionRefused:
+        print(&quot;消息推送: connection refused&quot;)
+    case MQTTSessionEventConnectionClosed:
+        print(&quot;消息推送: connection closed&quot;)
+    case MQTTSessionEventConnectionError:
+        print(&quot;消息推送: connection error&quot;)
+        print(&quot;         reconnecting...&quot;)
+
+        // 链接错误的话，尝试重新链接
+        self.mqtt?.connectToHost(&quot;111.111.111.111&quot;, port: 1111)
+    case MQTTSessionEventProtocolError:
+        print(&quot;消息推送: protocol error&quot;)
+    default:
+        break
+    }
+}
+</code></pre><h4 id="接收到消息回调"><a href="#接收到消息回调" class="headerlink" title="接收到消息回调"></a>接收到消息回调</h4><pre><code>    // 接收到消息回调
+    override func session(session: MQTTSession!, newMessage data: NSData!, onTopic topic: String!) {
+
+    var dic = NSDictionary()
+    do {
+        dic =
+            try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+    } catch {
+
+    }
+    print(&quot;推送内容：&quot;, dic)
+    print(&quot;推送主题：&quot;, topic)
 }
 </code></pre>
       
