@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>依托AlertDialog实现的iOS风格的提醒框 | Jmsp&#39;s Tips</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第一个Android项目基本做完了，整理一下笔记。个人实在是欣赏不动Android提醒框的审美风格，所以就自己简单封装个，方便今后使用。
+
+效果图：
+
+具体实现：基本原理：
+ 利用Android现有的提醒框AlertDialog，自定义内容视图。
+相关代码：
+12CustomAlertView.java 是对提醒框的封装；view_alert.xml 是自定义的内容视图；
+文件view_alert">
+<meta property="og:type" content="article">
+<meta property="og:title" content="依托AlertDialog实现的iOS风格的提醒框">
+<meta property="og:url" content="http://yoursite.com/2016/11/18/依托AlertDialog实现的iOS风格的提醒框/index.html">
+<meta property="og:site_name" content="Jmsp's Tips">
+<meta property="og:description" content="第一个Android项目基本做完了，整理一下笔记。个人实在是欣赏不动Android提醒框的审美风格，所以就自己简单封装个，方便今后使用。
+
+效果图：
+
+具体实现：基本原理：
+ 利用Android现有的提醒框AlertDialog，自定义内容视图。
+相关代码：
+12CustomAlertView.java 是对提醒框的封装；view_alert.xml 是自定义的内容视图；
+文件view_alert">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/alertdialog.png">
+<meta property="og:updated_time" content="2016-11-18T08:00:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="依托AlertDialog实现的iOS风格的提醒框">
+<meta name="twitter:description" content="第一个Android项目基本做完了，整理一下笔记。个人实在是欣赏不动Android提醒框的审美风格，所以就自己简单封装个，方便今后使用。
+
+效果图：
+
+具体实现：基本原理：
+ 利用Android现有的提醒框AlertDialog，自定义内容视图。
+相关代码：
+12CustomAlertView.java 是对提醒框的封装；view_alert.xml 是自定义的内容视图；
+文件view_alert">
+  
+    <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css" type="text/css">
+  
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d400b2b9cf7d1a287b60931c6cbae186";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- End baidu Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jmsp</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+				<li><a href="/categories/OC">OC</a></li>
+	        
+				<li><a href="/categories/Swift">Swift</a></li>
+	        
+				<li><a href="/categories/Android">Android</a></li>
+	        
+				<li><a href="/categories/ReactNative">ReactNative</a></li>
+	        
+				<li><a href="/categories/PHP">PHP</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+            
+    			
+            
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+		        
+					<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+		        
+					<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jmsp</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jmsp</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/OC">OC</a></li>
+		        
+					<li><a href="/categories/Swift">Swift</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/ReactNative">ReactNative</a></li>
+		        
+					<li><a href="/categories/PHP">PHP</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-依托AlertDialog实现的iOS风格的提醒框" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      依托AlertDialog实现的iOS风格的提醒框
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>第一个Android项目基本做完了，整理一下笔记。个人实在是欣赏不动Android提醒框的审美风格，所以就自己简单封装个，方便今后使用。</p>
+</blockquote>
+<p>效果图：</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/alertdialog.png" alt=""></p>
+<h3 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h3><p>基本原理：</p>
+<p> 利用Android现有的提醒框AlertDialog，自定义内容视图。</p>
+<p>相关代码：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CustomAlertView<span class="class">.java</span> 是对提醒框的封装；</span><br><span class="line">view_alert<span class="class">.xml</span> 是自定义的内容视图；</span><br></pre></td></tr></table></figure>
+<p>文件view_alert.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">    <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span> <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"125dp"</span></span><br><span class="line">        <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span></span><br><span class="line">        <span class="attribute">android:layout_centerInParent</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/alert_title"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"提示"</span></span><br><span class="line">            <span class="attribute">android:textAlignment</span>=<span class="value">"center"</span></span><br><span class="line">            <span class="attribute">android:textColor</span>=<span class="value">"@android:color/black"</span></span><br><span class="line">            <span class="attribute">android:gravity</span>=<span class="value">"bottom"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/alert_content"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"这个是提醒内容"</span></span><br><span class="line">            <span class="attribute">android:textAlignment</span>=<span class="value">"center"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">View</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"0.3dp"</span></span><br><span class="line">            <span class="attribute">android:background</span>=<span class="value">"#e5e5e5"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">            <span class="attribute">android:orientation</span>=<span class="value">"horizontal"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">Button</span></span><br><span class="line">                <span class="attribute">android:id</span>=<span class="value">"@+id/alert_leftBtn"</span></span><br><span class="line">                <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">                <span class="attribute">android:text</span>=<span class="value">"取消"</span></span><br><span class="line">                <span class="attribute">android:gravity</span>=<span class="value">"center"</span></span><br><span class="line">                <span class="attribute">android:textColor</span>=<span class="value">"@android:color/holo_blue_light"</span></span><br><span class="line">                <span class="attribute">android:background</span>=<span class="value">"@android:color/transparent"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">View</span></span><br><span class="line">                <span class="attribute">android:layout_width</span>=<span class="value">"0.3dp"</span></span><br><span class="line">                <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:background</span>=<span class="value">"#e5e5e5"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">Button</span></span><br><span class="line">                <span class="attribute">android:id</span>=<span class="value">"@+id/alert_rightBtn"</span></span><br><span class="line">                <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">                <span class="attribute">android:text</span>=<span class="value">"确定"</span></span><br><span class="line">                <span class="attribute">android:gravity</span>=<span class="value">"center"</span></span><br><span class="line">                <span class="attribute">android:textColor</span>=<span class="value">"@android:color/holo_blue_light"</span></span><br><span class="line">                <span class="attribute">android:background</span>=<span class="value">"@android:color/transparent"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>文件CustomAlertView.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomAlertView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> TextView alertTitle;</span><br><span class="line">    <span class="keyword">private</span> TextView alertContent;</span><br><span class="line">    <span class="keyword">private</span> Button alertLeftBtn;</span><br><span class="line">    <span class="keyword">private</span> Button alertRightBtn;</span><br><span class="line">    <span class="keyword">private</span> Context mContent;</span><br><span class="line">    <span class="keyword">private</span> AlertDialog alertDialog;</span><br><span class="line">    <span class="keyword">private</span> View mView;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LeftButtonClickedListener leftButtonClickedListener;</span><br><span class="line">    <span class="keyword">public</span> RightButtonClickedListener rightButtonClickedListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomAlertView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">        mContent = context;</span><br><span class="line">        initView(mContent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomAlertView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">        mContent = context;</span><br><span class="line">        initView(mContent);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomAlertView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</span><br><span class="line">        mContent = context;</span><br><span class="line">        initView(mContent);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化视图</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        mView = LayoutInflater.from(mContent).inflate(R.layout.view_alert, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">        alertTitle = (TextView)mView.findViewById(R.id.alert_title);</span><br><span class="line">        alertContent = (TextView)mView.findViewById(R.id.alert_content);</span><br><span class="line">        alertLeftBtn = (Button)mView.findViewById(R.id.alert_leftBtn);</span><br><span class="line">        alertRightBtn = (Button)mView.findViewById(R.id.alert_rightBtn);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化AlertDialog</span></span><br><span class="line">        alertDialog = <span class="keyword">new</span> AlertDialog.Builder(mContent).create();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 监听</span></span><br><span class="line">        alertLeftBtn.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                leftButtonClickedListener.onClickedLeftButton(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        alertRightBtn.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                rightButtonClickedListener.onClickedRightButton(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 配置内容和标题</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">baseConfiguration</span><span class="params">(String title, String content)</span> </span>&#123;</span><br><span class="line">        alertTitle.setText(title);</span><br><span class="line">        alertContent.setText(content);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 弹出对话框</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showAlert</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 以AlertDialog为载体</span></span><br><span class="line">        alertDialog.setView(mView);</span><br><span class="line">        alertDialog.show();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置宽度，AlertDialog默认的宽度过于夸张。（可以不修改）</span></span><br><span class="line">        WindowManager windowManager = (WindowManager) getContext().getApplicationContext().getSystemService(Context.WINDOW_SERVICE);</span><br><span class="line">        Display display = windowManager.getDefaultDisplay();</span><br><span class="line">        WindowManager.LayoutParams layoutParams = alertDialog.getWindow().getAttributes();</span><br><span class="line">        layoutParams.width = (<span class="keyword">int</span>)(display.getWidth() * <span class="number">2</span> / <span class="number">3</span>);</span><br><span class="line">        alertDialog.getWindow().setAttributes(layoutParams);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取消对话框</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dismissAlert</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        alertDialog.dismiss();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">LeftButtonClickedListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onClickedLeftButton</span><span class="params">(View view)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RightButtonClickedListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onClickedRightButton</span><span class="params">(View view)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLeftButtonClickedListener</span><span class="params">(LeftButtonClickedListener leftButtonClickedListener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.leftButtonClickedListener = leftButtonClickedListener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRightButtonClickedListener</span><span class="params">(RightButtonClickedListener rightButtonClickedListener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.rightButtonClickedListener = rightButtonClickedListener;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在Activity中的调用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化</span></span><br><span class="line">        <span class="keyword">final</span> CustomAlertView customAlertView = <span class="keyword">new</span> CustomAlertView(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">        customAlertView.baseConfiguration(<span class="string">"提示"</span>, <span class="string">"今天是星期五吗"</span>);</span><br><span class="line"></span><br><span class="line">        Button showBtn = (Button)findViewById(R.id.main_show_btn);</span><br><span class="line">        showBtn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 显现</span></span><br><span class="line">                Log.i(TAG, <span class="string">"onClick: 显现"</span>);</span><br><span class="line">                customAlertView.showAlert();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        customAlertView.setLeftButtonClickedListener(<span class="keyword">new</span> CustomAlertView.LeftButtonClickedListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClickedLeftButton</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 取消</span></span><br><span class="line">                Log.i(TAG, <span class="string">"onClickedLeftButton: 取消"</span>);</span><br><span class="line">                customAlertView.dismissAlert();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        customAlertView.setRightButtonClickedListener(<span class="keyword">new</span> CustomAlertView.RightButtonClickedListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClickedRightButton</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 确定</span></span><br><span class="line">                Log.i(TAG, <span class="string">"onClickedRightButton: 确定"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">/** 此处处理一些事物 **/</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// 取消</span></span><br><span class="line">                customAlertView.dismissAlert();</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/18/依托AlertDialog实现的iOS风格的提醒框/" class="archive-article-date">
+  	<time datetime="2016-11-18T07:40:28.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-18</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AlertDialog/">AlertDialog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/提醒框/">提醒框</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/18/hexo主题yilia的头像无法显现/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo主题yilia的头像无法显现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="依托AlertDialog实现的iOS风格的提醒框" data-title="依托AlertDialog实现的iOS风格的提醒框" data-url="http://yoursite.com/2016/11/18/依托AlertDialog实现的iOS风格的提醒框/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jmsp
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js" type="text/javascript"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+    
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+
+    
+
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
