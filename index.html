@@ -476,6 +476,65 @@ var _hmt = _hmt || [];
 
 
   
+    <article id="post-Swift3中Dispatch-once的实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/08/Swift3中Dispatch-once的实现/">Swift3中Dispatch_once的实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Dispatch_once在Swift3中已经被废弃。</p>
+</blockquote>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">extension</span> <span class="title">DispatchQueue</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">var</span> _onceTracker = [<span class="type">String</span>]()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 利用token字段来作为once的ID</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">once</span>(<span class="title">token</span>: <span class="title">String</span>, <span class="title">block</span>:()-&gt;<span class="title">Void</span>) </span>&#123;</span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">// 加锁，保证有序同步执行</span></span><br><span class="line">        objc_sync_enter(<span class="keyword">self</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 推迟解锁</span></span><br><span class="line">        <span class="keyword">defer</span> &#123; </span><br><span class="line">        	<span class="comment">// 将objc_sync_exit(self)推入栈中，函数结束时执行解锁</span></span><br><span class="line">        	objc_sync_exit(<span class="keyword">self</span>) </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> _onceTracker.<span class="built_in">contains</span>(token) &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        _onceTracker.append(token)</span><br><span class="line">        block()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DispatchQueue</span>.once(token: <span class="string">"com.once.test"</span>) &#123;    </span><br><span class="line">	<span class="built_in">print</span>( <span class="string">"执行一次"</span> )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/08/Swift3中Dispatch-once的实现/" class="archive-article-date">
+  	<time datetime="2016-10-08T02:01:43.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dispatch-once/">Dispatch_once</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift3/">Swift3</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-【android】RecyclerView中动态添加子控件和改变ViewHolder高度" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -705,95 +764,6 @@ var _hmt = _hmt || [];
 </a>
       
       
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【BUG】Swift2-3适配Swift3-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/28/【BUG】Swift2-3适配Swift3-0/">Swift2.3适配Swift3.0</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>升级Xcode8.0Beta版，看着公司Swift版本的项目200多个报红，那种酸爽也就苹果能给。慢慢改吧！改的东西很多，但基本都不难，记录几个花费较长时间的Bug。</p>
-</blockquote>
-<h3 id="NO-1"><a href="#NO-1" class="headerlink" title="NO.1"></a>NO.1</h3><p>【报错】“Use Legacy Swift Language Version” (SWIFT_VERSION) is required to be configured correctly for targets which use Swift. Use the [Edit &gt; Convert &gt; To Current Swift Syntax…] menu to choose a Swift version or use the Build Settings editor to configure the build setting directly.</p>
-<p>【解决方法】设置 Build Settings —-&gt; Use Legacy Swift Language Version —-&gt; YES/NO，改为NO或者YES</p>
-<h3 id="NO-2"><a href="#NO-2" class="headerlink" title="NO.2"></a>NO.2</h3><p>【问题】控制台打印出大量无用的信息。</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/xcode8logs1.png" alt=""></p>
-<p>【解决方法】在 <code>Environment Variables</code>中添加字段 name:<code>OS_ACTIVITY_MODE</code>,value:<code>disable</code></p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/xocde8logs2.png" alt=""></p>
-<h3 id="NO-3"><a href="#NO-3" class="headerlink" title="NO.3"></a>NO.3</h3><p>【问题】整个项目能编译通过，但在运行时<code>启动页出现后就黑屏</code></p>
-<p>【解决方法】问题在于，AppDelegate中<code>didFinishLaunchingWithOptions</code>这个方法没有走。虽然是利用系统提供的修复，自动从Swift2.3修复到Swift3，但修复完的这个方法也还是不对的。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="func"><span class="keyword">func</span> <span class="title">application</span><span class="params">(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)</span></span> -&gt; <span class="type">Bool</span> &#123; &#125;</span><br></pre></td></tr></table></figure>
-<p>修改为</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">application</span><span class="params">(<span class="number">_</span> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?)</span></span> -&gt; <span class="type">Bool</span> &#123; &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="NO-4"><a href="#NO-4" class="headerlink" title="NO.4"></a>NO.4</h3><p>【报错】“ambiguous referenc to member datask(with: completionhandler:)”</p>
-<p>【解决方法】这个是在<code>URLSessionDataTask</code>中遇到的，属于类型不明确的报错。</p>
-<p>修改前的代码：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> task: <span class="type">URLSessionDataTask</span> = session.dataTask(with: request) &#123; (data, resp, err) <span class="keyword">in</span> 	&#125;</span><br></pre></td></tr></table></figure>
-<p>修改后的代码:</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> task: <span class="type">URLSessionDataTask</span> = session.dataTask(with: request <span class="keyword">as</span> <span class="type">URLRequest</span>) &#123; (data, resp, err) <span class="keyword">in</span> &#125;</span><br><span class="line"><span class="comment">// 由于request是NSMutableURLRequest类型，在request 后面添加了 as URLRequest</span></span><br></pre></td></tr></table></figure>
-<h3 id="NO-5"><a href="#NO-5" class="headerlink" title="NO.5"></a>NO.5</h3><p>【报错】”Cannot pass immutable value of type ‘NSDate?’ as inout argument”</p>
-<p>【解决方法】<code>var beginDate:  NSDate? = NSDate()</code></p>
-<p>修改前的代码：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> beginDate:  <span class="type">Date</span>?</span><br><span class="line"><span class="keyword">var</span> endDate: <span class="type">Date</span>?</span><br><span class="line"><span class="keyword">let</span> calendar: <span class="type">Calendar</span> = <span class="type">Calendar</span>.current</span><br><span class="line"><span class="keyword">let</span> ok: <span class="type">Bool</span> = calendar.range(of: <span class="type">Calendar</span>.<span class="type">Unit</span>.month, start: &amp;beginDate, interval: &amp;interval, <span class="keyword">for</span>: newDate <span class="keyword">as</span> <span class="type">Date</span>)</span><br></pre></td></tr></table></figure>
-<p>修改后的代码：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> beginDate:  <span class="type">NSDate</span>? = <span class="type">NSDate</span>()</span><br><span class="line"><span class="keyword">var</span> endDate: <span class="type">NSDate</span>? = <span class="type">NSDate</span>()</span><br><span class="line"><span class="keyword">let</span> calendar: <span class="type">Calendar</span> = <span class="type">Calendar</span>.current</span><br><span class="line"><span class="keyword">let</span> ok: <span class="type">Bool</span> = calendar.range(of: <span class="type">Calendar</span>.<span class="type">Unit</span>.month, start: &amp;beginDate, interval: &amp;interval, <span class="keyword">for</span>: newDate <span class="keyword">as</span> <span class="type">Date</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="NO-6"><a href="#NO-6" class="headerlink" title="NO.6"></a>NO.6</h3><p>【警告】”Expression of type “UIViewController?” is unused”.</p>
-<p>【解决】Swift3之前，每个方法都有一个默认的可以废弃的结果。</p>
-<p>相关解决实例：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例一：</span></span><br><span class="line">	<span class="number">_</span> = navigationController?.popViewController(animated: <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例二：</span></span><br><span class="line">	t_principal.mas_makeConstraints &#123; (make) <span class="keyword">in</span></span><br><span class="line">            <span class="number">_</span> = make?.top.mas_equalTo()(<span class="number">0</span>)</span><br><span class="line">            <span class="number">_</span> = make?.<span class="keyword">left</span>.mas_equalTo()(<span class="number">20</span>)</span><br><span class="line">            <span class="number">_</span> = make?.height.mas_equalTo()(<span class="keyword">self</span>.frame.size.height / <span class="number">3</span> - <span class="number">1</span>)</span><br><span class="line">            <span class="number">_</span> = make?.width.mas_equalTo()(<span class="keyword">self</span>.frame.size.width / <span class="number">2</span> - <span class="number">30</span>)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="相关参考"><a href="#相关参考" class="headerlink" title="相关参考"></a>相关参考</h3><p><a href="http://adcdownload.apple.com/Developer_Tools/Xcode_8_beta_3/Release_Notes_for_Xcode_8_beta_3.pdf" target="_blank" rel="external">http://adcdownload.apple.com/Developer_Tools/Xcode_8_beta_3/Release_Notes_for_Xcode_8_beta_3.pdf</a></p>
-<p><a href="https://forums.developer.apple.com/thread/49635" target="_blank" rel="external">https://forums.developer.apple.com/thread/49635</a></p>
-<p><a href="http://stackoverflow.com/questions/37812286/swift-3-urlsession-shared-ambiguous-reference-to-member-datataskwithcomplet" target="_blank" rel="external">http://stackoverflow.com/questions/37812286/swift-3-urlsession-shared-ambiguous-reference-to-member-datataskwithcomplet</a></p>
-<p><a href="http://stackoverflow.com/questions/37946990/cgrectmake-cgpointmake-cgsizemake-cgrectzero-cgpointzero-is-unavailable-in" target="_blank" rel="external">http://stackoverflow.com/questions/37946990/cgrectmake-cgpointmake-cgsizemake-cgrectzero-cgpointzero-is-unavailable-in</a></p>
-<p><a href="http://stackoverflow.com/questions/37843049/xcode-8-swift-3-expression-of-type-uiviewcontroller-is-unused-warning" target="_blank" rel="external">http://stackoverflow.com/questions/37843049/xcode-8-swift-3-expression-of-type-uiviewcontroller-is-unused-warning</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/07/28/【BUG】Swift2-3适配Swift3-0/" class="archive-article-date">
-  	<time datetime="2016-07-28T05:36:36.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-07-28</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift2-3/">Swift2.3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift3-0/">Swift3.0</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
 
       <div class="clearfix"></div>
     </div>

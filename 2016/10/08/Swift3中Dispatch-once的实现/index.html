@@ -6,32 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Apple LLVM 8.0 Error | Jmsp&#39;s Tips</title>
+  <title>Swift3中Dispatch_once的实现 | Jmsp&#39;s Tips</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="早上打开项目，冒出了6个红点，报错【Apple LLVM 8.0 Error】，然后就开始goole了。解决方案很多，但并非都适合自己的项目。
+  <meta name="description" content="Dispatch_once在Swift3中已经被废弃。
 
-报错
-Delete之后，记得clean一下，然后编译运行就OK了
-参考http://stackoverflow.com/questions/26772504/apple-llvm-6-0-error-clang-failed-with-exit-code">
+实现123456789101112131415161718192021222324public extension DispatchQueue &amp;#123;    private static var _onceTracker = [String]()        // 利用token字段来作为once的ID    public clas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Apple LLVM 8.0 Error">
-<meta property="og:url" content="http://yoursite.com/2016/10/14/Error/index.html">
+<meta property="og:title" content="Swift3中Dispatch_once的实现">
+<meta property="og:url" content="http://yoursite.com/2016/10/08/Swift3中Dispatch-once的实现/index.html">
 <meta property="og:site_name" content="Jmsp's Tips">
-<meta property="og:description" content="早上打开项目，冒出了6个红点，报错【Apple LLVM 8.0 Error】，然后就开始goole了。解决方案很多，但并非都适合自己的项目。
+<meta property="og:description" content="Dispatch_once在Swift3中已经被废弃。
 
-报错
-Delete之后，记得clean一下，然后编译运行就OK了
-参考http://stackoverflow.com/questions/26772504/apple-llvm-6-0-error-clang-failed-with-exit-code">
-<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/llvm80.png">
-<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/llvm81.png">
-<meta property="og:updated_time" content="2016-11-18T02:34:08.000Z">
+实现123456789101112131415161718192021222324public extension DispatchQueue &amp;#123;    private static var _onceTracker = [String]()        // 利用token字段来作为once的ID    public clas">
+<meta property="og:updated_time" content="2016-11-22T02:41:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Apple LLVM 8.0 Error">
-<meta name="twitter:description" content="早上打开项目，冒出了6个红点，报错【Apple LLVM 8.0 Error】，然后就开始goole了。解决方案很多，但并非都适合自己的项目。
+<meta name="twitter:title" content="Swift3中Dispatch_once的实现">
+<meta name="twitter:description" content="Dispatch_once在Swift3中已经被废弃。
 
-报错
-Delete之后，记得clean一下，然后编译运行就OK了
-参考http://stackoverflow.com/questions/26772504/apple-llvm-6-0-error-clang-failed-with-exit-code">
+实现123456789101112131415161718192021222324public extension DispatchQueue &amp;#123;    private static var _onceTracker = [String]()        // 利用token字段来作为once的ID    public clas">
   
     <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
   
@@ -172,7 +164,7 @@ var _hmt = _hmt || [];
 </nav>
 
       <div class="body-wrap">
-        <article id="apple-Error" class="article article-type-apple" itemscope itemprop="blogPost">
+        <article id="post-Swift3中Dispatch-once的实现" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -182,7 +174,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      Apple LLVM 8.0 Error
+      Swift3中Dispatch_once的实现
     </h1>
   
 
@@ -191,24 +183,22 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>早上打开项目，冒出了6个红点，报错【Apple LLVM 8.0 Error】，然后就开始goole了。解决方案很多，但并非都适合自己的项目。</p>
+<p>Dispatch_once在Swift3中已经被废弃。</p>
 </blockquote>
-<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/llvm80.png" alt=""></p>
-<h3 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xoz39.com1.z0.glb.clouddn.com/llvm81.png" alt=""></h3><p>Delete之后，记得clean一下，然后编译运行就OK了</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://stackoverflow.com/questions/26772504/apple-llvm-6-0-error-clang-failed-with-exit-code-1" target="_blank" rel="external">http://stackoverflow.com/questions/26772504/apple-llvm-6-0-error-clang-failed-with-exit-code-1</a></p>
-<p><a href="http://stackoverflow.com/questions/24052293/apple-llvm-6-0-error" target="_blank" rel="external">http://stackoverflow.com/questions/24052293/apple-llvm-6-0-error</a></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">extension</span> <span class="title">DispatchQueue</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">var</span> _onceTracker = [<span class="type">String</span>]()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 利用token字段来作为once的ID</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">once</span>(<span class="title">token</span>: <span class="title">String</span>, <span class="title">block</span>:()-&gt;<span class="title">Void</span>) </span>&#123;</span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">// 加锁，保证有序同步执行</span></span><br><span class="line">        objc_sync_enter(<span class="keyword">self</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 推迟解锁</span></span><br><span class="line">        <span class="keyword">defer</span> &#123; </span><br><span class="line">        	<span class="comment">// 将objc_sync_exit(self)推入栈中，函数结束时执行解锁</span></span><br><span class="line">        	objc_sync_exit(<span class="keyword">self</span>) </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> _onceTracker.<span class="built_in">contains</span>(token) &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        _onceTracker.append(token)</span><br><span class="line">        block()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DispatchQueue</span>.once(token: <span class="string">"com.once.test"</span>) &#123;    </span><br><span class="line">	<span class="built_in">print</span>( <span class="string">"执行一次"</span> )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/10/14/Error/" class="archive-article-date">
-  	<time datetime="2016-10-14T02:13:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-14</time>
+      <a href="/2016/10/08/Swift3中Dispatch-once的实现/" class="archive-article-date">
+  	<time datetime="2016-10-08T02:01:43.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-08</time>
 </a>
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LLVM8-0/">LLVM8.0</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dispatch-once/">Dispatch_once</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift3/">Swift3</a></li></ul>
 	</div>
 
       
@@ -226,18 +216,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2016/10/21/Compiling/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/10/14/Error/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Compiling Swift source files
+          Apple LLVM 8.0 Error
         
       </div>
     </a>
   
   
-    <a href="/2016/10/08/Swift3中Dispatch-once的实现/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Swift3中Dispatch_once的实现</div>
+    <a href="/2016/09/29/【android】RecyclerView中动态添加子控件和改变ViewHolder高度/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RecyclerView中动态添加子控件和改变ViewHolder高度</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -271,7 +261,7 @@ var _hmt = _hmt || [];
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Error" data-title="Apple LLVM 8.0 Error" data-url="http://yoursite.com/2016/10/14/Error/"></div>
+	<div class="ds-thread" data-thread-key="Swift3中Dispatch-once的实现" data-title="Swift3中Dispatch_once的实现" data-url="http://yoursite.com/2016/10/08/Swift3中Dispatch-once的实现/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
