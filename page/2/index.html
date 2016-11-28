@@ -159,6 +159,65 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-【MacOS开发】HotKey" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/31/【MacOS开发】HotKey/">【MacOS开发】HotKey(快捷键)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在MacOS开发中，设置快捷键是必不可少的，这里总结了两种方法。</p>
+</blockquote>
+<h3 id="方法一：在IB中快速设置"><a href="#方法一：在IB中快速设置" class="headerlink" title="方法一：在IB中快速设置"></a>方法一：在IB中快速设置</h3><p>如果将快捷键设置为MacAPP默认的，用户不可以更改的快捷键，推荐使用这种方法，十分便捷。具体就是在StoryBoard中为NSMenuItem设置KeyEquivalent属性，简单直接。如下图：</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/hotkeyIb.png" alt=""></p>
+<h3 id="方法二：代码实现快捷键设置"><a href="#方法二：代码实现快捷键设置" class="headerlink" title="方法二：代码实现快捷键设置"></a>方法二：代码实现快捷键设置</h3><p>允许用户设置快捷键的话，推荐使用这种方法。首先引入<code>Carbon.framework</code>, 具体方法如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// &#27880;&#20876;&#24555;&#25463;&#38190;&#10;- (void)costomHotKey &#123;&#10;    &#10;    // 1&#12289;&#22768;&#26126;&#30456;&#20851;&#21442;&#25968;&#10;    EventHotKeyRef myHotKeyRef;&#10;    EventHotKeyID myHotKeyID;&#10;    EventTypeSpec myEvenType;&#10;    myEvenType.eventClass = kEventClassKeyboard;    // &#38190;&#30424;&#31867;&#22411;&#10;    myEvenType.eventKind = kEventHotKeyPressed;     // &#25353;&#21387;&#20107;&#20214;&#10;    &#10;    // 2&#12289;&#23450;&#20041;&#24555;&#25463;&#38190;&#10;    myHotKeyID.signature = &#39;yuus&#39;;  // &#33258;&#23450;&#20041;&#31614;&#21517;&#10;    myHotKeyID.id = 4;              // &#24555;&#25463;&#38190;ID&#10;&#10;    // 3&#12289;&#27880;&#20876;&#24555;&#25463;&#38190;&#10;    // &#21442;&#25968;&#19968;&#65306;keyCode; &#22914;18&#20195;&#34920;1&#65292;19&#20195;&#34920;2&#65292;21&#20195;&#34920;4&#65292;49&#20195;&#34920;&#31354;&#26684;&#38190;&#65292;36&#20195;&#34920;&#22238;&#36710;&#38190;&#10;    // &#24555;&#25463;&#38190;&#65306;command+4&#10;    RegisterEventHotKey(21, cmdKey, myHotKeyID, GetApplicationEventTarget(), 0, &#38;myHotKeyRef);&#10;    &#10;    // &#24555;&#25463;&#38190;&#65306;command+option+4&#10;//    RegisterEventHotKey(21, cmdKey + optionKey, myHotKeyID, GetApplicationEventTarget(), 0, &#38;myHotKeyRef);&#10;&#10;    // 5&#12289;&#27880;&#20876;&#22238;&#35843;&#20989;&#25968;&#65292;&#21709;&#24212;&#24555;&#25463;&#38190;&#10;    InstallApplicationEventHandler(&#38;hotKeyHandler, 1, &#38;myEvenType, NULL, NULL);&#10;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 4、自定义C类型的回调函数</span></span><br><span class="line"><span class="function">OSStatus <span class="title">hotKeyHandler</span><span class="params">(EventHandlerCallRef nextHandler, EventRef anEvent, <span class="keyword">void</span> *userData)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    EventHotKeyID hotKeyRef;</span><br><span class="line">    </span><br><span class="line">    GetEventParameter(anEvent, kEventParamDirectObject, typeEventHotKeyID, <span class="literal">NULL</span>, <span class="keyword">sizeof</span>(hotKeyRef), <span class="literal">NULL</span>, &amp;hotKeyRef);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> hotKeyId = hotKeyRef.id;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">switch</span> (hotKeyId) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">            <span class="comment">// do something</span></span><br><span class="line">            NSLog(@<span class="string">"%d"</span>, hotKeyId);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> noErr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="相关链接："><a href="#相关链接：" class="headerlink" title="相关链接："></a>相关链接：</h3><p><a href="https://github.com/zhangzhaopds/KeyEquivalentDemo.git" target="_blank" rel="external">本文DEMO https://github.com/zhangzhaopds/KeyEquivalentDemo.git</a></p>
+<p><a href="http://alvinzhu.me/blog/2013/11/05/cocoakai-fa-an-jian-shi-jian-jian-ting/" target="_blank" rel="external">参考 http://alvinzhu.me/blog/2013/11/05/cocoakai-fa-an-jian-shi-jian-jian-ting/</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/08/31/【MacOS开发】HotKey/" class="archive-article-date">
+  	<time datetime="2016-08-31T05:37:44.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-08-31</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/MacOS/">MacOS</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-layer层CornerRadius影响shadow的实现" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -706,68 +765,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/PHP/">PHP</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-RTSP-H264" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/24/RTSP-H264/">RTSP_直播推流</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>基于RTSP协议实现的iOS端推流，只是搜集到的资料，对于非科班出身的我正在努力学习相关知识。</p>
-</blockquote>
-<h3 id="文档链接"><a href="#文档链接" class="headerlink" title="文档链接"></a>文档链接</h3><p><a href="https://github.com/zhangzhaopds/RTSP.git" target="_blank" rel="external">https://github.com/zhangzhaopds/RTSP.git</a></p>
-<h3 id="简单测试"><a href="#简单测试" class="headerlink" title="简单测试"></a>简单测试</h3><ol>
-<li>从文档链接下载工程，并在真机上运行。</li>
-<li>在MAC上运行VLC(需要预先安装); Open media —&gt; Network —&gt; URL(输入真机上显示的地址，如<code>rtsp://192.168.1.119/</code>) —&gt; Open。如果成功，就可以在VLC中看到手机中拍摄到的视频。</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/05/24/RTSP-H264/" class="archive-article-date">
-  	<time datetime="2016-05-24T09:04:54.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-24</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/H264/">H264</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/直播推流/">直播推流</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
 	</div>
 
 
