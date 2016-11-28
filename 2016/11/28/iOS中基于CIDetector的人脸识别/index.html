@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>iOS中基于CIDetector的人脸识别 | Jmsp&#39;s Tips</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CIDetector是iOS中自带的人脸识别框架，使用起来相对方便。
+
+效果图
+本文Demohttps://github.com/zhangzhaopds/CIDetector_demo.git
+具体实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS中基于CIDetector的人脸识别">
+<meta property="og:url" content="http://yoursite.com/2016/11/28/iOS中基于CIDetector的人脸识别/index.html">
+<meta property="og:site_name" content="Jmsp's Tips">
+<meta property="og:description" content="CIDetector是iOS中自带的人脸识别框架，使用起来相对方便。
+
+效果图
+本文Demohttps://github.com/zhangzhaopds/CIDetector_demo.git
+具体实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/renlian.png">
+<meta property="og:updated_time" content="2016-11-28T06:27:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS中基于CIDetector的人脸识别">
+<meta name="twitter:description" content="CIDetector是iOS中自带的人脸识别框架，使用起来相对方便。
+
+效果图
+本文Demohttps://github.com/zhangzhaopds/CIDetector_demo.git
+具体实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
+  
+    <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css" type="text/css">
+  
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d400b2b9cf7d1a287b60931c6cbae186";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- End baidu Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jmsp</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+				<li><a href="/categories/OC">OC</a></li>
+	        
+				<li><a href="/categories/Swift">Swift</a></li>
+	        
+				<li><a href="/categories/Android">Android</a></li>
+	        
+				<li><a href="/categories/ReactNative">ReactNative</a></li>
+	        
+				<li><a href="/categories/PHP">PHP</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+            
+    			
+            
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+		        
+					<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+		        
+					<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jmsp</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jmsp</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/OC">OC</a></li>
+		        
+					<li><a href="/categories/Swift">Swift</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/ReactNative">ReactNative</a></li>
+		        
+					<li><a href="/categories/PHP">PHP</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-iOS中基于CIDetector的人脸识别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS中基于CIDetector的人脸识别
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>CIDetector是iOS中自带的人脸识别框架，使用起来相对方便。</p>
+</blockquote>
+<h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/renlian.png" alt=""></p>
+<h4 id="本文Demo"><a href="#本文Demo" class="headerlink" title="本文Demo"></a>本文Demo</h4><p><a href="https://github.com/zhangzhaopds/CIDetector_demo.git" target="_blank" rel="external">https://github.com/zhangzhaopds/CIDetector_demo.git</a></p>
+<h4 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 人脸识别</span></span><br><span class="line">- (void)detectorFace &#123;</span><br><span class="line">    <span class="comment">// 上下文</span></span><br><span class="line">    <span class="type">CIContext</span> *content = [<span class="type">CIContext</span> contextWithOptions:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     1、识别精度 Detector Accuracy</span><br><span class="line">     </span><br><span class="line">        key: CIDetectorAccuracy</span><br><span class="line">        value: CIDetectorAccuracyLow    低精度识别速度快</span><br><span class="line">               CIDetectorAccuracyHigh   高精度识别速度慢</span><br><span class="line">     */</span></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     2、识别类型 Detector Types</span><br><span class="line">     </span><br><span class="line">        CIDetectorTypeFace      面部识别</span><br><span class="line">        CIDetectorTypeRectangle 矩形识别</span><br><span class="line">        CIDetectorTypeQRCode    条码识别</span><br><span class="line">        CIDetectorTypeText      文本识别</span><br><span class="line">     */</span></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     3、 具体特征 Feature Detection</span><br><span class="line">     </span><br><span class="line">        CIDetectorImageOrientation  图片方向</span><br><span class="line">        CIDetectorEyeBlink          识别眨眼（closed eyes）</span><br><span class="line">        CIDetectorSmile             笑脸</span><br><span class="line">        CIDetectorFocalLength       焦距</span><br><span class="line">        CIDetectorAspectRatio       矩形宽高比</span><br><span class="line">        CIDetectorReturnSubFeatures 是否检测子特征</span><br><span class="line">     */</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 配置识别质量</span></span><br><span class="line">    <span class="type">NSDictionary</span> *param = [<span class="type">NSDictionary</span> dictionaryWithObject:<span class="type">CIDetectorAccuracyHigh</span> forKey:<span class="type">CIDetectorAccuracy</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建人脸识别器</span></span><br><span class="line">    <span class="type">CIDetector</span> *detector = [<span class="type">CIDetector</span> detectorOfType:<span class="type">CIDetectorTypeFace</span> context:content options:param];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 识别图片</span></span><br><span class="line">    <span class="type">CIImage</span> *ciImg = [<span class="type">CIImage</span> imageWithCGImage:_myImageView.image.<span class="type">CGImage</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 识别特征: 这里添加了眨眼和微笑</span></span><br><span class="line">    <span class="comment">// CIDetectorSmile 眼部的识别效果很差，很难识别出来</span></span><br><span class="line">    <span class="type">NSDictionary</span> *featuresParam = @&#123;<span class="type">CIDetectorSmile</span>: [<span class="type">NSNumber</span> numberWithBool:<span class="literal">true</span>],</span><br><span class="line">                                    <span class="type">CIDetectorEyeBlink</span>: [<span class="type">NSNumber</span> numberWithBool:<span class="literal">true</span>]&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取识别结果</span></span><br><span class="line">    <span class="type">NSArray</span> *resultArr = [detector featuresInImage:ciImg options:featuresParam];</span><br><span class="line">    </span><br><span class="line">    <span class="type">UIView</span> *resultView = [[<span class="type">UIView</span> alloc] initWithFrame:_myImageView.frame];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:resultView];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">CIFaceFeature</span> *feature <span class="keyword">in</span> resultArr) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">"微笑：%d"</span>, feature.hasSmile);</span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">"右眼：%d"</span>, feature.rightEyeClosed);</span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">"左眼：%d"</span>, feature.leftEyeClosed);</span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">"脸框：%d"</span>, feature.hasFaceAngle);</span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">"嘴：%d"</span>, feature.hasMouthPosition);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/** </span><br><span class="line">         关于feature中的position需要注意的是:</span><br><span class="line">            position是以所要识别图像的原始尺寸为标准；</span><br><span class="line">            因此，</span><br><span class="line">            如果装载图片的UIImageView的尺寸与图片原始尺寸不一样的话，会出现识别的位置有偏差。</span><br><span class="line">         */</span></span><br><span class="line">        <span class="type">UIView</span> *faceView = [[<span class="type">UIView</span> alloc] initWithFrame:feature.bounds];</span><br><span class="line">        faceView.layer.borderColor = [<span class="type">UIColor</span> redColor].<span class="type">CGColor</span>;</span><br><span class="line">        faceView.layer.borderWidth = <span class="number">1</span>;</span><br><span class="line">        [resultView addSubview:faceView];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 坐标系的转换</span></span><br><span class="line">        [resultView setTransform:<span class="type">CGAffineTransformMakeScale</span>(<span class="number">1</span>, -<span class="number">1</span>)];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 左眼</span></span><br><span class="line">        <span class="keyword">if</span> (feature.hasLeftEyePosition) &#123;</span><br><span class="line">            <span class="type">UIView</span> * leftEyeView = [[<span class="type">UIView</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">0</span>, <span class="number">30</span>, <span class="number">20</span>, <span class="number">20</span>)];</span><br><span class="line">            [leftEyeView setCenter:feature.leftEyePosition];</span><br><span class="line">            leftEyeView.layer.borderWidth = <span class="number">1</span>;</span><br><span class="line">            leftEyeView.layer.borderColor = [<span class="type">UIColor</span> greenColor].<span class="type">CGColor</span>;</span><br><span class="line">            [resultView addSubview:leftEyeView];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 右眼</span></span><br><span class="line">        <span class="keyword">if</span> (feature.hasRightEyePosition) &#123;</span><br><span class="line">            <span class="type">UIView</span> * rightEyeView = [[<span class="type">UIView</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">20</span>, <span class="number">20</span>)];</span><br><span class="line">            [rightEyeView setCenter:feature.rightEyePosition];</span><br><span class="line">            rightEyeView.layer.borderWidth = <span class="number">1</span>;</span><br><span class="line">            rightEyeView.layer.borderColor = [<span class="type">UIColor</span> redColor].<span class="type">CGColor</span>;</span><br><span class="line">            [resultView addSubview:rightEyeView];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 嘴部</span></span><br><span class="line">        <span class="keyword">if</span> (feature.hasMouthPosition) &#123;</span><br><span class="line">            <span class="type">UIView</span> * mouthView = [[<span class="type">UIView</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">30</span>, <span class="number">30</span>)];</span><br><span class="line">            [mouthView setCenter:feature.mouthPosition];</span><br><span class="line">            mouthView.layer.borderWidth = <span class="number">1</span>;</span><br><span class="line">            mouthView.layer.borderColor = [<span class="type">UIColor</span> redColor].<span class="type">CGColor</span>;</span><br><span class="line">            [resultView addSubview:mouthView];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/28/iOS中基于CIDetector的人脸识别/" class="archive-article-date">
+  	<time datetime="2016-11-28T06:10:07.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-28</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人脸识别/">人脸识别</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/OC/">OC</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/28/iOS中基于OpenCV的人脸识别/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS中基于OpenCV的人脸识别</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="iOS中基于CIDetector的人脸识别" data-title="iOS中基于CIDetector的人脸识别" data-url="http://yoursite.com/2016/11/28/iOS中基于CIDetector的人脸识别/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jmsp
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js" type="text/javascript"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+    
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+
+    
+
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
