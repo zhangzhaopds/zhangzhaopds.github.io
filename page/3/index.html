@@ -159,6 +159,62 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-【BUG】layer与subView添加顺序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/11/【BUG】layer与subView添加顺序/">【BUG】layer与subView层次顺序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>GOOD GOOD STUDY,  DAY DAY UP!</p>
+</blockquote>
+<p>【场景】:  Swift语言环境中，自定义二维码扫描界面;</p>
+<p>【问题】: 调用系统摄像头，添加自定义扫描动画视图，在模拟器中可以看到自定义的视图，但在真机测试时却无自定义视图;</p>
+<p>【原因】: 先在VC视图添加自定义动画子视图，之后将摄像头capture添加到了VC视图的layer层；添加子视图，那么子视图的layer层也就相应地添加到了父视图的layer层，子layer之间的遮盖造成视图的无法显现。</p>
+<p>【修复】: 调整两者的添加顺序</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/06/11/【BUG】layer与subView添加顺序/" class="archive-article-date">
+  	<time datetime="2016-06-11T06:14:46.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-06-11</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-BCrypt随机盐值加密" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -884,68 +940,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Swift中protocol的三种实现以及mutating关键词" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/11/Swift中protocol的三种实现以及mutating关键词/">Swift中protocol的三种实现以及mutating关键词</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Swift中<code>protocol</code>除了可以被<code>class</code>实现外，也可以被<code>struct</code>和<code>enum</code>实现。而<code>mutating</code>关键词则出现在当你用<code>struct</code>或者<code>enum</code>来实现协议并且在协议方法中修改变量的值得时候，用<code>mutating</code>来修饰协议方法。</p>
-</blockquote>
-<h4 id="首先，定义一个protocol"><a href="#首先，定义一个protocol" class="headerlink" title="首先，定义一个protocol"></a>首先，定义一个protocol</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 协议</span></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">VehicleProtocol</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 颜色</span></span><br><span class="line">    <span class="keyword">var</span> color: <span class="type">UIColor</span>&#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</span><br><span class="line">    </span><br><span class="line">  	<span class="comment">// 改变颜色(假定changeColor()方法要改变 color 的值，则需要用 mutating 关键词修饰)</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="func"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="结构体实现协议"><a href="#结构体实现协议" class="headerlink" title="结构体实现协议"></a>结构体实现协议</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 结构体实现协议</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">StructProtocol</span>: <span class="title">VehicleProtocol</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> color: <span class="type">UIColor</span> = <span class="type">UIColor</span>.blueColor()</span><br><span class="line">    <span class="comment">// 此处需要 mutating 关键词修饰</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="func"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span> &#123;</span><br><span class="line">        color = <span class="type">UIColor</span>.redColor()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="类实现协议"><a href="#类实现协议" class="headerlink" title="类实现协议"></a>类实现协议</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类实现协议</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassProtocol</span>: <span class="title">VehicleProtocol</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> color: <span class="type">UIColor</span> = <span class="type">UIColor</span>.blueColor()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 此处 不需要使用 mutating 关键词来修饰</span></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span> &#123;</span><br><span class="line">        color = <span class="type">UIColor</span>.greenColor()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="枚举实现协议"><a href="#枚举实现协议" class="headerlink" title="枚举实现协议"></a>枚举实现协议</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 枚举实现协议</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">EnumProtocol</span>: <span class="title">VehicleProtocol</span> </span>&#123;</span><br><span class="line">    <span class="keyword">case</span> first(<span class="type">UIColor</span>)</span><br><span class="line">    <span class="keyword">var</span> color: <span class="type">UIColor</span> &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123;</span><br><span class="line">            <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="keyword">case</span> .first(<span class="type">UIColor</span>.blueColor()):</span><br><span class="line">                <span class="keyword">return</span> <span class="type">UIColor</span>.blueColor()</span><br><span class="line">            <span class="keyword">case</span> .first(<span class="type">UIColor</span>.redColor()):</span><br><span class="line">                <span class="keyword">return</span> <span class="type">UIColor</span>.purpleColor()</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="type">UIColor</span>.whiteColor()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123;</span><br><span class="line">            <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="keyword">case</span> .first(<span class="number">_</span>):</span><br><span class="line">                <span class="keyword">self</span> = .first(newValue)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 此处需要 mutating 关键词修饰</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="func"><span class="keyword">func</span> <span class="title">changeColor</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .first(<span class="type">UIColor</span>.blueColor()):</span><br><span class="line">            <span class="keyword">self</span> = .first(<span class="type">UIColor</span>.redColor())</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">self</span> = .first(<span class="type">UIColor</span>.whiteColor())</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/zhangzhaopds/Protocol_mutating.git" target="_blank" rel="external">本文代码链接：https://github.com/zhangzhaopds/Protocol_mutating.git</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/05/11/Swift中protocol的三种实现以及mutating关键词/" class="archive-article-date">
-  	<time datetime="2016-05-11T09:12:21.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-11</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mutating/">mutating</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/protocol/">protocol</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
 	</div>
 
 
