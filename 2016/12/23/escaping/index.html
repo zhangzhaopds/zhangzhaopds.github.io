@@ -6,25 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>斗鱼 | Jmsp&#39;s Tips</title>
+  <title>@escaping | Jmsp&#39;s Tips</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="逆向工程，高仿斗鱼直播，持续更新中。
+  <meta name="description" content="Swift中的逃逸闭包（escape closure）。
 
-https://github.com/zhangzhaopds/Douyu">
+逃逸闭包​    当一个传入函数的闭包在函数执行结束之后才会被调用，这样的闭包就叫做逃逸闭包。如果一个函数的参数有一个逃逸闭包，可以在参数前加@escaping关键字来修饰。
+​    一个闭包是逃逸必要的条件是这个闭包需要存储在函数外部。举个例子，很多异步操作的函数往往会传入一个complete handler作为异步操作完成后的回调。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="斗鱼">
-<meta property="og:url" content="http://yoursite.com/2016/12/20/斗鱼/index.html">
+<meta property="og:title" content="@escaping">
+<meta property="og:url" content="http://yoursite.com/2016/12/23/escaping/index.html">
 <meta property="og:site_name" content="Jmsp's Tips">
-<meta property="og:description" content="逆向工程，高仿斗鱼直播，持续更新中。
+<meta property="og:description" content="Swift中的逃逸闭包（escape closure）。
 
-https://github.com/zhangzhaopds/Douyu">
-<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/douyu.PNG">
-<meta property="og:updated_time" content="2016-12-20T06:59:58.000Z">
+逃逸闭包​    当一个传入函数的闭包在函数执行结束之后才会被调用，这样的闭包就叫做逃逸闭包。如果一个函数的参数有一个逃逸闭包，可以在参数前加@escaping关键字来修饰。
+​    一个闭包是逃逸必要的条件是这个闭包需要存储在函数外部。举个例子，很多异步操作的函数往往会传入一个complete handler作为异步操作完成后的回调。">
+<meta property="og:updated_time" content="2016-12-23T01:26:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="斗鱼">
-<meta name="twitter:description" content="逆向工程，高仿斗鱼直播，持续更新中。
+<meta name="twitter:title" content="@escaping">
+<meta name="twitter:description" content="Swift中的逃逸闭包（escape closure）。
 
-https://github.com/zhangzhaopds/Douyu">
+逃逸闭包​    当一个传入函数的闭包在函数执行结束之后才会被调用，这样的闭包就叫做逃逸闭包。如果一个函数的参数有一个逃逸闭包，可以在参数前加@escaping关键字来修饰。
+​    一个闭包是逃逸必要的条件是这个闭包需要存储在函数外部。举个例子，很多异步操作的函数往往会传入一个complete handler作为异步操作完成后的回调。">
   
     <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
   
@@ -165,7 +167,7 @@ var _hmt = _hmt || [];
 </nav>
 
       <div class="body-wrap">
-        <article id="post-斗鱼" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-escaping" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -175,7 +177,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      斗鱼
+      @escaping
     </h1>
   
 
@@ -184,22 +186,28 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>逆向工程，高仿斗鱼直播，持续更新中。</p>
+<p>Swift中的逃逸闭包（escape closure）。</p>
 </blockquote>
-<p><a href="https://github.com/zhangzhaopds/Douyu" target="_blank" rel="external">https://github.com/zhangzhaopds/Douyu</a></p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/douyu.PNG" alt=""></p>
+<h4 id="逃逸闭包"><a href="#逃逸闭包" class="headerlink" title="逃逸闭包"></a>逃逸闭包</h4><p>​    当一个传入函数的闭包在函数执行结束之后才会被调用，这样的闭包就叫做逃逸闭包。如果一个函数的参数有一个逃逸闭包，可以在参数前加@escaping关键字来修饰。</p>
+<p>​    一个闭包是逃逸必要的条件是这个闭包需要存储在函数外部。举个例子，很多异步操作的函数往往会传入一个complete handler作为异步操作完成后的回调。当这个异步函数开始执行的时候，会开启一个异步操作，然后这个函数就直接结束了，此时，传入的闭包还没有被执行，实际上这个回调需要在异步操作完成后才会被执行。这种情况下这个回调的闭包需要定义成逃逸闭包，因为它在函数调用结束之后才会被执行。比如下面的例子：    </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> completionHandlers: [() -&gt; <span class="type">Void</span>] = []</span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">someFunctionWithEscapingClosure</span><span class="params">(completionHandler: @escaping <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    completionHandlers.append(completionHandler)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    someFunctionWithEscapingClosure以一个completionHandler作为参数，这个参数会被保存在函数外部的completionHandlers数组中，这时这个闭包是一个逃逸闭包，所以需要添加@escaping关键字去修饰，否则会有编译错误。</p>
+<p>​    逃逸闭包如果需要使用对象的变量或常量的时候，必须显示指明self，如果是普通的闭包，可以直接使用对象的变量或常量。比如下面的例子：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> completionHandlers: [() -&gt; <span class="type">Void</span>] = []</span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">someFunctionWithEscapingClosure</span><span class="params">(completionHandler: @escaping <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    completionHandlers.append(completionHandler)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">someFunctionWithNonescapingClosure</span><span class="params">(closure: <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    closure()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">10</span></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">doSomething</span><span class="params">()</span></span> &#123;</span><br><span class="line">        someFunctionWithEscapingClosure &#123; <span class="keyword">self</span>.x = <span class="number">100</span> &#125;</span><br><span class="line">        someFunctionWithNonescapingClosure &#123; x = <span class="number">200</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> instance = <span class="type">SomeClass</span>()</span><br><span class="line">instance.doSomething()</span><br><span class="line"><span class="built_in">print</span>(instance.x)</span><br><span class="line"><span class="comment">// 输出 "200"</span></span><br><span class="line"></span><br><span class="line">completionHandlers.first?()</span><br><span class="line"><span class="built_in">print</span>(instance.x)</span><br><span class="line"><span class="comment">// 输出 "100"</span></span><br></pre></td></tr></table></figure>
+<p>​    在这个例子中，第一个print输出200，因为当调用doSomethig的时候，someFunctionWithNonescapingClosure会直接调用闭包{x = 200},此时instance.x变成200，当completionHandlers.first?()之后，someFunctionWithEscapingClosure传入的闭包才会真正执行，此时instance.x变成100.可以看到，逃逸闭包必须显示指明self，而普通的闭包可以直接使用x。</p>
+<p><a href="http://1199game.com/2016/10/Swift-closure-3/" target="_blank" rel="external">http://1199game.com/2016/10/Swift-closure-3/</a></p>
 
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/12/20/斗鱼/" class="archive-article-date">
-  	<time datetime="2016-12-20T06:56:10.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-20</time>
+      <a href="/2016/12/23/escaping/" class="archive-article-date">
+  	<time datetime="2016-12-23T01:19:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-23</time>
 </a>
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/斗鱼直播/">斗鱼直播</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高仿/">高仿</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Closure/">Closure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Escaping/">Escaping</a></li></ul>
 	</div>
 
       
@@ -217,18 +225,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2016/12/23/escaping/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          @escaping
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/07/GPUImage图像处理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">GPUImage图像处理</div>
+    <a href="/2016/12/20/斗鱼/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">斗鱼</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -262,7 +261,7 @@ var _hmt = _hmt || [];
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="斗鱼" data-title="斗鱼" data-url="http://yoursite.com/2016/12/20/斗鱼/"></div>
+	<div class="ds-thread" data-thread-key="escaping" data-title="@escaping" data-url="http://yoursite.com/2016/12/23/escaping/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
