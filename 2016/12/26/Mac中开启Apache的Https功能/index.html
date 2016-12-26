@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>Mac中开启Apache的Https功能 | Jmsp&#39;s Tips</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="为Mac中自带的Apache开启Https功能，证书是自签名的证书。
+
+以下内容是针对已经配置过Apache，能够利用 http://localhost打开网页的基础上的设置。
+配置SSL在终端创建SSL路径
+1sudo mkdir /etc/apache2/ssl
+接下来创建一个私钥key和证书
+12sudo openssl genrsa -out /etc/apache2/ssl/server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac中开启Apache的Https功能">
+<meta property="og:url" content="http://yoursite.com/2016/12/26/Mac中开启Apache的Https功能/index.html">
+<meta property="og:site_name" content="Jmsp's Tips">
+<meta property="og:description" content="为Mac中自带的Apache开启Https功能，证书是自签名的证书。
+
+以下内容是针对已经配置过Apache，能够利用 http://localhost打开网页的基础上的设置。
+配置SSL在终端创建SSL路径
+1sudo mkdir /etc/apache2/ssl
+接下来创建一个私钥key和证书
+12sudo openssl genrsa -out /etc/apache2/ssl/server">
+<meta property="og:updated_time" content="2016-12-26T06:13:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac中开启Apache的Https功能">
+<meta name="twitter:description" content="为Mac中自带的Apache开启Https功能，证书是自签名的证书。
+
+以下内容是针对已经配置过Apache，能够利用 http://localhost打开网页的基础上的设置。
+配置SSL在终端创建SSL路径
+1sudo mkdir /etc/apache2/ssl
+接下来创建一个私钥key和证书
+12sudo openssl genrsa -out /etc/apache2/ssl/server">
+  
+    <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css" type="text/css">
+  
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d400b2b9cf7d1a287b60931c6cbae186";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- End baidu Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jmsp</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+				<li><a href="/categories/OC">OC</a></li>
+	        
+				<li><a href="/categories/Swift">Swift</a></li>
+	        
+				<li><a href="/categories/Android">Android</a></li>
+	        
+				<li><a href="/categories/ReactNative">ReactNative</a></li>
+	        
+				<li><a href="/categories/PHP">PHP</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+            
+    			
+            
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+		        
+					<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+		        
+					<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jmsp</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jmsp</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/OC">OC</a></li>
+		        
+					<li><a href="/categories/Swift">Swift</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/ReactNative">ReactNative</a></li>
+		        
+					<li><a href="/categories/PHP">PHP</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-Mac中开启Apache的Https功能" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mac中开启Apache的Https功能
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>为Mac中自带的Apache开启Https功能，证书是自签名的证书。</p>
+</blockquote>
+<p>以下内容是针对已经配置过Apache，能够利用 <a href="http://localhost/" target="_blank" rel="external">http://localhost</a>打开网页的基础上的设置。</p>
+<h4 id="配置SSL"><a href="#配置SSL" class="headerlink" title="配置SSL"></a>配置SSL</h4><p>在终端创建SSL路径</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /etc/apache2/ssl</span><br></pre></td></tr></table></figure>
+<p>接下来创建一个私钥key和证书</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo openssl genrsa -out /etc/apache2/ssl/server.key <span class="number">2048</span></span><br><span class="line">sudo openssl req -<span class="keyword">new</span> -x509 -key /etc/apache2/ssl/server.key -out /etc/apache2/ssl/server.crt -days <span class="number">3650</span> -subj /CN=localhost</span><br></pre></td></tr></table></figure>
+<p>最后，添加证书到钥匙串并信任改证书</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain /etc/apache2/ssl/server.crt</span><br></pre></td></tr></table></figure>
+<h4 id="配置SSL虚拟主机"><a href="#配置SSL虚拟主机" class="headerlink" title="配置SSL虚拟主机"></a>配置SSL虚拟主机</h4><h5 id="1、在终端，编辑httpd-conf"><a href="#1、在终端，编辑httpd-conf" class="headerlink" title="1、在终端，编辑httpd.conf"></a>1、在终端，编辑httpd.conf</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apache2/httpd.conf</span><br></pre></td></tr></table></figure>
+<p>找到下面三行， 在英文输入状态下，点击<code>i</code>,进入编辑状态，并将前面的 <code>#</code> 去掉，去掉#之后，<code>control+c</code>退出编辑，再执行<code>:wq</code>回到终端。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule socache_shmcb_module libexec/apache2/mod_socache_shmcb.so</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LoadModule ssl_module libexec/apache2/mod_ssl.so</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Include /<span class="keyword">private</span>/etc/apache2/extra/httpd-ssl.conf</span><br></pre></td></tr></table></figure>
+<h5 id="2、在终端，编辑httpd-vhosts-conf"><a href="#2、在终端，编辑httpd-vhosts-conf" class="headerlink" title="2、在终端，编辑httpd-vhosts.conf"></a>2、在终端，编辑httpd-vhosts.conf</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apache2/extra/httpd-vhosts.conf</span><br></pre></td></tr></table></figure>
+<p>添加端口443的虚拟主机</p>
+<p><strong>注意：</strong> <code>ServerName</code> 字段要和 .crt证书生成时的<code>CN</code>（CommonName）字段相一致（可以是域名，也可以是IP，建议用IP），即本例中的 <code>ServerName localhost</code>与<code>CN=localhost</code></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;VirtualHost *:443&gt;</span></span><br><span class="line">    <span class="keyword"><span class="common">ServerName</span></span> localhost</span><br><span class="line">    <span class="keyword"><span class="common">DocumentRoot</span></span> <span class="string">"/Users/indieweb/Sites/localhost"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">SSLEngine</span> <span class="literal">on</span></span><br><span class="line">    <span class="keyword">SSLCipherSuite</span> <span class="literal">ALL</span>:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL</span><br><span class="line">    <span class="keyword">SSLCertificateFile</span> /etc/apache2/ssl/server.crt</span><br><span class="line">    <span class="keyword">SSLCertificateKeyFile</span> /etc/apache2/ssl/server.key</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;Directory "/Users/indieweb/Sites/localhost"&gt;</span></span><br><span class="line">        <span class="keyword"><span class="common">Options</span></span> Indexes FollowSymLinks</span><br><span class="line">        <span class="keyword">AllowOverride</span> <span class="literal">All</span></span><br><span class="line">        <span class="keyword"><span class="common">Order</span></span> allow,deny</span><br><span class="line">        <span class="keyword"><span class="common">Allow</span></span> from <span class="literal">all</span></span><br><span class="line">        <span class="keyword">Require</span> <span class="literal">all</span> granted</span><br><span class="line">    <span class="tag">&lt;/Directory&gt;</span></span><br><span class="line"><span class="tag">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
+<p>回到终端，执行</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apache2/extra/httpd-vhosts.conf</span><br></pre></td></tr></table></figure>
+<p>配置<code>SSLCertificateFile</code>和<code>SSLCertificateKeyFile</code>文件路径</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SSLCertificateFile <span class="string">"/etc/apache2/ssl/server.crt"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SSLCertificateKeyFile <span class="string">"/etc/apache2/ssl/server.key"</span></span><br></pre></td></tr></table></figure>
+<p>回到终端，执行以下指令，如果出现<code>Syntax OK</code>，则代表配置成功</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apachectl configtest</span><br></pre></td></tr></table></figure>
+<p>最后，重启Apache</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apachectl restart</span><br></pre></td></tr></table></figure>
+<p>如果一切顺利的话，就可以在浏览器中打开  <a href="https://localhost" target="_blank" rel="external">https://localhost</a> </p>
+<p>到此就完成配置了。</p>
+<h4 id="局域网内的HTTPS配置"><a href="#局域网内的HTTPS配置" class="headerlink" title="局域网内的HTTPS配置"></a>局域网内的HTTPS配置</h4><p>如果想让局域网内的其他浏览器打开你的网页，则需要将 ServerName和CommonName设置成你的电脑的IP，当然证书都需要重新生成并替换；</p>
+<p>同时访问地址变为：<a href="https://你的ip地址" target="_blank" rel="external">https://你的ip地址</a></p>
+<p><strong>注意：</strong>要想在iPhone的Safari中访问这个站点，首先ServerName和CommonName一定是IP地址，其次手机要事先安装你生成的<code>server.crt</code>证书，不然Safari会一直处于尝试访问这个的站点的状态，即一闪一闪的现象。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/26/Mac中开启Apache的Https功能/" class="archive-article-date">
+  	<time datetime="2016-12-26T05:22:26.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Apache/">Apache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Https/">Https</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/PHP/">PHP</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/23/escaping/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">@escaping</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Mac中开启Apache的Https功能" data-title="Mac中开启Apache的Https功能" data-url="http://yoursite.com/2016/12/26/Mac中开启Apache的Https功能/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jmsp
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js" type="text/javascript"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+    
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+
+    
+
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
