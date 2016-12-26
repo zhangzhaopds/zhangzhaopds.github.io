@@ -159,6 +159,66 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-RecyclerView中CardView的展开与叠起" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/23/RecyclerView中CardView的展开与叠起/">RecyclerView中CardView的展开与叠起</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>RecyclerView中CardView的展开与叠起效果。</p>
+</blockquote>
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/recyclerflex.png" alt=""></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p><a href="https://github.com/zhangzhaopds/FlexbleCell.git" target="_blank" rel="external">本文DEMO https://github.com/zhangzhaopds/FlexbleCell.git</a></p>
+<p>主要代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">MyAdapter</span>.<span class="title">MyViewHolder</span>&gt; <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(MyViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MyViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        View cell = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_main_recyclerview, parent, <span class="keyword">false</span>);</span><br><span class="line">        MyViewHolder myViewHolder = <span class="keyword">new</span> MyViewHolder(cell);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 对每一个cell注册点击事件</span></span><br><span class="line">        cell.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 取消viewHolder的重用机制（很重要）</span></span><br><span class="line">        myViewHolder.setIsRecyclable(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> myViewHolder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        MyViewHolder(View view) &#123;</span><br><span class="line">            <span class="keyword">super</span>(view);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> index;</span><br><span class="line">		<span class="comment">// 尽量用线性垂直布局来动态的添加视图</span></span><br><span class="line">        LinearLayout linearLayout = (LinearLayout)v.findViewById(R.id.cell_main_rootLayout);</span><br><span class="line">        View subView = LayoutInflater.from(v.getContext()).inflate(R.layout.cell_main_recyclerview_add, (ViewGroup)v, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 利用cell控件的Tag值来标记cell是否被点击过,因为已经将重用机制取消，cell退出当前界面时就会被销毁，Tag值也就不存在了。</span></span><br><span class="line">        <span class="comment">// 如果不取消重用，那么将会出现未曾点击就已经添加子视图的效果，再点击的时候会继续添加而不是收回。</span></span><br><span class="line">        <span class="keyword">if</span> (v.findViewById(R.id.cell_main_rootLayout).getTag() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            index = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            index = (<span class="keyword">int</span>)v.findViewById(R.id.cell_main_rootLayout).getTag();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// close状态: 添加视图</span></span><br><span class="line">        <span class="keyword">if</span> (index == <span class="number">1</span>) &#123;</span><br><span class="line">            linearLayout.addView(subView);</span><br><span class="line">            subView.setTag(<span class="number">1000</span>);</span><br><span class="line">            v.findViewById(R.id.cell_main_rootLayout).setTag(<span class="number">2</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// open状态： 移除视图</span></span><br><span class="line">            linearLayout.removeView(v.findViewWithTag(<span class="number">1000</span>));</span><br><span class="line">            v.findViewById(R.id.cell_main_rootLayout).setTag(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/23/RecyclerView中CardView的展开与叠起/" class="archive-article-date">
+  	<time datetime="2016-11-23T08:22:03.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-23</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CardView/">CardView</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/recyclerView/">recyclerView</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-依托AlertDialog实现的iOS风格的提醒框" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -715,55 +775,6 @@ var _hmt = _hmt || [];
 	<a class="article-category-link" href="/categories/MacOS/">MacOS</a>
 	</div>
 
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-layer层CornerRadius影响shadow的实现" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/28/layer层CornerRadius影响shadow的实现/">layer层CornerRadius影响shadow的实现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>手动设置视图的圆角效果(cornerRadius)，会屏蔽视图的投影效果(Shadow)。问题总是在解决后，才发现仅仅只是个纸老虎！展示下代码，一看就明白。</p>
-</blockquote>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">let</span> imageShadow = <span class="type">UIImageView</span>.<span class="keyword">init</span>(frame: <span class="type">CGRectMake</span>(<span class="number">50</span>, <span class="number">50</span>, <span class="type">UIScreen</span>.mainScreen().bounds.width - <span class="number">100</span>, <span class="type">UIScreen</span>.mainScreen().bounds.width - <span class="number">100</span>))</span><br><span class="line">        <span class="keyword">self</span>.view.addSubview(imageShadow)</span><br><span class="line">        imageShadow.image = <span class="type">UIImage</span>(named: <span class="string">"IMG_0412.JPG"</span>)</span><br><span class="line">        imageShadow.layer.shadowColor = <span class="type">UIColor</span>.<span class="keyword">init</span>(red: <span class="number">238</span>/<span class="number">225.0</span>, green: <span class="number">100</span>/<span class="number">255.0</span>, blue: <span class="number">81</span>/<span class="number">255.0</span>, alpha: <span class="number">1</span>).<span class="type">CGColor</span></span><br><span class="line">        imageShadow.layer.shadowOffset = <span class="type">CGSizeMake</span>(<span class="number">0</span>, <span class="number">3.0</span>)</span><br><span class="line">        imageShadow.layer.shadowOpacity = <span class="number">0.2</span>   <span class="comment">// 透明度</span></span><br><span class="line">        imageShadow.layer.shadowRadius = <span class="number">6.0</span>    <span class="comment">// 半径</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">/**</span><br><span class="line">         注意点： 控件的圆角属性，会影响控件的投影的实现。例如：加入下面的设置圆角属性的代码，将看不到控件的投影效果。</span><br><span class="line">         */</span></span><br><span class="line"><span class="comment">//        imageShadow.layer.cornerRadius = 5</span></span><br><span class="line"><span class="comment">//        imageShadow.layer.masksToBounds = true</span></span><br></pre></td></tr></table></figure>
-<h3 id="效果图对比"><a href="#效果图对比" class="headerlink" title="效果图对比"></a>效果图对比</h3><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/shadow.png" alt="http://7xoz39.com1.z0.glb.clouddn.com/shadow.png"></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/07/28/layer层CornerRadius影响shadow的实现/" class="archive-article-date">
-  	<time datetime="2016-07-28T06:30:03.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-07-28</time>
-</a>
-      
-      
 
       <div class="clearfix"></div>
     </div>

@@ -159,6 +159,72 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-Swift代码片段：颜色值" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/28/Swift代码片段：颜色值/">Swift代码片段：颜色值</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>利用延展，为UIColor添加颜色值的初始化方法，遍历构造器。</p>
+</blockquote>
+<pre><code>extension UIColor {
+        // 三色值
+      convenience init(red: Int, green: Int, blue: Int) {
+        assert(red &gt;= 0 &amp;&amp; red &lt;= 255, &quot;Invalid red component&quot;)
+        assert(green &gt;= 0 &amp;&amp; green &lt;= 255, &quot;Invalid green component&quot;)
+        assert(blue &gt;= 0 &amp;&amp; blue &lt;= 255, &quot;Invalid blue component&quot;)
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+      }
+
+      // 颜色值  0x6fd66b
+      convenience init(netHex:Int) {
+        self.init(red:(netHex &gt;&gt; 16) &amp; 0xff, green:(netHex &gt;&gt; 8) &amp; 0xff, blue:netHex &amp; 0xff)
+      }
+}
+</code></pre>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/04/28/Swift代码片段：颜色值/" class="archive-article-date">
+  	<time datetime="2016-04-28T03:36:40.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-28</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Swift代码片段：单例" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1054,101 +1120,6 @@ func upLoadImage(urlStr: String, image: UIImage, dataType: DataType, reponse: (r
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/随笔/">随笔</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spotlight" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/29/Spotlight/">Spotlight</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>iOS9推出的Core Spotlight(CS)框架，利用CS做应用内搜索。<br><a href="https://github.com/zhangzhaopds/CoreSpotlight.git" target="_blank" rel="external">本文链接</a></p>
-</blockquote>
-<h4 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h4><pre><code>导入MobileCoreServices.framework和CoreSpotligt.framework
-</code></pre><h4 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h4><pre><code>// 设置spotlight
-- (void)setSpotligtht {
-    self.searchItemArr = [NSMutableArray array];
-    int i = 0;
-    for (NSDictionary *dic in self.dataArr) {
-
-        CSSearchableItemAttributeSet *searchItemSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:(NSString *)kUTTypeText];
-
-        // 标题
-        searchItemSet.title = [dic objectForKey:@&quot;title&quot;];
-
-        // 描述
-        searchItemSet.contentDescription = [dic objectForKey:@&quot;desc&quot;];
-        NSArray *arr = [[dic objectForKey:@&quot;picture&quot;] componentsSeparatedByString:@&quot;.&quot;];
-
-        // 设置照片路径
-        searchItemSet.thumbnailURL = [[NSBundle mainBundle] URLForResource:arr[0] withExtension:arr[1]];
-
-        // 搜索关键词 keywords(字符串形式) / contactKeywords(数组形式)
-        searchItemSet.keywords = [dic objectForKey:@&quot;title&quot;];
-
-        /*
-         uniqueIdentifier：这个参数唯一地标识Spotlight当前搜索项。你可以用你喜欢的方式构造这个唯一标示符。
-         domainIdentifier:使用这个参数对搜索项进行分组。
-         attributeSet：它就是我们刚刚设置属性时的属性设置对象。
-         */
-        CSSearchableItem *searchItem = [[CSSearchableItem alloc] initWithUniqueIdentifier:[NSString stringWithFormat:@&quot;com.spolight.%d&quot;, i] domainIdentifier:@&quot;books&quot; attributeSet:searchItemSet];
-        [self.searchItemArr addObject:searchItem];
-        i++;
-    }
-
-    [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:self.searchItemArr completionHandler:^(NSError * _Nullable error) {
-        if (error) {
-            NSLog(@&quot;%@&quot;, error.localizedDescription);
-        }
-    }];
-}
-</code></pre>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/02/29/Spotlight/" class="archive-article-date">
-  	<time datetime="2016-02-29T05:17:43.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-02-29</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spotlight/">Spotlight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/应用内搜索/">应用内搜索</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
 	</div>
 
 
