@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>Vapor实现Swift的Server搭建 | Jmsp&#39;s Tips</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="利用开源框架Vapor搭建Swift语言的服务器。
+
+
+本文翻译自：https://www.bignerdranch.com/blog/server-side-swift-with-vapor/
+一、准备工作1、Xcode 和 Swift第一件事就是下载最新的Xcode版本，其支持Swift3。
+2、Vapor第二件事就是安装Vapor和它的toolbox;
+Vapor的官方文档：https://">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vapor实现Swift的Server搭建">
+<meta property="og:url" content="http://yoursite.com/2016/12/27/Vapor实现Swift的Server搭建/index.html">
+<meta property="og:site_name" content="Jmsp's Tips">
+<meta property="og:description" content="利用开源框架Vapor搭建Swift语言的服务器。
+
+
+本文翻译自：https://www.bignerdranch.com/blog/server-side-swift-with-vapor/
+一、准备工作1、Xcode 和 Swift第一件事就是下载最新的Xcode版本，其支持Swift3。
+2、Vapor第二件事就是安装Vapor和它的toolbox;
+Vapor的官方文档：https://">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/vapor02.png">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/vapor01.png">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/vapor03.png">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/vapor04.png">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/vapor05.png">
+<meta property="og:updated_time" content="2016-12-29T03:18:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vapor实现Swift的Server搭建">
+<meta name="twitter:description" content="利用开源框架Vapor搭建Swift语言的服务器。
+
+
+本文翻译自：https://www.bignerdranch.com/blog/server-side-swift-with-vapor/
+一、准备工作1、Xcode 和 Swift第一件事就是下载最新的Xcode版本，其支持Swift3。
+2、Vapor第二件事就是安装Vapor和它的toolbox;
+Vapor的官方文档：https://">
+  
+    <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css" type="text/css">
+  
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d400b2b9cf7d1a287b60931c6cbae186";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- End baidu Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jmsp</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+				<li><a href="/categories/OC">OC</a></li>
+	        
+				<li><a href="/categories/Swift">Swift</a></li>
+	        
+				<li><a href="/categories/Android">Android</a></li>
+	        
+				<li><a href="/categories/ReactNative">ReactNative</a></li>
+	        
+				<li><a href="/categories/PHP">PHP</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+            
+    			
+            
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+		        
+					<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+		        
+					<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jmsp</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jmsp</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/OC">OC</a></li>
+		        
+					<li><a href="/categories/Swift">Swift</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/ReactNative">ReactNative</a></li>
+		        
+					<li><a href="/categories/PHP">PHP</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-Vapor实现Swift的Server搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vapor实现Swift的Server搭建
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>利用开源框架Vapor搭建Swift语言的服务器。</p>
+</blockquote>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/vapor02.png" alt=""></p>
+<p>本文翻译自：<a href="https://www.bignerdranch.com/blog/server-side-swift-with-vapor/" target="_blank" rel="external">https://www.bignerdranch.com/blog/server-side-swift-with-vapor/</a></p>
+<h3 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h3><h4 id="1、Xcode-和-Swift"><a href="#1、Xcode-和-Swift" class="headerlink" title="1、Xcode 和 Swift"></a>1、Xcode 和 Swift</h4><p>第一件事就是下载最新的Xcode版本，其支持Swift3。</p>
+<h4 id="2、Vapor"><a href="#2、Vapor" class="headerlink" title="2、Vapor"></a>2、Vapor</h4><p>第二件事就是安装Vapor和它的toolbox;</p>
+<p>Vapor的官方文档：<a href="https://vapor.github.io/documentation/getting-started/install-swift-3-macos.html" target="_blank" rel="external">https://vapor.github.io/documentation/getting-started/install-swift-3-macos.html</a></p>
+<p>具体的安装指令：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sL check.vapor.sh <span class="string">| bash</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sL toolbox.vapor.sh <span class="string">| bash</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<p>第一条指令是为了验证Xcode的安装是否正确，可能会提醒设置Xcode的 <code>Command Line Tools</code>：</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/vapor01.png" alt=""></p>
+<p>第二条指令是为了安装toolbox工具，Xcode一定要处于打开状态，不然会有类似<code>No such file or directory</code>的报错。</p>
+<h4 id="3、Postgres"><a href="#3、Postgres" class="headerlink" title="3、Postgres"></a>3、Postgres</h4><p>使用Postgres作为数据库。</p>
+<p>如果已经安装了Homebrew,则可以执行下面的指令安装Postgres数据库；</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span>install postgres</span><br></pre></td></tr></table></figure>
+<h4 id="4、Heroku"><a href="#4、Heroku" class="headerlink" title="4、Heroku"></a>4、Heroku</h4><p>在Heroku上面部署自己的云服务器。</p>
+<p>需要注册，官网地址：<a href="https://dashboard.heroku.com/apps" target="_blank" rel="external">https://dashboard.heroku.com/apps</a>;</p>
+<p>下载安装Heroku的Command Line: 地址：<a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank" rel="external">https://devcenter.heroku.com/articles/heroku-cli</a></p>
+<h3 id="二、创建Vapor项目"><a href="#二、创建Vapor项目" class="headerlink" title="二、创建Vapor项目"></a>二、创建Vapor项目</h3><p>以下指令创建了一个名为 Friends 的App，创建过程较慢，耐心等待。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vapor <span class="keyword">new</span> Friends</span><br></pre></td></tr></table></figure>
+<p>App创建成功之后，cd 到 Hello文件，执行以下指令，便可在Xcode中打开并运行项目。这个过程更加漫长。。。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">vapor</span> xcode -y</span><br></pre></td></tr></table></figure>
+<h4 id="1、打开默认文件路径-http-localhost-8080"><a href="#1、打开默认文件路径-http-localhost-8080" class="headerlink" title="1、打开默认文件路径: http://localhost:8080"></a>1、打开默认文件路径: <a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a></h4><p>在打开的工程中，导航至 Sources/App/main.swift， 看到的代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vapor</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> drop = <span class="type">Droplet</span>()</span><br><span class="line"></span><br><span class="line">drop.<span class="keyword">get</span> &#123; req <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">try</span> drop.view.make(<span class="string">"welcome"</span>, [</span><br><span class="line">        <span class="string">"message"</span>: drop.localization[req.lang, <span class="string">"welcome"</span>, <span class="string">"title"</span>]</span><br><span class="line">    ])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">drop.resource(<span class="string">"posts"</span>, <span class="type">PostController</span>())</span><br><span class="line"></span><br><span class="line">drop.run()</span><br></pre></td></tr></table></figure>
+<p>这个文件导入了Vapor框架，初始化一个Droplet类型对象，和添加了一个默认路径；</p>
+<p>配置Xcode,如下，并Command+R运行：</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/vapor03.png" alt=""></p>
+<p>在浏览器中打开 <a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a>,</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/vapor04.png" alt=""></p>
+<h4 id="2、创建一个新的访问路径-http-localhost-8080-friends"><a href="#2、创建一个新的访问路径-http-localhost-8080-friends" class="headerlink" title="2、创建一个新的访问路径: http://localhost:8080/friends"></a>2、创建一个新的访问路径: <a href="http://localhost:8080/friends" target="_blank" rel="external">http://localhost:8080/friends</a></h4><p>同样实在main.swift文件中操作，具体添加后的代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vapor</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> drop = <span class="type">Droplet</span>()</span><br><span class="line"></span><br><span class="line">drop.<span class="keyword">get</span> &#123; req <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">try</span> drop.view.make(<span class="string">"welcome"</span>, [</span><br><span class="line">        <span class="string">"message"</span>: drop.localization[req.lang, <span class="string">"welcome"</span>, <span class="string">"title"</span>]</span><br><span class="line">    ])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">drop.<span class="keyword">get</span>(<span class="string">"friends"</span>) &#123; req <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">try</span> <span class="type">JSON</span>(node: [<span class="string">"friends"</span>: [[<span class="string">"name"</span>: <span class="string">"Sarah"</span>, <span class="string">"age"</span>: <span class="number">33</span>],</span><br><span class="line">                                          [<span class="string">"name"</span>: <span class="string">"Steve"</span>, <span class="string">"age"</span>: <span class="number">31</span>],</span><br><span class="line">                                          [<span class="string">"name"</span>: <span class="string">"Drew"</span>, <span class="string">"age"</span>: <span class="number">35</span>]]</span><br><span class="line">    ])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">drop.resource(<span class="string">"posts"</span>, <span class="type">PostController</span>())</span><br><span class="line"></span><br><span class="line">drop.run()</span><br></pre></td></tr></table></figure>
+<p>friends路径接受get请求，返回一组json数据。浏览器访问效果如下：</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/vapor05.png" alt=""></p>
+<h4 id="3、创建一个Friend类型的Model"><a href="#3、创建一个Friend类型的Model" class="headerlink" title="3、创建一个Friend类型的Model"></a>3、创建一个Friend类型的Model</h4><p>在<code>Sources/App/Models</code>下创建一个<code>Friend.swift</code>文件:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Friend</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">let</span> age: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">let</span> email: <span class="type">String</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>, email: <span class="type">String</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">        <span class="keyword">self</span>.age = age</span><br><span class="line">        <span class="keyword">self</span>.email = email</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong>添加了一个email属性</p>
+<p>Vapor提供了Model协议来保存model类型，同时也提供了方法来实现model到json的转换。为了结构体Friend遵从Model协议，我们需要导入在Friend.swift中导入Vapor库。</p>
+<p>导入Vapor库的同时也意味着导入了Fluent库 。Fluent是针对Swift，处理众多数据库的对象关系映射工具（object relational mapping）。在这里我们使用它来处理我们的Postgres数据库。</p>
+<p><strong>注意：</strong>当看到Xcode导入Vapor库之后，可能会看到报错，此时返回终端，重新执行 <code>vapor xcode -y</code>;</p>
+<p>最终的Friend.swift文件应该是下面的样子：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"><span class="keyword">import</span> Vapor</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Friend</span>: <span class="title">Model</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> exists: <span class="type">Bool</span> = <span class="literal">false</span></span><br><span class="line">    <span class="keyword">var</span> id: <span class="type">Node</span>?</span><br><span class="line">    <span class="keyword">let</span> name: <span class="type">String</span></span><br><span class="line">    <span class="keyword">let</span> age: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">let</span> email: <span class="type">String</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, age: <span class="type">Int</span>, email: <span class="type">String</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">        <span class="keyword">self</span>.age = age</span><br><span class="line">        <span class="keyword">self</span>.email = email</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// NodeInitializable</span></span><br><span class="line">    <span class="keyword">init</span>(node: <span class="type">Node</span>, <span class="keyword">in</span> context: <span class="type">Context</span>) <span class="keyword">throws</span> &#123;</span><br><span class="line">        id = <span class="keyword">try</span> node.extract(<span class="string">"id"</span>)</span><br><span class="line">        name = <span class="keyword">try</span> node.extract(<span class="string">"name"</span>)</span><br><span class="line">        age = <span class="keyword">try</span> node.extract(<span class="string">"age"</span>)</span><br><span class="line">        email = <span class="keyword">try</span> node.extract(<span class="string">"email"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// NodeRepresentable</span></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">makeNode</span><span class="params">(context: Context)</span></span> <span class="keyword">throws</span> -&gt; <span class="type">Node</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">try</span> <span class="type">Node</span>(node: [<span class="string">"id"</span>: id,</span><br><span class="line">                                      <span class="string">"name"</span>: name,</span><br><span class="line">                                      <span class="string">"age"</span>: age,</span><br><span class="line">                                      <span class="string">"email"</span>: email])</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Preparation</span></span><br><span class="line">    <span class="keyword">static</span> <span class="func"><span class="keyword">func</span> <span class="title">prepare</span><span class="params">(<span class="number">_</span> database: Database)</span></span> <span class="keyword">throws</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> database.create(<span class="string">"friends"</span>) &#123; friends <span class="keyword">in</span></span><br><span class="line">            friends.id()</span><br><span class="line">            friends.string(<span class="string">"name"</span>)</span><br><span class="line">            friends.int(<span class="string">"age"</span>)</span><br><span class="line">            friends.string(<span class="string">"email"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="func"><span class="keyword">func</span> <span class="title">revert</span><span class="params">(<span class="number">_</span> database: Database)</span></span> <span class="keyword">throws</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> database.delete(<span class="string">"friends"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一件事是我们要实现Model协议。意味着，我们需要一个<code>Node?</code>类型的<code>id</code>属性；id的值在保存到数据库之前是<code>nil</code>。Friend同时有一个默认值为<code>false</code>的<code>exists</code>的属性，这个属性展示的是从数据库中是否获取到实例对象（This property details whether or not the instance was retrieved from the database and should not be interacted with directly.）。</p>
+<p>同时，我们还需要实现其他的协议。<code>NodeInitializable</code>，<code>NodeRepresentable</code>和<code>Preparation</code>。其中，前两个协议 的实现是因为 Model协议继承于Entity协议。第一个协议告诉我们怎样从数据库中初始化model；第二个协议是怎样保存model到数据库中。第三个协议是怎样创建数据库。</p>
+<p>接下来，我们在main.swift中利用上面的Friend,在新的路径 friends下创建一个json,如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">drop.<span class="keyword">get</span>(<span class="string">"friends"</span>) &#123; req <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">let</span> friends = [<span class="type">Friend</span>(name: <span class="string">"Sarah"</span>, age: <span class="number">33</span>, email:<span class="string">"sarah@email.com"</span>),</span><br><span class="line">                       <span class="type">Friend</span>(name: <span class="string">"Steve"</span>, age: <span class="number">31</span>, email:<span class="string">"steve@email.com"</span>),</span><br><span class="line">                       <span class="type">Friend</span>(name: <span class="string">"Drew"</span>, age: <span class="number">35</span>, email:<span class="string">"drew@email.com"</span>)]</span><br><span class="line">    <span class="keyword">let</span> friendsNode = <span class="keyword">try</span> friends.makeNode()</span><br><span class="line">    <span class="keyword">let</span> nodeDictionary = [<span class="string">"friends"</span>: friendsNode]</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">try</span> <span class="type">JSON</span>(node: nodeDictionary)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们创建了一个包含三个Friend对象的friends数组。之后数组调用<code>makeNode()</code>方法转换成一个Node。之后的字典和json结果。</p>
+<p>重新运行Command+R，在浏览器中访问<a href="http://localhost:8080/friends，即可看到效果。" target="_blank" rel="external">http://localhost:8080/friends，即可看到效果。</a></p>
+<h4 id="4、配置Postgres数据库"><a href="#4、配置Postgres数据库" class="headerlink" title="4、配置Postgres数据库"></a>4、配置Postgres数据库</h4><p>设置Postgres涉及几个步骤：</p>
+<ol>
+<li>在<code>Package.swift</code>中为Postgres添加一个provider；</li>
+<li>在main.swift中导入provider，用Droplet来使用它；</li>
+<li>配置我们的app使用Postgres；</li>
+</ol>
+<h5 id="获取一个provider"><a href="#获取一个provider" class="headerlink" title="获取一个provider"></a>获取一个provider</h5><p> <a href="https://github.com/vapor/postgresql-provider" target="_blank" rel="external">postgres-provider</a>是一个优秀的provider。在<code>Package.swift</code>添加这个依赖。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> PackageDescription</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> package = <span class="type">Package</span>(</span><br><span class="line">    name: <span class="string">"Friends"</span>,</span><br><span class="line">    dependencies: [</span><br><span class="line">        .<span class="type">Package</span>(url: <span class="string">"https://github.com/vapor/vapor.git"</span>, majorVersion: <span class="number">1</span>, minor: <span class="number">1</span>),</span><br><span class="line">        .<span class="type">Package</span>(url: <span class="string">"https://github.com/vapor/postgresql-provider"</span>, majorVersion: <span class="number">1</span>, minor: <span class="number">0</span>)</span><br><span class="line">    ],</span><br><span class="line">    exclude: [</span><br><span class="line">        <span class="string">"Config"</span>,</span><br><span class="line">        <span class="string">"Database"</span>,</span><br><span class="line">        <span class="string">"Localization"</span>,</span><br><span class="line">        <span class="string">"Public"</span>,</span><br><span class="line">        <span class="string">"Resources"</span>,</span><br><span class="line">        <span class="string">"Tests"</span>,</span><br><span class="line">    ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>之后，在终端执行 <code>vapor xcode -y</code>。</p>
+<h5 id="导入provider"><a href="#导入provider" class="headerlink" title="导入provider"></a>导入provider</h5><p>打开main.swift，准备使用数据库Postgres。当然需要先安装Postgres。</p>
+<p>Postgres地址：<a href="https://github.com/vapor/postgresql" target="_blank" rel="external">https://github.com/vapor/postgresql</a></p>
+<p><em>MacOS上的Postgres安装使用指令：</em></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">brew <span class="operator"><span class="keyword">install</span> postgresql</span><br><span class="line">brew <span class="keyword">link</span> postgresql</span><br><span class="line">brew services <span class="keyword">start</span> postgresql</span><br><span class="line"></span><br><span class="line">// <span class="keyword">to</span> <span class="keyword">stop</span> </span><br><span class="line">brew services <span class="keyword">stop</span> postgresql</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong>我在Mac上<code>brew install postgresql</code>时出现404报错，导致Postgres安装失败，所以接下来的内容就没办法跟着原文继续实现。</p>
+<p>首先，导入 <code>VaporPostgreSQL</code>;</p>
+<p>其次，为Droplet的<code>preparations</code>添加<code>Friend.self</code> ;</p>
+<p>最后，<code>drop.addProvider(VaporPostgreSQL.Provider.self)</code>,添加porvider到drop以使用数据库。</p>
+<h5 id="在工程中配置Progres"><a href="#在工程中配置Progres" class="headerlink" title="在工程中配置Progres"></a>在工程中配置Progres</h5><p>在工程的<code>Config</code>文件夹下创建 <code>secrets</code>文件夹，并在secrets下创建 <code>postgresql.json</code>。最终的路径应该是这样的 <code>Config/secrets/postgresql.json</code>;而postgresql.json中内容如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">host</span>": <span class="value"><span class="string">"127.0.0.1"</span></span>,</span><br><span class="line">    "<span class="attribute">user</span>": <span class="value"><span class="string">"DubbaDubs"</span></span>,</span><br><span class="line">    "<span class="attribute">password</span>": <span class="value"><span class="string">""</span></span>,</span><br><span class="line">    "<span class="attribute">database</span>": <span class="value"><span class="string">"friends"</span></span>,</span><br><span class="line">    "<span class="attribute">port</span>": <span class="value"><span class="number">5432</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：user要用你自己的；friends只是我们生命的一个数据库，仍旧需要创建它。</p>
+<h5 id="使用Protgres"><a href="#使用Protgres" class="headerlink" title="使用Protgres"></a>使用Protgres</h5><p>接下来，我们创建一个新的路径，执行POST方法，将Friend数据保存到数据库；</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vapor</span><br><span class="line"><span class="keyword">import</span> VaporPostgreSQL</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> drop = <span class="type">Droplet</span>()</span><br><span class="line">drop.preparations.append(<span class="type">Friend</span>.<span class="keyword">self</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> drop.addProvider(<span class="type">VaporPostgreSQL</span>.<span class="type">Provider</span>.<span class="keyword">self</span>)</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"Error adding provider: <span class="subst">\(error)</span>"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">drop.<span class="keyword">get</span> &#123; req <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">try</span> drop.view.make(<span class="string">"welcome"</span>, [</span><br><span class="line">        <span class="string">"message"</span>: drop.localization[req.lang, <span class="string">"welcome"</span>, <span class="string">"title"</span>] ])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">drop.<span class="keyword">get</span>(<span class="string">"friends"</span>) &#123; req <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">let</span> friends = [<span class="type">Friend</span>(name: <span class="string">"Sarah"</span>, age: <span class="number">33</span>, email:<span class="string">"sarah@email.com"</span>),</span><br><span class="line">                       <span class="type">Friend</span>(name: <span class="string">"Steve"</span>, age: <span class="number">31</span>, email:<span class="string">"steve@email.com"</span>),</span><br><span class="line">                       <span class="type">Friend</span>(name: <span class="string">"Drew"</span>, age: <span class="number">35</span>, email:<span class="string">"drew@email.com"</span>)]</span><br><span class="line">    <span class="keyword">let</span> friendsNode = <span class="keyword">try</span> friends.makeNode()</span><br><span class="line">    <span class="keyword">let</span> nodeDictionary = [<span class="string">"friends"</span>: friendsNode]</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">try</span> <span class="type">JSON</span>(node: nodeDictionary)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">drop.post(<span class="string">"friend"</span>) &#123; req <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">var</span> friend = <span class="keyword">try</span> <span class="type">Friend</span>(node: req.json)</span><br><span class="line">    <span class="keyword">try</span> friend.save()</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">try</span> friend.makeJSON()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">drop.resource(<span class="string">"posts"</span>, <span class="type">PostController</span>())</span><br><span class="line"></span><br><span class="line">drop.run()</span><br></pre></td></tr></table></figure>
+<p>这个POST路径的body，类似下面：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"Some Name"</span>,</span><br><span class="line">    <span class="string">"age"</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="string">"email"</span>: <span class="string">"email@email.com"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们尝试用<code>req.json</code>创建一个Friend类型的实例对象,作为POST请求发送出去；</p>
+<p>之后，调用<code>friend.save()</code>将对象保存到数据库；</p>
+<p>关于friend为什么用 <code>Var .save()</code>的理解：friend中有一个在保存到数据库之前是nil的<code>id</code>属性，这里的作用就是当成功保存到数据后，在回调中修正这个<code>id</code>的值。</p>
+<p>我们仍旧需要创建数据库</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">postgres -<span class="keyword">D</span> /usr/<span class="keyword">local</span>/<span class="keyword">var</span>/postgres/</span><br></pre></td></tr></table></figure>
+<p>在终端执行上面的指令，Protgres 服务将在本地运行；一旦服务开始运行，我们就可以创建数据库。</p>
+<p>在新的终端窗口，执行</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">createdb</span> friends</span><br><span class="line">psql</span><br></pre></td></tr></table></figure>
+<p>之后，可以输入 <code>\l</code>来查看数据库列表，应该就可以看到你的friends数据库。</p>
+<p>最后，你可以利用POSTMAN等工具发送一个post请求，测试一下。</p>
+<p>然后用 <code>psql</code>来确认你发送数据到数据库了。</p>
+<p>You can test this new route by building and running your app within Xcode as you did above and using <code>curl</code> or a tool like <a href="https://www.getpostman.com/" target="_blank" rel="external">Postman</a>. You can use <code>psql</code> to verify that you are posting data to the database. From inside the command line interface, type <code>\c friends</code> to connect to your friends database. Next, type <code>SELECT * FROM friends;</code> and hit enter. You should see the information for the friend that you just <code>POST</code>ed to the <code>&quot;friend&quot;</code> route.</p>
+<h3 id="Removing-Hardcoded-Data"><a href="#Removing-Hardcoded-Data" class="headerlink" title="Removing Hardcoded Data"></a>Removing Hardcoded Data</h3><p><code>GET</code> requests to our <code>&quot;friends&quot;</code> currently return hardcoded data. But we can <code>POST</code>friends to our database now! Go ahead and <code>POST</code> a few more friends to your database to fill it out a little more.</p>
+<p>Back in <code>main.swift</code>, let’s update our <code>&quot;friends&quot;</code> route to return the data in our database. That method should now look like this:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">drop.<span class="keyword">get</span>(<span class="string">"friends"</span>) &#123; req <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">let</span> friends = <span class="keyword">try</span> Friend.all().makeNode()</span><br><span class="line">    <span class="keyword">let</span> friendsDictionary = [<span class="string">"friends"</span>: friends]</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">try</span> <span class="title">JSON</span>(<span class="params">node: friendsDictionary</span>)</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Visit <a href="http://localhost:8080/friends" target="_blank" rel="external">http://localhost:8080/friends</a> in your browser or send a <code>GET</code> request via Postman and you should see your friends returned to you.</p>
+<h2 id="GETting-by-id"><a href="#GETting-by-id" class="headerlink" title="GETting by id"></a><code>GET</code>ting by <code>id</code></h2><p>Add a new route to <code>main.swift</code> that will use a user’s <code>id</code> to find an entry in the database.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">drop.<span class="keyword">get</span>(<span class="string">"friends"</span>, <span class="type">Int</span>.<span class="keyword">self</span>) &#123; req, userID <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> friend = <span class="keyword">try</span> <span class="type">Friend</span>.<span class="built_in">find</span>(userID) <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">Abort</span>.notFound</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">try</span> friend.makeJSON()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The above will match a route that will end in something like, <code>.../friends/1</code>, where the integer at the end is the friend’s <code>id</code>. Notice that we use <code>Int.self</code> as the second argument in the path. This means that we can have type safe parameters in our routes! In Vapor, there is no need to cast this parameter from a <code>String</code> to an <code>Int</code>. We can express exactly what we need. The <code>userID</code> parameter in the closure will match the integer passed at the end of the route.</p>
+<p>Also, through the power of Fluent, we can simply <code>find(_:)</code> the instance of our model by its <code>id</code>. Since this lookup can fail, we must <code>try</code>. If we fail to find a <code>Friend</code>, we’ll <code>throw</code> the error <code>Abort.notFound</code>. Otherwise, we <code>makeJSON()</code> from the <code>friend</code> we found and return. Go ahead and try it out!</p>
+<h2 id="部署到-Heroku"><a href="#部署到-Heroku" class="headerlink" title="部署到 Heroku"></a>部署到 Heroku</h2><p>All that is left to do is to deploy to Heroku. Vapor makes this process very easy.</p>
+<p>Heroku works with Git, so you should make sure that you have that installed as well. Create a Git repository and commit your files.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git <span class="operator"><span class="keyword">commit</span> -<span class="keyword">m</span> <span class="string">"Initial commit"</span></span></span><br></pre></td></tr></table></figure>
+<p>Now, all you need to do is create a Heroku instance and push to it.</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">vapor</span> heroku init</span><br></pre></td></tr></table></figure>
+<p>The Heroku CLI will ask four questions:</p>
+<p><em>Would you like to provide a custom Heroku app name?</em> Answer ‘n’ and hit enter if you don’t have a custom name.</p>
+<p><em>Would you like to provide a custom Heroku buildpack?</em> Answer ‘n’ and hit enter if you would like to use the default buildpack that Heroku provides.</p>
+<p><em>Are you using a custom Executable name?</em> Answer ‘n’ and hit enter here if you aren’t using a custom executable name.</p>
+<p><em>Would you like to push to Heroku now?</em> Answer ‘n’ and hit enter.</p>
+<p>We need to answer ‘no’ because we need to configure our database to work online. We’ll do that below.</p>
+<p>Before you plug the URL you see in your Terminal output into your browser of choice, we need to provision a Postgres add-on on Heroku. Type the following in your Terminal to add Postgres to your app.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">heroku</span> <span class="tag">addons</span><span class="pseudo">:create</span> <span class="tag">heroku-postgresql</span><span class="pseudo">:hobby-dev</span></span><br></pre></td></tr></table></figure>
+<p>Adding the database can take up to five minutes to provision. Once it is ready, you can type <code>heroku config</code> in Terminal to see your database’s URL to confirm that the add-on was provisioned.</p>
+<p>Now, we need to update our app’s <code>Procfile</code>, which was created via <code>vapor heroku init</code>, to use the <code>DATABASE_URL</code> environment variable that was created by Heroku. Open the <code>Procfile</code> in your text editor and update it so that looks like the below.</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">web: App --env=production --workdir=<span class="string">"./"</span></span><br><span class="line">web: App --env=production --workdir=./ --config:servers.<span class="keyword">default</span>.port=<span class="variable">$PORT</span> --config:postgresql.url=<span class="variable">$DATABASE</span>_URL</span><br></pre></td></tr></table></figure>
+<p>Notice that we added a new configuration so that Heroku knows to use our database’s URL on the web and not the instance we have been running locally: <code>--config:postgresql.url=$DATABASE_URL</code>.</p>
+<p>Save the Procfile and type <code>git push heroku master</code> in Terminal to deploy your app.</p>
+<p>Deploying will take a few minutes. Heroku needs to build your application, install Swift on your Heroku instance, and so on. After some time, your app will be live on the web.</p>
+<p>Note that we didn’t push up the data from the local database to the remote database. You will have to exercise your app’s API to add some data to your database on Heroku.</p>
+<h3 id="Making-Changes"><a href="#Making-Changes" class="headerlink" title="Making Changes"></a>Making Changes</h3><p>Making changes is easy! Simply write your code, commit the changes, and push them up to Heroku.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="operator"><span class="keyword">commit</span> -am <span class="string">"Adds new code"</span></span><br><span class="line">git push heroku <span class="keyword">master</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="Wrapping-Up"><a href="#Wrapping-Up" class="headerlink" title="Wrapping Up"></a>Wrapping Up</h2><p>This post covered a lot of ground: We downloaded a number of tools. Introduced Vapor. Wrote a small web app. Developed an API to read and write some data to Postgres. Finally, we deployed the app to Heroku.</p>
+<p>This post is intended to you get started with server-side Swift. To that end, we introduced Vapor and explored some of its features. But this introduction just scratches the surface; there is a lot more to Vapor. What’s exciting is that server-side Swift is moving fast! Stay tuned here for more posts on the subject.</p>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><p>If you’re looking for more to do on your own, try your hand at these extra challenges.</p>
+<ul>
+<li>Create a route to <code>DELETE</code> a friend from the database.</li>
+<li>Create a route to <code>PATCH</code> a friend on the database.</li>
+</ul>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/27/Vapor实现Swift的Server搭建/" class="archive-article-date">
+  	<time datetime="2016-12-27T02:19:06.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-27</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Postgres/">Postgres</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift服务器/">Swift服务器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vapor/">Vapor</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/27/Swift中协议的简单介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Protocol</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Vapor实现Swift的Server搭建" data-title="Vapor实现Swift的Server搭建" data-url="http://yoursite.com/2016/12/27/Vapor实现Swift的Server搭建/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Jmsp
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js" type="text/javascript"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+    
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+
+    
+
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
