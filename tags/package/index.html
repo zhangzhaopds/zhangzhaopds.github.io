@@ -6,28 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>npm missing package.json | Jmsp&#39;s Tips</title>
+  <title>Tag: package | Jmsp&#39;s Tips</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在执行 npm install &amp;lt;模块&amp;gt;时，出现找不到文件路径 package.json等报错。
-
-报错
-123456789zhangzhao:util zhangzhao$ npm install n-crypto/Users/zhangzhao└── n-crypto@0.2.1 npm WARN enoent ENOENT: no such file or directory,">
-<meta property="og:type" content="article">
-<meta property="og:title" content="npm missing package.json">
-<meta property="og:url" content="http://yoursite.com/2016/12/30/npm缺少package异常/index.html">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jmsp's Tips">
+<meta property="og:url" content="http://yoursite.com/tags/package/index.html">
 <meta property="og:site_name" content="Jmsp's Tips">
-<meta property="og:description" content="在执行 npm install &amp;lt;模块&amp;gt;时，出现找不到文件路径 package.json等报错。
-
-报错
-123456789zhangzhao:util zhangzhao$ npm install n-crypto/Users/zhangzhao└── n-crypto@0.2.1 npm WARN enoent ENOENT: no such file or directory,">
-<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/npmerror.png">
-<meta property="og:updated_time" content="2016-12-30T09:03:40.000Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="npm missing package.json">
-<meta name="twitter:description" content="在执行 npm install &amp;lt;模块&amp;gt;时，出现找不到文件路径 package.json等报错。
-
-报错
-123456789zhangzhao:util zhangzhao$ npm install n-crypto/Users/zhangzhao└── n-crypto@0.2.1 npm WARN enoent ENOENT: no such file or directory,">
+<meta name="twitter:title" content="Jmsp's Tips">
+<meta name="twitter:description">
   
     <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
   
@@ -168,115 +157,59 @@ var _hmt = _hmt || [];
 </nav>
 
       <div class="body-wrap">
-        <article id="post-npm缺少package异常" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      npm missing package.json
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/12/30/npm缺少package异常/" class="archive-article-date">
+  	<time datetime="2016-12-30T08:58:57.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-30</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/12/30/npm缺少package异常/">npm missing package.json</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在执行 <code>npm install &lt;模块&gt;</code>时，出现找不到文件路径 <code>package.json</code>等报错。</p>
-</blockquote>
-<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/npmerror.png" alt=""></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">zhangzhao:util zhangzhao$ npm <span class="operator"><span class="keyword">install</span> <span class="keyword">n</span>-crypto</span><br><span class="line">/<span class="keyword">Users</span>/zhangzhao</span><br><span class="line">└── <span class="keyword">n</span>-crypto@<span class="number">0.2</span><span class="number">.1</span> </span><br><span class="line"></span><br><span class="line">npm WARN enoent ENOENT: <span class="keyword">no</span> such <span class="keyword">file</span> <span class="keyword">or</span> <span class="keyword">directory</span>, <span class="keyword">open</span> <span class="string">'/Users/zhangzhao/package.json'</span></span><br><span class="line">npm WARN zhangzhao <span class="keyword">No</span> description</span><br><span class="line">npm WARN zhangzhao <span class="keyword">No</span> repository <span class="keyword">field</span>.</span><br><span class="line">npm WARN zhangzhao <span class="keyword">No</span> README <span class="keyword">data</span></span><br><span class="line">npm WARN zhangzhao <span class="keyword">No</span> license <span class="keyword">field</span>.</span></span><br></pre></td></tr></table></figure>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> -<span class="keyword">g</span> <span class="comment">--save n-crypto</span></span></span><br></pre></td></tr></table></figure>
-<p>参考地址：[<a href="https://github.com/npm/npm/issues/9161" target="_blank" rel="external">https://github.com/npm/npm/issues/9161</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/30/npm缺少package异常/" class="archive-article-date">
-  	<time datetime="2016-12-30T08:58:57.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-30</time>
-</a>
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WARN/">WARN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/package/">package</a></li></ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/npm/">npm</a>
 	</div>
 
 
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
   
   
-    <a href="/2016/12/29/Vapor实现Swift的Server搭建/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Vapor实现Swift的Server搭建</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-
-<div class="share_jia">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">Share to: &nbsp; </span>
-		<a class="jiathis_button_facebook"></a> 
-	    <a class="jiathis_button_twitter"></a>
-	    <a class="jiathis_button_plus"></a> 
-	    <a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="npm缺少package异常" data-title="npm missing package.json" data-url="http://yoursite.com/2016/12/30/npm缺少package异常/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
+    
 
 
       </div>
@@ -299,9 +232,9 @@ var _hmt = _hmt || [];
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
