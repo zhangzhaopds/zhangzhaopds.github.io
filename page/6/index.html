@@ -159,6 +159,163 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-高阶函数：map、flatMap、forEach、filter、reduce" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/">高阶函数：map、flatMap、forEach、filter、reduce</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>高阶函数：函数作为参数或者函数作为返回值。</p>
+</blockquote>
+<h3 id="函数的写法："><a href="#函数的写法：" class="headerlink" title="函数的写法："></a>函数的写法：</h3><h4 id="1-正常写法"><a href="#1-正常写法" class="headerlink" title="1.正常写法"></a>1.正常写法</h4><pre><code>let res = numbers.sort({$0 &lt; $1})
+</code></pre><h4 id="2-Trailing-Closure"><a href="#2-Trailing-Closure" class="headerlink" title="2.Trailing Closure"></a>2.Trailing Closure</h4><pre><code>let ree = numbers.sort{$0 &lt; $1}
+</code></pre><h3 id="常用实例"><a href="#常用实例" class="headerlink" title="常用实例"></a>常用实例</h3><h4 id="map函数："><a href="#map函数：" class="headerlink" title="map函数："></a>map函数：</h4><pre><code>map函数：当数组调用map函数时，闭包作为它的参数，闭包实现对数组单个元素进行某种规则的处理，最终map函数返回一个原数组元素被闭包处理过的新的数组（新的数组元素个数和原先的相等，数组类型可自定义，如数组类型由[Int],变为[String] 或者 [Bool]等）。
+
+let arr = [1, 2, 9, 4, 5]
+// 写法一：推荐写法
+let mrr1 = arr.map {
+    &quot;step.&quot; + String($0)
+}
+// 写法二：
+let mrr2 = arr.map { (a: Int) -&gt; String in
+    &quot;step.&quot; + String(a)
+}
+// 写法三：
+let mrr3 = arr.map ({ (a: Int) -&gt; String in
+    &quot;step.&quot; + String(a)
+})
+</code></pre><h4 id="flatMap函数："><a href="#flatMap函数：" class="headerlink" title="flatMap函数："></a>flatMap函数：</h4><pre><code>flatMap函数：功能和map函数基本相同，不同之处在于，flatMap生成的数组自动去除nil。
+
+// 1、去除nil
+let frr = [&quot;af&quot;, &quot;vf&quot;, &quot;&quot;]
+let frr1 = frr.flatMap { (a: String) -&gt; Int? in
+    if a.characters.count == 0 {
+            return nil
+    } else {
+        return a.characters.count
+    }
+}   // [2,2]
+
+// 2、对嵌套数组的拆分合并
+let fmp = [[2, 6, 4], [5, 3, 7]]
+let fmp1 = fmp.flatMap { (a: [Int]) -&gt; [Int] in
+    a
+}   // [2, 6, 4, 5, 3, 7]
+
+let fmp2 = fmp.map { (a: [Int]) -&gt; [Int] in
+    a
+}   // [[2, 6, 4], [5, 3, 7]]
+
+// 3、对不同类型数组的合并
+let c = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
+let i = [1, 2]
+let fmp3 = i.flatMap { car in
+    c.map { num in
+        num + &quot;\(car)&quot;
+    }
+}   // [&quot;a1&quot;, &quot;b1&quot;, &quot;c1&quot;, &quot;a2&quot;, &quot;b2&quot;, &quot;c2&quot;]
+</code></pre><h4 id="filter函数："><a href="#filter函数：" class="headerlink" title="filter函数："></a>filter函数：</h4><pre><code>let err = arr.filter { (a: Int) -&gt; Bool in
+    a % 2 == 0
+}   // [2, 4]
+</code></pre><h4 id="forEach函数："><a href="#forEach函数：" class="headerlink" title="forEach函数："></a>forEach函数：</h4><pre><code>arr.forEach { (a: Int) -&gt; () in
+    print(a)
+}
+</code></pre><h4 id="reduce函数："><a href="#reduce函数：" class="headerlink" title="reduce函数："></a>reduce函数：</h4><pre><code>reduce函数：把数组元素合并成一个新的值, 新值类型不固定。有两个参数，第一个参数是返回值的初始值；第二个参数是一个处理数组元素的函数。
+
+// 返回Int
+let crr = arr.reduce(0) { (prevSum: Int, elemen: Int) in
+    return prevSum + elemen
+
+}
+// 返回String
+let crr2 = arr.reduce(&quot;&quot;) {
+      &quot;\($0)&quot; + &quot;\($1)&quot;
+}
+
+// 实现map和filter
+extension Array {
+    func mMap&lt;U&gt; (transform: Element -&gt; U) -&gt; [U] {
+    return reduce([], combine: { $0 + [transform($1)] })
+    }
+    func mFilter (includeElement: Element -&gt; Bool) -&gt; [Element] {
+        return reduce([]) { includeElement($1) ? $0 + [$1] : $0 }
+    }
+}
+
+// 利用 reduce 实现 map
+let ass = arr.reduce([]) { (a: [Int], element: Int) -&gt;[Int] in
+    var t = Array(a)
+    t.append(element * 2)
+    return t
+}
+
+// 利用 reduce 方法一次求出数组中奇数的和、以及偶数乘积
+let sss:(Int, Int) = arr.reduce((0, 1)) {
+    (a: (Int, Int), element: Int) -&gt; (Int, Int) in
+    if element % 2 == 0 {
+        return (a.0, a.1 * element)
+    } else {
+        return (a.0 + element, a.1)
+    }
+}
+
+// 利用 reduce 方法一次求出数组中偶数的平方和
+let kkk = arr.filter {
+        $0 % 2 == 0
+    }.map {
+        $0 * $0
+    }.reduce(0){
+        $0 + $1
+}
+</code></pre>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/" class="archive-article-date">
+  	<time datetime="2016-03-15T03:40:38.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-15</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/filter/">filter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flatMap/">flatMap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/forEach/">forEach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reduce/">reduce</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-NSURLSession-Swift" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1765,70 +1922,9 @@ return YES;
 
 
   
-    <article id="post-runtime的那些巧用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/06/runtime的那些巧用/">Runtime</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-获取类的属性列表"><a href="#1-获取类的属性列表" class="headerlink" title="1.获取类的属性列表"></a>1.获取类的属性列表</h2><h3 id="API"><a href="#API" class="headerlink" title="API"></a><code>API</code></h3><pre><code>`class_copyPropertyList(Class cls, unsigned int *outCount)`
-</code></pre><h3 id="在复杂对象存储中的简单应用-归档和反归档"><a href="#在复杂对象存储中的简单应用-归档和反归档" class="headerlink" title="在复杂对象存储中的简单应用-归档和反归档"></a><code>在复杂对象存储中的简单应用-归档和反归档</code></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">归档</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)encodeWithCoder:(NSCoder *)aCoder &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">   </span><br><span class="line">    获取属性列表</span><br><span class="line">    <span class="keyword">objc_property_t</span> *propertys = class_copyPropertyList([Person <span class="keyword">class</span>], &amp;num);</span><br><span class="line">    </span><br><span class="line">    遍历Person类的属性列表，逐一归档</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num; i++) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">objc_property_t</span> property = propertys[i];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *name = property_getName(property);</span><br><span class="line">        </span><br><span class="line">        NSString *key = [NSString stringWithUTF8String:name];</span><br><span class="line">        </span><br><span class="line">        归档</span><br><span class="line">        [aCoder encodeObject:[self valueForKey:key] forKey:key];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">反归档</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithCoder:(<span class="built_in">NSCoder</span> *)aDecoder &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        objc_property_t *propertys = class_copyPropertyList([Person class], &amp;num);</span><br><span class="line">        </span><br><span class="line">        遍历Person类的属性列表，逐一反归档</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num; i++) &#123;</span><br><span class="line">            </span><br><span class="line">            objc_property_t property = propertys[i];</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">char</span> *name = property_getName(property);</span><br><span class="line">            </span><br><span class="line">            <span class="built_in">NSString</span> *key = [<span class="built_in">NSString</span> stringWithUTF8String:name];</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 反归档</span></span><br><span class="line">            [<span class="keyword">self</span> setValue:[aDecoder decodeObjectForKey:key] forKey:key];</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-为类添加方法"><a href="#2-为类添加方法" class="headerlink" title="2.为类添加方法"></a>2.为类添加方法</h2><h3 id="API-1"><a href="#API-1" class="headerlink" title="API"></a><code>API</code></h3><pre><code>`class_addMethod(Class cls, SEL name, IMP imp, const char *types)`
-</code></pre><h3 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a><code>简单应用</code></h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">`为<span class="type">Person</span>类添加一个<span class="type">Method3</span>的方法，此方法能打印出“<span class="type">Hello</span>”`</span><br><span class="line"></span><br><span class="line">下面的方法的是 `- <span class="type">void</span> sayHello;` 方法的实现函数：</span><br><span class="line"><span class="type">void</span> sayHello(id self, <span class="type">SEL</span> _cmd) &#123;</span><br><span class="line">    <span class="type">NSLog</span>(@<span class="string">"Hello"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    为<span class="type">Person</span>类添加method3方法</span><br><span class="line">    class_addMethod([<span class="type">Person</span> class], @selector(method3), (<span class="type">IMP</span>)sayHello, <span class="string">"v"</span>);</span><br><span class="line">    </span><br><span class="line">    unsigned <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    获取<span class="type">Person</span>类的方法列表</span><br><span class="line">    <span class="type">Method</span> * mem = class_copyMethodList([<span class="type">Person</span> class], &amp;count);</span><br><span class="line">    </span><br><span class="line">    通过遍历，查看<span class="type">Person</span>类的所有方法</span><br><span class="line">    <span class="keyword">for</span> ( <span class="type">int</span>  i=<span class="number">0</span>;i&lt;count;i++)&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="type">SEL</span> name = method_getName(mem[i]);</span><br><span class="line">        </span><br><span class="line">        <span class="type">NSString</span> * <span class="keyword">method</span> = [<span class="type">NSString</span> stringWithCString:sel_getName(name) encoding:<span class="type">NSUTF8StringEncoding</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">"%d: %@"</span> , i, <span class="keyword">method</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">Person</span> *person = [<span class="type">Person</span> new];</span><br><span class="line">    </span><br><span class="line">    实现method3方法</span><br><span class="line">    [person performSelector:@selector(method3)];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输出结果为：</span><br><span class="line"><span class="number">2015</span>-<span class="number">12</span>-<span class="number">06</span> <span class="number">22</span>:<span class="number">57</span>:<span class="number">30.391</span> Runtime[<span class="number">42093</span>:<span class="number">505478</span>] <span class="number">0</span>: method3</span><br><span class="line">`这条信息说明method3方法已经添加到了Person类里面`</span><br><span class="line"></span><br><span class="line"><span class="number">2015</span>-<span class="number">12</span>-<span class="number">06</span> <span class="number">22</span>:<span class="number">57</span>:<span class="number">30.393</span> Runtime[<span class="number">42093</span>:<span class="number">505478</span>] Hello</span><br><span class="line">`Hello的打印,说明method3方法实现了方法 `- <span class="keyword">void</span> sayHello;` 的实现`</span><br></pre></td></tr></table></figure>
-<p><code>types参数</code></p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">如要添加一个这样的方法：<span class="function">-</span>(int)say<span class="value">:(NSString *)str;</span></span><br><span class="line"></span><br><span class="line">相应的实现函数就应该是这样：</span><br><span class="line">int <span class="function">say</span>(id self, SEL _cmd, NSString *str) </span><br><span class="line">&#123; </span><br><span class="line">    <span class="function">NSLog</span>(<span class="at_rule">@<span class="string">"%@"</span>,<span class="preprocessor"> str</span>);</span> </span><br><span class="line">    return 100;<span class="comment">//随便返回个值 </span></span><br><span class="line"> &#125; </span><br><span class="line"> </span><br><span class="line">class_addMethod这句就应该这么写：</span><br><span class="line"></span><br><span class="line"><span class="function">class_addMethod</span>(<span class="attr_selector">[EmptyClass class]</span>, <span class="at_rule">@<span class="function">selector</span>(say:), (IMP)say, <span class="string">"i@:@"</span>);</span></span><br><span class="line"></span><br><span class="line">其中types参数为"<span class="tag">i</span><span class="at_rule">@:@“，按顺序分别表示：</span><br><span class="line"><span class="preprocessor"></span><br><span class="line">i</span> ：返回值类型int，若是v则表示void</span><br><span class="line"></span><br><span class="line">@ ：参数<span class="function">id</span>(self)</span><br><span class="line"></span><br><span class="line">: ：<span class="function">SEL</span>(_cmd)</span><br><span class="line"></span><br><span class="line">@ ：<span class="function">id</span>(str)</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-方法调剂"><a href="#3-方法调剂" class="headerlink" title="3.方法调剂"></a>3.方法调剂</h2><h3 id="API-2"><a href="#API-2" class="headerlink" title="API"></a><code>API</code></h3><pre><code>`method_exchangeImplementations(Method m1, Method m2)`
-</code></pre><h3 id="方法实现的对调"><a href="#方法实现的对调" class="headerlink" title="方法实现的对调"></a><code>方法实现的对调</code></h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">简单案例：将<span class="built_in">UIView</span>的 `setBackgroundColor:` 方法 的实现 和 自定义的方法 `- (<span class="keyword">void</span>)night:(<span class="built_in">UIColor</span> *)color；` 的实现 进行对调。</span><br><span class="line"></span><br><span class="line">创建基于<span class="built_in">UIView</span>的Category：<span class="built_in">UIView</span>+Night<span class="variable">.h</span></span><br><span class="line"></span><br><span class="line">·<span class="preprocessor">#import <span class="title">"UIView+Night.h"</span></span></span><br><span class="line">·<span class="preprocessor">#import <span class="title">&lt;objc/runtime.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">UIView</span> (<span class="title">Night</span>)</span></span><br><span class="line"></span><br><span class="line">自定义的方法</span><br><span class="line">- (<span class="keyword">void</span>)night:(<span class="built_in">UIColor</span> *)color &#123;</span><br><span class="line">    <span class="keyword">if</span> ([color isEqual:[<span class="built_in">UIColor</span> yellowColor]]) &#123;</span><br><span class="line">    	</span><br><span class="line">        [<span class="keyword">self</span> night:[<span class="built_in">UIColor</span> blackColor]];</span><br><span class="line">        </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    	</span><br><span class="line">    	此处调用night方法不会出错，因为此处的night的实现已经更换</span><br><span class="line">        [<span class="keyword">self</span> night:color];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">void</span>)load &#123;</span><br><span class="line">	</span><br><span class="line">	获取方法</span><br><span class="line">    Method a = class_getInstanceMethod([<span class="built_in">UIView</span> class], <span class="keyword">@selector</span>(setBackgroundColor:));</span><br><span class="line">    </span><br><span class="line">    Method b = class_getInstanceMethod([<span class="built_in">UIView</span> class], <span class="keyword">@selector</span>(night:));</span><br><span class="line">    </span><br><span class="line">    将两个方法的实现进行对调</span><br><span class="line">    method_exchangeImplementations(a, b);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p><code>结果验证</code></p>
-<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在VC中，当执行</span><br><span class="line"></span><br><span class="line">self.view.backgroundColor = [UIColor yellowColor]<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">时，视图的颜色应该是<span class="escape">`黑</span>色<span class="escape">`的</span>。</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2015/03/06/runtime的那些巧用/" class="archive-article-date">
-  	<time datetime="2015-03-06T13:53:22.000Z" itemprop="datePublished"><i class="icon-clock"></i>2015-03-06</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 

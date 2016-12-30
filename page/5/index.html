@@ -159,6 +159,78 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-Mac上使用Apache搭建服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/04/Mac上使用Apache搭建服务器/">Mac上使用Apache搭建服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本来是要搞HLS(苹果的视频直播处理技术)的，而且已经将mp4文件分割成m3u8类型直播文件，最后要验证m3u8文件的时候，却发现是要利用服务器来处理的，所以只好查了些服务器的知识。因为Mac自带Apache，所以为了省事就直接学习了下就拿来用了。</p>
+</blockquote>
+<h4 id="启用Apache"><a href="#启用Apache" class="headerlink" title="启用Apache"></a>启用Apache</h4><ol>
+<li>开启apache命令：sudo apachectl start</li>
+<li>关闭apache命令：sudo apachectl stop</li>
+<li>重启apache命令：sudo apachectl restart</li>
+<li>开启apache后，可以直接在浏览器中访问 localhost, 如果出现“It works”，表示运行正常。</li>
+</ol>
+<h4 id="具体使用："><a href="#具体使用：" class="headerlink" title="具体使用："></a>具体使用：</h4><p>目标：在浏览器中打开localhost，显示自定义的web页面。</p>
+<ol>
+<li><p>在Mac的Finder中，利用前往文件夹，进入路径<code>/Library/WebServer/Documents</code>，这是默认的根路径，里面有三个文件：index.html.en, PoweredByMacOSX.gif, PoweredByMacOSXLarge.gif。这三个文件不用管，放在那里就行。</p>
+</li>
+<li><p>利用Coda，或者eclipse创建一个html文件，内容自己定义就行。然后将这个html文件名字改为index.html, 只能是这个名字，除非你利用vim更改Apache的httpd.conf文件，重新配置首页文件名。</p>
+</li>
+<li><p>将创建的index.html文件保存到 <code>/Library/WebServer/Documents</code>下。因为这是个私有文件夹，是需要root权限的，所有每次更改这个文件夹都是需要输入Mac密码的，除非Mac没有设定密码。</p>
+</li>
+<li><p>最后，浏览器中打开localhost,就可以看到自定义的html。</p>
+</li>
+<li><p>当然，也可以利用Xcode创建一个工程，利用UIWebView进行验证。只需要将 localhost 换成 Mac当前连接的网络的IP就行, URL最好是：<a href="http://192.168.1.103，" target="_blank" rel="external">http://192.168.1.103，</a> 也可以是：<a href="http://localhost。" target="_blank" rel="external">http://localhost。</a>  具体可看以下代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIWebView *web = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];&#10;    [web setScalesPageToFit:YES];&#10;    [self.view addSubview:web];&#10;    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&#34;http://192.168.1.103&#34;]]];&#9;// 192.168.1.103 &#25442;&#25104;&#20320;&#30340;ip&#22320;&#22336;&#23601;&#34892;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/04/Mac上使用Apache搭建服务器/" class="archive-article-date">
+  	<time datetime="2016-05-04T08:08:24.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-04</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/工具/">工具</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Cookie" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -816,166 +888,9 @@ dispatch_async(queue) {
 
 
   
-    <article id="post-高阶函数：map、flatMap、forEach、filter、reduce" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/">高阶函数：map、flatMap、forEach、filter、reduce</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>高阶函数：函数作为参数或者函数作为返回值。</p>
-</blockquote>
-<h3 id="函数的写法："><a href="#函数的写法：" class="headerlink" title="函数的写法："></a>函数的写法：</h3><h4 id="1-正常写法"><a href="#1-正常写法" class="headerlink" title="1.正常写法"></a>1.正常写法</h4><pre><code>let res = numbers.sort({$0 &lt; $1})
-</code></pre><h4 id="2-Trailing-Closure"><a href="#2-Trailing-Closure" class="headerlink" title="2.Trailing Closure"></a>2.Trailing Closure</h4><pre><code>let ree = numbers.sort{$0 &lt; $1}
-</code></pre><h3 id="常用实例"><a href="#常用实例" class="headerlink" title="常用实例"></a>常用实例</h3><h4 id="map函数："><a href="#map函数：" class="headerlink" title="map函数："></a>map函数：</h4><pre><code>map函数：当数组调用map函数时，闭包作为它的参数，闭包实现对数组单个元素进行某种规则的处理，最终map函数返回一个原数组元素被闭包处理过的新的数组（新的数组元素个数和原先的相等，数组类型可自定义，如数组类型由[Int],变为[String] 或者 [Bool]等）。
-
-let arr = [1, 2, 9, 4, 5]
-// 写法一：推荐写法
-let mrr1 = arr.map {
-    &quot;step.&quot; + String($0)
-}
-// 写法二：
-let mrr2 = arr.map { (a: Int) -&gt; String in
-    &quot;step.&quot; + String(a)
-}
-// 写法三：
-let mrr3 = arr.map ({ (a: Int) -&gt; String in
-    &quot;step.&quot; + String(a)
-})
-</code></pre><h4 id="flatMap函数："><a href="#flatMap函数：" class="headerlink" title="flatMap函数："></a>flatMap函数：</h4><pre><code>flatMap函数：功能和map函数基本相同，不同之处在于，flatMap生成的数组自动去除nil。
-
-// 1、去除nil
-let frr = [&quot;af&quot;, &quot;vf&quot;, &quot;&quot;]
-let frr1 = frr.flatMap { (a: String) -&gt; Int? in
-    if a.characters.count == 0 {
-            return nil
-    } else {
-        return a.characters.count
-    }
-}   // [2,2]
-
-// 2、对嵌套数组的拆分合并
-let fmp = [[2, 6, 4], [5, 3, 7]]
-let fmp1 = fmp.flatMap { (a: [Int]) -&gt; [Int] in
-    a
-}   // [2, 6, 4, 5, 3, 7]
-
-let fmp2 = fmp.map { (a: [Int]) -&gt; [Int] in
-    a
-}   // [[2, 6, 4], [5, 3, 7]]
-
-// 3、对不同类型数组的合并
-let c = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
-let i = [1, 2]
-let fmp3 = i.flatMap { car in
-    c.map { num in
-        num + &quot;\(car)&quot;
-    }
-}   // [&quot;a1&quot;, &quot;b1&quot;, &quot;c1&quot;, &quot;a2&quot;, &quot;b2&quot;, &quot;c2&quot;]
-</code></pre><h4 id="filter函数："><a href="#filter函数：" class="headerlink" title="filter函数："></a>filter函数：</h4><pre><code>let err = arr.filter { (a: Int) -&gt; Bool in
-    a % 2 == 0
-}   // [2, 4]
-</code></pre><h4 id="forEach函数："><a href="#forEach函数：" class="headerlink" title="forEach函数："></a>forEach函数：</h4><pre><code>arr.forEach { (a: Int) -&gt; () in
-    print(a)
-}
-</code></pre><h4 id="reduce函数："><a href="#reduce函数：" class="headerlink" title="reduce函数："></a>reduce函数：</h4><pre><code>reduce函数：把数组元素合并成一个新的值, 新值类型不固定。有两个参数，第一个参数是返回值的初始值；第二个参数是一个处理数组元素的函数。
-
-// 返回Int
-let crr = arr.reduce(0) { (prevSum: Int, elemen: Int) in
-    return prevSum + elemen
-
-}
-// 返回String
-let crr2 = arr.reduce(&quot;&quot;) {
-      &quot;\($0)&quot; + &quot;\($1)&quot;
-}
-
-// 实现map和filter
-extension Array {
-    func mMap&lt;U&gt; (transform: Element -&gt; U) -&gt; [U] {
-    return reduce([], combine: { $0 + [transform($1)] })
-    }
-    func mFilter (includeElement: Element -&gt; Bool) -&gt; [Element] {
-        return reduce([]) { includeElement($1) ? $0 + [$1] : $0 }
-    }
-}
-
-// 利用 reduce 实现 map
-let ass = arr.reduce([]) { (a: [Int], element: Int) -&gt;[Int] in
-    var t = Array(a)
-    t.append(element * 2)
-    return t
-}
-
-// 利用 reduce 方法一次求出数组中奇数的和、以及偶数乘积
-let sss:(Int, Int) = arr.reduce((0, 1)) {
-    (a: (Int, Int), element: Int) -&gt; (Int, Int) in
-    if element % 2 == 0 {
-        return (a.0, a.1 * element)
-    } else {
-        return (a.0 + element, a.1)
-    }
-}
-
-// 利用 reduce 方法一次求出数组中偶数的平方和
-let kkk = arr.filter {
-        $0 % 2 == 0
-    }.map {
-        $0 * $0
-    }.reduce(0){
-        $0 + $1
-}
-</code></pre>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/" class="archive-article-date">
-  	<time datetime="2016-03-15T03:40:38.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-15</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/filter/">filter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flatMap/">flatMap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/forEach/">forEach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reduce/">reduce</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 
