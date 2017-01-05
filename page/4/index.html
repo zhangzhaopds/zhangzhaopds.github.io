@@ -159,6 +159,80 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-BCrypt随机盐值加密" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/31/BCrypt随机盐值加密/">BCrypt随机盐值加密</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>朋友做的一个军检项目中用到<code>BCrypt</code>的加密处理，之前没用过，所以就查了些相关资料。简单的理解就是：BCrypt是一个利用<code>随机盐值</code>进行<code>hash</code>的加密方式。</p>
+</blockquote>
+<h2 id="相关概念："><a href="#相关概念：" class="headerlink" title="相关概念："></a>相关概念：</h2><ul>
+<li>哈希算法<ul>
+<li>获取一个任何长度的字符串并采用一致的方式创建一个<em>哈希值</em>：一种固定长度的字符串表示。每次传入同一个原始字符串，您都会收到相同的哈希值。这是一个单向过程，您无法从中获得原始字符串。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>盐值<ul>
+<li>在原始的密码后面添加自定义的尽量随机的长字串，然后进行哈希，这个长字串就是盐值（Salt）。</li>
+<li>有时候，为了减轻开发压力，程序员会统一使用一个salt值（固定盐值，储存在某个地方），而不是每个用户都生成私有的salt值。</li>
+<li>盐值越复杂、越随机，密码被破解的几率就越小。</li>
+</ul>
+</li>
+</ul>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="php-password-hash-password-verify"><a href="#php-password-hash-password-verify" class="headerlink" title="php:  password_hash, password_verify"></a>php:  password_hash, password_verify</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?php</span> </span><br><span class="line">	<span class="comment">// hash值</span></span><br><span class="line">	<span class="variable">$hashVal</span> = password_hash(<span class="string">"123456"</span>, PASSWORD_DEFAULT);</span><br><span class="line">	<span class="comment">// $2y$10$QJlsKG/RUU2TEgQcj6.D2e8.QYeBJptiUce9g/IaxxU2GjRpapkA2</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// $hashVal = '$2a$10$zpOCjNBFm1XQ7JvmErIkbeXg4KYbD.TOx0NXyPZhqZCjy9N8OxGQO';</span></span><br><span class="line">		</span><br><span class="line">	<span class="keyword">echo</span>(<span class="variable">$hashVal</span>.<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">	<span class="comment">// 验证</span></span><br><span class="line">	<span class="keyword">if</span> (password_verify(<span class="string">"123456"</span>, <span class="variable">$hashVal</span>)) &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"true"</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"false"</span>);</span><br><span class="line">	&#125;	</span><br><span class="line"><span class="preprocessor">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="iOS实现DEMO："><a href="#iOS实现DEMO：" class="headerlink" title="iOS实现DEMO："></a>iOS实现DEMO：</h3><p><a href="https://github.com/zhangzhaopds/BCrypt.git" target="_blank" rel="external">https://github.com/zhangzhaopds/BCrypt.git</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ibm.com/developerworks/cn/web/wa-php-renewed_2/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/web/wa-php-renewed_2/</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/31/BCrypt随机盐值加密/" class="archive-article-date">
+  	<time datetime="2016-05-31T02:39:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-31</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BCrypt/">BCrypt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/加密/">加密</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/OC/">OC</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-MySQL配置问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -872,160 +946,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-大牛们的博客集" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/06/大牛们的博客集/">大牛们的博客集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>活到老，学到老，学无止境！</p>
-</blockquote>
-<h3 id="Github备忘录"><a href="#Github备忘录" class="headerlink" title="Github备忘录"></a>Github备忘录</h3><p>一个涵盖了iOS开发各个方面知识的github链接集合，整体来说比较全面：<a href="http://github.ibireme.com/github/list/ios/" target="_blank" rel="external">http://github.ibireme.com/github/list/ios/</a>，来自于于YYKit的博客</p>
-<h3 id="Blogs备忘录"><a href="#Blogs备忘录" class="headerlink" title="Blogs备忘录"></a>Blogs备忘录</h3><ul>
-<li><p>唐巧的技术博客     <a href="http://blog.devtang.com/atom.xml" target="_blank" rel="external">http://blog.devtang.com/atom.xml</a></p>
-</li>
-<li><p>YYKit <a href="http://blog.ibireme.com/about/" target="_blank" rel="external">http://blog.ibireme.com/about/</a></p>
-</li>
-<li><p>OneV’s Den     <a href="http://onevcat.com/atom.xml" target="_blank" rel="external">http://onevcat.com/atom.xml</a></p>
-</li>
-<li><p>破船之家     <a href="http://beyondvincent.com/atom.xml" target="_blank" rel="external">http://beyondvincent.com/atom.xml</a></p>
-</li>
-<li><p>NSHipster     <a href="http://nshipster.cn/feed.xml" target="_blank" rel="external">http://nshipster.cn/feed.xml</a></p>
-</li>
-<li><p>Limboy 无网不剩     <a href="http://feeds.feedburner.com/lzyy" target="_blank" rel="external">http://feeds.feedburner.com/lzyy</a></p>
-</li>
-<li><p>Lex iOS notes     <a href="http://ios.lextang.com/rss" target="_blank" rel="external">http://ios.lextang.com/rss</a></p>
-</li>
-<li><p>念茜的博客     <a href="http://nianxi.net/feed.xml" target="_blank" rel="external">http://nianxi.net/feed.xml</a></p>
-</li>
-<li><p>Xcode Dev     <a href="http://blog.xcodev.com/atom.xml" target="_blank" rel="external">http://blog.xcodev.com/atom.xml</a></p>
-</li>
-<li><p>Ted’s Homepage     <a href="http://wufawei.com/feed" target="_blank" rel="external">http://wufawei.com/feed</a></p>
-</li>
-<li><p>txx’s blog     <a href="http://blog.t-xx.me/atom.xml" target="_blank" rel="external">http://blog.t-xx.me/atom.xml</a></p>
-</li>
-<li><p>KEVIN BLOG     <a href="http://imkevin.me/rss" target="_blank" rel="external">http://imkevin.me/rss</a></p>
-</li>
-<li><p>阿毛的蛋疼地     <a href="http://www.xiangwangfeng.com/atom.xml" target="_blank" rel="external">http://www.xiangwangfeng.com/atom.xml</a></p>
-</li>
-<li><p>亚庆的 Blog     <a href="http://billwang1990.github.io/atom.xml" target="_blank" rel="external">http://billwang1990.github.io/atom.xml</a></p>
-</li>
-<li><p>Nonomori     <a href="http://nonomori.farbox.com/feed" target="_blank" rel="external">http://nonomori.farbox.com/feed</a></p>
-</li>
-<li><p>言无不尽     <a href="http://tang3w.com/atom.xml" target="_blank" rel="external">http://tang3w.com/atom.xml</a></p>
-</li>
-<li><p>Wonderffee’s Blog     <a href="http://wonderffee.github.io/atom.xml" target="_blank" rel="external">http://wonderffee.github.io/atom.xml</a></p>
-</li>
-<li><p>I’m TualatriX     <a href="http://imtx.me/feed/latest/" target="_blank" rel="external">http://imtx.me/feed/latest/</a></p>
-</li>
-<li><p>vclwei     <a href="http://vclwei.com/posts.rss" target="_blank" rel="external">http://vclwei.com/posts.rss</a></p>
-</li>
-<li><p>Cocoabit     <a href="http://blog.cocoabit.com/atom.xml" target="_blank" rel="external">http://blog.cocoabit.com/atom.xml</a></p>
-</li>
-<li><p>nixzhu on scriptogr.am     <a href="http://nixzhu.me/feed" target="_blank" rel="external">http://nixzhu.me/feed</a></p>
-</li>
-<li><p>不会开机的男孩     <a href="http://studentdeng.github.io/atom.xml" target="_blank" rel="external">http://studentdeng.github.io/atom.xml</a></p>
-</li>
-<li><p>Nico     <a href="http://www.taofengping.com/rss.xml" target="_blank" rel="external">http://www.taofengping.com/rss.xml</a></p>
-</li>
-<li><p>阿峰的技术窝窝     <a href="http://hufeng825.github.io/atom.xml" target="_blank" rel="external">http://hufeng825.github.io/atom.xml</a></p>
-</li>
-<li><p>answer_huang     <a href="http://answerhuang.duapp.com/index.php/feed/" target="_blank" rel="external">http://answerhuang.duapp.com/index.php/feed/</a></p>
-</li>
-<li><p>webfrogs     <a href="http://webfrogs.me/feed/" target="_blank" rel="external">http://webfrogs.me/feed/</a></p>
-</li>
-<li><p>代码手工艺人     <a href="http://joeyio.com/atom.xml" target="_blank" rel="external">http://joeyio.com/atom.xml</a></p>
-</li>
-<li><p>Lancy’s Blog     <a href="http://gracelancy.com/atom.xml" target="_blank" rel="external">http://gracelancy.com/atom.xml</a></p>
-</li>
-<li><p>I’m Allen     <a href="http://www.imallen.com/atom.xml" target="_blank" rel="external">http://www.imallen.com/atom.xml</a></p>
-</li>
-<li><p>Travis’ Blog     <a href="http://imi.im/feed" target="_blank" rel="external">http://imi.im/feed</a></p>
-</li>
-<li><p>王中周的技术博客     <a href="http://wangzz.github.io/atom.xml" target="_blank" rel="external">http://wangzz.github.io/atom.xml</a></p>
-</li>
-<li><p>会写代码的猪     <a href="http://gaosboy.com/feed/atom/" target="_blank" rel="external">http://gaosboy.com/feed/atom/</a></p>
-</li>
-<li><p>克伟的博客     <a href="http://feed.cnblogs.com/blog/u/23857/rss" target="_blank" rel="external">http://feed.cnblogs.com/blog/u/23857/rss</a></p>
-</li>
-<li><p>摇滚诗人     <a href="http://feed.cnblogs.com/blog/u/35410/rss" target="_blank" rel="external">http://feed.cnblogs.com/blog/u/35410/rss</a></p>
-</li>
-<li><p>Luke’s Homepage     <a href="http://geeklu.com/feed/" target="_blank" rel="external">http://geeklu.com/feed/</a></p>
-</li>
-<li><p>萧宸宇     <a href="http://iiiyu.com/atom.xml" target="_blank" rel="external">http://iiiyu.com/atom.xml</a></p>
-</li>
-<li><p>Yuan博客     <a href="http://www.heyuan110.com/?feed=rss2" target="_blank" rel="external">http://www.heyuan110.com/?feed=rss2</a></p>
-</li>
-<li><p>Shining IO     <a href="http://shiningio.com/atom.xml" target="_blank" rel="external">http://shiningio.com/atom.xml</a></p>
-</li>
-<li><p>YIFEIYANG—易飞扬的博客     <a href="http://www.yifeiyang.net/feed" target="_blank" rel="external">http://www.yifeiyang.net/feed</a></p>
-</li>
-<li><p>KooFrank’s Blog     <a href="http://koofrank.com/rss" target="_blank" rel="external">http://koofrank.com/rss</a></p>
-</li>
-<li><p>hello it works     <a href="http://helloitworks.com/feed" target="_blank" rel="external">http://helloitworks.com/feed</a></p>
-</li>
-<li><p>码农人生     <a href="http://msching.github.io/atom.xml" target="_blank" rel="external">http://msching.github.io/atom.xml</a></p>
-</li>
-<li><p>玉令天下的Blog     <a href="http://yulingtianxia.com/atom.xml" target="_blank" rel="external">http://yulingtianxia.com/atom.xml</a></p>
-</li>
-<li><p>不掏蜂窝的熊     <a href="http://www.hotobear.com/?feed=rss2" target="_blank" rel="external">http://www.hotobear.com/?feed=rss2</a></p>
-</li>
-<li><p>猫·仁波切     <a href="https://andelf.github.io/atom.xml" target="_blank" rel="external">https://andelf.github.io/atom.xml</a></p>
-</li>
-<li><p>煲仔饭     <a href="http://ivoryxiong.org/feed.xml" target="_blank" rel="external">http://ivoryxiong.org/feed.xml</a></p>
-</li>
-<li><p>里脊串的开发随笔     <a href="http://adad184.com/atom.xml" target="_blank" rel="external">http://adad184.com/atom.xml</a></p>
-<ul>
-<li>标哥的技术博客<a href="http://www.henishuo.com" target="_blank" rel="external">http://www.henishuo.com</a></li>
-</ul>
-<p>​</p>
-<p>​</p>
-</li>
-</ul>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/05/06/大牛们的博客集/" class="archive-article-date">
-  	<time datetime="2016-05-06T03:40:28.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-06</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
 	</div>
 
 
