@@ -159,6 +159,83 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-【Python】BeautifulSoup使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/24/【Python】BeautifulSoup使用/">【Python】BeautifulSoup基本使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>BeautifulSoup是Python中用来解析HTML、XML等文档的强大工具。</p>
+</blockquote>
+<p>Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: Tag , NavigableString , BeautifulSoup , Comment。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">html_doc = <span class="string">"""</span><br><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class="title"&gt;&lt;b&gt;这个是b标签&lt;/b&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class="story"&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="line">&lt;a href="http://example.com/elsie" class="sister" id="link1"&gt;Elsie&lt;/a&gt;,</span><br><span class="line">&lt;a href="http://example.com/lacie" class="sister" id="link2"&gt;Lacie&lt;/a&gt; and</span><br><span class="line">&lt;a href="http://example.com/tillie" class="sister" id="link3"&gt;Tillie&lt;/a&gt;;</span><br><span class="line">and they lived at the bottom of a well.&lt;/p&gt;</span><br><span class="line">&lt;p class="story"&gt;...&lt;/p&gt;</span><br><span class="line">"""</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup = <span class="function"><span class="title">BeautifulSoup</span><span class="params">(html_doc)</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="1、Tag标签对象"><a href="#1、Tag标签对象" class="headerlink" title="1、Tag标签对象"></a>1、Tag标签对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tag = soup.p</span><br><span class="line">print(type(tag))        <span class="comment"># &lt;class 'bs4.element.Tag'&gt;</span></span><br></pre></td></tr></table></figure>
+<p>标签的属性可以被添加,删除或修改，操作如字典</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tag[<span class="string">'class'</span>] = <span class="string">"very"</span>   <span class="comment"># 修改属性值</span></span><br><span class="line">tag[<span class="string">'id'</span>] = <span class="number">1</span>           <span class="comment"># 添加id属性</span></span><br><span class="line">print(tag)              <span class="comment"># &lt;p class="verybold" id="1"&gt;&lt;b&gt;你好&lt;/b&gt;&lt;/p&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> tag[<span class="string">'id'</span>]           <span class="comment"># 删除id属性</span></span><br><span class="line">print(tag)              <span class="comment"># &lt;p class="very"&gt;&lt;b&gt;你好&lt;/b&gt;&lt;/p&gt;</span></span><br></pre></td></tr></table></figure>
+<p>多值属性 返回list类型数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">css_soup = BeautifulSoup(<span class="string">'&lt;p class="body strikeout"&gt;&lt;/p&gt;'</span>)</span><br><span class="line">print(css_soup.p[<span class="string">'class'</span>])      <span class="comment"># ['body', 'strikeout']</span></span><br></pre></td></tr></table></figure>
+<p>非多值属性 返回string</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n_css_soup = BeautifulSoup(<span class="string">'&lt;p id="body name"&gt;&lt;/p&gt;'</span>)</span><br><span class="line">print(n_css_soup.p[<span class="string">'id'</span>])       <span class="comment"># body name2、NavigableString：标签中的字符串</span></span><br></pre></td></tr></table></figure>
+<h4 id="2、NavigableString标签中的字符串"><a href="#2、NavigableString标签中的字符串" class="headerlink" title="2、NavigableString标签中的字符串"></a>2、NavigableString标签中的字符串</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(type(tag.string))         <span class="comment"># &lt;class 'bs4.element.NavigableString'&gt;</span></span><br><span class="line">print(tag.string)               <span class="comment"># 这个是b标签</span></span><br><span class="line">tag.string.replace_with(<span class="string">'you are beautiful'</span>)</span><br><span class="line">print(tag.string)               <span class="comment"># you are beautiful</span></span><br></pre></td></tr></table></figure>
+<h4 id="3、BeautifulSoup对象"><a href="#3、BeautifulSoup对象" class="headerlink" title="3、BeautifulSoup对象"></a>3、BeautifulSoup对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup))           <span class="comment"># &lt;class 'bs4.BeautifulSoup'&gt;</span></span><br><span class="line">print(soup.name)            <span class="comment"># [document]</span></span><br></pre></td></tr></table></figure>
+<h4 id="4、Comment注释及特殊字符串"><a href="#4、Comment注释及特殊字符串" class="headerlink" title="4、Comment注释及特殊字符串"></a>4、Comment注释及特殊字符串</h4><p>Comment 对象是一个特殊类型的 NavigableString 对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">markup = <span class="string">"&lt;b&gt;&lt;!--Hey, buddy. Want to buy a used parser?--&gt;&lt;/b&gt;"</span></span><br><span class="line">mark_soup = BeautifulSoup(markup)</span><br><span class="line">print(type(mark_soup.b.string))     <span class="comment"># &lt;class 'bs4.element.Comment'&gt;</span></span><br><span class="line">print(mark_soup.b.string)           <span class="comment"># Hey, buddy. Want to buy a used parser?</span></span><br><span class="line">print(mark_soup.b.prettify())       <span class="comment"># comment 也可以prettify()格式化输出</span></span><br><span class="line"><span class="comment">#&lt;b&gt;</span></span><br><span class="line"><span class="comment"># &lt;!--Hey, buddy. Want to buy a used parser?--&gt;</span></span><br><span class="line"><span class="comment">#&lt;/b&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="contents"><a href="#contents" class="headerlink" title="contents"></a>contents</h4><p>子节点以list形式输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(soup.head)                <span class="comment"># &lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line">print(soup.head.contents)       <span class="comment"># [&lt;title&gt;The Dormouse's story&lt;/title&gt;]</span></span><br><span class="line">print(soup.head.contents[<span class="number">0</span>])    <span class="comment"># &lt;title&gt;The Dormouse's story&lt;/title&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="children"><a href="#children" class="headerlink" title="children"></a>children</h4><p>子节点迭代器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup.head.children))     <span class="comment"># &lt;class 'list_iterator'&gt;</span></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> soup.head.children:</span><br><span class="line">    print(child)</span><br></pre></td></tr></table></figure>
+<h4 id="descendants"><a href="#descendants" class="headerlink" title="descendants"></a>descendants</h4><p>子孙节点生成器 递归循环的列出子节点和子孙节点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup.head.descendants))  <span class="comment"># &lt;class 'generator'&gt;</span></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> soup.head.descendants:</span><br><span class="line">    print(child)</span><br><span class="line">    <span class="comment"># &lt;title&gt;The Dormouse's story&lt;/title&gt;   子节点</span></span><br><span class="line">    <span class="comment"># The Dormouse's story                  孙节点</span></span><br></pre></td></tr></table></figure>
+<h4 id="strings"><a href="#strings" class="headerlink" title="strings"></a>strings</h4><p>标签中的字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> str <span class="keyword">in</span> soup.strings:</span><br><span class="line">    print(repr(str))</span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># "The Dormouse's story"</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># 'you are beautiful'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># 'Once upon a time there were three little sisters; and their names were\n'</span></span><br><span class="line"><span class="comment"># 'Elsie'</span></span><br><span class="line"><span class="comment"># ',\n'</span></span><br><span class="line"><span class="comment"># 'Lacie'</span></span><br><span class="line"><span class="comment"># ' and\n'</span></span><br><span class="line"><span class="comment"># 'Tillie'</span></span><br><span class="line"><span class="comment"># ';\nand they lived at the bottom of a well.'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># '...'</span></span><br><span class="line"><span class="comment"># '\n</span></span><br></pre></td></tr></table></figure>
+<h4 id="stripped-strings"><a href="#stripped-strings" class="headerlink" title="stripped_strings"></a>stripped_strings</h4><p>去除空格空行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> str <span class="keyword">in</span> soup.stripped_strings:</span><br><span class="line">    print(repr(str))</span><br><span class="line"><span class="comment"># "The Dormouse's story"</span></span><br><span class="line"><span class="comment"># 'you are beautiful'</span></span><br><span class="line"><span class="comment"># 'Once upon a time there were three little sisters; and their names were'</span></span><br><span class="line"><span class="comment"># 'Elsie'</span></span><br><span class="line"><span class="comment"># ','</span></span><br><span class="line"><span class="comment"># 'Lacie'</span></span><br><span class="line"><span class="comment"># 'and'</span></span><br><span class="line"><span class="comment"># 'Tillie'</span></span><br><span class="line"><span class="comment"># ';\nand they lived at the bottom of a well.'</span></span><br><span class="line"><span class="comment"># '...'</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id7" target="_blank" rel="external">http://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id7</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/02/24/【Python】BeautifulSoup使用/" class="archive-article-date">
+  	<time datetime="2017-02-24T06:26:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-24</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-【Python】视频资源" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -816,65 +893,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS中的OTA部署" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/26/iOS中的OTA部署/">OTA部署</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>利用<code>XC Ad Hoc: *</code>类型的Provisioning Profile打包ipa文件，并部署到HTTPS的局域网内，提供内部人员下载安装。</p>
-</blockquote>
-<h4 id="内网中HTTPS环境搭建"><a href="#内网中HTTPS环境搭建" class="headerlink" title="内网中HTTPS环境搭建"></a>内网中HTTPS环境搭建</h4><p><a href="http://zhangzhaopds.github.io/2016/12/26/Mac中开启Apache的Https功能/" target="_blank" rel="external">http://zhangzhaopds.github.io/2016/12/26/Mac中开启Apache的Https功能/</a></p>
-<h4 id="OTA具体部署"><a href="#OTA具体部署" class="headerlink" title="OTA具体部署"></a>OTA具体部署</h4><p><a href="http://www.jianshu.com/p/bd016015efe7" target="_blank" rel="external">http://www.jianshu.com/p/bd016015efe7</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/26/iOS中的OTA部署/" class="archive-article-date">
-  	<time datetime="2016-12-26T06:28:47.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-26</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OTA部署/">OTA部署</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
 	</div>
 
 

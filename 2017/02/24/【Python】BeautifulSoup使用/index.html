@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>【Python】BeautifulSoup基本使用 | Jmsp&#39;s Tips</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="BeautifulSoup是Python中用来解析HTML、XML等文档的强大工具。
+
+Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: Tag , NavigableString , BeautifulSoup , Comment。
+1234567891011html_doc = &quot;&quot;&quot;&amp;lt;html&amp;gt;&amp;lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Python】BeautifulSoup基本使用">
+<meta property="og:url" content="http://yoursite.com/2017/02/24/【Python】BeautifulSoup使用/index.html">
+<meta property="og:site_name" content="Jmsp's Tips">
+<meta property="og:description" content="BeautifulSoup是Python中用来解析HTML、XML等文档的强大工具。
+
+Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: Tag , NavigableString , BeautifulSoup , Comment。
+1234567891011html_doc = &quot;&quot;&quot;&amp;lt;html&amp;gt;&amp;lt;">
+<meta property="og:updated_time" content="2017-02-24T07:14:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Python】BeautifulSoup基本使用">
+<meta name="twitter:description" content="BeautifulSoup是Python中用来解析HTML、XML等文档的强大工具。
+
+Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: Tag , NavigableString , BeautifulSoup , Comment。
+1234567891011html_doc = &quot;&quot;&quot;&amp;lt;html&amp;gt;&amp;lt;">
+  
+    <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css" type="text/css">
+  
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d400b2b9cf7d1a287b60931c6cbae186";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- End baidu Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jmsp</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+				<li><a href="/categories/OC">OC</a></li>
+	        
+				<li><a href="/categories/Swift">Swift</a></li>
+	        
+				<li><a href="/categories/Android">Android</a></li>
+	        
+				<li><a href="/categories/ReactNative">ReactNative</a></li>
+	        
+				<li><a href="/categories/PHP">PHP</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+            
+    			
+            
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+		        
+					<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+		        
+					<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jmsp</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jmsp</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/OC">OC</a></li>
+		        
+					<li><a href="/categories/Swift">Swift</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/ReactNative">ReactNative</a></li>
+		        
+					<li><a href="/categories/PHP">PHP</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-【Python】BeautifulSoup使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【Python】BeautifulSoup基本使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>BeautifulSoup是Python中用来解析HTML、XML等文档的强大工具。</p>
+</blockquote>
+<p>Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: Tag , NavigableString , BeautifulSoup , Comment。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">html_doc = <span class="string">"""</span><br><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class="title"&gt;&lt;b&gt;这个是b标签&lt;/b&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class="story"&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="line">&lt;a href="http://example.com/elsie" class="sister" id="link1"&gt;Elsie&lt;/a&gt;,</span><br><span class="line">&lt;a href="http://example.com/lacie" class="sister" id="link2"&gt;Lacie&lt;/a&gt; and</span><br><span class="line">&lt;a href="http://example.com/tillie" class="sister" id="link3"&gt;Tillie&lt;/a&gt;;</span><br><span class="line">and they lived at the bottom of a well.&lt;/p&gt;</span><br><span class="line">&lt;p class="story"&gt;...&lt;/p&gt;</span><br><span class="line">"""</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup = <span class="function"><span class="title">BeautifulSoup</span><span class="params">(html_doc)</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="1、Tag标签对象"><a href="#1、Tag标签对象" class="headerlink" title="1、Tag标签对象"></a>1、Tag标签对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tag = soup.p</span><br><span class="line">print(type(tag))        <span class="comment"># &lt;class 'bs4.element.Tag'&gt;</span></span><br></pre></td></tr></table></figure>
+<p>标签的属性可以被添加,删除或修改，操作如字典</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tag[<span class="string">'class'</span>] = <span class="string">"very"</span>   <span class="comment"># 修改属性值</span></span><br><span class="line">tag[<span class="string">'id'</span>] = <span class="number">1</span>           <span class="comment"># 添加id属性</span></span><br><span class="line">print(tag)              <span class="comment"># &lt;p class="verybold" id="1"&gt;&lt;b&gt;你好&lt;/b&gt;&lt;/p&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> tag[<span class="string">'id'</span>]           <span class="comment"># 删除id属性</span></span><br><span class="line">print(tag)              <span class="comment"># &lt;p class="very"&gt;&lt;b&gt;你好&lt;/b&gt;&lt;/p&gt;</span></span><br></pre></td></tr></table></figure>
+<p>多值属性 返回list类型数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">css_soup = BeautifulSoup(<span class="string">'&lt;p class="body strikeout"&gt;&lt;/p&gt;'</span>)</span><br><span class="line">print(css_soup.p[<span class="string">'class'</span>])      <span class="comment"># ['body', 'strikeout']</span></span><br></pre></td></tr></table></figure>
+<p>非多值属性 返回string</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n_css_soup = BeautifulSoup(<span class="string">'&lt;p id="body name"&gt;&lt;/p&gt;'</span>)</span><br><span class="line">print(n_css_soup.p[<span class="string">'id'</span>])       <span class="comment"># body name2、NavigableString：标签中的字符串</span></span><br></pre></td></tr></table></figure>
+<h4 id="2、NavigableString标签中的字符串"><a href="#2、NavigableString标签中的字符串" class="headerlink" title="2、NavigableString标签中的字符串"></a>2、NavigableString标签中的字符串</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(type(tag.string))         <span class="comment"># &lt;class 'bs4.element.NavigableString'&gt;</span></span><br><span class="line">print(tag.string)               <span class="comment"># 这个是b标签</span></span><br><span class="line">tag.string.replace_with(<span class="string">'you are beautiful'</span>)</span><br><span class="line">print(tag.string)               <span class="comment"># you are beautiful</span></span><br></pre></td></tr></table></figure>
+<h4 id="3、BeautifulSoup对象"><a href="#3、BeautifulSoup对象" class="headerlink" title="3、BeautifulSoup对象"></a>3、BeautifulSoup对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup))           <span class="comment"># &lt;class 'bs4.BeautifulSoup'&gt;</span></span><br><span class="line">print(soup.name)            <span class="comment"># [document]</span></span><br></pre></td></tr></table></figure>
+<h4 id="4、Comment注释及特殊字符串"><a href="#4、Comment注释及特殊字符串" class="headerlink" title="4、Comment注释及特殊字符串"></a>4、Comment注释及特殊字符串</h4><p>Comment 对象是一个特殊类型的 NavigableString 对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">markup = <span class="string">"&lt;b&gt;&lt;!--Hey, buddy. Want to buy a used parser?--&gt;&lt;/b&gt;"</span></span><br><span class="line">mark_soup = BeautifulSoup(markup)</span><br><span class="line">print(type(mark_soup.b.string))     <span class="comment"># &lt;class 'bs4.element.Comment'&gt;</span></span><br><span class="line">print(mark_soup.b.string)           <span class="comment"># Hey, buddy. Want to buy a used parser?</span></span><br><span class="line">print(mark_soup.b.prettify())       <span class="comment"># comment 也可以prettify()格式化输出</span></span><br><span class="line"><span class="comment">#&lt;b&gt;</span></span><br><span class="line"><span class="comment"># &lt;!--Hey, buddy. Want to buy a used parser?--&gt;</span></span><br><span class="line"><span class="comment">#&lt;/b&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="contents"><a href="#contents" class="headerlink" title="contents"></a>contents</h4><p>子节点以list形式输出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(soup.head)                <span class="comment"># &lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line">print(soup.head.contents)       <span class="comment"># [&lt;title&gt;The Dormouse's story&lt;/title&gt;]</span></span><br><span class="line">print(soup.head.contents[<span class="number">0</span>])    <span class="comment"># &lt;title&gt;The Dormouse's story&lt;/title&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="children"><a href="#children" class="headerlink" title="children"></a>children</h4><p>子节点迭代器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup.head.children))     <span class="comment"># &lt;class 'list_iterator'&gt;</span></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> soup.head.children:</span><br><span class="line">    print(child)</span><br></pre></td></tr></table></figure>
+<h4 id="descendants"><a href="#descendants" class="headerlink" title="descendants"></a>descendants</h4><p>子孙节点生成器 递归循环的列出子节点和子孙节点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup.head.descendants))  <span class="comment"># &lt;class 'generator'&gt;</span></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> soup.head.descendants:</span><br><span class="line">    print(child)</span><br><span class="line">    <span class="comment"># &lt;title&gt;The Dormouse's story&lt;/title&gt;   子节点</span></span><br><span class="line">    <span class="comment"># The Dormouse's story                  孙节点</span></span><br></pre></td></tr></table></figure>
+<h4 id="strings"><a href="#strings" class="headerlink" title="strings"></a>strings</h4><p>标签中的字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> str <span class="keyword">in</span> soup.strings:</span><br><span class="line">    print(repr(str))</span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># "The Dormouse's story"</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># 'you are beautiful'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># 'Once upon a time there were three little sisters; and their names were\n'</span></span><br><span class="line"><span class="comment"># 'Elsie'</span></span><br><span class="line"><span class="comment"># ',\n'</span></span><br><span class="line"><span class="comment"># 'Lacie'</span></span><br><span class="line"><span class="comment"># ' and\n'</span></span><br><span class="line"><span class="comment"># 'Tillie'</span></span><br><span class="line"><span class="comment"># ';\nand they lived at the bottom of a well.'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># '...'</span></span><br><span class="line"><span class="comment"># '\n</span></span><br></pre></td></tr></table></figure>
+<h4 id="stripped-strings"><a href="#stripped-strings" class="headerlink" title="stripped_strings"></a>stripped_strings</h4><p>去除空格空行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> str <span class="keyword">in</span> soup.stripped_strings:</span><br><span class="line">    print(repr(str))</span><br><span class="line"><span class="comment"># "The Dormouse's story"</span></span><br><span class="line"><span class="comment"># 'you are beautiful'</span></span><br><span class="line"><span class="comment"># 'Once upon a time there were three little sisters; and their names were'</span></span><br><span class="line"><span class="comment"># 'Elsie'</span></span><br><span class="line"><span class="comment"># ','</span></span><br><span class="line"><span class="comment"># 'Lacie'</span></span><br><span class="line"><span class="comment"># 'and'</span></span><br><span class="line"><span class="comment"># 'Tillie'</span></span><br><span class="line"><span class="comment"># ';\nand they lived at the bottom of a well.'</span></span><br><span class="line"><span class="comment"># '...'</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id7" target="_blank" rel="external">http://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id7</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/02/24/【Python】BeautifulSoup使用/" class="archive-article-date">
+  	<time datetime="2017-02-24T06:26:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-24</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/02/24/【Python】视频资源/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【Python】视频资源</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="【Python】BeautifulSoup使用" data-title="【Python】BeautifulSoup基本使用" data-url="http://yoursite.com/2017/02/24/【Python】BeautifulSoup使用/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Jmsp
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js" type="text/javascript"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+    
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+
+    
+
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

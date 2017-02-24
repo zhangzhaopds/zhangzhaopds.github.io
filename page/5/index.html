@@ -159,6 +159,85 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-PHP学习笔记2-日期" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/24/PHP学习笔记2-日期/">PHP学习笔记（2）-日期</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>总体感觉，php的字符串转日期的功能很强大。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?php</span></span><br><span class="line">	date_default_timezone_set(<span class="string">"Asia/Shanghai"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"今天是 "</span>.date(<span class="string">"Y.m.d"</span>) .<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"今天是 "</span>.date(<span class="string">"l"</span>).<span class="string">"&lt;br&gt;"</span>;			<span class="comment">// l - 表示周里的某天</span></span><br><span class="line">	</span><br><span class="line">	<span class="variable">$d</span> = mktime(<span class="number">9</span>, <span class="number">22</span>, <span class="number">44</span>, <span class="number">5</span>, <span class="number">23</span>, <span class="number">2016</span>);	<span class="comment">// 时间戳创建日期</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"创建日期 "</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, <span class="variable">$d</span>).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="variable">$y</span> = strtotime(<span class="string">"10:38pm April 15 2015"</span>);	<span class="comment">// 字符串转换日期</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"创建日期 "</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, <span class="variable">$y</span>).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="variable">$tomorrow</span> = strtotime(<span class="string">"tomorrow"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"明天是："</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, <span class="variable">$tomorrow</span>).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="variable">$nextSat</span> = strtotime(<span class="string">"next Saturday"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"下个周六："</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, <span class="variable">$nextSat</span>).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">	<span class="variable">$months</span> = strtotime(<span class="string">"+3 Months"</span>);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"三个月后："</span>.date(<span class="string">"Y-m-d h:i:sa"</span>, <span class="variable">$months</span>).<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line"><span class="preprocessor">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Y - 年，四位数字; 如: “1999”</li>
+<li>y - 年，二位数字; 如: “99”</li>
+<li>z - 一年中的第几天; 如: “0” 至 “365”</li>
+<li>F - 月份，英文全名; 如: “January”</li>
+<li>m - 月份，二位数字，若不足二位则在前面补零; 如: “01” 至 “12”</li>
+<li>n - 月份，二位数字，若不足二位则不补零; 如: “1” 至 “12”</li>
+<li>M - 月份，三个英文字母; 如: “Jan”</li>
+<li>t - 指定月份的天数; 如: “28” 至 “31”</li>
+<li>d - 几日，二位数字，若不足二位则前面补零; 如: “01” 至 “31”</li>
+<li>j - 几日，二位数字，若不足二位不补零; 如: “1” 至 “31”</li>
+<li>h - 12 小时制的小时; 如: “01” 至 “12”</li>
+<li>H - 24 小时制的小时; 如: “00” 至 “23”</li>
+<li>g - 12 小时制的小时，不足二位不补零; 如: “1” 至 12”</li>
+<li>G - 24 小时制的小时，不足二位不补零; 如: “0” 至 “23”</li>
+<li>i - 分钟; 如: “00” 至 “59”</li>
+<li>s - 秒; 如: “00” 至 “59”</li>
+<li>S - 字尾加英文序数，二个英文字母; 如: “th”，”nd”</li>
+<li>U - 总秒数</li>
+<li>D - 星期几，三个英文字母; 如: “Fri”</li>
+<li>l - 星期几，英文全名; 如: “Friday”</li>
+<li>w - 数字型的星期几，如: “0” (星期日) 至 “6” (星期六)</li>
+<li>a - “am” 或是 “pm”</li>
+<li>A - “AM” 或是 “PM”</li>
+</ul>
+<h3 id="参考地址："><a href="#参考地址：" class="headerlink" title="参考地址："></a>参考地址：</h3><p><a href="http://www.sjyhome.com/php/date.html" target="_blank" rel="external">http://www.sjyhome.com/php/date.html</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/24/PHP学习笔记2-日期/" class="archive-article-date">
+  	<time datetime="2016-05-24T01:58:29.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-24</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/PHP/">PHP</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-PHP学习笔记——基础" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -989,72 +1068,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/工具/">工具</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Swift代码片段：颜色值" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/28/Swift代码片段：颜色值/">Swift代码片段：颜色值</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>利用延展，为UIColor添加颜色值的初始化方法，遍历构造器。</p>
-</blockquote>
-<pre><code>extension UIColor {
-        // 三色值
-      convenience init(red: Int, green: Int, blue: Int) {
-        assert(red &gt;= 0 &amp;&amp; red &lt;= 255, &quot;Invalid red component&quot;)
-        assert(green &gt;= 0 &amp;&amp; green &lt;= 255, &quot;Invalid green component&quot;)
-        assert(blue &gt;= 0 &amp;&amp; blue &lt;= 255, &quot;Invalid blue component&quot;)
-        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-      }
-
-      // 颜色值  0x6fd66b
-      convenience init(netHex:Int) {
-        self.init(red:(netHex &gt;&gt; 16) &amp; 0xff, green:(netHex &gt;&gt; 8) &amp; 0xff, blue:netHex &amp; 0xff)
-      }
-}
-</code></pre>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/04/28/Swift代码片段：颜色值/" class="archive-article-date">
-  	<time datetime="2016-04-28T03:36:40.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-28</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
 	</div>
 
 
