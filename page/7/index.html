@@ -163,6 +163,70 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-Fabric-Crashlytics" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/03/Fabric-Crashlytics/">Fabric-Crashlytics</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Fabric是Twitter公司提供的一款，应用于移动应用开发，统计应用崩溃信息的工具。操作简单，使用方便。</p>
+</blockquote>
+<h3 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h3><h4 id="申请账号"><a href="#申请账号" class="headerlink" title="申请账号"></a>申请账号</h4><p>Crashlytics的服务是免费提供的，但是并不能直接注册使用，需要先申请，打开 <a href="http://try.crashlytics.com" target="_blank" rel="external">Crashlytic的官网</a> ，输入自己的邮箱申请使用。之后Fabric会发一封确认邮件，确认成功之后，还会发一封Welcome to Fabric的邮件，点击Get Started with Fabric，根据提示，现在安装Mac端的App，登陆并根据提示完成配置。</p>
+<h4 id="设置工程"><a href="#设置工程" class="headerlink" title="设置工程"></a>设置工程</h4><pre><code>1、点击&quot;+ New App&quot; 添加工程项目；
+2、根据提示配置&quot;Run Script&quot;。打开工程-&gt;Build Phases-&gt;Editor-&gt;Add Build Phase-&gt;Add Run Script Build Phase, 然后将Fabric提供的代码粘贴到Shell下， 然后Command+B;
+3、按照提示，将Fabric提供的frameworks(图标)拖到工程里，然后粘贴复制相关代码。
+</code></pre><h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><pre><code>1、可以直接使用Fabric提供的强行Crash代码进行测试，也可以自己写个。
+2、测试的时候需要脱离Xcode的调试环境。最简单的方法就是真机测试，但要注意的是，测试的时候手机和Xcode不要用数据线连接。测试之后，会收到Fabric的测试报告，出现Crash的具体位置，十分方便。
+3、用户也可以在AppStore中下载Fabric,在手机端查看测试报告。
+</code></pre>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/03/03/Fabric-Crashlytics/" class="archive-article-date">
+  	<time datetime="2016-03-03T02:59:15.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-03</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fabric/">Fabric</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/应用分析工具/">应用分析工具</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/随笔/">随笔</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Spotlight" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
