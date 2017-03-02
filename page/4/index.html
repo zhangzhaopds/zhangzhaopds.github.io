@@ -163,6 +163,69 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-【android】RecyclerView中动态添加子控件和改变ViewHolder高度" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/29/【android】RecyclerView中动态添加子控件和改变ViewHolder高度/">RecyclerView中动态添加子控件和改变ViewHolder高度</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>想要跨平台，就要对平台有了解，最近在看android开发。在为RecyclerView中<code>动态添加子控件</code>和<code>改变ViewHolder高度</code>时遇到了几个坑，费了不少时间填坑，所以记录一下。</p>
+</blockquote>
+<h3 id="这个是效果图："><a href="#这个是效果图：" class="headerlink" title="这个是效果图："></a>这个是效果图：</h3><p><a href="https://github.com/zhangzhaopds/RecyclerView_demo.git" target="_blank" rel="external">本文demo链接：https://github.com/zhangzhaopds/RecyclerView_demo.git</a></p>
+<p>点击cell，那么cell的高度就会增加一倍，同时，在cell上面添加一个控件。</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/android_recyclerview.png" alt=""></p>
+<h3 id="关于改变高度的注意点："><a href="#关于改变高度的注意点：" class="headerlink" title="关于改变高度的注意点："></a>关于改变高度的注意点：</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在线性布局或者相对布局动态设置宽高时，要先看有没有外层布局，</span><br><span class="line">如果有要看外层布局是什么，是<span class="tag">LinearLayout</span>，则要用<span class="tag">LinearLayout</span><span class="class">.LayoutParams</span>，</span><br><span class="line">如果是<span class="tag">RelativeLayout</span>则要用<span class="tag">RelativeLayout</span><span class="class">.LayoutParams</span>，而不是看你要控制的是什么布局，如果外层没有布局文件则要用<span class="tag">FrameLayout</span><span class="class">.LayoutParams</span>。</span><br></pre></td></tr></table></figure>
+<h3 id="关于新增控件的注意点："><a href="#关于新增控件的注意点：" class="headerlink" title="关于新增控件的注意点："></a>关于新增控件的注意点：</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果父视图是RelativeLayout 或者 FrameLayout，无法动态添加控件，</span><br><span class="line">解决的办法是新建一个LinearLayout，然后把textView添加给它，</span><br><span class="line">再把这个LinearLayout添加给父视图：</span><br></pre></td></tr></table></figure>
+<h3 id="主要的代码："><a href="#主要的代码：" class="headerlink" title="主要的代码："></a>主要的代码：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">holder.mTextView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                clickedArr.set(position, !clickedArr.get(position));</span><br><span class="line">                <span class="keyword">if</span> (clickedArr.get(position)) &#123;</span><br><span class="line">                   </span><br><span class="line">                    TextView showView = <span class="keyword">new</span> TextView(currentView.getContext());</span><br><span class="line">                    showView.setTextColor(Color.WHITE);</span><br><span class="line">                    showView.setText(<span class="string">"新增的位置:"</span> + position + <span class="string">", 高度增加一倍"</span>);</span><br><span class="line">				   <span class="comment">// 改变高度</span></span><br><span class="line">                    FrameLayout.LayoutParams linearParams =  (FrameLayout.LayoutParams)relativesArr.get(position).getLayoutParams();</span><br><span class="line">                    linearParams.height = <span class="number">200</span>;</span><br><span class="line">                    relativesArr.get(position).setLayoutParams(linearParams);</span><br><span class="line">					<span class="comment">// 新增控件</span></span><br><span class="line">                    LinearLayout.LayoutParams param1 = <span class="keyword">new</span> LinearLayout.LayoutParams(</span><br><span class="line">                            ViewGroup.LayoutParams.MATCH_PARENT, <span class="number">40</span>);</span><br><span class="line">                    param1.setMargins(<span class="number">20</span>, <span class="number">120</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">                    showView.setLayoutParams(param1);</span><br><span class="line"></span><br><span class="line">                    LinearLayout linear = <span class="keyword">new</span> LinearLayout(currentView.getContext());</span><br><span class="line">                    linear.setOrientation(LinearLayout.VERTICAL);</span><br><span class="line">                    linear.addView(showView);</span><br><span class="line"></span><br><span class="line">                    subViewsArr.set(position, linear);</span><br><span class="line">                    relativesArr.get(position).addView(linear);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    Log.i(<span class="string">"Card"</span>, <span class="string">"onClick: cuo "</span> + clickedArr.get(position));</span><br><span class="line">                  <span class="comment">// 移除控件</span></span><br><span class="line">                    relativesArr.get(position).removeView(subViewsArr.get(position));</span><br><span class="line">                  <span class="comment">// 返回原先高度100</span></span><br><span class="line">                    FrameLayout.LayoutParams linearParams =  (FrameLayout.LayoutParams)relativesArr.get(position).getLayoutParams();</span><br><span class="line">                    linearParams.height = <span class="number">100</span>;</span><br><span class="line">                    relativesArr.get(position).setLayoutParams(linearParams);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/29/【android】RecyclerView中动态添加子控件和改变ViewHolder高度/" class="archive-article-date">
+  	<time datetime="2016-09-29T07:41:43.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-29</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态控件添加/">动态控件添加</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态高度/">动态高度</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-【RN】ReactNative基础配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -742,66 +805,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-UserAgent（UA）" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/30/UserAgent（UA）/">UserAgent（UA）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="http://baike.baidu.com/link?url=pJzzqcBEOetxz50EXL30hniOYmoOBoyQ9_6fXulczRjJNN704CyvgMLPdVgT8rLogRCZTw6pOMEf9mIp_wImtgqsOqIePEoEab3rEF9kHhiYIGWmZxipvgU_L6G8lcVbL3dVBUAGLYTE14V7HxT9Ka" target="_blank" rel="external">UserAgent（UA）</a>用户代理，是浏览器系统信息，主要在浏览器打开链接的时候获取到。UA的应用场景不太多，我们这边的需求是为商户生成一个收款二维码，商户的用户通过支付宝、微信或者百度钱包等APP中的扫一扫功能，扫描二维码跳转到H5界面，输入金额，然后将APP的名字（作为支付方式）和金额等信息发送到收银台，完成支付。</p>
-</blockquote>
-<h3 id="获取方法"><a href="#获取方法" class="headerlink" title="获取方法"></a>获取方法</h3><h4 id="1、HTML中获取UA"><a href="#1、HTML中获取UA" class="headerlink" title="1、HTML中获取UA"></a>1、HTML中获取UA</h4><p>方法：<code>var ua = navigator.userAgent;</code></p>
-<p>结果：<code>Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13F69 BaiduWallet-5.7.0.1-IOS-walletapp_750_1334_iPhone_9.3.2_9.3.2_2.1.0_2.1.0.4</code>,这个是苹果手机上面的百度钱包扫一扫功能BaiduWallet-5.7.0.1。</p>
-<h4 id="2、PHP中获取UA"><a href="#2、PHP中获取UA" class="headerlink" title="2、PHP中获取UA"></a>2、PHP中获取UA</h4><p>方法：<code>$Agent = $_SERVER[&#39;HTTP_USER_AGENT&#39;];</code></p>
-<p>结果：<code>Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13F69 BaiduWallet-5.7.0.1-IOS-walletapp_750_1334_iPhone_9.3.2_9.3.2_2.1.0_2.1.0.4</code></p>
-<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>只有当APP利用内置的浏览器打开链接的时候，才能获取app的相关信息。如支付宝和京东钱包的扫一扫打开的url是无法在UA中查看到app的信息的,因为它们将这个链接推给了手机默认浏览器，并不是在APP自身当中打开。</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/05/30/UserAgent（UA）/" class="archive-article-date">
-  	<time datetime="2016-05-30T03:34:22.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-30</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/PHP/">PHP</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
