@@ -163,6 +163,65 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-Swift3中Dispatch-once的实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/08/Swift3中Dispatch-once的实现/">Swift3中Dispatch_once的实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Dispatch_once在Swift3中已经被废弃。</p>
+</blockquote>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">extension</span> <span class="title">DispatchQueue</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">var</span> _onceTracker = [<span class="type">String</span>]()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 利用token字段来作为once的ID</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">once</span>(<span class="title">token</span>: <span class="title">String</span>, <span class="title">block</span>:()-&gt;<span class="title">Void</span>) </span>&#123;</span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">// 加锁，保证有序同步执行</span></span><br><span class="line">        objc_sync_enter(<span class="keyword">self</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 推迟解锁</span></span><br><span class="line">        <span class="keyword">defer</span> &#123; </span><br><span class="line">        	<span class="comment">// 将objc_sync_exit(self)推入栈中，函数结束时执行解锁</span></span><br><span class="line">        	objc_sync_exit(<span class="keyword">self</span>) </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> _onceTracker.<span class="built_in">contains</span>(token) &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        _onceTracker.append(token)</span><br><span class="line">        block()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DispatchQueue</span>.once(token: <span class="string">"com.once.test"</span>) &#123;    </span><br><span class="line">	<span class="built_in">print</span>( <span class="string">"执行一次"</span> )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/08/Swift3中Dispatch-once的实现/" class="archive-article-date">
+  	<time datetime="2016-10-08T02:01:43.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dispatch-once/">Dispatch_once</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift3/">Swift3</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-【android】RecyclerView中动态添加子控件和改变ViewHolder高度" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -719,74 +778,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL配置问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/30/MySQL配置问题/">MySQL配置问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>我在Mac上为PHP配置MySQL，遇到的一些问题，记录下。</p>
-</blockquote>
-<h2 id="问题1-mysql-connect-No-such-file-or-directory-in…"><a href="#问题1-mysql-connect-No-such-file-or-directory-in…" class="headerlink" title="问题1:    mysql_connect():No such file or directory in…"></a>问题1:    mysql_connect():No such file or directory in…</h2><p>运行代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?php</span> </span><br><span class="line">	<span class="variable">$con</span> = mysql_connect(<span class="string">"localhost:3306"</span>, <span class="string">"root"</span>, <span class="string">"123456"</span>) <span class="keyword">or</span> <span class="keyword">die</span>(mysql_error());</span><br><span class="line">	<span class="keyword">if</span> (mysql_query(<span class="string">"CREATE DATABASE my_first_db"</span>, <span class="variable">$con</span>)) &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"Database created"</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"error creating database: "</span>.mysql_error());</span><br><span class="line">	&#125;</span><br><span class="line">	mysql_close(<span class="variable">$con</span>);</span><br><span class="line"><span class="preprocessor">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>出现下图的警告：</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/mysqlnofile.png" alt=""></p>
-<p>原因：</p>
-<p>php默认是在 <code>/var/mysql/mysql.sock</code>中查找<code>mysql.sock</code>， 而Mac上MySQL再安装时自动放在了<code>/tmp/mysql.sock</code>，路径不同，所以造成这个原因。</p>
-<p>解决方法：</p>
-<ol>
-<li>终端执行：<code>cd /tmp</code></li>
-<li>终端执行：<code>ln -s /tmp/mysql.sock mysql.sock</code> ,这段命令是基于我的 <code>mysql.default_socket</code>是<code>/var/mysql/mysql.sock</code>才选择这段命令，具体可看下文的链接。</li>
-</ol>
-<p>关于这个警告的详细参考：</p>
-<p><a href="http://stackoverflow.com/questions/4219970/warning-mysql-connect-2002-no-such-file-or-directory-trying-to-connect-vi" target="_blank" rel="external">http://stackoverflow.com/questions/4219970/warning-mysql-connect-2002-no-such-file-or-directory-trying-to-connect-vi</a></p>
-<p><a href="http://verysimple.com/2009/01/07/php-on-os-cant-connect-to-local-mysql-server-through-socket-varmysqlmysqlsock/" target="_blank" rel="external">http://verysimple.com/2009/01/07/php-on-os-cant-connect-to-local-mysql-server-through-socket-varmysqlmysqlsock/</a></p>
-<h2 id="问题2-mysql-connect-Too-many-levels-of-symbolic-links-in…"><a href="#问题2-mysql-connect-Too-many-levels-of-symbolic-links-in…" class="headerlink" title="问题2:    mysql_connect(): Too many levels of symbolic links in…"></a>问题2:    mysql_connect(): Too many levels of symbolic links in…</h2><p>在系统偏好设置里面将MySQL设置成开机启动，然后重启电脑，就OK了。说白了，就是第一个问题解决了，然后重启了下电脑而已。</p>
-<p>大坑、小坑都要跳一边 ！！！！！！！！！！！！</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/05/30/MySQL配置问题/" class="archive-article-date">
-  	<time datetime="2016-05-30T07:56:19.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-30</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/工具/">工具</a>
 	</div>
 
 

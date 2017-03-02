@@ -163,6 +163,68 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-逆向工程-微信自动抢红包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/04/逆向工程-微信自动抢红包/">逆向工程-微信自动抢红包</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>微信自动抢红包。</p>
+</blockquote>
+<p>依托于iOS重签名开源框架 <strong>ios-app-signer</strong></p>
+<p>项目源码地址: <a href="https://github.com/codesourse/iInjection" target="_blank" rel="external">https://github.com/codesourse/iInjection</a></p>
+<p><strong>注：</strong>如果iTunes安装不成功的话，可尝试用OTA(亲测，好用)。</p>
+<h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/weixinred1.PNG" alt=""></p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/weixinred2.PNG" alt=""></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/01/04/逆向工程-微信自动抢红包/" class="archive-article-date">
+  	<time datetime="2017-01-04T08:30:02.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-01-04</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逆向工程、iOS-App-resign、微信红包/">逆向工程、iOS_App_resign、微信红包</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/逆向工程/">逆向工程</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-npm缺少package异常" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -830,116 +892,6 @@ var _hmt = _hmt || [];
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BarrageRenderer/">BarrageRenderer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/直播弹幕/">直播弹幕</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-IJKPlayer视频直播框架" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/05/IJKPlayer视频直播框架/">IJKPlayer视频直播框架</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="https://github.com/Bilibili/ijkplayer" target="_blank" rel="external">IJKPlayer</a>是B站的一个开源视频播放框架，基于<a href="https://zh.wikipedia.org/zh/FFmpeg" target="_blank" rel="external">FFMPEG</a>;</p>
-<p>集成的过程较为繁琐，记录一下。</p>
-</blockquote>
-<h4 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h4><p>按照官方教程一步一步来就行，官网链接<a href="https://github.com/Bilibili/ijkplayer" target="_blank" rel="external">https://github.com/Bilibili/ijkplayer</a></p>
-<p>这篇博客写得也很详细，<a href="http://www.jianshu.com/p/4f21af680c19" target="_blank" rel="external">http://www.jianshu.com/p/4f21af680c19</a></p>
-<p>这个我打包好的静态库，下载解压拖到工程、添加依赖库就能用：<a href="http://ohp8q40k9.bkt.clouddn.com/IJK.zip" target="_blank" rel="external">http://ohp8q40k9.bkt.clouddn.com/IJK.zip</a></p>
-<h5 id="iOS的集成主要有以下几步骤："><a href="#iOS的集成主要有以下几步骤：" class="headerlink" title="iOS的集成主要有以下几步骤："></a>iOS的集成主要有以下几步骤：</h5><ol>
-<li><p>在本地创建一个文件夹，在Terminal中，cd到文件夹，执行<code>git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-ios</code>；</p>
-</li>
-<li><p>继续执行<code>cd ijkplayer-ios</code>；</p>
-</li>
-<li><p>执行<code>git checkout -B latest k0.7.5</code>，开辟新的分支<code>latest</code>；</p>
-</li>
-<li><p>执行<code>./init-ios.sh</code>,这个过程较慢，因为要下载180MB左右的文件；</p>
-</li>
-<li><p><code>cd ios</code>;</p>
-</li>
-<li><p><code>./compile-ffmpeg.sh clean</code>；</p>
-</li>
-<li><p><code>./compile-ffmpeg.sh all</code>,这个过程也较慢；最终效果：</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk222.png" alt=""></p>
-</li>
-<li><p>打开工程<code>IJKMediaDemo</code>, 在plist中添加 Camera 和 Photo的系统应用权限；之后编译和运行应该都没问题。</p>
-</li>
-</ol>
-<h4 id="静态库的打包"><a href="#静态库的打包" class="headerlink" title="静态库的打包"></a>静态库的打包</h4><p>基于上面已经能够成功运行的工程，将IJKPlayer打包成方便使用的framework;</p>
-<ol>
-<li><p>选择 IJKMediaFramework — Edit Scheme — Run — Buid Configuration — Release;</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk02.png" alt=""></p>
-</li>
-<li><p>将 IJKMediaFramework 分别在模拟器和真机下编译 command + B;</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk01.png" alt=""></p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk03.png" alt=""></p>
-</li>
-<li><p>打开Products下的 IJKMediaFramework.framework, 可以看到Release-iphonesimulator和Release-iphoneos；</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk04.png" alt=""></p>
-</li>
-<li><p>将模拟器和真机的两个静态库合并；到文件夹/Build/Products，例如：<code>cd /Users/zhangzhao/Library/Developer/Xcode/DerivedData/IJKMediaDemo-bwancsljxxihfseajvayxkzkonhi/Build/Products</code></p>
-</li>
-<li><p>在Products下执行 <code>lipo -create Release-iphoneos/IJKMediaFramework.framework/IJKMediaFramework Release-iphonesimulator/IJKMediaFramework.framework/IJKMediaFramework -output IJKMediaFramework</code>合并；</p>
-</li>
-<li><p>之后执行copy操作，<code>cp IJKMediaFramework Release-iphoneos/IJKMediaFramework.framework/</code>;</p>
-</li>
-<li><p>静态库<code>iphoneos/IJKMediaFramework.framework</code>就是最终的结果。</p>
-</li>
-</ol>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ol>
-<li><p>添加IJKMediaFramework.framework到新建的项目中；</p>
-</li>
-<li><p>添加依赖</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk5.png" alt=""></p>
-<p>编译的时候出现的以下的报错就是依赖库没添加全</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijkkk.png" alt=""></p>
-</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/05/IJKPlayer视频直播框架/" class="archive-article-date">
-  	<time datetime="2016-12-05T06:37:39.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-05</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IJKPlayer/">IJKPlayer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频直播框架/">视频直播框架</a></li></ul>
 	</div>
 
       
