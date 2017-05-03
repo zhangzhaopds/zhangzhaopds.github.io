@@ -163,6 +163,69 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-ActiveMQ在Mac上的安装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/03/ActiveMQ在Mac上的安装/">ActiveMQ在Mac上的安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>简单记录一下ActiveMQ在Mac上的安装。</p>
+</blockquote>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/mqtttt.png" alt=""></p>
+<h4 id="具体指令"><a href="#具体指令" class="headerlink" title="具体指令"></a>具体指令</h4><p>使用的是brew</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install activemq		<span class="comment">// 此过程需要下载组件，速度依据网速</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activemq --version			<span class="comment">// 安装成功之后，可以查看一下版本进行检查</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activemq start				<span class="comment">// 启动</span></span><br></pre></td></tr></table></figure>
+<p>启动之后，可在浏览器中访问 <a href="http://localhost:8161/" target="_blank" rel="external">http://localhost:8161/</a></p>
+<h4 id="其他操作指令"><a href="#其他操作指令" class="headerlink" title="其他操作指令"></a>其他操作指令</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Tasks:</span><br><span class="line">    browse                   - Display selected messages in a specified destination.</span><br><span class="line">    bstat                    - Performs a predefined query that displays useful statistics regarding the specified broker</span><br><span class="line">    consumer                 - Receives messages from the broker</span><br><span class="line">    create                   - Creates a runnable broker instance in the specified path.</span><br><span class="line">    decrypt                  - Decrypts given text</span><br><span class="line">    dstat                    - Performs a predefined query that displays useful tabular statistics regarding the specified destination type</span><br><span class="line">    encrypt                  - Encrypts given text</span><br><span class="line">    export                   - Exports a stopped brokers data files to an archive file</span><br><span class="line">    list                     - Lists all available brokers in the specified JMX context</span><br><span class="line">    producer                 - Sends messages to the broker</span><br><span class="line">    purge                    - Delete selected destination's messages that matches the message selector</span><br><span class="line">    query                    - Display selected broker component's attributes and statistics.</span><br><span class="line">    start                    - Creates and starts a broker using a configuration file, or a broker URI.</span><br><span class="line">    stop                     - Stops a running broker specified by the broker name.</span><br><span class="line"></span><br><span class="line">Task Options (Options specific to each task):</span><br><span class="line">    --extdir &lt;dir&gt; - Add the jar files in the directory to the classpath.</span><br><span class="line">    --version - Display the version information.</span><br><span class="line">    -h,-?,--help - Display this help information. To display task specific help, use Main [task] -h,-?,--help</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/02/03/ActiveMQ在Mac上的安装/" class="archive-article-date">
+  	<time datetime="2017-02-03T02:00:18.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-03</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/MQTT/">MQTT</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-摄像头捕捉红包" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -832,71 +895,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/PHP/">PHP</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-escaping" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/23/escaping/">@escaping</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Swift中的逃逸闭包（escape closure）。</p>
-</blockquote>
-<h4 id="逃逸闭包"><a href="#逃逸闭包" class="headerlink" title="逃逸闭包"></a>逃逸闭包</h4><p>​    当一个传入函数的闭包在函数执行结束之后才会被调用，这样的闭包就叫做逃逸闭包。如果一个函数的参数有一个逃逸闭包，可以在参数前加@escaping关键字来修饰。</p>
-<p>​    一个闭包是逃逸必要的条件是这个闭包需要存储在函数外部。举个例子，很多异步操作的函数往往会传入一个complete handler作为异步操作完成后的回调。当这个异步函数开始执行的时候，会开启一个异步操作，然后这个函数就直接结束了，此时，传入的闭包还没有被执行，实际上这个回调需要在异步操作完成后才会被执行。这种情况下这个回调的闭包需要定义成逃逸闭包，因为它在函数调用结束之后才会被执行。比如下面的例子：    </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> completionHandlers: [() -&gt; <span class="type">Void</span>] = []</span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">someFunctionWithEscapingClosure</span><span class="params">(completionHandler: @escaping <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    completionHandlers.append(completionHandler)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    someFunctionWithEscapingClosure以一个completionHandler作为参数，这个参数会被保存在函数外部的completionHandlers数组中，这时这个闭包是一个逃逸闭包，所以需要添加@escaping关键字去修饰，否则会有编译错误。</p>
-<p>​    逃逸闭包如果需要使用对象的变量或常量的时候，必须显示指明self，如果是普通的闭包，可以直接使用对象的变量或常量。比如下面的例子：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> completionHandlers: [() -&gt; <span class="type">Void</span>] = []</span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">someFunctionWithEscapingClosure</span><span class="params">(completionHandler: @escaping <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    completionHandlers.append(completionHandler)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">someFunctionWithNonescapingClosure</span><span class="params">(closure: <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    closure()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">10</span></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">doSomething</span><span class="params">()</span></span> &#123;</span><br><span class="line">        someFunctionWithEscapingClosure &#123; <span class="keyword">self</span>.x = <span class="number">100</span> &#125;</span><br><span class="line">        someFunctionWithNonescapingClosure &#123; x = <span class="number">200</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> instance = <span class="type">SomeClass</span>()</span><br><span class="line">instance.doSomething()</span><br><span class="line"><span class="built_in">print</span>(instance.x)</span><br><span class="line"><span class="comment">// 输出 "200"</span></span><br><span class="line"></span><br><span class="line">completionHandlers.first?()</span><br><span class="line"><span class="built_in">print</span>(instance.x)</span><br><span class="line"><span class="comment">// 输出 "100"</span></span><br></pre></td></tr></table></figure>
-<p>​    在这个例子中，第一个print输出200，因为当调用doSomethig的时候，someFunctionWithNonescapingClosure会直接调用闭包{x = 200},此时instance.x变成200，当completionHandlers.first?()之后，someFunctionWithEscapingClosure传入的闭包才会真正执行，此时instance.x变成100.可以看到，逃逸闭包必须显示指明self，而普通的闭包可以直接使用x。</p>
-<p><a href="http://1199game.com/2016/10/Swift-closure-3/" target="_blank" rel="external">http://1199game.com/2016/10/Swift-closure-3/</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/23/escaping/" class="archive-article-date">
-  	<time datetime="2016-12-23T01:19:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-23</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Closure/">Closure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Escaping/">Escaping</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
 	</div>
 
 
