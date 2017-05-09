@@ -6,24 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>【小程序】中文转码的MD5加密 | Jmsp&#39;s Tips</title>
+  <title>【译】在Heroku上部署Django应用（2、部署） | Jmsp&#39;s Tips</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="中文转码的MD5加密
+  <meta name="description" content="Heroku支持所有类型的Python应用，包括Django应用。需要说明的是，Django的手动配置很繁琐，最便捷的方法是直接在Heroku控制台生成相对应的应用。
 
-http://7xoz39.com1.z0.glb.clouddn.com/md5.js">
+本地服务执行以下指令，在本地安装相关依赖库。
+12345$ pip install -r requirements.txtDownloading/unpacking ......Successfully installed Dja">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【小程序】中文转码的MD5加密">
-<meta property="og:url" content="http://yoursite.com/2017/05/03/【小程序】中文转码的MD5加密/index.html">
+<meta property="og:title" content="【译】在Heroku上部署Django应用（2、部署）">
+<meta property="og:url" content="http://yoursite.com/2017/05/09/【译】在Heroku上部署Django应用（二）/index.html">
 <meta property="og:site_name" content="Jmsp's Tips">
-<meta property="og:description" content="中文转码的MD5加密
+<meta property="og:description" content="Heroku支持所有类型的Python应用，包括Django应用。需要说明的是，Django的手动配置很繁琐，最便捷的方法是直接在Heroku控制台生成相对应的应用。
 
-http://7xoz39.com1.z0.glb.clouddn.com/md5.js">
-<meta property="og:updated_time" content="2017-05-03T02:36:54.000Z">
+本地服务执行以下指令，在本地安装相关依赖库。
+12345$ pip install -r requirements.txtDownloading/unpacking ......Successfully installed Dja">
+<meta property="og:updated_time" content="2017-05-09T02:01:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【小程序】中文转码的MD5加密">
-<meta name="twitter:description" content="中文转码的MD5加密
+<meta name="twitter:title" content="【译】在Heroku上部署Django应用（2、部署）">
+<meta name="twitter:description" content="Heroku支持所有类型的Python应用，包括Django应用。需要说明的是，Django的手动配置很繁琐，最便捷的方法是直接在Heroku控制台生成相对应的应用。
 
-http://7xoz39.com1.z0.glb.clouddn.com/md5.js">
+本地服务执行以下指令，在本地安装相关依赖库。
+12345$ pip install -r requirements.txtDownloading/unpacking ......Successfully installed Dja">
   
     <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
   
@@ -168,7 +171,7 @@ var _hmt = _hmt || [];
 </nav>
 
       <div class="body-wrap">
-        <article id="post-【小程序】中文转码的MD5加密" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-【译】在Heroku上部署Django应用（二）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -178,7 +181,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      【小程序】中文转码的MD5加密
+      【译】在Heroku上部署Django应用（2、部署）
     </h1>
   
 
@@ -187,22 +190,35 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>中文转码的MD5加密</p>
+<p>Heroku支持所有类型的Python应用，包括Django应用。需要说明的是，Django的手动配置很繁琐，最便捷的方法是直接在Heroku控制台生成相对应的应用。</p>
 </blockquote>
-<p><a href="http://7xoz39.com1.z0.glb.clouddn.com/md5.js" target="_blank" rel="external">http://7xoz39.com1.z0.glb.clouddn.com/md5.js</a></p>
+<h3 id="本地服务"><a href="#本地服务" class="headerlink" title="本地服务"></a>本地服务</h3><p>执行以下指令，在本地安装相关依赖库。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ pip install -r requirements.txt</span><br><span class="line">Downloading/unpacking ...</span><br><span class="line">...</span><br><span class="line">Successfully installed Django dj-database-url dj-<span class="keyword">static</span> django-toolbelt gunicorn psycopg2 static3</span><br><span class="line">Cleaning up...</span><br></pre></td></tr></table></figure>
+<p>开启本地服务</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ heroku local web</span><br><span class="line"><span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> web<span class="number">.1</span>  | started with pid <span class="number">36084</span></span><br><span class="line"><span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> web<span class="number">.1</span>  | <span class="number">2014</span>-<span class="number">07</span>-<span class="number">17</span> <span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> [<span class="number">36084</span>] [INFO] Starting gunicorn <span class="number">19.0</span><span class="number">.0</span></span><br><span class="line"><span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> web<span class="number">.1</span>  | <span class="number">2014</span>-<span class="number">07</span>-<span class="number">17</span> <span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> [<span class="number">36084</span>] [INFO] Listening at: http:<span class="comment">//0.0.0.0:5000 (36084)</span></span><br><span class="line"><span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> web<span class="number">.1</span>  | <span class="number">2014</span>-<span class="number">07</span>-<span class="number">17</span> <span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> [<span class="number">36084</span>] [INFO] Using worker: sync</span><br><span class="line"><span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> web<span class="number">.1</span>  | <span class="number">2014</span>-<span class="number">07</span>-<span class="number">17</span> <span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> [<span class="number">36087</span>] [INFO] Booting worker with pid: <span class="number">36087</span></span><br></pre></td></tr></table></figure>
+<p>最后，一切正常的情况下便可访问<a href="http://localhost:5000/" target="_blank" rel="external">http://localhost:5000/</a></p>
+<h3 id="Heroku部署"><a href="#Heroku部署" class="headerlink" title="Heroku部署"></a>Heroku部署</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"Added a Procfile."</span></span><br><span class="line">$ heroku login</span><br><span class="line">Enter your Heroku credentials.</span><br><span class="line">...</span><br><span class="line">$ heroku create</span><br><span class="line">Creating intense-falls-<span class="number">9163.</span>.. done, <span class="built_in">stack</span> is cedar</span><br><span class="line">http:<span class="comment">//intense-falls-9163.herokuapp.com/ | git@heroku.com:intense-falls-9163.git</span></span><br><span class="line">Git remote heroku added</span><br><span class="line">$ git push heroku master</span><br><span class="line">...</span><br><span class="line">-----&gt; Python app detected</span><br><span class="line">...</span><br><span class="line">-----&gt; Launching... done, v7</span><br><span class="line">       https:<span class="comment">//intense-falls-9163.herokuapp.com/ deployed to Heroku</span></span><br></pre></td></tr></table></figure>
+<p>最后执行以下指令，便可在浏览器中打开站点</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ heroku open</span><br></pre></td></tr></table></figure>
+<p>原文地址： <a href="https://devcenter.heroku.com/articles/deploying-python#django-applications-on-heroku" target="_blank" rel="external">https://devcenter.heroku.com/articles/deploying-python#django-applications-on-heroku</a></p>
 
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2017/05/03/【小程序】中文转码的MD5加密/" class="archive-article-date">
-  	<time datetime="2017-05-03T02:35:49.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-03</time>
+      <a href="/2017/05/09/【译】在Heroku上部署Django应用（二）/" class="archive-article-date">
+  	<time datetime="2017-05-09T01:57:25.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-09</time>
 </a>
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heroku/">Heroku</a></li></ul>
+	</div>
+
       
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/小程序/">小程序</a>
+	<a class="article-category-link" href="/categories/Python/">Python</a>
 	</div>
 
 
@@ -214,18 +230,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/05/09/【译】在Heroku上部署Django应用（一）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          【译】在Heroku上部署Django应用（1、配置）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/05/03/【小程序】POST请求服务器接收不到参数/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【小程序】POST请求服务器接收不到参数</div>
+    <a href="/2017/05/09/【译】在Heroku上部署Django应用（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【译】在Heroku上部署Django应用（1、配置）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -259,7 +266,7 @@ var _hmt = _hmt || [];
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="【小程序】中文转码的MD5加密" data-title="【小程序】中文转码的MD5加密" data-url="http://yoursite.com/2017/05/03/【小程序】中文转码的MD5加密/"></div>
+	<div class="ds-thread" data-thread-key="【译】在Heroku上部署Django应用（二）" data-title="【译】在Heroku上部署Django应用（2、部署）" data-url="http://yoursite.com/2017/05/09/【译】在Heroku上部署Django应用（二）/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

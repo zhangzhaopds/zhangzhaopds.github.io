@@ -163,6 +163,159 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-【译】在Heroku上部署Django应用（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/09/【译】在Heroku上部署Django应用（二）/">【译】在Heroku上部署Django应用（2、部署）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Heroku支持所有类型的Python应用，包括Django应用。需要说明的是，Django的手动配置很繁琐，最便捷的方法是直接在Heroku控制台生成相对应的应用。</p>
+</blockquote>
+<h3 id="本地服务"><a href="#本地服务" class="headerlink" title="本地服务"></a>本地服务</h3><p>执行以下指令，在本地安装相关依赖库。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ pip install -r requirements.txt</span><br><span class="line">Downloading/unpacking ...</span><br><span class="line">...</span><br><span class="line">Successfully installed Django dj-database-url dj-<span class="keyword">static</span> django-toolbelt gunicorn psycopg2 static3</span><br><span class="line">Cleaning up...</span><br></pre></td></tr></table></figure>
+<p>开启本地服务</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ heroku local web</span><br><span class="line"><span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> web<span class="number">.1</span>  | started with pid <span class="number">36084</span></span><br><span class="line"><span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> web<span class="number">.1</span>  | <span class="number">2014</span>-<span class="number">07</span>-<span class="number">17</span> <span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> [<span class="number">36084</span>] [INFO] Starting gunicorn <span class="number">19.0</span><span class="number">.0</span></span><br><span class="line"><span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> web<span class="number">.1</span>  | <span class="number">2014</span>-<span class="number">07</span>-<span class="number">17</span> <span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> [<span class="number">36084</span>] [INFO] Listening at: http:<span class="comment">//0.0.0.0:5000 (36084)</span></span><br><span class="line"><span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> web<span class="number">.1</span>  | <span class="number">2014</span>-<span class="number">07</span>-<span class="number">17</span> <span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> [<span class="number">36084</span>] [INFO] Using worker: sync</span><br><span class="line"><span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> web<span class="number">.1</span>  | <span class="number">2014</span>-<span class="number">07</span>-<span class="number">17</span> <span class="number">11</span>:<span class="number">48</span>:<span class="number">19</span> [<span class="number">36087</span>] [INFO] Booting worker with pid: <span class="number">36087</span></span><br></pre></td></tr></table></figure>
+<p>最后，一切正常的情况下便可访问<a href="http://localhost:5000/" target="_blank" rel="external">http://localhost:5000/</a></p>
+<h3 id="Heroku部署"><a href="#Heroku部署" class="headerlink" title="Heroku部署"></a>Heroku部署</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"Added a Procfile."</span></span><br><span class="line">$ heroku login</span><br><span class="line">Enter your Heroku credentials.</span><br><span class="line">...</span><br><span class="line">$ heroku create</span><br><span class="line">Creating intense-falls-<span class="number">9163.</span>.. done, <span class="built_in">stack</span> is cedar</span><br><span class="line">http:<span class="comment">//intense-falls-9163.herokuapp.com/ | git@heroku.com:intense-falls-9163.git</span></span><br><span class="line">Git remote heroku added</span><br><span class="line">$ git push heroku master</span><br><span class="line">...</span><br><span class="line">-----&gt; Python app detected</span><br><span class="line">...</span><br><span class="line">-----&gt; Launching... done, v7</span><br><span class="line">       https:<span class="comment">//intense-falls-9163.herokuapp.com/ deployed to Heroku</span></span><br></pre></td></tr></table></figure>
+<p>最后执行以下指令，便可在浏览器中打开站点</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ heroku open</span><br></pre></td></tr></table></figure>
+<p>原文地址： <a href="https://devcenter.heroku.com/articles/deploying-python#django-applications-on-heroku" target="_blank" rel="external">https://devcenter.heroku.com/articles/deploying-python#django-applications-on-heroku</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/05/09/【译】在Heroku上部署Django应用（二）/" class="archive-article-date">
+  	<time datetime="2017-05-09T01:57:25.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-09</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heroku/">Heroku</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-【译】在Heroku上部署Django应用（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/09/【译】在Heroku上部署Django应用（一）/">【译】在Heroku上部署Django应用（1、配置）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Heroku支持所有类型的Python应用，包括Django应用。需要说明的是，Django的手动配置很繁琐，最便捷的方法是直接在Heroku控制台生成相对应的应用。</p>
+</blockquote>
+<h3 id="创建Django应用"><a href="#创建Django应用" class="headerlink" title="创建Django应用"></a>创建Django应用</h3><h4 id="1、利用Heroku创建"><a href="#1、利用Heroku创建" class="headerlink" title="1、利用Heroku创建"></a>1、利用Heroku创建</h4><p>这个是最便捷的方法，无需额外配置，极力推荐的一种形式。</p>
+<h4 id="2、利用Django指令"><a href="#2、利用Django指令" class="headerlink" title="2、利用Django指令"></a>2、利用Django指令</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ django-admin startproject --<span class="keyword">template</span>=https:<span class="comment">//github.com/heroku/heroku-django-template/archive/master.zip --name=Procfile  myproject</span></span><br></pre></td></tr></table></figure>
+<p>这条指令创建了一个预配置的Django应用。之后刷新Django应用即可。</p>
+<h3 id="已有Django应用的配置"><a href="#已有Django应用的配置" class="headerlink" title="已有Django应用的配置"></a>已有Django应用的配置</h3><p>对于一个已经存在的Django应用进行配置。</p>
+<h4 id="1、基本配置"><a href="#1、基本配置" class="headerlink" title="1、基本配置"></a>1、基本配置</h4><p>首先，最重要的一条是Heroku网站应用需要 <strong>Procfile</strong>文件。这个文件要放置在仓库根目录下。</p>
+<p><strong>Procfile</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web: gunicorn myproject.wsgi --<span class="built_in">log</span>-file -</span><br></pre></td></tr></table></figure>
+<p><strong>gunicorn</strong>是我们推荐使用的Django应用生产环境服务器。 <code>myproject</code>换成自己的工程名。</p>
+<p><strong>安装Gunicorn</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ pip install gunicorn</span><br><span class="line">...</span><br><span class="line">$ pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+<h4 id="2、数据库配置"><a href="#2、数据库配置" class="headerlink" title="2、数据库配置"></a>2、数据库配置</h4><p>安装 <a href="https://warehouse.python.org/project/dj-database-url/" target="_blank" rel="external">dj-database-url</a> 来配置<code>`DATABASE_URL</code> `环境。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ pip install dj-database-url</span><br><span class="line">...</span><br><span class="line">$ pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+<p><strong>settings.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Update database configuration with $DATABASE_URL.</span></span><br><span class="line"><span class="keyword">import</span> dj_database_url</span><br><span class="line">db_from_env = dj_database_url.config()</span><br><span class="line">DATABASES[<span class="string">'default'</span>].update(db_from_env)</span><br></pre></td></tr></table></figure>
+<h4 id="3、数据库连接的持久性"><a href="#3、数据库连接的持久性" class="headerlink" title="3、数据库连接的持久性"></a>3、数据库连接的持久性</h4><p>默认情况下，对于应用的每次请求循环，Django都会创建一个新的持久性数据库连接。这个一个昂贵的开销，会降低应用的性能。所以，更改配置如下。</p>
+<p><strong>settings.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Update database configuration with $DATABASE_URL.</span></span><br><span class="line"><span class="keyword">import</span> dj_database_url</span><br><span class="line">db_from_env = dj_database_url.config(conn_max_age=<span class="number">500</span>)</span><br><span class="line">DATABASES[<span class="string">'default'</span>].update(db_from_env)</span><br></pre></td></tr></table></figure>
+<p>更多的信息，可以查看<a href="https://devcenter.heroku.com/articles/python-concurrency-and-database-connections" target="_blank" rel="external">Concurrency and Database Connections in Django</a>.</p>
+<h4 id="4、静态资源"><a href="#4、静态资源" class="headerlink" title="4、静态资源"></a>4、静态资源</h4><p>Django应用，对于静态资源的配置和调试相对将困难。更改相关配置，将改变这一状态。</p>
+<p><strong>settings.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Static files (CSS, JavaScript, Images)</span></span><br><span class="line"><span class="comment"># https://docs.djangoproject.com/en/1.9/howto/static-files/</span></span><br><span class="line"></span><br><span class="line">PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))</span><br><span class="line"></span><br><span class="line">STATIC_ROOT = os.path.join(PROJECT_ROOT, <span class="string">'staticfiles'</span>)</span><br><span class="line">STATIC_URL = <span class="string">'/static/'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Extra places for collectstatic to find static files.</span></span><br><span class="line">STATICFILES_DIRS = (</span><br><span class="line">    os.path.join(PROJECT_ROOT, <span class="string">'static'</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>关于静态资源的知识，可查看<a href="https://devcenter.heroku.com/articles/django-assets" target="_blank" rel="external">Django and Static Assets</a>.</p>
+<h4 id="5、Whitenoise"><a href="#5、Whitenoise" class="headerlink" title="5、Whitenoise"></a>5、Whitenoise</h4><p>Django应用在生产环境是没有静态文件的服务的。添加Whitenoise来提升服务。</p>
+<p><strong>Whitenoise</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ pip install whitenoise</span><br><span class="line">...</span><br><span class="line">$ pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+<p><strong>settings.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Simplified static file serving.</span></span><br><span class="line"><span class="comment"># https://warehouse.python.org/project/whitenoise/</span></span><br><span class="line"></span><br><span class="line">STATICFILES_STORAGE = <span class="string">'whitenoise.django.GzipManifestStaticFilesStorage'</span></span><br></pre></td></tr></table></figure>
+<p><strong>wsgi.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.core.wsgi <span class="keyword">import</span> get_wsgi_application</span><br><span class="line"><span class="keyword">from</span> whitenoise.django <span class="keyword">import</span> DjangoWhiteNoise</span><br><span class="line"></span><br><span class="line">application = get_wsgi_application()</span><br><span class="line">application = DjangoWhiteNoise(application)</span><br></pre></td></tr></table></figure>
+<p>原文地址：<a href="https://devcenter.heroku.com/articles/django-app-configuration" target="_blank" rel="external">https://devcenter.heroku.com/articles/django-app-configuration</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/05/09/【译】在Heroku上部署Django应用（一）/" class="archive-article-date">
+  	<time datetime="2017-05-09T00:56:54.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-09</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heroku/">Heroku</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-【小程序】中文转码的MD5加密" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -630,155 +783,6 @@ var _hmt = _hmt || [];
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随机Header/">随机Header</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【Python】BeautifulSoup使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/【Python】BeautifulSoup使用/">【Python】BeautifulSoup基本使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>BeautifulSoup是Python中用来解析HTML、XML等文档的强大工具。</p>
-</blockquote>
-<p>Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: Tag , NavigableString , BeautifulSoup , Comment。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">html_doc = <span class="string">"""</span><br><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class="title"&gt;&lt;b&gt;这个是b标签&lt;/b&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class="story"&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="line">&lt;a href="http://example.com/elsie" class="sister" id="link1"&gt;Elsie&lt;/a&gt;,</span><br><span class="line">&lt;a href="http://example.com/lacie" class="sister" id="link2"&gt;Lacie&lt;/a&gt; and</span><br><span class="line">&lt;a href="http://example.com/tillie" class="sister" id="link3"&gt;Tillie&lt;/a&gt;;</span><br><span class="line">and they lived at the bottom of a well.&lt;/p&gt;</span><br><span class="line">&lt;p class="story"&gt;...&lt;/p&gt;</span><br><span class="line">"""</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup = <span class="function"><span class="title">BeautifulSoup</span><span class="params">(html_doc)</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="1、Tag标签对象"><a href="#1、Tag标签对象" class="headerlink" title="1、Tag标签对象"></a>1、Tag标签对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tag = soup.p</span><br><span class="line">print(type(tag))        <span class="comment"># &lt;class 'bs4.element.Tag'&gt;</span></span><br></pre></td></tr></table></figure>
-<p>标签的属性可以被添加,删除或修改，操作如字典</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tag[<span class="string">'class'</span>] = <span class="string">"very"</span>   <span class="comment"># 修改属性值</span></span><br><span class="line">tag[<span class="string">'id'</span>] = <span class="number">1</span>           <span class="comment"># 添加id属性</span></span><br><span class="line">print(tag)              <span class="comment"># &lt;p class="verybold" id="1"&gt;&lt;b&gt;你好&lt;/b&gt;&lt;/p&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> tag[<span class="string">'id'</span>]           <span class="comment"># 删除id属性</span></span><br><span class="line">print(tag)              <span class="comment"># &lt;p class="very"&gt;&lt;b&gt;你好&lt;/b&gt;&lt;/p&gt;</span></span><br></pre></td></tr></table></figure>
-<p>多值属性 返回list类型数据</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">css_soup = BeautifulSoup(<span class="string">'&lt;p class="body strikeout"&gt;&lt;/p&gt;'</span>)</span><br><span class="line">print(css_soup.p[<span class="string">'class'</span>])      <span class="comment"># ['body', 'strikeout']</span></span><br></pre></td></tr></table></figure>
-<p>非多值属性 返回string</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n_css_soup = BeautifulSoup(<span class="string">'&lt;p id="body name"&gt;&lt;/p&gt;'</span>)</span><br><span class="line">print(n_css_soup.p[<span class="string">'id'</span>])       <span class="comment"># body name2、NavigableString：标签中的字符串</span></span><br></pre></td></tr></table></figure>
-<h4 id="2、NavigableString标签中的字符串"><a href="#2、NavigableString标签中的字符串" class="headerlink" title="2、NavigableString标签中的字符串"></a>2、NavigableString标签中的字符串</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(type(tag.string))         <span class="comment"># &lt;class 'bs4.element.NavigableString'&gt;</span></span><br><span class="line">print(tag.string)               <span class="comment"># 这个是b标签</span></span><br><span class="line">tag.string.replace_with(<span class="string">'you are beautiful'</span>)</span><br><span class="line">print(tag.string)               <span class="comment"># you are beautiful</span></span><br></pre></td></tr></table></figure>
-<h4 id="3、BeautifulSoup对象"><a href="#3、BeautifulSoup对象" class="headerlink" title="3、BeautifulSoup对象"></a>3、BeautifulSoup对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup))           <span class="comment"># &lt;class 'bs4.BeautifulSoup'&gt;</span></span><br><span class="line">print(soup.name)            <span class="comment"># [document]</span></span><br></pre></td></tr></table></figure>
-<h4 id="4、Comment注释及特殊字符串"><a href="#4、Comment注释及特殊字符串" class="headerlink" title="4、Comment注释及特殊字符串"></a>4、Comment注释及特殊字符串</h4><p>Comment 对象是一个特殊类型的 NavigableString 对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">markup = <span class="string">"&lt;b&gt;&lt;!--Hey, buddy. Want to buy a used parser?--&gt;&lt;/b&gt;"</span></span><br><span class="line">mark_soup = BeautifulSoup(markup)</span><br><span class="line">print(type(mark_soup.b.string))     <span class="comment"># &lt;class 'bs4.element.Comment'&gt;</span></span><br><span class="line">print(mark_soup.b.string)           <span class="comment"># Hey, buddy. Want to buy a used parser?</span></span><br><span class="line">print(mark_soup.b.prettify())       <span class="comment"># comment 也可以prettify()格式化输出</span></span><br><span class="line"><span class="comment">#&lt;b&gt;</span></span><br><span class="line"><span class="comment"># &lt;!--Hey, buddy. Want to buy a used parser?--&gt;</span></span><br><span class="line"><span class="comment">#&lt;/b&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="contents"><a href="#contents" class="headerlink" title="contents"></a>contents</h4><p>子节点以list形式输出</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(soup.head)                <span class="comment"># &lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line">print(soup.head.contents)       <span class="comment"># [&lt;title&gt;The Dormouse's story&lt;/title&gt;]</span></span><br><span class="line">print(soup.head.contents[<span class="number">0</span>])    <span class="comment"># &lt;title&gt;The Dormouse's story&lt;/title&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="children"><a href="#children" class="headerlink" title="children"></a>children</h4><p>子节点迭代器</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup.head.children))     <span class="comment"># &lt;class 'list_iterator'&gt;</span></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> soup.head.children:</span><br><span class="line">    print(child)</span><br></pre></td></tr></table></figure>
-<h4 id="descendants"><a href="#descendants" class="headerlink" title="descendants"></a>descendants</h4><p>子孙节点生成器 递归循环的列出子节点和子孙节点</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup.head.descendants))  <span class="comment"># &lt;class 'generator'&gt;</span></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> soup.head.descendants:</span><br><span class="line">    print(child)</span><br><span class="line">    <span class="comment"># &lt;title&gt;The Dormouse's story&lt;/title&gt;   子节点</span></span><br><span class="line">    <span class="comment"># The Dormouse's story                  孙节点</span></span><br></pre></td></tr></table></figure>
-<h4 id="strings"><a href="#strings" class="headerlink" title="strings"></a>strings</h4><p>标签中的字符串</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> str <span class="keyword">in</span> soup.strings:</span><br><span class="line">    print(repr(str))</span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># "The Dormouse's story"</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># 'you are beautiful'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># 'Once upon a time there were three little sisters; and their names were\n'</span></span><br><span class="line"><span class="comment"># 'Elsie'</span></span><br><span class="line"><span class="comment"># ',\n'</span></span><br><span class="line"><span class="comment"># 'Lacie'</span></span><br><span class="line"><span class="comment"># ' and\n'</span></span><br><span class="line"><span class="comment"># 'Tillie'</span></span><br><span class="line"><span class="comment"># ';\nand they lived at the bottom of a well.'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># '...'</span></span><br><span class="line"><span class="comment"># '\n</span></span><br></pre></td></tr></table></figure>
-<h4 id="stripped-strings"><a href="#stripped-strings" class="headerlink" title="stripped_strings"></a>stripped_strings</h4><p>去除空格空行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> str <span class="keyword">in</span> soup.stripped_strings:</span><br><span class="line">    print(repr(str))</span><br><span class="line"><span class="comment"># "The Dormouse's story"</span></span><br><span class="line"><span class="comment"># 'you are beautiful'</span></span><br><span class="line"><span class="comment"># 'Once upon a time there were three little sisters; and their names were'</span></span><br><span class="line"><span class="comment"># 'Elsie'</span></span><br><span class="line"><span class="comment"># ','</span></span><br><span class="line"><span class="comment"># 'Lacie'</span></span><br><span class="line"><span class="comment"># 'and'</span></span><br><span class="line"><span class="comment"># 'Tillie'</span></span><br><span class="line"><span class="comment"># ';\nand they lived at the bottom of a well.'</span></span><br><span class="line"><span class="comment"># '...'</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id7" target="_blank" rel="external">http://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id7</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/02/24/【Python】BeautifulSoup使用/" class="archive-article-date">
-  	<time datetime="2017-02-24T06:26:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-24</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【Python】视频资源" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/【Python】视频资源/">【Python】视频资源</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>python3英文视频教程(全87集) <a href="http://pan.baidu.com/s/1dDnGBvV" target="_blank" rel="external">http://pan.baidu.com/s/1dDnGBvV</a> </p>
-<p>Python从入门到精通视频（全60集）链接：<a href="http://pan.baidu.com/s/1eQw2dd4" target="_blank" rel="external">http://pan.baidu.com/s/1eQw2dd4</a> 密码：9bdl </p>
-<p>Python学习手册视频教程(全44集) <a href="http://pan.baidu.com/s/1o64tpf8" target="_blank" rel="external">http://pan.baidu.com/s/1o64tpf8</a> </p>
-<p>零基础入门学习Python(全42集) 链接：<a href="http://pan.baidu.com/s/1qWNmdKo" target="_blank" rel="external">http://pan.baidu.com/s/1qWNmdKo</a> 密码：jrjy </p>
-<p>中谷python视频教程（全38集） <a href="http://pan.baidu.com/s/1o6LUn1o" target="_blank" rel="external">http://pan.baidu.com/s/1o6LUn1o</a> </p>
-<p>老男孩Python运维系统开发（全36集）链接：<a href="http://pan.baidu.com/s/1sjuJLEl" target="_blank" rel="external">http://pan.baidu.com/s/1sjuJLEl</a> 密码：kypb</p>
-<p>Let’s-python系列视频教程（全25集） <a href="http://pan.baidu.com/s/1dD4BAi1" target="_blank" rel="external">http://pan.baidu.com/s/1dD4BAi1</a> </p>
-<p>老男孩Python高级运维编程实战精品入门进阶（全27集） 链接：<a href="http://pan.baidu.com/s/1dDu2k61" target="_blank" rel="external">http://pan.baidu.com/s/1dDu2k61</a> 密码：q8s8 </p>
-<p>播布客python基础教程(全21集) <a href="http://pan.baidu.com/s/1o6p0krC" target="_blank" rel="external">http://pan.baidu.com/s/1o6p0krC</a> </p>
-<p>老男孩python运维视频教程（全15集）<a href="http://pan.baidu.com/s/1o6hYBqi" target="_blank" rel="external">http://pan.baidu.com/s/1o6hYBqi</a> </p>
-<p>基于python web框架(全13集) <a href="http://pan.baidu.com/s/1mgFSE60" target="_blank" rel="external">http://pan.baidu.com/s/1mgFSE60</a> </p>
-<p>Python.Django视频教程（全13集）<a href="http://pan.baidu.com/s/1mgC4RdY" target="_blank" rel="external">http://pan.baidu.com/s/1mgC4RdY</a> </p>
-<p>python基础教程视频(全13集) <a href="http://pan.baidu.com/s/1kTDmOy7" target="_blank" rel="external">http://pan.baidu.com/s/1kTDmOy7</a> </p>
-<p>老男孩python自动化运维视频教程（全9集）<a href="http://pan.baidu.com/s/1o6Fi9KI" target="_blank" rel="external">http://pan.baidu.com/s/1o6Fi9KI</a> </p>
-<p>Python视频专题讲座（全9集） <a href="http://pan.baidu.com/s/1bndBuAr" target="_blank" rel="external">http://pan.baidu.com/s/1bndBuAr</a> </p>
-<p>利用Python SOCKET多线程开发FTP软件（全6集）<a href="http://pan.baidu.com/s/1eQcPovo" target="_blank" rel="external">http://pan.baidu.com/s/1eQcPovo</a></p>
-</blockquote>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/02/24/【Python】视频资源/" class="archive-article-date">
-  	<time datetime="2017-02-24T03:44:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-24</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频资源/">视频资源</a></li></ul>
 	</div>
 
       
