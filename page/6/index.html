@@ -163,6 +163,68 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-PHP学习笔记（3）-json数据生成" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/25/PHP学习笔记（3）-json数据生成/">PHP学习笔记（3）-json数据生成</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>学习php的最初想法，就是利用PHP来生成iOS开发所需要的json数据，今天终于弄出了点眉目了。</p>
+</blockquote>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><ol>
+<li><p>操作：启动本地服务器Apache,浏览器中打开 <code>http://localhost/php/php_3.php?name=zhangzhao</code>；</p>
+</li>
+<li><p>结果：</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/phpjson.png" alt="">)</p>
+</li>
+</ol>
+<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html;charset=utf-8"</span>/&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		<span class="preprocessor">&lt;?php</span> </span><br><span class="line">  			<span class="comment">// 	$_GET[]： 获取URL中的请求参数的值(get请求)；</span></span><br><span class="line">			<span class="variable">$arr1</span> = <span class="keyword">array</span>(<span class="string">"name"</span>=&gt;<span class="variable">$_GET</span>[<span class="string">"name"</span>], </span><br><span class="line">						<span class="string">"sex"</span>=&gt;<span class="variable">$_GET</span>[<span class="string">"sex"</span>], </span><br><span class="line">						<span class="string">"dealCode"</span>=&gt;<span class="string">"10000"</span>, </span><br><span class="line">						<span class="string">"dealMsg"</span>=&gt;<span class="string">"成功"</span>,</span><br><span class="line">						<span class="string">"list"</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">							<span class="string">"address1"</span>=&gt;<span class="string">"成都"</span>,</span><br><span class="line">							<span class="string">"address2"</span>=&gt;<span class="string">"重庆"</span>,</span><br><span class="line">							<span class="string">"citys"</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">								<span class="string">"city1"</span>=&gt;<span class="string">"纬度"</span>,</span><br><span class="line">								<span class="string">"city2"</span>=&gt;<span class="string">"经度"</span>,</span><br><span class="line">							),</span><br><span class="line">						),</span><br><span class="line">						<span class="string">"key"</span>=&gt;<span class="keyword">array</span>(</span><br><span class="line">							<span class="string">"key1"</span>=&gt;<span class="string">"12345666"</span>,</span><br><span class="line">						));</span><br><span class="line">			<span class="comment">// 利用递归函数，对json数据中的value值编码urlencode()</span></span><br><span class="line"> 			<span class="function"><span class="keyword">function</span> <span class="title">arrayRecursive</span><span class="params">(&amp;<span class="variable">$array</span>, <span class="variable">$function</span>, <span class="variable">$apply_to_keys_also</span> = false)</span></span>&#123;</span><br><span class="line"> 				<span class="keyword">static</span> <span class="variable">$recursive_counter</span> = <span class="number">0</span>;</span><br><span class="line"> 				<span class="keyword">if</span> (++<span class="variable">$recursive_counter</span> &gt; <span class="number">1000</span>) &#123;</span><br><span class="line"> 					<span class="keyword">die</span>(<span class="string">'possible deep recursion attack'</span>);</span><br><span class="line">    			&#125;</span><br><span class="line">				<span class="keyword">foreach</span> (<span class="variable">$array</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">					<span class="keyword">if</span> (is_array(<span class="variable">$value</span>)) &#123;</span><br><span class="line">						arrayRecursive(<span class="variable">$array</span>[<span class="variable">$key</span>], <span class="variable">$function</span>, <span class="variable">$apply_to_keys_also</span>);</span><br><span class="line">					&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">						<span class="variable">$array</span>[<span class="variable">$key</span>] = <span class="variable">$function</span>(<span class="variable">$value</span>);</span><br><span class="line">        			&#125;</span><br><span class="line">                                                                                                                                       </span><br><span class="line">					<span class="keyword">if</span> (<span class="variable">$apply_to_keys_also</span> &amp;&amp; is_string(<span class="variable">$key</span>)) &#123;</span><br><span class="line">						<span class="variable">$new_key</span> = <span class="variable">$function</span>(<span class="variable">$key</span>);</span><br><span class="line">							<span class="keyword">if</span> (<span class="variable">$new_key</span> != <span class="variable">$key</span>) &#123;</span><br><span class="line">							<span class="variable">$array</span>[<span class="variable">$new_key</span>] = <span class="variable">$array</span>[<span class="variable">$key</span>];</span><br><span class="line">							<span class="keyword">unset</span>(<span class="variable">$array</span>[<span class="variable">$key</span>]);</span><br><span class="line">            			&#125;</span><br><span class="line">        			&#125;</span><br><span class="line">    			&#125;</span><br><span class="line">    			<span class="variable">$recursive_counter</span>--;</span><br><span class="line">			&#125;</span><br><span class="line">                                                                                                                                      </span><br><span class="line"> 			<span class="function"><span class="keyword">function</span> <span class="title">JSON</span><span class="params">(<span class="variable">$array</span>)</span> </span>&#123;</span><br><span class="line"> 				arrayRecursive(<span class="variable">$array</span>, <span class="string">'urlencode'</span>, <span class="keyword">true</span>);</span><br><span class="line"> 				<span class="variable">$json</span> = json_encode(<span class="variable">$array</span>);</span><br><span class="line"> 				<span class="keyword">return</span> urldecode(<span class="variable">$json</span>);</span><br><span class="line">			&#125;</span><br><span class="line">                                                                                                                                   				<span class="keyword">echo</span> JSON(<span class="variable">$arr1</span>);</span><br><span class="line">		<span class="preprocessor">?&gt;</span></span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>使用：启动Apache服务器，将此php文件放置到Sites文件夹下，浏览器中打开本地服务器，或直接输入如<a href="http://localhost/text.php?name=zhangsan&amp;sex=male，参数可不添加。" target="_blank" rel="external">http://localhost/text.php?name=zhangsan&amp;sex=male，参数可不添加。</a></p>
+<h3 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h3><p>在json_encode之前，把所有数组内所有内容都用urlencode()处理一下，然用json_encode()转换成json字符串，最后再用urldecode()将编码过的中文转回来；否则，会出现类似<code>&quot;name&quot;:&quot;\u4e2d\u56fd&quot;.....</code>的乱码。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/25/PHP学习笔记（3）-json数据生成/" class="archive-article-date">
+  	<time datetime="2016-05-25T03:43:52.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-25</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/PHP/">PHP</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-RTSP-H264" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1004,63 +1066,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/工具/">工具</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Cookie" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/03/Cookie/">Cookie</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>许多网站登录了一次之后，下次就不需要再次登录。这种操作很常见，然而网页与程序的逻辑是完全的不同，也就是说网页并不像程序那样拥有自己的存储路径。</p>
-</blockquote>
-<p>Web端基本都是使用HTTP/HTTPS协议传输数据的。这种协议是无状态的协议。也就是说一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接。这就意味着服务器无法从连接上跟踪上次的状态。<br>所以为了解决以上问题，W3C组织提出了Cookie(甜饼)。</p>
-<p>由于HTTP是一种无状态的协议，服务器单从网络连接上是无法知道客户身份。那如何解决呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是Cookie的工作原理</p>
-<p>Cookie本质上是<code>一小段的文本信息</code>，当客户端请求服务器的时候，如果服务器需要记录客户端状态，就会向客户端颁发一个Cookie。客户端会把Cookie保存起来，当客户端再次请求的时候，把网址以及保存下来的Cookie一同提交服务器，这样服务器就可以辨认用户的状态。</p>
-<h4 id="iOS中网络请求中的Cookie"><a href="#iOS中网络请求中的Cookie" class="headerlink" title="iOS中网络请求中的Cookie"></a>iOS中网络请求中的Cookie</h4><p>iOS中的网络请求对于Cookie的支持是非常强大的，当你访问一个网站的时候，NSURLRequest都会帮你记录访问站点的Cookie，而且当你下次访问这个网站的时候，NSURLRequest会带着上次保存下来的Cookie继续请求。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求一个网址，即可分配到cookie</span></span><br><span class="line">      <span class="keyword">let</span> request: <span class="type">NSMutableURLRequest</span> = <span class="type">NSMutableURLRequest</span>.<span class="keyword">init</span>(<span class="type">URL</span>: <span class="type">NSURL</span>.<span class="keyword">init</span>(string: <span class="string">"http://www.tongxingpay.com"</span>)!)</span><br><span class="line">      <span class="keyword">let</span> sessionConfig: <span class="type">NSURLSessionConfiguration</span> = <span class="type">NSURLSessionConfiguration</span>.defaultSessionConfiguration()</span><br><span class="line">      <span class="keyword">let</span> session: <span class="type">NSURLSession</span> = <span class="type">NSURLSession</span>.<span class="keyword">init</span>(configuration: sessionConfig)</span><br><span class="line">      <span class="keyword">let</span> task: <span class="type">NSURLSessionDataTask</span> = session.dataTaskWithRequest(request) &#123; (data, response, error) <span class="keyword">in</span></span><br><span class="line">          </span><br><span class="line">          <span class="comment">// 打印 cookie</span></span><br><span class="line">          <span class="built_in">print</span>(<span class="type">NSHTTPCookieStorage</span>.sharedHTTPCookieStorage().cookies)</span><br><span class="line">          </span><br><span class="line">      &#125;</span><br><span class="line">      task.resume()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/05/03/Cookie/" class="archive-article-date">
-  	<time datetime="2016-05-03T08:15:58.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-03</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
 	</div>
 
 

@@ -163,6 +163,63 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-Cookie" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/03/Cookie/">Cookie</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>许多网站登录了一次之后，下次就不需要再次登录。这种操作很常见，然而网页与程序的逻辑是完全的不同，也就是说网页并不像程序那样拥有自己的存储路径。</p>
+</blockquote>
+<p>Web端基本都是使用HTTP/HTTPS协议传输数据的。这种协议是无状态的协议。也就是说一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接。这就意味着服务器无法从连接上跟踪上次的状态。<br>所以为了解决以上问题，W3C组织提出了Cookie(甜饼)。</p>
+<p>由于HTTP是一种无状态的协议，服务器单从网络连接上是无法知道客户身份。那如何解决呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是Cookie的工作原理</p>
+<p>Cookie本质上是<code>一小段的文本信息</code>，当客户端请求服务器的时候，如果服务器需要记录客户端状态，就会向客户端颁发一个Cookie。客户端会把Cookie保存起来，当客户端再次请求的时候，把网址以及保存下来的Cookie一同提交服务器，这样服务器就可以辨认用户的状态。</p>
+<h4 id="iOS中网络请求中的Cookie"><a href="#iOS中网络请求中的Cookie" class="headerlink" title="iOS中网络请求中的Cookie"></a>iOS中网络请求中的Cookie</h4><p>iOS中的网络请求对于Cookie的支持是非常强大的，当你访问一个网站的时候，NSURLRequest都会帮你记录访问站点的Cookie，而且当你下次访问这个网站的时候，NSURLRequest会带着上次保存下来的Cookie继续请求。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求一个网址，即可分配到cookie</span></span><br><span class="line">      <span class="keyword">let</span> request: <span class="type">NSMutableURLRequest</span> = <span class="type">NSMutableURLRequest</span>.<span class="keyword">init</span>(<span class="type">URL</span>: <span class="type">NSURL</span>.<span class="keyword">init</span>(string: <span class="string">"http://www.tongxingpay.com"</span>)!)</span><br><span class="line">      <span class="keyword">let</span> sessionConfig: <span class="type">NSURLSessionConfiguration</span> = <span class="type">NSURLSessionConfiguration</span>.defaultSessionConfiguration()</span><br><span class="line">      <span class="keyword">let</span> session: <span class="type">NSURLSession</span> = <span class="type">NSURLSession</span>.<span class="keyword">init</span>(configuration: sessionConfig)</span><br><span class="line">      <span class="keyword">let</span> task: <span class="type">NSURLSessionDataTask</span> = session.dataTaskWithRequest(request) &#123; (data, response, error) <span class="keyword">in</span></span><br><span class="line">          </span><br><span class="line">          <span class="comment">// 打印 cookie</span></span><br><span class="line">          <span class="built_in">print</span>(<span class="type">NSHTTPCookieStorage</span>.sharedHTTPCookieStorage().cookies)</span><br><span class="line">          </span><br><span class="line">      &#125;</span><br><span class="line">      task.resume()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/03/Cookie/" class="archive-article-date">
+  	<time datetime="2016-05-03T08:15:58.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-03</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/OC/">OC</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Typora" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -896,237 +953,6 @@ let kkk = arr.filter {
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/filter/">filter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flatMap/">flatMap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/forEach/">forEach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reduce/">reduce</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-NSURLSession-Swift" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/09/NSURLSession-Swift/">NSURLSession_Swift</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>一个简单地Swift语言的网络请求封装，包括数据请求、数据上传、图片下载、图片上传。</p>
-</blockquote>
-<p><a href="https://github.com/zhangzhaopds/NSURLSession_Swift.git" target="_blank" rel="external">本文链接</a></p>
-<h4 id="数据请求"><a href="#数据请求" class="headerlink" title="数据请求"></a>数据请求</h4><pre><code>/**
- 数据请求
-
- - parameter urlStr:  请求地址
- - parameter reponse: 请求结果
- */
-func get(urlStr: String, reponse: (result: AnyObject, response: NSURLResponse)-&gt;Void)-&gt;Void  {
-
-    if urlStr.isEmpty {
-        print(&quot;Request address cannot be empty&quot;)
-        return
-    }
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-
-    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-    let task: NSURLSessionDataTask = session.dataTaskWithRequest(request) { (data, resp, err) -&gt; Void in
-        if (err != nil) {
-            print(&quot;Data request failed: \(err?.code)&quot;)
-            return
-        }
-        do {
-            let json =
-            try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-            reponse(result: json, response: resp!)
-
-        } catch {
-        }
-    }
-    task.resume()
-}
-</code></pre><h4 id="数据下载"><a href="#数据下载" class="headerlink" title="数据下载"></a>数据下载</h4><pre><code>/**
- 数据下载
-
- - parameter urlStr:  请求地址
- - parameter reponse: 数据本地保存地址
- */
-func downLoad(urlStr: String, reponse:(location: String)-&gt;Void)-&gt;Void {
-    if urlStr.isEmpty {
-        print(&quot;Request address cannot be empty&quot;)
-        return
-    }
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-    let downLoadTask: NSURLSessionDownloadTask = session.downloadTaskWithRequest(request) { (location, resp, err) -&gt; Void in
-        if (err != nil) {
-            print(&quot;DownLoadData request failed: \(err?.code)&quot;)
-            return
-        }
-        let caches: String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!
-
-        let file: String = caches.stringByAppendingString(&quot;/\(resp!.suggestedFilename!)&quot;)
-
-        if NSFileManager.defaultManager().fileExistsAtPath(file) {
-            if NSThread.isMainThread() {
-                reponse(location: file)
-            } else {
-                dispatch_async(dispatch_get_main_queue(), { () -&gt; Void in
-                    reponse(location: file)
-                })
-            }
-        } else {
-            do {
-                try NSFileManager.defaultManager().moveItemAtPath(location!.path!, toPath: file)
-                if NSThread.isMainThread() {
-                    reponse(location: file)
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), { () -&gt; Void in
-                        reponse(location: file)
-                    })
-                }
-            } catch {
-
-            }
-        }
-    }
-    downLoadTask.resume()
-}
-</code></pre><h4 id="JSON数据上传"><a href="#JSON数据上传" class="headerlink" title="JSON数据上传"></a>JSON数据上传</h4><pre><code>/**
- 普通数据上传
-
- - parameter urlStr:     上传地址
- - parameter uploadData: 字典数据
- - parameter reponse:    上传结果
- */
-func upLoadData(urlStr: String, uploadData: AnyObject, reponse: (result: AnyObject, response: NSURLResponse)-&gt;Void)-&gt;Void {
-    if urlStr.isEmpty {
-        print(&quot;Request address cannot be empty&quot;)
-        return
-    }
-
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-
-    request.addValue(&quot;application/json&quot;, forHTTPHeaderField: &quot;Content-Type&quot;)
-    request.addValue(&quot;application/json&quot;, forHTTPHeaderField: &quot;Accept&quot;)
-
-    request.HTTPMethod = &quot;POST&quot;
-    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-    request.timeoutInterval = 20
-    do {
-        let data: NSData =
-        try NSJSONSerialization.dataWithJSONObject(uploadData, options: NSJSONWritingOptions.PrettyPrinted)
-        let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let uploadTask: NSURLSessionUploadTask = session.uploadTaskWithRequest(request, fromData: data, completionHandler: { (result, resp, err) -&gt; Void in
-            if (err != nil) {
-                print(&quot;UpLoadData request failed: \(err?.code)&quot;)
-                return
-            }
-
-            do {
-                let json: AnyObject =
-                try NSJSONSerialization.JSONObjectWithData(result!, options: NSJSONReadingOptions.MutableContainers)
-                reponse(result: json, response: resp!)
-            } catch {
-
-            }
-
-        })
-        uploadTask.resume()
-    } catch {
-
-    }
-}
-</code></pre><h4 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h4><pre><code> /**
- 图片上传
-
- - parameter urlStr:     上传地址
- - parameter uploadData: 图片数据
- - parameter dataType:   图片类型
- - parameter reponse:    上传结果
- */
-func upLoadImage(urlStr: String, image: UIImage, dataType: DataType, reponse: (result: String, response: NSURLResponse)-&gt;Void)-&gt;Void {
-    if urlStr.isEmpty {
-        print(&quot;Request address cannot be empty&quot;)
-        return
-    }
-
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-    var daa = NSData()
-    switch dataType {
-    case .JPEG:
-        request.addValue(&quot;image/jpeg&quot;, forHTTPHeaderField: &quot;Content-Type&quot;)
-        request.addValue(&quot;text/html&quot;, forHTTPHeaderField: &quot;Accept&quot;)
-        daa = UIImageJPEGRepresentation(image, 1)!
-    case .PNG:
-        request.addValue(&quot;image/png&quot;, forHTTPHeaderField: &quot;Content-Type&quot;)
-        request.addValue(&quot;text/html&quot;, forHTTPHeaderField: &quot;Accept&quot;)
-        daa = UIImagePNGRepresentation(image)!
-    }
-
-    request.HTTPMethod = &quot;POST&quot;
-    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-    request.timeoutInterval = 20
-    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-
-    let uploadTask: NSURLSessionUploadTask = session.uploadTaskWithRequest(request, fromData: daa, completionHandler: { (result, resp, err) -&gt; Void in
-
-        if (err != nil) {
-            print(&quot;UpLoadImage request failed: \(err?.code)&quot;)
-            return
-        }
-        let ss: String = String.init(data: result!, encoding: NSUTF8StringEncoding)!
-        reponse(result: ss, response: resp!)
-    })
-    uploadTask.resume()
-}
-</code></pre>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/09/NSURLSession-Swift/" class="archive-article-date">
-  	<time datetime="2016-03-09T06:46:51.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-09</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络封装/">网络封装</a></li></ul>
 	</div>
 
       
