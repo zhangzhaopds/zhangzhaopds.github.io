@@ -163,6 +163,66 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-【GVR】Google-VR" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/26/【GVR】Google-VR/">【GVR】Google VR</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Google提供的iOS 版本的VR技术的SDK，主要有三种视图类型：<code>GVRCardboardView</code>这个最为强大，但需要复杂的OpenGL渲染, <code>GVRPanoramaView</code>全景照片, and <code>GVRVideoView</code>这个是VR视频。</p>
+</blockquote>
+<p>官方文档：<a href="https://developers.google.com/vr/ios/get-started" target="_blank" rel="external">https://developers.google.com/vr/ios/get-started</a></p>
+<p>非官方但很详细的使用介绍：<a href="https://www.raywenderlich.com/136692/introduction-google-cardboard-ios" target="_blank" rel="external">https://www.raywenderlich.com/136692/introduction-google-cardboard-ios</a></p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/gvr.PNG" alt=""></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/05/26/【GVR】Google-VR/" class="archive-article-date">
+  	<time datetime="2017-05-26T05:44:17.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GVR/">GVR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VR/">VR</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Xcode8打包的Swift3项目在iOS9-2及以下闪退" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -756,77 +816,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-【Python】简单应用-xlwt库" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/02/【Python】简单应用-xlwt库/">【Python】简单应用-xlwt库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>获取成都教育网的学校信息，并将信息以Excel格式存储。</p>
-</blockquote>
-<p><a href="https://github.com/zhangzhaopds/chengdujiaoyu.git" target="_blank" rel="external">项目地址 https://github.com/zhangzhaopds/chengdujiaoyu.git</a></p>
-<p>安装 <code>xlwt</code> 库，它可以用来处理 Excel 97/2000/XP/2003 的xls文件。</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/pythonexcel.png" alt=""></p>
-<p>导入相关类库：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> xlwt</span><br></pre></td></tr></table></figure>
-<p>获取页面数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">schs = []</span><br><span class="line"><span class="keyword">for</span> page <span class="keyword">in</span> range(<span class="number">107</span>):</span><br><span class="line">    <span class="comment"># 页面请求</span></span><br><span class="line">    url = <span class="string">'http://infomap.cdedu.gov.cn/Home/Index?all=2'</span></span><br><span class="line">    req = requests.get(url)</span><br><span class="line">    <span class="comment"># 页面处理</span></span><br><span class="line">    soup = BeautifulSoup(req.content, <span class="string">"html.parser"</span>)</span><br><span class="line">    schools = soup.find_all(class_=<span class="string">'index_ul01'</span>)</span><br><span class="line">    <span class="keyword">for</span> school <span class="keyword">in</span> schools:</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> school:</span><br><span class="line">            schs.append(item)</span><br></pre></td></tr></table></figure>
-<p>学校数据信息的处理：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 学校信息</span></span><br><span class="line">sch_infos = []</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> schs:</span><br><span class="line">    <span class="comment"># 学校名</span></span><br><span class="line">    title = <span class="string">'【学校】'</span> + item.a.h1.string</span><br><span class="line">    <span class="comment"># 学校信息</span></span><br><span class="line">    text_div = item.find_all(class_=<span class="string">'text_div'</span>)</span><br><span class="line">    <span class="keyword">for</span> ps <span class="keyword">in</span> text_div:</span><br><span class="line">        all_p = ps.find_all(<span class="string">'p'</span>)</span><br><span class="line">        item_info = []</span><br><span class="line">        item_info.append(title)</span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> all_p:</span><br><span class="line">            item_info.append(p.string)</span><br><span class="line">        sch_infos.append(item_info)</span><br><span class="line"></span><br><span class="line">sch_infos.insert(<span class="number">0</span>, [<span class="string">'【学校】学校'</span>, <span class="string">'【学段】学段'</span>, <span class="string">'【区域】区域'</span>, <span class="string">'【性质】性质'</span>, <span class="string">'【电话】电话'</span>, <span class="string">'【地址】地址'</span>, <span class="string">'【网站】网站'</span>, <span class="string">'【信息】信息'</span>])</span><br><span class="line">print(sch_infos)</span><br></pre></td></tr></table></figure>
-<p>Excel的处理：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建xlwt工作簿</span></span><br><span class="line">workbook = xlwt.Workbook()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加板块</span></span><br><span class="line">booksheet = workbook.add_sheet(<span class="string">'学校信息'</span>, cell_overwrite_ok=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">for</span> i,row <span class="keyword">in</span> enumerate(sch_infos):</span><br><span class="line">    <span class="keyword">for</span> j,col <span class="keyword">in</span> enumerate(row):</span><br><span class="line">        <span class="keyword">if</span> col != <span class="keyword">None</span>:</span><br><span class="line">            <span class="comment"># 添加数据</span></span><br><span class="line">            booksheet.write(i, j, col[<span class="number">4</span>:])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存到本地文件</span></span><br><span class="line">workbook.save(<span class="string">'schools.xls'</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/03/02/【Python】简单应用-xlwt库/" class="archive-article-date">
-  	<time datetime="2017-03-02T02:22:03.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-02</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/excel/">excel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xlwt/">xlwt</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 

@@ -163,6 +163,63 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-UserAgent（UA）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/30/UserAgent（UA）/">UserAgent（UA）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="http://baike.baidu.com/link?url=pJzzqcBEOetxz50EXL30hniOYmoOBoyQ9_6fXulczRjJNN704CyvgMLPdVgT8rLogRCZTw6pOMEf9mIp_wImtgqsOqIePEoEab3rEF9kHhiYIGWmZxipvgU_L6G8lcVbL3dVBUAGLYTE14V7HxT9Ka" target="_blank" rel="external">UserAgent（UA）</a>用户代理，是浏览器系统信息，主要在浏览器打开链接的时候获取到。UA的应用场景不太多，我们这边的需求是为商户生成一个收款二维码，商户的用户通过支付宝、微信或者百度钱包等APP中的扫一扫功能，扫描二维码跳转到H5界面，输入金额，然后将APP的名字（作为支付方式）和金额等信息发送到收银台，完成支付。</p>
+</blockquote>
+<h3 id="获取方法"><a href="#获取方法" class="headerlink" title="获取方法"></a>获取方法</h3><h4 id="1、HTML中获取UA"><a href="#1、HTML中获取UA" class="headerlink" title="1、HTML中获取UA"></a>1、HTML中获取UA</h4><p>方法：<code>var ua = navigator.userAgent;</code></p>
+<p>结果：<code>Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13F69 BaiduWallet-5.7.0.1-IOS-walletapp_750_1334_iPhone_9.3.2_9.3.2_2.1.0_2.1.0.4</code>,这个是苹果手机上面的百度钱包扫一扫功能BaiduWallet-5.7.0.1。</p>
+<h4 id="2、PHP中获取UA"><a href="#2、PHP中获取UA" class="headerlink" title="2、PHP中获取UA"></a>2、PHP中获取UA</h4><p>方法：<code>$Agent = $_SERVER[&#39;HTTP_USER_AGENT&#39;];</code></p>
+<p>结果：<code>Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13F69 BaiduWallet-5.7.0.1-IOS-walletapp_750_1334_iPhone_9.3.2_9.3.2_2.1.0_2.1.0.4</code></p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>只有当APP利用内置的浏览器打开链接的时候，才能获取app的相关信息。如支付宝和京东钱包的扫一扫打开的url是无法在UA中查看到app的信息的,因为它们将这个链接推给了手机默认浏览器，并不是在APP自身当中打开。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/30/UserAgent（UA）/" class="archive-article-date">
+  	<time datetime="2016-05-30T03:34:22.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-30</time>
+</a>
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/PHP/">PHP</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-PHP学习笔记（3）-json数据生成" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1012,81 +1069,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Mac上使用Apache搭建服务器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/04/Mac上使用Apache搭建服务器/">Mac上使用Apache搭建服务器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>本来是要搞HLS(苹果的视频直播处理技术)的，而且已经将mp4文件分割成m3u8类型直播文件，最后要验证m3u8文件的时候，却发现是要利用服务器来处理的，所以只好查了些服务器的知识。因为Mac自带Apache，所以为了省事就直接学习了下就拿来用了。</p>
-</blockquote>
-<h4 id="启用Apache"><a href="#启用Apache" class="headerlink" title="启用Apache"></a>启用Apache</h4><ol>
-<li>开启apache命令：sudo apachectl start</li>
-<li>关闭apache命令：sudo apachectl stop</li>
-<li>重启apache命令：sudo apachectl restart</li>
-<li>开启apache后，可以直接在浏览器中访问 localhost, 如果出现“It works”，表示运行正常。</li>
-</ol>
-<h4 id="具体使用："><a href="#具体使用：" class="headerlink" title="具体使用："></a>具体使用：</h4><p>目标：在浏览器中打开localhost，显示自定义的web页面。</p>
-<ol>
-<li><p>在Mac的Finder中，利用前往文件夹，进入路径<code>/Library/WebServer/Documents</code>，这是默认的根路径，里面有三个文件：index.html.en, PoweredByMacOSX.gif, PoweredByMacOSXLarge.gif。这三个文件不用管，放在那里就行。</p>
-</li>
-<li><p>利用Coda，或者eclipse创建一个html文件，内容自己定义就行。然后将这个html文件名字改为index.html, 只能是这个名字，除非你利用vim更改Apache的httpd.conf文件，重新配置首页文件名。</p>
-</li>
-<li><p>将创建的index.html文件保存到 <code>/Library/WebServer/Documents</code>下。因为这是个私有文件夹，是需要root权限的，所有每次更改这个文件夹都是需要输入Mac密码的，除非Mac没有设定密码。</p>
-</li>
-<li><p>最后，浏览器中打开localhost,就可以看到自定义的html。</p>
-</li>
-<li><p>当然，也可以利用Xcode创建一个工程，利用UIWebView进行验证。只需要将 localhost 换成 Mac当前连接的网络的IP就行, URL最好是：<a href="http://192.168.1.103，" target="_blank" rel="external">http://192.168.1.103，</a> 也可以是：<a href="http://localhost。" target="_blank" rel="external">http://localhost。</a>  具体可看以下代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIWebView *web = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];&#10;    [web setScalesPageToFit:YES];&#10;    [self.view addSubview:web];&#10;    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&#34;http://192.168.1.103&#34;]]];&#9;// 192.168.1.103 &#25442;&#25104;&#20320;&#30340;ip&#22320;&#22336;&#23601;&#34892;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/05/04/Mac上使用Apache搭建服务器/" class="archive-article-date">
-  	<time datetime="2016-05-04T08:08:24.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-04</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/工具/">工具</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 
