@@ -163,6 +163,95 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-在Mac上搭建HLS视频直播" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/05/在Mac上搭建HLS视频直播/">在Mac上搭建HLS视频直播</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>HTTP Live Streaming(HLS)， 是苹果公司推出的视频直播协议，具体的内容可以到苹果开发者后台查看相关文档。简单地讲，就是将实时直播的视频，切割成大小基本相等的<code>.ts</code> 文件和一个索引文件<code>prog_index.m3u8</code>,然后通过索引文件来在web或者app中实现直播效果。</p>
+</blockquote>
+<h3 id="目标-思路"><a href="#目标-思路" class="headerlink" title="目标/思路"></a>目标/思路</h3><p>本文目标：利用HLS技术，模拟一个视频直播平台。具体包括以下几个步骤：</p>
+<ol>
+<li>通过<code>VLC</code>模拟一个直播视频的输入源；</li>
+<li>利用<code>mediastreamsegmenter</code>将捕捉到的输入源视频切割成 .m3u8 格式文件；</li>
+<li>利用<code>Apache</code>搭建本地服务器，在Safari中打开localhost，实现直播效果。</li>
+</ol>
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><h5 id="VLC-多媒体播放器"><a href="#VLC-多媒体播放器" class="headerlink" title="VLC: 多媒体播放器"></a>VLC: 多媒体播放器</h5><ul>
+<li><p>直接在百度上输入VLC，搜索下载安装Mac版的。</p>
+</li>
+<li><p>配置VLC: 打开VLC —&gt; Open media —&gt; Browse选择视频输入源，即将要用来以直播的形式展现出来的视频；然后勾选 Streaming/Saving,点击Setting,进行设置；</p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/zzVLC01.png" alt=""></p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/zzVLC02.png" alt=""></p>
+</li>
+</ul>
+<p>其中，Address是当前Mac的ip地址，Port自定义。这个地址是输入源视频的地址，在切割视频的时候会用到这个地址。配置完成之后，点击ok, 然后如果你的视频很短，就不要着急点击open。</p>
+<h5 id="启动Apache本地服务器"><a href="#启动Apache本地服务器" class="headerlink" title="启动Apache本地服务器"></a>启动Apache本地服务器</h5><ul>
+<li><p>打开Mac终端，执行指令 <code>sudo apachectl start</code>, 在浏览器中打开 localhost，如果出现 <code>It works</code>，则说明Apache打开成功；</p>
+</li>
+<li><p>在路径 <code>/Library/WebServer/Documents/</code>下建立文件新文件，我建的是 Games；</p>
+</li>
+<li><p>在路径 <code>/Library/WebServer/Documents/</code>下新建一个文件名为index.html文件，html里的内容为：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span>　　　　　　</span><br><span class="line">	<span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">meda</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=320;initial-scale=1.0;maximum-scale=1.0;user-scalable=0;"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">center</span>&gt;</span><span class="tag">&lt;<span class="title">video</span> <span class="attribute">src</span>=<span class="value">"Games/prog_index.m3u8"</span> <span class="attribute">controls</span> <span class="attribute">autoplay</span>&gt;</span><span class="tag">&lt;/<span class="title">video</span>&gt;</span><span class="tag">&lt;/<span class="title">center</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="mediastreamsegmenter切割视频"><a href="#mediastreamsegmenter切割视频" class="headerlink" title="mediastreamsegmenter切割视频"></a>mediastreamsegmenter切割视频</h5><ul>
+<li>这个是苹果公司提供的视频切割工具，可以在<a href="https://developer.apple.com/streaming/" target="_blank" rel="external">https://developer.apple.com/streaming/</a>进行下载，需要开发者账号登陆；</li>
+<li>在终端运行<code>mediastreamsegmenter -s 20 -D -f /Library/WebServer/Documents/Games 192.168.1.113:1234</code>, 同时将运行VLC,即点击VLC中的Open。</li>
+<li>在Safari中打开localhost, 刚开始出现的是一个含有错误字样的播放控制条，稍等一会，直播就开始了。</li>
+</ul>
+<p><strong>注意：VLC，mediastreamsegmenter，和Apache，在同一时间段，都要处于开启状态才可以在浏览器中看到直播效果。</strong></p>
+<h5 id="参考文档："><a href="#参考文档：" class="headerlink" title="参考文档："></a>参考文档：</h5><p><a href="https://developer.apple.com/library/ios/technotes/tn2224/_index.html" target="_blank" rel="external">https://developer.apple.com/library/ios/technotes/tn2224/_index.html</a></p>
+<p><a href="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/StreamingMediaGuide/Introduction/Introduction.html" target="_blank" rel="external">https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/StreamingMediaGuide/Introduction/Introduction.html</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/05/在Mac上搭建HLS视频直播/" class="archive-article-date">
+  	<time datetime="2016-05-05T01:59:16.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-05</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HLS/">HLS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/直播/">直播</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/工具/">工具</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Mac上使用Apache搭建服务器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -804,72 +893,6 @@ dispatch_async(queue) {
   	<time datetime="2016-03-30T13:06:18.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-30</time>
 </a>
       
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-URL中特殊字符的处理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/30/URL中特殊字符的处理/">URL中特殊字符的转义</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳</p>
-</blockquote>
-<h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><pre><code>// 对URL进行转义
-- (NSString *)formatURLwithText:(NSString *)text {
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)text, NULL, (CFStringRef)@&quot;!*’();:@&amp;=+$,/?%#[]&quot;, kCFStringEncodingUTF8));
-}
-</code></pre><p>上面代码是就是最近本的处理方法，关键在用的时机。</p>
-<p>生成sign值：通常的做法是对所有参数按key排序，然后拼接成a=x&amp;b=y…这样的字符串，然后RSA一下。但是如果encode一下，iOS端和安卓端出现不同的结果，那么服务端拿到以后是可以得到原串的，但是服务端encode一下所得到的结果会不一样，那么校验sign就会失败。</p>
-<p>但是，如果不对每个value进行转码，在服务端就无法通过&amp;来分割了，因为value中有&amp;时，若不转码就会出问题，因此encode是必须的。</p>
-<p>解决方法：生成sign时，是遍历所有的key-value，然后拼接，最后RSA。那么，生成sign时，我们只要不对value进行encode，而其他上传的参数值都encode，这样就可以解决我们的问题了。</p>
-<p>注意点：转义之后的URL不可再用encode；例如，value里面含有中文字段，正常情况下是要进行中文编码的，如果调用转义的方法后，就不需要在进行中文编码的。</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/30/URL中特殊字符的处理/" class="archive-article-date">
-  	<time datetime="2016-03-30T03:40:38.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-30</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符转义/">字符转义</a></li></ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>

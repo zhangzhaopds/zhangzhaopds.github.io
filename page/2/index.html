@@ -163,6 +163,80 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-【Python】Pillow图片处理库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/02/【Python】Pillow图片处理库/">【Python】Pillow图片处理库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Pillow是Python中的图片处理库，来自于PIL，使用时 import PIL;</p>
+</blockquote>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/pic.JPG" alt=""></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>Python2中安装命令:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip <span class="keyword">install</span> PIL</span><br></pre></td></tr></table></figure>
+<p>Python3中安装命令:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip <span class="keyword">install</span> Pillow</span><br></pre></td></tr></table></figure>
+<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mg = Image.open(<span class="string">'pic.JPG'</span>)</span><br><span class="line">print(img.size, img.mode)       <span class="comment"># (3264, 2448) RGB</span></span><br></pre></td></tr></table></figure>
+<h4 id="缩略图"><a href="#缩略图" class="headerlink" title="缩略图"></a>缩略图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">size = (<span class="number">200</span>, <span class="number">200</span>)</span><br><span class="line">img.thumbnail(size)</span><br><span class="line">img.save(<span class="string">'/Users/zhangzhao/PycharmProjects/pillow_demo/thum.JPEG'</span>)</span><br><span class="line">print(img.size, img.mode)     <span class="comment"># (200, 150) RGB</span></span><br></pre></td></tr></table></figure>
+<h4 id="剪切图"><a href="#剪切图" class="headerlink" title="剪切图"></a>剪切图</h4><p>剪切函数 crop(box)：box = (left, upper, right, lower)</p>
+<p>注意：right &gt; left;   lower &gt; upper;</p>
+<p>剪切后图片长宽： width = right - left;   height = lower - upper;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">frame = (<span class="number">1632</span>, <span class="number">0</span>, <span class="number">3264</span>, <span class="number">1224</span>) <span class="comment"># 图片四分之一右上角部分</span></span><br><span class="line">crop_img = Image.open(<span class="string">'pic.JPG'</span>).crop(frame)</span><br><span class="line">crop_img.save(<span class="string">'/Users/zhangzhao/PycharmProjects/pillow_demo/crop.jpg'</span>)</span><br><span class="line"><span class="comment">#crop_img.show()</span></span><br><span class="line">print(crop_img.size)    <span class="comment"># (1632, 1224)</span></span><br></pre></td></tr></table></figure>
+<h4 id="几何转换"><a href="#几何转换" class="headerlink" title="几何转换"></a>几何转换</h4><p>尺寸转换</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">resize_out = crop_img.resize((<span class="number">200</span>, <span class="number">200</span>))</span><br><span class="line"><span class="comment">#resize_out.show()</span></span><br></pre></td></tr></table></figure>
+<p>角度转换</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rotate_out = crop_img.rotate(<span class="number">45</span>)    <span class="comment"># 逆时针 45</span></span><br><span class="line"><span class="comment">#rotate_out.show()</span></span><br></pre></td></tr></table></figure>
+<h4 id="模式转换"><a href="#模式转换" class="headerlink" title="模式转换"></a>模式转换</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">change_mode = resize_out.convert(<span class="string">'L'</span>)</span><br><span class="line">print(resize_out.mode)  <span class="comment"># RGB</span></span><br><span class="line">print(change_mode.mode) <span class="comment"># L</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/wbin91/p/3971079.html" target="_blank" rel="external">http://www.cnblogs.com/wbin91/p/3971079.html</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/03/02/【Python】Pillow图片处理库/" class="archive-article-date">
+  	<time datetime="2017-03-02T07:26:19.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-02</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/">PIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pillow/">Pillow</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Python/">Python</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-【Python】简单应用-xlwt库" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -723,68 +797,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/Cocoapods/">Cocoapods</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-逆向工程-微信自动抢红包" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/04/逆向工程-微信自动抢红包/">逆向工程-微信自动抢红包</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>微信自动抢红包。</p>
-</blockquote>
-<p>依托于iOS重签名开源框架 <strong>ios-app-signer</strong></p>
-<p>项目源码地址: <a href="https://github.com/codesourse/iInjection" target="_blank" rel="external">https://github.com/codesourse/iInjection</a></p>
-<p><strong>注：</strong>如果iTunes安装不成功的话，可尝试用OTA(亲测，好用)。</p>
-<h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/weixinred1.PNG" alt=""></p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/weixinred2.PNG" alt=""></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/01/04/逆向工程-微信自动抢红包/" class="archive-article-date">
-  	<time datetime="2017-01-04T08:30:02.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-01-04</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逆向工程、iOS-App-resign、微信红包/">逆向工程、iOS_App_resign、微信红包</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/逆向工程/">逆向工程</a>
 	</div>
 
 
