@@ -163,6 +163,67 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="apple-Error" class="article article-type-apple" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/14/Error/">Apple LLVM 8.0 Error</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>早上打开项目，冒出了6个红点，报错【Apple LLVM 8.0 Error】，然后就开始goole了。解决方案很多，但并非都适合自己的项目。</p>
+</blockquote>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/llvm80.png" alt=""></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img src="http://7xoz39.com1.z0.glb.clouddn.com/llvm81.png" alt=""></h3><p>Delete之后，记得clean一下，然后编译运行就OK了</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://stackoverflow.com/questions/26772504/apple-llvm-6-0-error-clang-failed-with-exit-code-1" target="_blank" rel="external">http://stackoverflow.com/questions/26772504/apple-llvm-6-0-error-clang-failed-with-exit-code-1</a></p>
+<p><a href="http://stackoverflow.com/questions/24052293/apple-llvm-6-0-error" target="_blank" rel="external">http://stackoverflow.com/questions/24052293/apple-llvm-6-0-error</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/14/Error/" class="archive-article-date">
+  	<time datetime="2016-10-14T02:13:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-14</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LLVM8-0/">LLVM8.0</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Swift3中Dispatch-once的实现" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -704,80 +765,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-BCrypt随机盐值加密" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/31/BCrypt随机盐值加密/">BCrypt随机盐值加密</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>朋友做的一个军检项目中用到<code>BCrypt</code>的加密处理，之前没用过，所以就查了些相关资料。简单的理解就是：BCrypt是一个利用<code>随机盐值</code>进行<code>hash</code>的加密方式。</p>
-</blockquote>
-<h2 id="相关概念："><a href="#相关概念：" class="headerlink" title="相关概念："></a>相关概念：</h2><ul>
-<li>哈希算法<ul>
-<li>获取一个任何长度的字符串并采用一致的方式创建一个<em>哈希值</em>：一种固定长度的字符串表示。每次传入同一个原始字符串，您都会收到相同的哈希值。这是一个单向过程，您无法从中获得原始字符串。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>盐值<ul>
-<li>在原始的密码后面添加自定义的尽量随机的长字串，然后进行哈希，这个长字串就是盐值（Salt）。</li>
-<li>有时候，为了减轻开发压力，程序员会统一使用一个salt值（固定盐值，储存在某个地方），而不是每个用户都生成私有的salt值。</li>
-<li>盐值越复杂、越随机，密码被破解的几率就越小。</li>
-</ul>
-</li>
-</ul>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="php-password-hash-password-verify"><a href="#php-password-hash-password-verify" class="headerlink" title="php:  password_hash, password_verify"></a>php:  password_hash, password_verify</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?php</span> </span><br><span class="line">	<span class="comment">// hash值</span></span><br><span class="line">	<span class="variable">$hashVal</span> = password_hash(<span class="string">"123456"</span>, PASSWORD_DEFAULT);</span><br><span class="line">	<span class="comment">// $2y$10$QJlsKG/RUU2TEgQcj6.D2e8.QYeBJptiUce9g/IaxxU2GjRpapkA2</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// $hashVal = '$2a$10$zpOCjNBFm1XQ7JvmErIkbeXg4KYbD.TOx0NXyPZhqZCjy9N8OxGQO';</span></span><br><span class="line">		</span><br><span class="line">	<span class="keyword">echo</span>(<span class="variable">$hashVal</span>.<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">	<span class="comment">// 验证</span></span><br><span class="line">	<span class="keyword">if</span> (password_verify(<span class="string">"123456"</span>, <span class="variable">$hashVal</span>)) &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"true"</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">echo</span>(<span class="string">"false"</span>);</span><br><span class="line">	&#125;	</span><br><span class="line"><span class="preprocessor">?&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="iOS实现DEMO："><a href="#iOS实现DEMO：" class="headerlink" title="iOS实现DEMO："></a>iOS实现DEMO：</h3><p><a href="https://github.com/zhangzhaopds/BCrypt.git" target="_blank" rel="external">https://github.com/zhangzhaopds/BCrypt.git</a></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.ibm.com/developerworks/cn/web/wa-php-renewed_2/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/web/wa-php-renewed_2/</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/05/31/BCrypt随机盐值加密/" class="archive-article-date">
-  	<time datetime="2016-05-31T02:39:12.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-31</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BCrypt/">BCrypt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/加密/">加密</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
 	</div>
 
 

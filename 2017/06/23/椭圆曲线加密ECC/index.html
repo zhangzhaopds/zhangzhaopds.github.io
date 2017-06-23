@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>椭圆曲线加密ECC | Jmsp&#39;s Tips</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="椭圆曲线加密是一种类似于RSA的非对称加密算法，具体介绍可以参考这篇文章http://www.itye.org/archives/3254， 写得很明白。
+
+本文内容翻译自
+
+https://github.com/ricmoo/GMEllipticCurveCrypto
+https://github.com/konstantinpavlikhin/Watchdog
+
+openssl生成指令http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="椭圆曲线加密ECC">
+<meta property="og:url" content="http://yoursite.com/2017/06/23/椭圆曲线加密ECC/index.html">
+<meta property="og:site_name" content="Jmsp's Tips">
+<meta property="og:description" content="椭圆曲线加密是一种类似于RSA的非对称加密算法，具体介绍可以参考这篇文章http://www.itye.org/archives/3254， 写得很明白。
+
+本文内容翻译自
+
+https://github.com/ricmoo/GMEllipticCurveCrypto
+https://github.com/konstantinpavlikhin/Watchdog
+
+openssl生成指令http">
+<meta property="og:updated_time" content="2017-06-23T06:24:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="椭圆曲线加密ECC">
+<meta name="twitter:description" content="椭圆曲线加密是一种类似于RSA的非对称加密算法，具体介绍可以参考这篇文章http://www.itye.org/archives/3254， 写得很明白。
+
+本文内容翻译自
+
+https://github.com/ricmoo/GMEllipticCurveCrypto
+https://github.com/konstantinpavlikhin/Watchdog
+
+openssl生成指令http">
+  
+    <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css" type="text/css">
+  
+<!-- baidu Analytics -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d400b2b9cf7d1a287b60931c6cbae186";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- End baidu Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jmsp</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+				<li><a href="/categories/OC">OC</a></li>
+	        
+				<li><a href="/categories/Swift">Swift</a></li>
+	        
+				<li><a href="/categories/Android">Android</a></li>
+	        
+				<li><a href="/categories/ReactNative">ReactNative</a></li>
+	        
+				<li><a href="/categories/PHP">PHP</a></li>
+	        
+				<li><a href="/categories/Python">Python</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+            
+    			
+            
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+		        
+					<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+		        
+					<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Jmsp</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jmsp</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/OC">OC</a></li>
+		        
+					<li><a href="/categories/Swift">Swift</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/ReactNative">ReactNative</a></li>
+		        
+					<li><a href="/categories/PHP">PHP</a></li>
+		        
+					<li><a href="/categories/Python">Python</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-椭圆曲线加密ECC" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      椭圆曲线加密ECC
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>椭圆曲线加密是一种类似于RSA的非对称加密算法，具体介绍可以参考这篇文章<a href="http://www.itye.org/archives/3254" target="_blank" rel="external">http://www.itye.org/archives/3254</a>， 写得很明白。</p>
+</blockquote>
+<p>本文内容翻译自</p>
+<ul>
+<li><a href="https://github.com/ricmoo/GMEllipticCurveCrypto" target="_blank" rel="external">https://github.com/ricmoo/GMEllipticCurveCrypto</a></li>
+<li><a href="https://github.com/konstantinpavlikhin/Watchdog" target="_blank" rel="external">https://github.com/konstantinpavlikhin/Watchdog</a></li>
+</ul>
+<h3 id="openssl生成指令"><a href="#openssl生成指令" class="headerlink" title="openssl生成指令"></a>openssl生成指令</h3><p><a href="https://github.com/konstantinpavlikhin/Watchdog" target="_blank" rel="external">https://github.com/konstantinpavlikhin/Watchdog</a></p>
+<h5 id="生成DSA密钥对"><a href="#生成DSA密钥对" class="headerlink" title="生成DSA密钥对"></a>生成DSA密钥对</h5><p>1、生成DSA私钥</p>
+<p><code>$ openssl dsaparam -genkey 2048 -noout -out DSAPrivateKey.pem</code></p>
+<p>2、导出公钥</p>
+<p><code>openssl dsa -in DSAPrivateKey.pem -pubout -outform PEM -out DSAPublicKey.pem</code></p>
+<h5 id="生成ECDSA密钥对"><a href="#生成ECDSA密钥对" class="headerlink" title="生成ECDSA密钥对"></a>生成ECDSA密钥对</h5><p>1、查看支持的曲线类型，常用的如：secp521r1，secp128r1, secp192r1, secp256r1, secp384r1等</p>
+<p><code>$ openssl ecparam -list_curves</code></p>
+<p>2、生成ECDSA私钥</p>
+<p><code>$ openssl ecparam -genkey -name secp521r1 -noout -out ECDSAPrivateKey.pem</code></p>
+<p>3、从私钥中导出公钥</p>
+<p><code>$ openssl ec -in ECDSAPrivateKey.pem -pubout -outform PEM -out ECDSAPublicKey.pem</code></p>
+<h3 id="Objective-C中的ECC库"><a href="#Objective-C中的ECC库" class="headerlink" title="Objective-C中的ECC库"></a>Objective-C中的ECC库</h3><p><a href="https://github.com/ricmoo/GMEllipticCurveCrypto" target="_blank" rel="external">https://github.com/ricmoo/GMEllipticCurveCrypto</a></p>
+<p>ECDSA允许通过私钥进行签名，然后通过公钥进行验签；</p>
+<p>ECDH是通过用户自己拥有的私钥和另一个用户的公钥来创建一个密钥，通过这个密钥在进行加密操作。</p>
+<h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><h5 id="创建一个ECC密钥对"><a href="#创建一个ECC密钥对" class="headerlink" title="创建一个ECC密钥对"></a>创建一个ECC密钥对</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GMEllipticCurveCrypto *crypto = [GMEllipticCurveCrypto generateKeyPairForCurve:&#10;                                                         GMEllipticCurveSecp192r1];&#10;NSLog(@&#34;Public Key: %@&#34;, crypto.publicKeyBase64);&#10;NSLog(@&#34;Private Key: %@&#34;, crypto.privateKeyBase64);</span><br></pre></td></tr></table></figure>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>key可以是base64加密过的字符串，也可以是data类型</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crypto.publicKeyBase64 = @&#34;AtF8hCxh9h1zlExuOZutuw+tRzmk3zVdfA==&#34;;&#10;NSLog(@&#34;Public Key: base64=%@, rawBinary=%@&#34;, crypto.publicKeyBase64, crypto.publicKey);&#10;&#10;char bytes[] = &#123; 2, 209, 124, 132, 44, 97, 246, 29, 115, 148, 76, 110, 57, 155, 173, &#10;                 187, 15, 173, 71, 57, 164, 223, 53, 93, 124 &#125;;&#10;crypto.publicKey = [NSData dataWithBytes:bytes length:25];&#10;NSLog(@&#34;Public Key: base64=%@, rawBinary=%@&#34;, crypto.publicKeyBase64, crypto.publicKey);</span><br></pre></td></tr></table></figure>
+<h5 id="签名"><a href="#签名" class="headerlink" title="签名"></a>签名</h5><p>需要注意的是：签名的内容长度要和所选取的曲线类型一致。</p>
+<p>用ECDSA签名的话，产生的签名是所选曲线的两倍。如：secp192k1类型的曲线，产生的签名的长度为384bit（48字节）。</p>
+<p>还需要注意的是：因为有随机k的存在，所以每次产生的签名是不一样的。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// The first 24 bytes of the SHA-256 hash for &#34;Hack the Planet!&#34;&#10;char bytes[] = &#123; 56, 164, 34, 250, 121, 21, 2, 18, 65, 4, 161, 90, 126, 145, 111, 204, &#10;                 151, 65, 181, 4, 231, 177, 117, 154 &#125;;&#10;NSData *messageHash = [NSData dataWithBytes:bytes length:24];&#10;        &#10;GMEllipticCurveCrypto *crypto = [GMEllipticCurveCrypto cryptoForCurve:&#10;                                                GMEllipticCurveSecp192r1];&#10;crypto.privateKeyBase64 = @&#34;ENxb+5pCLAGT88vGmE6XLQRH1e8i/0rz&#34;;&#10;NSData *signature = [crypto signatureForHash:messageHash];&#10;NSLog(@&#34;Signature: %@&#34;, signature);</span><br></pre></td></tr></table></figure>
+<h5 id="验签"><a href="#验签" class="headerlink" title="验签"></a>验签</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rypto = [GMEllipticCurveCrypto cryptoForCurve:GMEllipticCurveSecp192r1];&#10;crypto.publicKeyBase64 = @&#34;AtF8hCxh9h1zlExuOZutuw+tRzmk3zVdfA==&#34;;;&#10;BOOL valid = [crypto verifySignature:signature forHash:messageHash];&#10;NSLog(@&#34;Valid Signature: %@&#34;, (valid ? @&#34;YES&#34;: @&#34;NO&#34;));</span><br></pre></td></tr></table></figure>
+<h5 id="密钥的交换"><a href="#密钥的交换" class="headerlink" title="密钥的交换"></a>密钥的交换</h5><p>使用ECDH方式生成与选取的曲线类型相同长度的交换密钥，如，192bit的曲线产生的是192bit的密钥。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *alicePublicKey = @&#34;A9N+XWIjLCYAwa8Hb7T6Rohttqo91CF8HQ==&#34;;&#10;NSString *alicePrivateKey = @&#34;frs4puAKipcbevvwJb7l77xACgB/FyBv&#34;;&#10;&#10;NSString *bobPublicKey = @&#34;A35aoteno4wnAdJgV8AXKKl1AfPVRrSZQA==&#34;;&#10;NSString *bobPrivateKey = @&#34;LP83qv81MsXVyPOFV7V5jKVOoU4DKPUS&#34;;&#10;&#10;&#10;// Alice performs...&#10;GMEllipticCurveCrypto *alice = [GMEllipticCurveCrypto cryptoForCurve:&#10;                                               GMEllipticCurveSecp192r1];&#10;alice.privateKeyBase64 = alicePrivateKey;&#10;NSData *aliceSharedSecret = [alice sharedSecretForPublicKeyBase64:bobPublicKey];&#10;NSLog(@&#34;Shared Secret Alice: %@&#34;, aliceSharedSecret);&#10;&#10;// Bob performs...&#10;GMEllipticCurveCrypto *bob = [GMEllipticCurveCrypto cryptoForCurve:&#10;                                             GMEllipticCurveSecp192r1];&#10;bob.privateKeyBase64 = bobPrivateKey;&#10;NSData *bobSharedSecret = [bob sharedSecretForPublicKeyBase64:alicePublicKey];&#10;NSLog(@&#34;Shared Secret Bob: %@&#34;, bobSharedSecret);&#10;&#10;// And now both parties have the same secret!&#10;NSLog(@&#34;Shared secrets equal? %d&#34;, [aliceSharedSecret isEqualToData:bobSharedSecret]);</span><br></pre></td></tr></table></figure>
+<h3 id="部分原文"><a href="#部分原文" class="headerlink" title="部分原文"></a>部分原文</h3><h1 id="Elliptic-Curve-Crypto"><a href="#Elliptic-Curve-Crypto" class="headerlink" title="Elliptic Curve Crypto"></a>Elliptic Curve Crypto</h1><p>An Objective-C library for Elliptic Curve Digital Signing Algorithm (ECDSA) and for Elliptic Curve Diffie-Hellman (ECDH).</p>
+<p>ECDSA allows signatures to be generated using a private key and validated using a public key.</p>
+<p>ECDH allows two identities to use their own private keys and each other’s public key to generate a shared secret, which can then be used for encryption.</p>
+<p>This library is largely based on the easy-ecc library (<a href="https://github.com/kmackay/easy-ecc" target="_blank" rel="external">https://github.com/kmackay/easy-ecc</a>).</p>
+<h1 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h1><ul>
+<li>Supports: secp128r1, secp192r1, secp256r1, secp384r1</li>
+<li>Automatically detects curve based on private or public key</li>
+<li>Supports keys as raw bytes or as base64 encoded strings</li>
+<li>BSD 2-clause license</li>
+</ul>
+<h1 id="API-1"><a href="#API-1" class="headerlink" title="API"></a>API</h1><h3 id="Generate-a-new-ECC-key-pair"><a href="#Generate-a-new-ECC-key-pair" class="headerlink" title="Generate a new ECC key pair"></a>Generate a new ECC key pair</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GMEllipticCurveCrypto *crypto = [GMEllipticCurveCrypto generateKeyPairForCurve:&#10;                                                         GMEllipticCurveSecp192r1];&#10;NSLog(@&#34;Public Key: %@&#34;, crypto.publicKeyBase64);&#10;NSLog(@&#34;Private Key: %@&#34;, crypto.privateKeyBase64);</span><br></pre></td></tr></table></figure>
+<h3 id="Using-keys"><a href="#Using-keys" class="headerlink" title="Using keys"></a>Using keys</h3><p>Keys can be accessed and set interchangably in either raw bytes or as base64 encoded strings.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crypto.publicKeyBase64 = @&#34;AtF8hCxh9h1zlExuOZutuw+tRzmk3zVdfA==&#34;;&#10;NSLog(@&#34;Public Key: base64=%@, rawBinary=%@&#34;, crypto.publicKeyBase64, crypto.publicKey);&#10;&#10;char bytes[] = &#123; 2, 209, 124, 132, 44, 97, 246, 29, 115, 148, 76, 110, 57, 155, 173, &#10;                 187, 15, 173, 71, 57, 164, 223, 53, 93, 124 &#125;;&#10;crypto.publicKey = [NSData dataWithBytes:bytes length:25];&#10;NSLog(@&#34;Public Key: base64=%@, rawBinary=%@&#34;, crypto.publicKeyBase64, crypto.publicKey);</span><br></pre></td></tr></table></figure>
+<h3 id="Generate-a-signature-for-a-message"><a href="#Generate-a-signature-for-a-message" class="headerlink" title="Generate a signature for a message"></a>Generate a signature for a message</h3><p>The signing operations require a message the same length as the curve; so generally, a hash algorithm is used to fix the original message’s length.</p>
+<p>Signatures using ECDSA will be twice the curve size. So, the 192 bit curve will produce a signature that is 48 bytes (384 bits) long.</p>
+<p>Also note that the signature is intentionally different each time because ECDSA uses a random <em>k</em> value.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// The first 24 bytes of the SHA-256 hash for &#34;Hack the Planet!&#34;&#10;char bytes[] = &#123; 56, 164, 34, 250, 121, 21, 2, 18, 65, 4, 161, 90, 126, 145, 111, 204, &#10;                 151, 65, 181, 4, 231, 177, 117, 154 &#125;;&#10;NSData *messageHash = [NSData dataWithBytes:bytes length:24];&#10;        &#10;GMEllipticCurveCrypto *crypto = [GMEllipticCurveCrypto cryptoForCurve:&#10;                                                GMEllipticCurveSecp192r1];&#10;crypto.privateKeyBase64 = @&#34;ENxb+5pCLAGT88vGmE6XLQRH1e8i/0rz&#34;;&#10;NSData *signature = [crypto signatureForHash:messageHash];&#10;NSLog(@&#34;Signature: %@&#34;, signature);</span><br></pre></td></tr></table></figure>
+<h3 id="Verify-a-signature"><a href="#Verify-a-signature" class="headerlink" title="Verify a signature"></a>Verify a signature</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// messageHash and signature from above&#10;&#10;crypto = [GMEllipticCurveCrypto cryptoForCurve:GMEllipticCurveSecp192r1];&#10;crypto.publicKeyBase64 = @&#34;AtF8hCxh9h1zlExuOZutuw+tRzmk3zVdfA==&#34;;;&#10;BOOL valid = [crypto verifySignature:signature forHash:messageHash];&#10;NSLog(@&#34;Valid Signature: %@&#34;, (valid ? @&#34;YES&#34;: @&#34;NO&#34;));</span><br></pre></td></tr></table></figure>
+<h3 id="Shared-secret"><a href="#Shared-secret" class="headerlink" title="Shared secret"></a>Shared secret</h3><p>Shared secrets using ECDH are the same length as the curve. So, the 192 bit curve will produce a shared secret that is 24 bytes (192 bits) long.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *alicePublicKey = @&#34;A9N+XWIjLCYAwa8Hb7T6Rohttqo91CF8HQ==&#34;;&#10;NSString *alicePrivateKey = @&#34;frs4puAKipcbevvwJb7l77xACgB/FyBv&#34;;&#10;&#10;NSString *bobPublicKey = @&#34;A35aoteno4wnAdJgV8AXKKl1AfPVRrSZQA==&#34;;&#10;NSString *bobPrivateKey = @&#34;LP83qv81MsXVyPOFV7V5jKVOoU4DKPUS&#34;;&#10;&#10;&#10;// Alice performs...&#10;GMEllipticCurveCrypto *alice = [GMEllipticCurveCrypto cryptoForCurve:&#10;                                               GMEllipticCurveSecp192r1];&#10;alice.privateKeyBase64 = alicePrivateKey;&#10;NSData *aliceSharedSecret = [alice sharedSecretForPublicKeyBase64:bobPublicKey];&#10;NSLog(@&#34;Shared Secret Alice: %@&#34;, aliceSharedSecret);&#10;&#10;// Bob performs...&#10;GMEllipticCurveCrypto *bob = [GMEllipticCurveCrypto cryptoForCurve:&#10;                                             GMEllipticCurveSecp192r1];&#10;bob.privateKeyBase64 = bobPrivateKey;&#10;NSData *bobSharedSecret = [bob sharedSecretForPublicKeyBase64:alicePublicKey];&#10;NSLog(@&#34;Shared Secret Bob: %@&#34;, bobSharedSecret);&#10;&#10;// And now both parties have the same secret!&#10;NSLog(@&#34;Shared secrets equal? %d&#34;, [aliceSharedSecret isEqualToData:bobSharedSecret]);</span><br></pre></td></tr></table></figure>
+<h1 id="Convenience-functions"><a href="#Convenience-functions" class="headerlink" title="Convenience functions"></a>Convenience functions</h1><h3 id="Automatically-detects-curve-and-sets-up-the-private-or-public-key"><a href="#Automatically-detects-curve-and-sets-up-the-private-or-public-key" class="headerlink" title="Automatically detects curve and sets up the private or public key"></a>Automatically detects curve and sets up the private or public key</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (GMEllipticCurveCrypto*)cryptoForKey: (NSData*)privateOrPublicKey;&#10;+ (GMEllipticCurveCrypto*)cryptoForKeyBase64: (NSString*)privateOrPublicKey;</span><br></pre></td></tr></table></figure>
+<h3 id="Automatically-hash-and-compute-the-signature-for-a-message"><a href="#Automatically-hash-and-compute-the-signature-for-a-message" class="headerlink" title="Automatically hash and compute the signature for a message"></a>Automatically hash and compute the signature for a message</h3><p>Include the <code>GMEllipticCurveCrypto+hash.h</code> category to hash data automatically before signing and verifying. The hash algorithm used must be at least the length of the curve. The hash will have the right-most bytes truncated, if necessary.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (NSData*)hashSHA256AndSignData: (NSData*)data;&#10;- (BOOL)hashSHA256AndVerifySignature: (NSData*)signature forData: (NSData*)data;&#10;&#10;- (NSData*)hashSHA384AndSignData: (NSData*)data;&#10;- (BOOL)hashSHA384AndVerifySignature: (NSData*)signature forData: (NSData*)data;</span><br></pre></td></tr></table></figure>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why?"></a>Why?</h2><p>Kenneth MacKay’s easy-ecc is an awesome, simple-to-use implementation of essential Elliptic Curve Cryptographic functions, however, the curve used is specified as a compile-time constant, so it cannot be changed at runtime.</p>
+<p>This library allows any and as many different curves to be used at once.</p>
+<h2 id="Donations"><a href="#Donations" class="headerlink" title="Donations?"></a>Donations?</h2><p>Sure! :-)</p>
+<p><em>Bitcoin</em>  - <code>1LNdGsYtZXWeiKjGba7T997qvzrWqLXLma</code> </p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/06/23/椭圆曲线加密ECC/" class="archive-article-date">
+  	<time datetime="2017-06-23T05:39:43.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-06-23</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECC/">ECC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECDH/">ECDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECDSA/">ECDSA</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/27/【小程序】RSA签名/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【小程序】RSA签名&amp;验签&amp;加密&amp;解密</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Jmsp
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js" type="text/javascript"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+    
+    
+    
+  </ul>
+  <div class="tools-wrap">
+    
+
+    
+
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
