@@ -163,6 +163,72 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-【ERROR】RestKit-objectRequestOpertationDidStart" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/15/【ERROR】RestKit-objectRequestOpertationDidStart/">【ERROR】RestKit-&#39;objectRequestOpertationDidStart:&#39;</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>RestKit使用时，执行<code>[objectRequestOperation start]</code>方法，在<code>&#39;&#39;objectRequestOpertationDidStart:&#39;&#39;&#39;</code>处报错。</p>
+</blockquote>
+<h4 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h4><p>Xcode: 8.2.1</p>
+<p>RestKit: 0.27.0</p>
+<p>iOS: 8.0</p>
+<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>执行内容：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">   </span><br><span class="line">    RKObjectMapping* articleMapping = [RKObjectMapping mappingForClass:[Duanzi <span class="keyword">class</span>]];</span><br><span class="line">    [articleMapping addAttributeMappingsFromDictionary:@&#123;@<span class="string">"title"</span>: @<span class="string">"title"</span>,</span><br><span class="line">                                                         @<span class="string">"digest"</span>: @<span class="string">"digest"</span>,</span><br><span class="line">                                                         @<span class="string">"downTimes"</span>:</span><br><span class="line">                                                        @<span class="string">"downTimes"</span>&#125;];</span><br><span class="line">    </span><br><span class="line">    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:articleMapping method:RKRequestMethodAny pathPattern:nil keyPath:@<span class="string">"段子"</span> statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];</span><br><span class="line">    </span><br><span class="line">    NSURL *url = [NSURL URLWithString:@<span class="string">"http://c.3g.163.com/recommend/getChanRecomNews?channel=duanzi&amp;passport=&amp;devId=676BEC68-01DA-4BB3-9F8F-0A99F9ADFEE2&amp;size=20"</span>];</span><br><span class="line">    NSURLRequest *request = [NSURLRequest requestWithURL:url];</span><br><span class="line">    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request</span><br><span class="line">                                                                                     responseDescriptors:@[responseDescriptor]];</span><br><span class="line">    [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) &#123;</span><br><span class="line">        Duanzi *duanzi = [mappingResult firstObject];</span><br><span class="line">        RKLogInfo(@<span class="string">"%ld"</span>, mappingResult.count);</span><br><span class="line">        RKLogInfo(@<span class="string">"%@"</span>, duanzi.downTimes);</span><br><span class="line">        RKLogInfo(@<span class="string">"%@"</span>, duanzi.digest);</span><br><span class="line">        RKLogInfo(@<span class="string">"%@"</span>, duanzi.title);     </span><br><span class="line">    &#125; failure:^(RKObjectRequestOperation *operation, NSError *error) &#123;</span><br><span class="line">        NSLog(@<span class="string">"%@"</span>, error.localizedDescription);</span><br><span class="line">    &#125;];</span><br><span class="line">	[objectRequestOperation start];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>替换 <code>[objectRequestOperation start];</code></p>
+<p>方法一：(在我的项目中，这个方法并没有起作用，也就没有采用)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[RKObjectManager sharedManager] enqueueObjectRequestOperation:objectRequestOperation];</span><br></pre></td></tr></table></figure>
+<p>方法二：(实际采用的方法)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSOperationQueue *queue = [[NSOperationQueue alloc] init];&#10;[queue addOperation:objectRequestOperation];</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/03/15/【ERROR】RestKit-objectRequestOpertationDidStart/" class="archive-article-date">
+  	<time datetime="2017-03-15T07:29:47.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-15</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RestKit/">RestKit</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/OC/">OC</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-【微信小程序】二维码生成与识别器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -725,75 +791,6 @@ var _hmt = _hmt || [];
   	<time datetime="2017-01-19T01:34:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-01-19</time>
 </a>
       
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS中的感应器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/17/iOS中的感应器/">iOS中的感应器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>iOS中的感应器：</p>
-<p>​    <em>Accelerometer（加速器）</em></p>
-<p>​    <em>Gyroscope（陀螺仪）</em></p>
-<p>​    <em>Magnetometer（磁力计）</em></p>
-<p>​    <em>Proximity（距离感应）</em></p>
-<p>​    <em>Device motion</em></p>
-<p>​    <em>CMPedometer（计步器）</em></p>
-</blockquote>
-<p><a href="https://github.com/zhangzhaopds/CMMotionManager_demo.git" target="_blank" rel="external">https://github.com/zhangzhaopds/CMMotionManager_demo.git</a></p>
-<h4 id="Proximity-距离感应"><a href="#Proximity-距离感应" class="headerlink" title="Proximity-距离感应"></a>Proximity-距离感应</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 开启设备的距离感应(默认是关闭)</span></span><br><span class="line">        <span class="type">UIDevice</span>.current.isProximityMonitoringEnabled = <span class="literal">true</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 添加监听</span></span><br><span class="line">        <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, selector: #selector(proximityStateChanged), name: <span class="type">NSNotification</span>.<span class="type">Name</span>.<span class="type">UIDeviceProximityStateDidChange</span>, object: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 销毁监听</span></span><br><span class="line">    <span class="keyword">deinit</span> &#123;</span><br><span class="line">        <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.removeObserver(<span class="keyword">self</span>, name: <span class="type">NSNotification</span>.<span class="type">Name</span>.<span class="type">UIDeviceProximityStateDidChange</span>, object: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 监听回调</span></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">proximityStateChanged</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="type">UIDevice</span>.current.proximityState &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="literal">true</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"物体靠近"</span>)</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"物体远离"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="CoreMotion-加速器、陀螺仪、磁力计"><a href="#CoreMotion-加速器、陀螺仪、磁力计" class="headerlink" title="CoreMotion-加速器、陀螺仪、磁力计"></a>CoreMotion-加速器、陀螺仪、磁力计</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入CoreMotion框架</span></span><br><span class="line"><span class="keyword">import</span> CoreMotion</span><br></pre></td></tr></table></figure>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> motionManager = <span class="type">CMMotionManager</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 判断加速器是否可用</span></span><br><span class="line">        <span class="keyword">if</span> !motionManager.isAccelerometerAvailable &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"加速器不可用"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 采样间隔</span></span><br><span class="line">        motionManager.accelerometerUpdateInterval = <span class="number">0.3</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 加速器采样</span></span><br><span class="line">        motionManager.startAccelerometerUpdates(to: <span class="type">OperationQueue</span>.main) &#123; (accelerometerData, error) <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> (error != <span class="literal">nil</span>) &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"加速器采样错误：<span class="subst">\(error)</span>"</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"加速器采样数据：<span class="subst">\(accelerometerData)</span>"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 螺旋仪</span></span><br><span class="line">        <span class="keyword">if</span> !motionManager.isGyroAvailable &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"螺旋仪不可用"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        motionManager.gyroUpdateInterval = <span class="number">0.3</span></span><br><span class="line">        motionManager.startGyroUpdates(to: <span class="type">OperationQueue</span>.main) &#123; (gyroData, error) <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> (error != <span class="literal">nil</span>) &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"螺旋仪采样错误：<span class="subst">\(error)</span>"</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"螺旋仪数据：<span class="subst">\(gyroData)</span>"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 磁力计</span></span><br><span class="line">        <span class="keyword">if</span> !motionManager.isMagnetometerAvailable &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"磁力计不可用"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        motionManager.magnetometerUpdateInterval = <span class="number">0.3</span></span><br><span class="line">        motionManager.startMagnetometerUpdates(to: <span class="type">OperationQueue</span>.main) &#123; (magData, error) <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> error != <span class="literal">nil</span> &#123;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">"磁力计采样错误:<span class="subst">\(error)</span>"</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"磁力计数据：<span class="subst">\(magData)</span>"</span>)</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="摇一摇"><a href="#摇一摇" class="headerlink" title="摇一摇"></a>摇一摇</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">motionBegan</span><span class="params">(<span class="number">_</span> motion: UIEventSubtype, with event: UIEvent?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.motionBegan(motion, with: event)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"开始摇一摇"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">motionCancelled</span><span class="params">(<span class="number">_</span> motion: UIEventSubtype, with event: UIEvent?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.motionCancelled(motion, with: event)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"取消"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">motionEnded</span><span class="params">(<span class="number">_</span> motion: UIEventSubtype, with event: UIEvent?)</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.motionEnded(motion, with: event)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"结束摇一摇"</span>)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="CMPedometer"><a href="#CMPedometer" class="headerlink" title="CMPedometer"></a>CMPedometer</h4><p>需先加入 <code>Privacy - Motion Usage Description</code>权限</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> !<span class="type">CMPedometer</span>.isStepCountingAvailable() &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"计步器不可用"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> pedometer = <span class="type">CMPedometer</span>()</span><br><span class="line">        pedometer.startUpdates(from: <span class="type">Date</span>()) &#123; (data, error) <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> error != <span class="literal">nil</span> &#123;</span><br><span class="line">                <span class="built_in">print</span>(error!)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">print</span>(data?.numberOfSteps ?? <span class="number">0</span>)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/01/17/iOS中的感应器/" class="archive-article-date">
-  	<time datetime="2017-01-17T08:54:30.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-01-17</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CoreMotion/">CoreMotion</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/感应器/">感应器</a></li></ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>

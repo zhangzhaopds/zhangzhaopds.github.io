@@ -163,6 +163,74 @@ var _hmt = _hmt || [];
       <div class="body-wrap">
         
   
+    <article id="post-Django-SMTPAuthenticationError" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/29/Django-SMTPAuthenticationError/">Django SMTPAuthenticationError</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在Django应用中，利用SMTP发送验证邮件，本地的环境完全没问题，但当将Django应用部署到Heroku上后，邮件发送失败，报SMTPAuthenticationError错误。解决这个问题发费时间较长，记录一下。</p>
+</blockquote>
+<p>这个问题针对【 Gmail 】邮。</p>
+<h4 id="setting-py"><a href="#setting-py" class="headerlink" title="setting.py"></a>setting.py</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">EMAIL_USE_TLS = <span class="keyword">True</span></span><br><span class="line">EMAIL_HOST = <span class="string">'smtp.gmail.com'</span></span><br><span class="line">EMAIL_PORT = <span class="number">587</span></span><br><span class="line">EMAIL_HOST_USER = <span class="string">'jmspvu@gmail.com'</span></span><br><span class="line">EMAIL_HOST_PASSWORD = <span class="string">'*******'</span></span><br><span class="line">DEFAULT_FROM_EMAIL = <span class="string">'jmspvu@gmail.com'</span></span><br></pre></td></tr></table></figure>
+<h4 id="views-py"><a href="#views-py" class="headerlink" title="views.py"></a>views.py</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    sendEmail = EmailMessage(subject=<span class="string">'用户注册'</span>, body=message, to=[loginName])</span><br><span class="line">    sendEmail.send(fail_silently=<span class="keyword">False</span>)</span><br><span class="line">    print(loginName)</span><br><span class="line">    msg = &#123;<span class="string">"isSuccess"</span>: <span class="keyword">True</span>,</span><br><span class="line">           <span class="string">"msg"</span>: <span class="string">'Verification code sent successfully'</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(json.dumps(msg), content_type=<span class="string">'application/json'</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="comment"># msg = &#123;"isSuccess": False,</span></span><br><span class="line">    <span class="comment">#        "msg": 'Verification code sent failure'&#125;</span></span><br><span class="line">    <span class="comment"># return HttpResponse(json.dumps(msg), content_type='application/json')</span></span><br><span class="line">    <span class="keyword">raise</span> Exception</span><br></pre></td></tr></table></figure>
+<h4 id="在Heroku上的报错"><a href="#在Heroku上的报错" class="headerlink" title="在Heroku上的报错"></a>在Heroku上的报错</h4><p>SMTPAuthenticationError</p>
+<p><code>During handling of the above exception ((534, b&#39;5.7.14 Please log in via your web browser and\n5.7.14 then try again.\n5.7.14 Learn more at\n5.7.14 https://support.google.com/mail/answer/78754 q15sm15913999qkl.26 - gsmtp&#39;)), another exception occurred:</code></p>
+<h4 id="解决方法（Gmail）"><a href="#解决方法（Gmail）" class="headerlink" title="解决方法（Gmail）"></a>解决方法（Gmail）</h4><p>1、检查账号、密码是否匹配;</p>
+<p>2、开启gmail邮箱的不安全应用：<a href="https://myaccount.google.com/lesssecureapps" target="_blank" rel="external">https://myaccount.google.com/lesssecureapps</a></p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/gmail03.png" alt=""></p>
+<p>3、授权账号访问权限（我的就因为开启这个，浪费了那么多时间）<a href="https://accounts.google.com/DisplayUnlockCaptcha" target="_blank" rel="external">https://accounts.google.com/DisplayUnlockCaptcha</a></p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/gmail01.png" alt=""></p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/gmail02.png" alt=""></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/07/29/Django-SMTPAuthenticationError/" class="archive-article-date">
+  	<time datetime="2017-07-29T01:58:38.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-07-29</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heroku/">Heroku</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SMTP/">SMTP</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/Python3/">Python3</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-椭圆曲线加密ECC" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -774,72 +842,6 @@ var _hmt = _hmt || [];
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/小程序/">小程序</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【ERROR】RestKit-objectRequestOpertationDidStart" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/15/【ERROR】RestKit-objectRequestOpertationDidStart/">【ERROR】RestKit-&#39;objectRequestOpertationDidStart:&#39;</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>RestKit使用时，执行<code>[objectRequestOperation start]</code>方法，在<code>&#39;&#39;objectRequestOpertationDidStart:&#39;&#39;&#39;</code>处报错。</p>
-</blockquote>
-<h4 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h4><p>Xcode: 8.2.1</p>
-<p>RestKit: 0.27.0</p>
-<p>iOS: 8.0</p>
-<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>执行内容：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">   </span><br><span class="line">    RKObjectMapping* articleMapping = [RKObjectMapping mappingForClass:[Duanzi <span class="keyword">class</span>]];</span><br><span class="line">    [articleMapping addAttributeMappingsFromDictionary:@&#123;@<span class="string">"title"</span>: @<span class="string">"title"</span>,</span><br><span class="line">                                                         @<span class="string">"digest"</span>: @<span class="string">"digest"</span>,</span><br><span class="line">                                                         @<span class="string">"downTimes"</span>:</span><br><span class="line">                                                        @<span class="string">"downTimes"</span>&#125;];</span><br><span class="line">    </span><br><span class="line">    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:articleMapping method:RKRequestMethodAny pathPattern:nil keyPath:@<span class="string">"段子"</span> statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];</span><br><span class="line">    </span><br><span class="line">    NSURL *url = [NSURL URLWithString:@<span class="string">"http://c.3g.163.com/recommend/getChanRecomNews?channel=duanzi&amp;passport=&amp;devId=676BEC68-01DA-4BB3-9F8F-0A99F9ADFEE2&amp;size=20"</span>];</span><br><span class="line">    NSURLRequest *request = [NSURLRequest requestWithURL:url];</span><br><span class="line">    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request</span><br><span class="line">                                                                                     responseDescriptors:@[responseDescriptor]];</span><br><span class="line">    [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) &#123;</span><br><span class="line">        Duanzi *duanzi = [mappingResult firstObject];</span><br><span class="line">        RKLogInfo(@<span class="string">"%ld"</span>, mappingResult.count);</span><br><span class="line">        RKLogInfo(@<span class="string">"%@"</span>, duanzi.downTimes);</span><br><span class="line">        RKLogInfo(@<span class="string">"%@"</span>, duanzi.digest);</span><br><span class="line">        RKLogInfo(@<span class="string">"%@"</span>, duanzi.title);     </span><br><span class="line">    &#125; failure:^(RKObjectRequestOperation *operation, NSError *error) &#123;</span><br><span class="line">        NSLog(@<span class="string">"%@"</span>, error.localizedDescription);</span><br><span class="line">    &#125;];</span><br><span class="line">	[objectRequestOperation start];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>替换 <code>[objectRequestOperation start];</code></p>
-<p>方法一：(在我的项目中，这个方法并没有起作用，也就没有采用)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[RKObjectManager sharedManager] enqueueObjectRequestOperation:objectRequestOperation];</span><br></pre></td></tr></table></figure>
-<p>方法二：(实际采用的方法)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSOperationQueue *queue = [[NSOperationQueue alloc] init];&#10;[queue addOperation:objectRequestOperation];</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/03/15/【ERROR】RestKit-objectRequestOpertationDidStart/" class="archive-article-date">
-  	<time datetime="2017-03-15T07:29:47.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-15</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RestKit/">RestKit</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
 	</div>
 
 

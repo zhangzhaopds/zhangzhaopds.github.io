@@ -6,17 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Django | Jmsp&#39;s Tips</title>
+  <title>Django SMTPAuthenticationError | Jmsp&#39;s Tips</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jmsp's Tips">
-<meta property="og:url" content="http://yoursite.com/tags/Django/index.html">
+  <meta name="description" content="在Django应用中，利用SMTP发送验证邮件，本地的环境完全没问题，但当将Django应用部署到Heroku上后，邮件发送失败，报SMTPAuthenticationError错误。解决这个问题发费时间较长，记录一下。
+
+这个问题针对【 Gmail 】邮。
+setting.py123456EMAIL_USE_TLS = TrueEMAIL_HOST = &apos;smtp.gmail.com&apos;EMAIL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django SMTPAuthenticationError">
+<meta property="og:url" content="http://yoursite.com/2017/07/29/Django-SMTPAuthenticationError/index.html">
 <meta property="og:site_name" content="Jmsp's Tips">
-<meta property="og:description">
+<meta property="og:description" content="在Django应用中，利用SMTP发送验证邮件，本地的环境完全没问题，但当将Django应用部署到Heroku上后，邮件发送失败，报SMTPAuthenticationError错误。解决这个问题发费时间较长，记录一下。
+
+这个问题针对【 Gmail 】邮。
+setting.py123456EMAIL_USE_TLS = TrueEMAIL_HOST = &apos;smtp.gmail.com&apos;EMAIL">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/gmail03.png">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/gmail01.png">
+<meta property="og:image" content="http://7xoz39.com1.z0.glb.clouddn.com/gmail02.png">
+<meta property="og:updated_time" content="2017-07-29T02:17:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jmsp's Tips">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Django SMTPAuthenticationError">
+<meta name="twitter:description" content="在Django应用中，利用SMTP发送验证邮件，本地的环境完全没问题，但当将Django应用部署到Heroku上后，邮件发送失败，报SMTPAuthenticationError错误。解决这个问题发费时间较长，记录一下。
+
+这个问题针对【 Gmail 】邮。
+setting.py123456EMAIL_USE_TLS = TrueEMAIL_HOST = &apos;smtp.gmail.com&apos;EMAIL">
   
     <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
   
@@ -161,170 +174,102 @@ var _hmt = _hmt || [];
 </nav>
 
       <div class="body-wrap">
+        <article id="post-Django-SMTPAuthenticationError" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/29/Django-SMTPAuthenticationError/" class="archive-article-date">
-  	<time datetime="2017-07-29T01:58:38.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-07-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/29/Django-SMTPAuthenticationError/">Django SMTPAuthenticationError</a>
+    <h1 class="article-title" itemprop="name">
+      Django SMTPAuthenticationError
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在Django应用中，利用SMTP发送验证邮件，本地的环境完全没问题，但当将Django应用部署到Heroku上后，邮件发送失败，报SMTPAuthenticationError错误。解决这个问题发费时间较长，记录一下。</p>
+</blockquote>
+<p>这个问题针对【 Gmail 】邮。</p>
+<h4 id="setting-py"><a href="#setting-py" class="headerlink" title="setting.py"></a>setting.py</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">EMAIL_USE_TLS = <span class="keyword">True</span></span><br><span class="line">EMAIL_HOST = <span class="string">'smtp.gmail.com'</span></span><br><span class="line">EMAIL_PORT = <span class="number">587</span></span><br><span class="line">EMAIL_HOST_USER = <span class="string">'jmspvu@gmail.com'</span></span><br><span class="line">EMAIL_HOST_PASSWORD = <span class="string">'*******'</span></span><br><span class="line">DEFAULT_FROM_EMAIL = <span class="string">'jmspvu@gmail.com'</span></span><br></pre></td></tr></table></figure>
+<h4 id="views-py"><a href="#views-py" class="headerlink" title="views.py"></a>views.py</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    sendEmail = EmailMessage(subject=<span class="string">'用户注册'</span>, body=message, to=[loginName])</span><br><span class="line">    sendEmail.send(fail_silently=<span class="keyword">False</span>)</span><br><span class="line">    print(loginName)</span><br><span class="line">    msg = &#123;<span class="string">"isSuccess"</span>: <span class="keyword">True</span>,</span><br><span class="line">           <span class="string">"msg"</span>: <span class="string">'Verification code sent successfully'</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(json.dumps(msg), content_type=<span class="string">'application/json'</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="comment"># msg = &#123;"isSuccess": False,</span></span><br><span class="line">    <span class="comment">#        "msg": 'Verification code sent failure'&#125;</span></span><br><span class="line">    <span class="comment"># return HttpResponse(json.dumps(msg), content_type='application/json')</span></span><br><span class="line">    <span class="keyword">raise</span> Exception</span><br></pre></td></tr></table></figure>
+<h4 id="在Heroku上的报错"><a href="#在Heroku上的报错" class="headerlink" title="在Heroku上的报错"></a>在Heroku上的报错</h4><p>SMTPAuthenticationError</p>
+<p><code>During handling of the above exception ((534, b&#39;5.7.14 Please log in via your web browser and\n5.7.14 then try again.\n5.7.14 Learn more at\n5.7.14 https://support.google.com/mail/answer/78754 q15sm15913999qkl.26 - gsmtp&#39;)), another exception occurred:</code></p>
+<h4 id="解决方法（Gmail）"><a href="#解决方法（Gmail）" class="headerlink" title="解决方法（Gmail）"></a>解决方法（Gmail）</h4><p>1、检查账号、密码是否匹配;</p>
+<p>2、开启gmail邮箱的不安全应用：<a href="https://myaccount.google.com/lesssecureapps" target="_blank" rel="external">https://myaccount.google.com/lesssecureapps</a></p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/gmail03.png" alt=""></p>
+<p>3、授权账号访问权限（我的就因为开启这个，浪费了那么多时间）<a href="https://accounts.google.com/DisplayUnlockCaptcha" target="_blank" rel="external">https://accounts.google.com/DisplayUnlockCaptcha</a></p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/gmail01.png" alt=""></p>
+<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/gmail02.png" alt=""></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/07/29/Django-SMTPAuthenticationError/" class="archive-article-date">
+  	<time datetime="2017-07-29T01:58:38.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-07-29</time>
+</a>
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heroku/">Heroku</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SMTP/">SMTP</a></li></ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 	<i class="icon-price-tags"></i>
 	<a class="article-category-link" href="/categories/Python3/">Python3</a>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/09/relation-auth-user-does-not-exist/" class="archive-article-date">
-  	<time datetime="2017-05-09T08:46:30.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/09/relation-auth-user-does-not-exist/">【ERROR】relation auth_user does not exist</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heroku/">Heroku</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/autn-user/">autn_user</a></li></ul>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/06/23/椭圆曲线加密ECC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">椭圆曲线加密ECC</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-          
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/09/【译】在Heroku上部署Django应用（二）/" class="archive-article-date">
-  	<time datetime="2017-05-09T01:57:25.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/09/【译】在Heroku上部署Django应用（二）/">【译】在Heroku上部署Django应用（2、部署）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heroku/">Heroku</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/09/【译】在Heroku上部署Django应用（一）/" class="archive-article-date">
-  	<time datetime="2017-05-09T00:56:54.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/09/【译】在Heroku上部署Django应用（一）/">【译】在Heroku上部署Django应用（1、配置）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heroku/">Heroku</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
 
 
       </div>
@@ -347,9 +292,9 @@ var _hmt = _hmt || [];
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
