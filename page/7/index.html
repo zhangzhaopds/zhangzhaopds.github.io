@@ -94,11 +94,11 @@
 				    
 				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(9)</small></a></li>
 				    
-				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(1)</small></a></li>
+				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(2)</small></a></li>
 				    
 				    <li><a href="/categories/ReactNative/" class="animsition-link">ReactNative<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(21)</small></a></li>
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(22)</small></a></li>
 				    
 				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(1)</small></a></li>
 				    
@@ -117,6 +117,17 @@
 				</ul>
         	</li>
 			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://blog.csdn.net/zz110731?viewmode=list" class="animsition-link">CSDN</a></li>
+                    
+                    <li><a href="https://github.com/zhangzhaopds" class="animsition-link">GIT</a></li>
+                    
+                </ul>
+            </li>
             
         </ul>
         <!-- Lists in Slidebars -->
@@ -156,7 +167,7 @@
                             
                             
                             
-                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            <li><a href="http://blog.csdn.net/zz110731?viewmode=list" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
                             
                             
                             <li class="nolink"><span>Welcome!</span></li>
@@ -213,6 +224,79 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/05/17/移动端数据库Realm/">移动端数据库Realm</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-05-17T06:57:20.000Z" itemprop="datePublished">
+          2016-05-17
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+Realm是一个跨平台移动数据库引擎，支持iOS、OS X（Objective-C和Swift）以及Android。
+目标是取代SQLite。
+
+
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/05/17/移动端数据库Realm/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/05/17/TypeEncodings/">TypeEncodings</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-05-17T04:48:59.000Z" itemprop="datePublished">
+          2016-05-17
+      </time>
+    
+    
+    | 
+    <a href='/tags/编码/'>编码</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+Type_Encodings是运行时系统的辅助工具。编译器将函数返回值、参数类型以及实现编译成特定的字符。例如：v@:表示：参数类型为静态类型或者id类型，无返回值的一个方法实现。
+
+@encode()1char *buf1 = @encode(void);     // buf1 = v&#10;char *buf2 = @encode(float);    // buf2 = f&#10;char *buf3 = @encode(
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/05/17/TypeEncodings/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -532,85 +616,6 @@ class var sharedInstance: QRMakeVC {
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/04/11/MQTT消息推送/">MQTT应用内消息推送</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-04-11T06:35:30.000Z" itemprop="datePublished">
-          2016-04-11
-      </time>
-    
-    
-    | 
-    <a href='/tags/MQTT/'>MQTT</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光的应用内消息更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。MQTT本质上就是一个TCP长连接而已。
-
-MQTTKitDEMO_1DEMO_2
-初始化MQTT// 获取设备uuid
-if Keychain.load(&quot;kUUID&quot;) ==
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/04/11/MQTT消息推送/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/">GCD_API_Main/Global_Dispatch_Queue</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-04-04T03:21:17.000Z" itemprop="datePublished">
-          2016-04-04
-      </time>
-    
-    
-    | 
-    <a href='/tags/Global-Dispatch-Queue/'>Global_Dispatch_Queue</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-获取系统标准提供的Dispatch Queue: Main Dispatch Queue 和 Global Dispatch Queue.
-
-Main Dispatch QueueMain Dispatch Queue 正如其名称中含有的‘main’一样，是在主线程中执行Dispatch Queue。因为主线程只有一个，所以Main Dispatch Queue 自然就是 Serial Dispatch Queue。
-追加到 Main
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
           <a class="pull-left" href="/page/6/">← Newer Posts</a>
           <a class="pull-right" href="/page/8/">Older Posts →</a>
@@ -645,7 +650,7 @@ Main Dispatch QueueMain Dispatch Queue 正如其名称中含有的‘main’一�
                     
                     
                     
-                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    <li><a href="http://blog.csdn.net/zz110731?viewmode=list" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
                     
                     
                 </ul>

@@ -94,11 +94,11 @@
 				    
 				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(9)</small></a></li>
 				    
-				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(1)</small></a></li>
+				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(2)</small></a></li>
 				    
 				    <li><a href="/categories/ReactNative/" class="animsition-link">ReactNative<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(21)</small></a></li>
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(22)</small></a></li>
 				    
 				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(1)</small></a></li>
 				    
@@ -117,6 +117,17 @@
 				</ul>
         	</li>
 			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://blog.csdn.net/zz110731?viewmode=list" class="animsition-link">CSDN</a></li>
+                    
+                    <li><a href="https://github.com/zhangzhaopds" class="animsition-link">GIT</a></li>
+                    
+                </ul>
+            </li>
             
         </ul>
         <!-- Lists in Slidebars -->
@@ -156,7 +167,7 @@
                             
                             
                             
-                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            <li><a href="http://blog.csdn.net/zz110731?viewmode=list" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
                             
                             
                             <li class="nolink"><span>Welcome!</span></li>
@@ -213,6 +224,85 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/02/03/ActiveMQ在Mac上的安装/">ActiveMQ在Mac上的安装</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-02-03T02:00:18.000Z" itemprop="datePublished">
+          2017-02-03
+      </time>
+    
+    
+    | 
+    <a href='/tags/ActiveMQ/'>ActiveMQ</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+简单记录一下ActiveMQ在Mac上的安装。
+
+
+具体指令使用的是brew
+1brew install activemq		// 此过程需要下载组件，速度依据网速
+1activemq --version			// 安装成功之后，可以查看一下版本进行检查
+1activemq start				// 启动
+启动之后，可在浏览器中访问 http://localhost:8161/
+其他操作指令12345678910111213141516
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/02/03/ActiveMQ在Mac上的安装/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/01/19/摄像头捕捉红包/">摄像头捕捉红包</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-01-19T01:34:00.000Z" itemprop="datePublished">
+          2017-01-19
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+类似于QQ里面的捉财神，开红包游戏。
+
+https://github.com/zhangzhaopds/CatchRedPacket.git
+
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/01/19/摄像头捕捉红包/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -560,89 +650,6 @@ OTA具体部署http://www.jianshu.com/p/bd016015efe7
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/12/23/escaping/">@escaping</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-12-23T01:19:55.000Z" itemprop="datePublished">
-          2016-12-23
-      </time>
-    
-    
-    | 
-    <a href='/tags/Closure/'>Closure</a>,
-    
-    <a href='/tags/Escaping/'>Escaping</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-Swift中的逃逸闭包（escape closure）。
-
-逃逸闭包​    当一个传入函数的闭包在函数执行结束之后才会被调用，这样的闭包就叫做逃逸闭包。如果一个函数的参数有一个逃逸闭包，可以在参数前加@escaping关键字来修饰。
-​    一个闭包是逃逸必要的条件是这个闭包需要存储在函数外部。举个例子，很多异步操作的函数往往会传入一个complete handler作为异步操作完成后的回调。当这个异步函数开始执行的时候，会开启一
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/12/23/escaping/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/12/20/斗鱼/">斗鱼</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-12-20T06:56:10.000Z" itemprop="datePublished">
-          2016-12-20
-      </time>
-    
-    
-    | 
-    <a href='/tags/斗鱼直播/'>斗鱼直播</a>,
-    
-    <a href='/tags/高仿/'>高仿</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-逆向工程，高仿斗鱼直播，持续更新中。
-
-https://github.com/zhangzhaopds/Douyu
-
-
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/12/20/斗鱼/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
           <a class="pull-left" href="/page/2/">← Newer Posts</a>
           <a class="pull-right" href="/page/4/">Older Posts →</a>
@@ -677,7 +684,7 @@ https://github.com/zhangzhaopds/Douyu
                     
                     
                     
-                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    <li><a href="http://blog.csdn.net/zz110731?viewmode=list" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
                     
                     
                 </ul>

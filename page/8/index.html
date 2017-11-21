@@ -94,11 +94,11 @@
 				    
 				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(9)</small></a></li>
 				    
-				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(1)</small></a></li>
+				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(2)</small></a></li>
 				    
 				    <li><a href="/categories/ReactNative/" class="animsition-link">ReactNative<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(21)</small></a></li>
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(22)</small></a></li>
 				    
 				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(1)</small></a></li>
 				    
@@ -117,6 +117,17 @@
 				</ul>
         	</li>
 			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://blog.csdn.net/zz110731?viewmode=list" class="animsition-link">CSDN</a></li>
+                    
+                    <li><a href="https://github.com/zhangzhaopds" class="animsition-link">GIT</a></li>
+                    
+                </ul>
+            </li>
             
         </ul>
         <!-- Lists in Slidebars -->
@@ -156,7 +167,7 @@
                             
                             
                             
-                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            <li><a href="http://blog.csdn.net/zz110731?viewmode=list" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
                             
                             
                             <li class="nolink"><span>Welcome!</span></li>
@@ -213,6 +224,85 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/04/11/MQTT消息推送/">MQTT应用内消息推送</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-04-11T06:35:30.000Z" itemprop="datePublished">
+          2016-04-11
+      </time>
+    
+    
+    | 
+    <a href='/tags/MQTT/'>MQTT</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+因为需求，需要从服务器获取支付结果的通知，而后台已经在POS和安卓端使用MTQQ,没办法iOS端消息推送也只能用MTQQ，查询了一些资料发现MTQQ好像要比信鸽、极光的应用内消息更加简单点，至少iOS端少去了推送证书的配置等一些繁琐的流程。MQTT本质上就是一个TCP长连接而已。
+
+MQTTKitDEMO_1DEMO_2
+初始化MQTT// 获取设备uuid
+if Keychain.load(&quot;kUUID&quot;) ==
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/04/11/MQTT消息推送/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/">GCD_API_Main/Global_Dispatch_Queue</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-04-04T03:21:17.000Z" itemprop="datePublished">
+          2016-04-04
+      </time>
+    
+    
+    | 
+    <a href='/tags/Global-Dispatch-Queue/'>Global_Dispatch_Queue</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+获取系统标准提供的Dispatch Queue: Main Dispatch Queue 和 Global Dispatch Queue.
+
+Main Dispatch QueueMain Dispatch Queue 正如其名称中含有的‘main’一样，是在主线程中执行Dispatch Queue。因为主线程只有一个，所以Main Dispatch Queue 自然就是 Serial Dispatch Queue。
+追加到 Main
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -546,87 +636,6 @@ iOS链接外设的代码实现流程1. 建立中心角色
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/01/29/Refresh-Swift/">Refresh-Swift</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-01-29T08:23:29.000Z" itemprop="datePublished">
-          2016-01-29
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-Swift语言实现的数据刷新功能，类似于MJRefresh.(上拉加载，下拉刷新)
-
-本文DEMO
-效果图
-
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/01/29/Refresh-Swift/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/01/28/ActivityIndicator-Swift/">ActivityIndicator-Swift</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-01-28T06:14:58.000Z" itemprop="datePublished">
-          2016-01-28
-      </time>
-    
-    
-    | 
-    <a href='/tags/活动指示器/'>活动指示器</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-
-Swift实现简单的活动指示器。
-
-本文DEMO链接
-主要代码展示1.创建活动指示器单例
-class var shareIndicator: HTTPIndicator {
-    struct Static {
-        static var onceToken: dispatch_once_t = 0
-        static var instance: HTTPIndicator?
-    }
-    dispatc
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/01/28/ActivityIndicator-Swift/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
           <a class="pull-left" href="/page/7/">← Newer Posts</a>
           <a class="pull-right" href="/page/9/">Older Posts →</a>
@@ -661,7 +670,7 @@ class var shareIndicator: HTTPIndicator {
                     
                     
                     
-                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    <li><a href="http://blog.csdn.net/zz110731?viewmode=list" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
                     
                     
                 </ul>

@@ -94,11 +94,11 @@
 				    
 				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(9)</small></a></li>
 				    
-				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(1)</small></a></li>
+				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(2)</small></a></li>
 				    
 				    <li><a href="/categories/ReactNative/" class="animsition-link">ReactNative<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(21)</small></a></li>
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(22)</small></a></li>
 				    
 				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(1)</small></a></li>
 				    
@@ -117,6 +117,17 @@
 				</ul>
         	</li>
 			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://blog.csdn.net/zz110731?viewmode=list" class="animsition-link">CSDN</a></li>
+                    
+                    <li><a href="https://github.com/zhangzhaopds" class="animsition-link">GIT</a></li>
+                    
+                </ul>
+            </li>
             
         </ul>
         <!-- Lists in Slidebars -->
@@ -156,7 +167,7 @@
                             
                             
                             
-                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            <li><a href="http://blog.csdn.net/zz110731?viewmode=list" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
                             
                             
                             <li class="nolink"><span>Welcome!</span></li>
@@ -213,6 +224,89 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/12/23/escaping/">@escaping</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-12-23T01:19:55.000Z" itemprop="datePublished">
+          2016-12-23
+      </time>
+    
+    
+    | 
+    <a href='/tags/Closure/'>Closure</a>,
+    
+    <a href='/tags/Escaping/'>Escaping</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+Swift中的逃逸闭包（escape closure）。
+
+逃逸闭包​    当一个传入函数的闭包在函数执行结束之后才会被调用，这样的闭包就叫做逃逸闭包。如果一个函数的参数有一个逃逸闭包，可以在参数前加@escaping关键字来修饰。
+​    一个闭包是逃逸必要的条件是这个闭包需要存储在函数外部。举个例子，很多异步操作的函数往往会传入一个complete handler作为异步操作完成后的回调。当这个异步函数开始执行的时候，会开启一
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/12/23/escaping/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/12/20/斗鱼/">斗鱼</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-12-20T06:56:10.000Z" itemprop="datePublished">
+          2016-12-20
+      </time>
+    
+    
+    | 
+    <a href='/tags/斗鱼直播/'>斗鱼直播</a>,
+    
+    <a href='/tags/高仿/'>高仿</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+逆向工程，高仿斗鱼直播，持续更新中。
+
+https://github.com/zhangzhaopds/Douyu
+
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/12/20/斗鱼/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -566,87 +660,6 @@ RecyclerView中CardView的展开与叠起效果。
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/11/18/hexo主题yilia的头像无法显现/">hexo主题yilia的头像无法显现</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-11-18T05:50:17.000Z" itemprop="datePublished">
-          2016-11-18
-      </time>
-    
-    
-    | 
-    <a href='/tags/hexo/'>hexo</a>,
-    
-    <a href='/tags/yilia/'>yilia</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-一直懒得整理博客，旧版的yilia主题的头像无法显现。
-
-解决方法在路径 yilia/layout/_partial/left-col.ejs 下，打开 left-col.ejs;
-修改第6、8行的：
-1&#60;img lazy-src=&#34;&#60;%=theme.avatar%&#62;&#34; class=&#34;js-avatar &#34;&#62;&#10;&#60;img src=&#34;&#60;%=th
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/11/18/hexo主题yilia的头像无法显现/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/11/01/MQTT-Android/">MQTT_Android</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-11-01T05:23:17.000Z" itemprop="datePublished">
-          2016-11-01
-      </time>
-    
-    
-    | 
-    <a href='/tags/MQTT/'>MQTT</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-MQTT在Android中的使用，客户端的，记录一下。
-
-官方文档 https://github.com/eclipse/paho.mqtt.android
-添加依赖12345compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'//compile 'org.eclipse.paho:org.eclipse.paho.android.service:1.0.2@a
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/11/01/MQTT-Android/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
           <a class="pull-left" href="/page/3/">← Newer Posts</a>
           <a class="pull-right" href="/page/5/">Older Posts →</a>
@@ -681,7 +694,7 @@ MQTT在Android中的使用，客户端的，记录一下。
                     
                     
                     
-                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    <li><a href="http://blog.csdn.net/zz110731?viewmode=list" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
                     
                     
                 </ul>

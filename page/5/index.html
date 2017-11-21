@@ -94,11 +94,11 @@
 				    
 				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(9)</small></a></li>
 				    
-				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(1)</small></a></li>
+				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(2)</small></a></li>
 				    
 				    <li><a href="/categories/ReactNative/" class="animsition-link">ReactNative<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(21)</small></a></li>
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(22)</small></a></li>
 				    
 				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(1)</small></a></li>
 				    
@@ -117,6 +117,17 @@
 				</ul>
         	</li>
 			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://blog.csdn.net/zz110731?viewmode=list" class="animsition-link">CSDN</a></li>
+                    
+                    <li><a href="https://github.com/zhangzhaopds" class="animsition-link">GIT</a></li>
+                    
+                </ul>
+            </li>
             
         </ul>
         <!-- Lists in Slidebars -->
@@ -156,7 +167,7 @@
                             
                             
                             
-                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            <li><a href="http://blog.csdn.net/zz110731?viewmode=list" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
                             
                             
                             <li class="nolink"><span>Welcome!</span></li>
@@ -213,6 +224,87 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/11/18/hexo主题yilia的头像无法显现/">hexo主题yilia的头像无法显现</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-11-18T05:50:17.000Z" itemprop="datePublished">
+          2016-11-18
+      </time>
+    
+    
+    | 
+    <a href='/tags/hexo/'>hexo</a>,
+    
+    <a href='/tags/yilia/'>yilia</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+一直懒得整理博客，旧版的yilia主题的头像无法显现。
+
+解决方法在路径 yilia/layout/_partial/left-col.ejs 下，打开 left-col.ejs;
+修改第6、8行的：
+1&#60;img lazy-src=&#34;&#60;%=theme.avatar%&#62;&#34; class=&#34;js-avatar &#34;&#62;&#10;&#60;img src=&#34;&#60;%=th
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/11/18/hexo主题yilia的头像无法显现/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/11/01/MQTT-Android/">MQTT_Android</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-11-01T05:23:17.000Z" itemprop="datePublished">
+          2016-11-01
+      </time>
+    
+    
+    | 
+    <a href='/tags/MQTT/'>MQTT</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+MQTT在Android中的使用，客户端的，记录一下。
+
+官方文档 https://github.com/eclipse/paho.mqtt.android
+添加依赖12345compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'//compile 'org.eclipse.paho:org.eclipse.paho.android.service:1.0.2@a
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/11/01/MQTT-Android/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -521,75 +613,6 @@ NO.1【报错】“Use Legacy Swift Language Version” (SWIFT_VERSION) is requi
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/07/11/Extension-Array/">[Extension]-Array</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-07-11T03:07:19.000Z" itemprop="datePublished">
-          2016-07-11
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-Swift中Array的实用延展。
-
-接受数组为下标输入的读取延展123456789101112131415161718192021222324252627extension Array &#123;    // 接受数组为下标输入的读取延展    subscript(input: [Int])-&gt;ArraySlice&lt;Element&gt; &#123;        get &#123;            var 
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/07/11/Extension-Array/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/07/01/【BUG】require-once/">【BUG】require_once</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-07-01T06:58:41.000Z" itemprop="datePublished">
-          2016-07-01
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-GOOD GOOD STUDY,  DAY DAY UP !
-
-【场景】: PHP中，调用支付宝手机网站支付API；
-【问题】: 利用require_once调用同一目录下的文件alipay.config.php, require_once(&quot;alipay.config.php&quot;);报路径错误。
-【原因】: 编译器问题。
-【解决】: require_once($_SERVER[&#39;DOCUMENT_ROOT&
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/07/01/【BUG】require-once/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
         <nav class="pagination" role="pagination">
           <a class="pull-left" href="/page/4/">← Newer Posts</a>
           <a class="pull-right" href="/page/6/">Older Posts →</a>
@@ -624,7 +647,7 @@ GOOD GOOD STUDY,  DAY DAY UP !
                     
                     
                     
-                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    <li><a href="http://blog.csdn.net/zz110731?viewmode=list" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
                     
                     
                 </ul>
