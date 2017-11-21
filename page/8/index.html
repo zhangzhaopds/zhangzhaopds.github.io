@@ -98,7 +98,7 @@
 				    
 				    <li><a href="/categories/ReactNative/" class="animsition-link">ReactNative<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(22)</small></a></li>
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(21)</small></a></li>
 				    
 				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(1)</small></a></li>
 				    
@@ -213,45 +213,6 @@
 
 <section id="intro">
     <div class="container">
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/">GCD_API_Main/Global_Dispatch_Queue</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-04-04T03:21:17.000Z" itemprop="datePublished">
-          2016-04-04
-      </time>
-    
-    
-    | 
-    <a href='/tags/Global-Dispatch-Queue/'>Global_Dispatch_Queue</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-获取系统标准提供的Dispatch Queue: Main Dispatch Queue 和 Global Dispatch Queue.
-
-Main Dispatch QueueMain Dispatch Queue 正如其名称中含有的‘main’一样，是在主线程中执行Dispatch Queue。因为主线程只有一个，所以Main Dispatch Queue 自然就是 Serial Dispatch Queue。
-追加到 Main
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -612,6 +573,52 @@ Swift语言实现的数据刷新功能，类似于MJRefresh.(上拉加载，下�
                     
                     <p class="pull-right readMore">
                         <a href="/2016/01/29/Refresh-Swift/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/01/28/ActivityIndicator-Swift/">ActivityIndicator-Swift</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-01-28T06:14:58.000Z" itemprop="datePublished">
+          2016-01-28
+      </time>
+    
+    
+    | 
+    <a href='/tags/活动指示器/'>活动指示器</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+
+Swift实现简单的活动指示器。
+
+本文DEMO链接
+主要代码展示1.创建活动指示器单例
+class var shareIndicator: HTTPIndicator {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: HTTPIndicator?
+    }
+    dispatc
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/01/28/ActivityIndicator-Swift/">Read More...</a>
                     </p>
                     
                 </div>
