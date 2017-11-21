@@ -1,935 +1,732 @@
 <!DOCTYPE html>
-<html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Jmsp&#39;s Tips</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jmsp's Tips">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Jmsp's Tips">
-<meta property="og:description">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jmsp's Tips">
-<meta name="twitter:description">
-  
-    <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/main.css" type="text/css">
-  
-<!-- baidu Analytics -->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?d400b2b9cf7d1a287b60931c6cbae186";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Jmsp's Tips">
+    <meta name="author" content="Mr Fox">
+    <meta name="description" content="" />
+    <meta name="keywords" content="iOS,Android,OC,Python,Swift,html5,开发者,程序猿,程序猿,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,html" />
 
-<!-- End baidu Analytics -->
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
 
+    <link rel="alternate" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
 
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
 </head>
 
-<body>
-  <div id="container">
-    <div class="left-col">
-      <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
-			
-		</a>
+<!--
+<body class="home-template">
+-->
+<body id="index" class="lightnav animsition">
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">Mr Fox</a></h1>
-		</hgroup>
+      <!-- ============================ Off-canvas navigation =========================== -->
 
-		
-
-		<nav class="header-menu">
-			<ul>
-			
-				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/archives">所有文章</a></li>
-	        
-				<li><a href="/categories/OC">OC</a></li>
-	        
-				<li><a href="/categories/Swift">Swift</a></li>
-	        
-				<li><a href="/categories/Android">Android</a></li>
-	        
-				<li><a href="/categories/Python">Python</a></li>
-	        
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-	        
-    		
-    			
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
             
-    			
-            
-    			
-            
-    			
-            
-		</nav>
-		<nav class="header-nav">
-			<div class="social">
-				
-					<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
-		        
-					<a class="rss" target="_blank" href="/#" title="rss">rss</a>
-		        
-					<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
-		        
-			</div>
-		</nav>
-	</header>		
-</div>
-
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"><i class="icon-list"></i></div>
-  		<h1 class="header-author js-mobile-header hide">Mr Fox</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				
-					<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
-				
-			</div>
-			<hgroup>
-			  <h1 class="header-author">Mr Fox</h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-					<li><a href="/categories/OC">OC</a></li>
-		        
-					<li><a href="/categories/Swift">Swift</a></li>
-		        
-					<li><a href="/categories/Android">Android</a></li>
-		        
-					<li><a href="/categories/Python">Python</a></li>
-		        
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/Cocoapods/" class="animsition-link">Cocoapods<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MQTT/" class="animsition-link">MQTT<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MacOS/" class="animsition-link">MacOS<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/OC/" class="animsition-link">OC<small>(23)</small></a></li>
+				    
+				    <li><a href="/categories/PHP/" class="animsition-link">PHP<small>(6)</small></a></li>
+				    
+				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(9)</small></a></li>
+				    
+				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/ReactNative/" class="animsition-link">ReactNative<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(22)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/npm/" class="animsition-link">npm<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/小程序/" class="animsition-link">小程序<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/工具/" class="animsition-link">工具<small>(5)</small></a></li>
+				    
+				    <li><a href="/categories/微信小程序/" class="animsition-link">微信小程序<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/逆向工程/" class="animsition-link">逆向工程<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/随笔/" class="animsition-link">随笔<small>(2)</small></a></li>
+				    
 				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
-			        
-						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
-			        
-						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-
-      <div class="body-wrap">
-        
-  
-    <article id="post-【小程序】POST请求服务器接收不到参数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/03/【小程序】POST请求服务器接收不到参数/">【小程序】POST请求服务器接收不到参数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>POST请求服务器接收不到参数的坑</p>
-</blockquote>
-<p>设置header如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">header: &#123; <span class="string">"Content-Type"</span>: <span class="string">"application/x-www-form-urlencoded"</span> &#125;</span><br></pre></td></tr></table></figure>
-
-      
+        	</li>
+			
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
     </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/05/03/【小程序】POST请求服务器接收不到参数/" class="archive-article-date">
-  	<time datetime="2017-05-03T02:27:25.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-05-03</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/小程序/">小程序</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【ERROR】RestKit-objectRequestOpertationDidStart" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/15/【ERROR】RestKit-objectRequestOpertationDidStart/">【ERROR】RestKit-&#39;objectRequestOpertationDidStart:&#39;</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>RestKit使用时，执行<code>[objectRequestOperation start]</code>方法，在<code>&#39;&#39;objectRequestOpertationDidStart:&#39;&#39;&#39;</code>处报错。</p>
-</blockquote>
-<h4 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h4><p>Xcode: 8.2.1</p>
-<p>RestKit: 0.27.0</p>
-<p>iOS: 8.0</p>
-<h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><p>执行内容：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">   </span><br><span class="line">    RKObjectMapping* articleMapping = [RKObjectMapping mappingForClass:[Duanzi <span class="keyword">class</span>]];</span><br><span class="line">    [articleMapping addAttributeMappingsFromDictionary:@&#123;@<span class="string">"title"</span>: @<span class="string">"title"</span>,</span><br><span class="line">                                                         @<span class="string">"digest"</span>: @<span class="string">"digest"</span>,</span><br><span class="line">                                                         @<span class="string">"downTimes"</span>:</span><br><span class="line">                                                        @<span class="string">"downTimes"</span>&#125;];</span><br><span class="line">    </span><br><span class="line">    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:articleMapping method:RKRequestMethodAny pathPattern:nil keyPath:@<span class="string">"段子"</span> statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];</span><br><span class="line">    </span><br><span class="line">    NSURL *url = [NSURL URLWithString:@<span class="string">"http://c.3g.163.com/recommend/getChanRecomNews?channel=duanzi&amp;passport=&amp;devId=676BEC68-01DA-4BB3-9F8F-0A99F9ADFEE2&amp;size=20"</span>];</span><br><span class="line">    NSURLRequest *request = [NSURLRequest requestWithURL:url];</span><br><span class="line">    RKObjectRequestOperation *objectRequestOperation = [[RKObjectRequestOperation alloc] initWithRequest:request</span><br><span class="line">                                                                                     responseDescriptors:@[responseDescriptor]];</span><br><span class="line">    [objectRequestOperation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) &#123;</span><br><span class="line">        Duanzi *duanzi = [mappingResult firstObject];</span><br><span class="line">        RKLogInfo(@<span class="string">"%ld"</span>, mappingResult.count);</span><br><span class="line">        RKLogInfo(@<span class="string">"%@"</span>, duanzi.downTimes);</span><br><span class="line">        RKLogInfo(@<span class="string">"%@"</span>, duanzi.digest);</span><br><span class="line">        RKLogInfo(@<span class="string">"%@"</span>, duanzi.title);     </span><br><span class="line">    &#125; failure:^(RKObjectRequestOperation *operation, NSError *error) &#123;</span><br><span class="line">        NSLog(@<span class="string">"%@"</span>, error.localizedDescription);</span><br><span class="line">    &#125;];</span><br><span class="line">	[objectRequestOperation start];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>替换 <code>[objectRequestOperation start];</code></p>
-<p>方法一：(在我的项目中，这个方法并没有起作用，也就没有采用)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[RKObjectManager sharedManager] enqueueObjectRequestOperation:objectRequestOperation];</span><br></pre></td></tr></table></figure>
-<p>方法二：(实际采用的方法)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSOperationQueue *queue = [[NSOperationQueue alloc] init];&#10;[queue addOperation:objectRequestOperation];</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/03/15/【ERROR】RestKit-objectRequestOpertationDidStart/" class="archive-article-date">
-  	<time datetime="2017-03-15T07:29:47.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-15</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RestKit/">RestKit</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【微信小程序】二维码生成与识别器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/【微信小程序】二维码生成与识别器/">【微信小程序】二维码生成与识别器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>一个二维码生成与识别的很简单的微信小程序，主要是为了走一下小程序开发的整个流程。7号上午提交的审核，8号出结果，审核速度还可以，发布需要管理员手动发布。唯一令人烦的地方是，开发者的权限太低，除了编码，其他的操作都需要管理员扫描相应操作的二维码（前前后后将近10次）。</p>
-</blockquote>
-<h4 id="二维码生成与识别器"><a href="#二维码生成与识别器" class="headerlink" title="二维码生成与识别器"></a>二维码生成与识别器</h4><p>项目源码：<a href="https://github.com/zhangzhaopds/QrPay.git" target="_blank" rel="external">https://github.com/zhangzhaopds/QrPay.git</a></p>
-<h5 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h5><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/IMG_1010.PNG" alt=""></p>
-<h5 id="安装地址"><a href="#安装地址" class="headerlink" title="安装地址"></a>安装地址</h5><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/gh_ad5da0fd2a1a_258.jpg" alt=""></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/03/10/【微信小程序】二维码生成与识别器/" class="archive-article-date">
-  	<time datetime="2017-03-10T01:34:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-10</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二维码生成/">二维码生成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二维码识别/">二维码识别</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/微信小程序/">微信小程序</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【Python】Pillow图片处理库" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/02/【Python】Pillow图片处理库/">【Python】Pillow图片处理库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Pillow是Python中的图片处理库，来自于PIL，使用时 import PIL;</p>
-</blockquote>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/pic.JPG" alt=""></p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>Python2中安装命令:</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip <span class="keyword">install</span> PIL</span><br></pre></td></tr></table></figure>
-<p>Python3中安装命令:</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip <span class="keyword">install</span> Pillow</span><br></pre></td></tr></table></figure>
-<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mg = Image.open(<span class="string">'pic.JPG'</span>)</span><br><span class="line">print(img.size, img.mode)       <span class="comment"># (3264, 2448) RGB</span></span><br></pre></td></tr></table></figure>
-<h4 id="缩略图"><a href="#缩略图" class="headerlink" title="缩略图"></a>缩略图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">size = (<span class="number">200</span>, <span class="number">200</span>)</span><br><span class="line">img.thumbnail(size)</span><br><span class="line">img.save(<span class="string">'/Users/zhangzhao/PycharmProjects/pillow_demo/thum.JPEG'</span>)</span><br><span class="line">print(img.size, img.mode)     <span class="comment"># (200, 150) RGB</span></span><br></pre></td></tr></table></figure>
-<h4 id="剪切图"><a href="#剪切图" class="headerlink" title="剪切图"></a>剪切图</h4><p>剪切函数 crop(box)：box = (left, upper, right, lower)</p>
-<p>注意：right &gt; left;   lower &gt; upper;</p>
-<p>剪切后图片长宽： width = right - left;   height = lower - upper;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">frame = (<span class="number">1632</span>, <span class="number">0</span>, <span class="number">3264</span>, <span class="number">1224</span>) <span class="comment"># 图片四分之一右上角部分</span></span><br><span class="line">crop_img = Image.open(<span class="string">'pic.JPG'</span>).crop(frame)</span><br><span class="line">crop_img.save(<span class="string">'/Users/zhangzhao/PycharmProjects/pillow_demo/crop.jpg'</span>)</span><br><span class="line"><span class="comment">#crop_img.show()</span></span><br><span class="line">print(crop_img.size)    <span class="comment"># (1632, 1224)</span></span><br></pre></td></tr></table></figure>
-<h4 id="几何转换"><a href="#几何转换" class="headerlink" title="几何转换"></a>几何转换</h4><p>尺寸转换</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">resize_out = crop_img.resize((<span class="number">200</span>, <span class="number">200</span>))</span><br><span class="line"><span class="comment">#resize_out.show()</span></span><br></pre></td></tr></table></figure>
-<p>角度转换</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rotate_out = crop_img.rotate(<span class="number">45</span>)    <span class="comment"># 逆时针 45</span></span><br><span class="line"><span class="comment">#rotate_out.show()</span></span><br></pre></td></tr></table></figure>
-<h4 id="模式转换"><a href="#模式转换" class="headerlink" title="模式转换"></a>模式转换</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">change_mode = resize_out.convert(<span class="string">'L'</span>)</span><br><span class="line">print(resize_out.mode)  <span class="comment"># RGB</span></span><br><span class="line">print(change_mode.mode) <span class="comment"># L</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://www.cnblogs.com/wbin91/p/3971079.html" target="_blank" rel="external">http://www.cnblogs.com/wbin91/p/3971079.html</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/03/02/【Python】Pillow图片处理库/" class="archive-article-date">
-  	<time datetime="2017-03-02T07:26:19.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-02</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/">PIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pillow/">Pillow</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【Python】简单应用-xlwt库" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/02/【Python】简单应用-xlwt库/">【Python】简单应用-xlwt库</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>获取成都教育网的学校信息，并将信息以Excel格式存储。</p>
-</blockquote>
-<p><a href="https://github.com/zhangzhaopds/chengdujiaoyu.git" target="_blank" rel="external">项目地址 https://github.com/zhangzhaopds/chengdujiaoyu.git</a></p>
-<p>安装 <code>xlwt</code> 库，它可以用来处理 Excel 97/2000/XP/2003 的xls文件。</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/pythonexcel.png" alt=""></p>
-<p>导入相关类库：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> xlwt</span><br></pre></td></tr></table></figure>
-<p>获取页面数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">schs = []</span><br><span class="line"><span class="keyword">for</span> page <span class="keyword">in</span> range(<span class="number">107</span>):</span><br><span class="line">    <span class="comment"># 页面请求</span></span><br><span class="line">    url = <span class="string">'http://infomap.cdedu.gov.cn/Home/Index?all=2'</span></span><br><span class="line">    req = requests.get(url)</span><br><span class="line">    <span class="comment"># 页面处理</span></span><br><span class="line">    soup = BeautifulSoup(req.content, <span class="string">"html.parser"</span>)</span><br><span class="line">    schools = soup.find_all(class_=<span class="string">'index_ul01'</span>)</span><br><span class="line">    <span class="keyword">for</span> school <span class="keyword">in</span> schools:</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> school:</span><br><span class="line">            schs.append(item)</span><br></pre></td></tr></table></figure>
-<p>学校数据信息的处理：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 学校信息</span></span><br><span class="line">sch_infos = []</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> schs:</span><br><span class="line">    <span class="comment"># 学校名</span></span><br><span class="line">    title = <span class="string">'【学校】'</span> + item.a.h1.string</span><br><span class="line">    <span class="comment"># 学校信息</span></span><br><span class="line">    text_div = item.find_all(class_=<span class="string">'text_div'</span>)</span><br><span class="line">    <span class="keyword">for</span> ps <span class="keyword">in</span> text_div:</span><br><span class="line">        all_p = ps.find_all(<span class="string">'p'</span>)</span><br><span class="line">        item_info = []</span><br><span class="line">        item_info.append(title)</span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> all_p:</span><br><span class="line">            item_info.append(p.string)</span><br><span class="line">        sch_infos.append(item_info)</span><br><span class="line"></span><br><span class="line">sch_infos.insert(<span class="number">0</span>, [<span class="string">'【学校】学校'</span>, <span class="string">'【学段】学段'</span>, <span class="string">'【区域】区域'</span>, <span class="string">'【性质】性质'</span>, <span class="string">'【电话】电话'</span>, <span class="string">'【地址】地址'</span>, <span class="string">'【网站】网站'</span>, <span class="string">'【信息】信息'</span>])</span><br><span class="line">print(sch_infos)</span><br></pre></td></tr></table></figure>
-<p>Excel的处理：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建xlwt工作簿</span></span><br><span class="line">workbook = xlwt.Workbook()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加板块</span></span><br><span class="line">booksheet = workbook.add_sheet(<span class="string">'学校信息'</span>, cell_overwrite_ok=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">for</span> i,row <span class="keyword">in</span> enumerate(sch_infos):</span><br><span class="line">    <span class="keyword">for</span> j,col <span class="keyword">in</span> enumerate(row):</span><br><span class="line">        <span class="keyword">if</span> col != <span class="keyword">None</span>:</span><br><span class="line">            <span class="comment"># 添加数据</span></span><br><span class="line">            booksheet.write(i, j, col[<span class="number">4</span>:])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存到本地文件</span></span><br><span class="line">workbook.save(<span class="string">'schools.xls'</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/03/02/【Python】简单应用-xlwt库/" class="archive-article-date">
-  	<time datetime="2017-03-02T02:22:03.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-02</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/excel/">excel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xlwt/">xlwt</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【Python】简单应用-糗事百科" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/27/【Python】简单应用-糗事百科/">【Python】简单应用-糗事百科</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>一个抓取糗事百科内容的小程序。</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 糗事百科</span></span><br><span class="line"><span class="keyword">from</span> pip._vendor.distlib.compat <span class="keyword">import</span> raw_input</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Qiu</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取界面数据</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getPage</span><span class="params">(self)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 页面</span></span><br><span class="line">        input = raw_input(<span class="string">'输入要获取内容的页面：'</span>)</span><br><span class="line">        myUrl = <span class="string">'http://m.qiushibaike.com/hot/page/'</span> + input</span><br><span class="line">        headers = &#123;<span class="string">'User-Agent'</span>: <span class="string">'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'</span>&#125;</span><br><span class="line">        req = requests.get(myUrl, headers=headers)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 转换成BeautifulSoup对象</span></span><br><span class="line">        soup = BeautifulSoup(req.text, <span class="string">"html.parser"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 筛选出所有 class='content' 的标签，用 class_ 来替代 class</span></span><br><span class="line">        items = soup.find_all(class_=<span class="string">'content'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">            sss = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 利用stripped_strings去除空格和换行</span></span><br><span class="line">            <span class="keyword">for</span> str <span class="keyword">in</span> item.span.stripped_strings:</span><br><span class="line">                sss = sss + str</span><br><span class="line">            print(sss + <span class="string">'\n'</span>)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 非 q键 读取下一条内容</span></span><br><span class="line">            inputContent = raw_input()</span><br><span class="line">            <span class="keyword">if</span> inputContent == <span class="string">'q'</span>: <span class="comment"># 退出程序</span></span><br><span class="line">                print(<span class="string">'退出当前页面'</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        inputContent = raw_input(<span class="string">'输入任意键结束程序；输入 n 重新运行：'</span>)</span><br><span class="line">        <span class="keyword">if</span> inputContent == <span class="string">'n'</span>:</span><br><span class="line">            self.getPage()</span><br><span class="line">        print(<span class="string">'-----程序已经退出------'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序入口</span></span><br><span class="line">qiu = Qiu()</span><br><span class="line">qiu.getPage()</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/02/27/【Python】简单应用-糗事百科/" class="archive-article-date">
-  	<time datetime="2017-02-27T07:39:31.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-27</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/糗事百科/">糗事百科</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【Python】简单应用-刷博客访问量" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/【Python】简单应用-刷博客访问量/">【Python】简单应用—网站压力测试</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>利用随机生成的请求header，对同一地址进行假身份访问；</p>
-</blockquote>
-<p><a href="https://github.com/zhangzhaopds/request_demo" target="_blank" rel="external">代码地址：https://github.com/zhangzhaopds/request_demo</a></p>
-<h5 id="randomHeader-py"><a href="#randomHeader-py" class="headerlink" title="randomHeader.py"></a>randomHeader.py</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">randHeader</span><span class="params">()</span>:</span></span><br><span class="line">    head_connection = [<span class="string">'Keep-Alive'</span>, <span class="string">'close'</span>]</span><br><span class="line">    head_accept = [<span class="string">'text/html, application/xhtml+xml, */*'</span>]</span><br><span class="line">    head_accept_language = [<span class="string">'zh-CN,fr-FR;q=0.5'</span>, <span class="string">'en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3'</span>]</span><br><span class="line">    head_user_agent = [<span class="string">'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; rv:11.0) like Gecko)'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (Windows; U; Windows NT 5.2) Gecko/2008070208 Firefox/3.0.1'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (Windows; U; Windows NT 5.1) Gecko/20070309 Firefox/2.0.0.3'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (Windows; U; Windows NT 5.1) Gecko/20070803 Firefox/1.5.0.12'</span>,</span><br><span class="line">                       <span class="string">'Opera/9.27 (Windows NT 5.2; U; zh-cn)'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (Macintosh; PPC Mac OS X; U; en) Opera 8.0'</span>,</span><br><span class="line">                       <span class="string">'Opera/8.0 (Macintosh; PPC Mac OS X; U; en)'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.12) Gecko/20080219 Firefox/2.0.0.12 Navigator/9.0.0.6'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Win64; x64; Trident/4.0)'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; .NET4.0C; .NET4.0E)'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Maxthon/4.0.6.2000 Chrome/26.0.1410.43 Safari/537.1 '</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2; .NET4.0C; .NET4.0E; QQBrowser/7.3.9825.400)'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:21.0) Gecko/20100101 Firefox/21.0 '</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.92 Safari/537.1 LBBROWSER'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0; BIDUBrowser 2.x)'</span>,</span><br><span class="line">                       <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.11 TaoBrowser/3.0 Safari/536.11'</span>]</span><br><span class="line"></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">'Connection'</span>: head_connection[<span class="number">0</span>],</span><br><span class="line">        <span class="string">'Accept'</span>: head_accept[<span class="number">0</span>],</span><br><span class="line">        <span class="string">'Accept-Language'</span>: head_accept_language[<span class="number">1</span>],</span><br><span class="line">        <span class="string">'User-Agent'</span>: head_user_agent[random.randrange(<span class="number">0</span>, len(head_user_agent))]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> header</span><br></pre></td></tr></table></figure>
-<h5 id="request-py"><a href="#request-py" class="headerlink" title="request.py"></a>request.py</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> randomHeader</span><br><span class="line"></span><br><span class="line">print(randomHeader.randHeader())</span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">'viewmode'</span>: <span class="string">'contents'</span>&#125;</span><br><span class="line">headers = &#123;<span class="string">'content-type'</span>: <span class="string">'application/json'</span>,</span><br><span class="line">           <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:22.0) Gecko/20100101 Firefox/22.0'</span>&#125;</span><br><span class="line">req = requests.get(<span class="string">"http://blog.csdn.net/zz110731"</span>, params=data, headers=headers)</span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(req.text)</span><br><span class="line"></span><br><span class="line">articles = soup.find_all(class_=<span class="string">'link_title'</span>)</span><br><span class="line"></span><br><span class="line">k = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> k &lt; <span class="number">100</span>:</span><br><span class="line">    m = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> article <span class="keyword">in</span> articles:</span><br><span class="line">        link = <span class="string">'http://blog.csdn.net'</span> + article.a[<span class="string">'href'</span>]</span><br><span class="line">        <span class="comment"># print(link)</span></span><br><span class="line">        head = randomHeader.randHeader()</span><br><span class="line">        qq = requests.get(link, headers=head)</span><br><span class="line">        <span class="comment"># print(head)</span></span><br><span class="line">        m = m + <span class="number">1</span></span><br><span class="line">        print(m)</span><br><span class="line">        print(qq)</span><br><span class="line">    k  = k + <span class="number">1</span></span><br><span class="line">    print(<span class="string">"第&#123;0&#125;次，请求完毕"</span>.format(k))</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/02/24/【Python】简单应用-刷博客访问量/" class="archive-article-date">
-  	<time datetime="2017-02-24T08:45:28.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-24</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随机Header/">随机Header</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【Python】BeautifulSoup使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/【Python】BeautifulSoup使用/">【Python】BeautifulSoup基本使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>BeautifulSoup是Python中用来解析HTML、XML等文档的强大工具。</p>
-</blockquote>
-<p>Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: Tag , NavigableString , BeautifulSoup , Comment。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">html_doc = <span class="string">"""</span><br><span class="line">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p class="title"&gt;&lt;b&gt;这个是b标签&lt;/b&gt;&lt;/p&gt;</span><br><span class="line">&lt;p class="story"&gt;Once upon a time there were three little sisters; and their names were</span><br><span class="line">&lt;a href="http://example.com/elsie" class="sister" id="link1"&gt;Elsie&lt;/a&gt;,</span><br><span class="line">&lt;a href="http://example.com/lacie" class="sister" id="link2"&gt;Lacie&lt;/a&gt; and</span><br><span class="line">&lt;a href="http://example.com/tillie" class="sister" id="link3"&gt;Tillie&lt;/a&gt;;</span><br><span class="line">and they lived at the bottom of a well.&lt;/p&gt;</span><br><span class="line">&lt;p class="story"&gt;...&lt;/p&gt;</span><br><span class="line">"""</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soup = <span class="function"><span class="title">BeautifulSoup</span><span class="params">(html_doc)</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="1、Tag标签对象"><a href="#1、Tag标签对象" class="headerlink" title="1、Tag标签对象"></a>1、Tag标签对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tag = soup.p</span><br><span class="line">print(type(tag))        <span class="comment"># &lt;class 'bs4.element.Tag'&gt;</span></span><br></pre></td></tr></table></figure>
-<p>标签的属性可以被添加,删除或修改，操作如字典</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tag[<span class="string">'class'</span>] = <span class="string">"very"</span>   <span class="comment"># 修改属性值</span></span><br><span class="line">tag[<span class="string">'id'</span>] = <span class="number">1</span>           <span class="comment"># 添加id属性</span></span><br><span class="line">print(tag)              <span class="comment"># &lt;p class="verybold" id="1"&gt;&lt;b&gt;你好&lt;/b&gt;&lt;/p&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> tag[<span class="string">'id'</span>]           <span class="comment"># 删除id属性</span></span><br><span class="line">print(tag)              <span class="comment"># &lt;p class="very"&gt;&lt;b&gt;你好&lt;/b&gt;&lt;/p&gt;</span></span><br></pre></td></tr></table></figure>
-<p>多值属性 返回list类型数据</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">css_soup = BeautifulSoup(<span class="string">'&lt;p class="body strikeout"&gt;&lt;/p&gt;'</span>)</span><br><span class="line">print(css_soup.p[<span class="string">'class'</span>])      <span class="comment"># ['body', 'strikeout']</span></span><br></pre></td></tr></table></figure>
-<p>非多值属性 返回string</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n_css_soup = BeautifulSoup(<span class="string">'&lt;p id="body name"&gt;&lt;/p&gt;'</span>)</span><br><span class="line">print(n_css_soup.p[<span class="string">'id'</span>])       <span class="comment"># body name2、NavigableString：标签中的字符串</span></span><br></pre></td></tr></table></figure>
-<h4 id="2、NavigableString标签中的字符串"><a href="#2、NavigableString标签中的字符串" class="headerlink" title="2、NavigableString标签中的字符串"></a>2、NavigableString标签中的字符串</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(type(tag.string))         <span class="comment"># &lt;class 'bs4.element.NavigableString'&gt;</span></span><br><span class="line">print(tag.string)               <span class="comment"># 这个是b标签</span></span><br><span class="line">tag.string.replace_with(<span class="string">'you are beautiful'</span>)</span><br><span class="line">print(tag.string)               <span class="comment"># you are beautiful</span></span><br></pre></td></tr></table></figure>
-<h4 id="3、BeautifulSoup对象"><a href="#3、BeautifulSoup对象" class="headerlink" title="3、BeautifulSoup对象"></a>3、BeautifulSoup对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup))           <span class="comment"># &lt;class 'bs4.BeautifulSoup'&gt;</span></span><br><span class="line">print(soup.name)            <span class="comment"># [document]</span></span><br></pre></td></tr></table></figure>
-<h4 id="4、Comment注释及特殊字符串"><a href="#4、Comment注释及特殊字符串" class="headerlink" title="4、Comment注释及特殊字符串"></a>4、Comment注释及特殊字符串</h4><p>Comment 对象是一个特殊类型的 NavigableString 对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">markup = <span class="string">"&lt;b&gt;&lt;!--Hey, buddy. Want to buy a used parser?--&gt;&lt;/b&gt;"</span></span><br><span class="line">mark_soup = BeautifulSoup(markup)</span><br><span class="line">print(type(mark_soup.b.string))     <span class="comment"># &lt;class 'bs4.element.Comment'&gt;</span></span><br><span class="line">print(mark_soup.b.string)           <span class="comment"># Hey, buddy. Want to buy a used parser?</span></span><br><span class="line">print(mark_soup.b.prettify())       <span class="comment"># comment 也可以prettify()格式化输出</span></span><br><span class="line"><span class="comment">#&lt;b&gt;</span></span><br><span class="line"><span class="comment"># &lt;!--Hey, buddy. Want to buy a used parser?--&gt;</span></span><br><span class="line"><span class="comment">#&lt;/b&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="contents"><a href="#contents" class="headerlink" title="contents"></a>contents</h4><p>子节点以list形式输出</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(soup.head)                <span class="comment"># &lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line">print(soup.head.contents)       <span class="comment"># [&lt;title&gt;The Dormouse's story&lt;/title&gt;]</span></span><br><span class="line">print(soup.head.contents[<span class="number">0</span>])    <span class="comment"># &lt;title&gt;The Dormouse's story&lt;/title&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="children"><a href="#children" class="headerlink" title="children"></a>children</h4><p>子节点迭代器</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup.head.children))     <span class="comment"># &lt;class 'list_iterator'&gt;</span></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> soup.head.children:</span><br><span class="line">    print(child)</span><br></pre></td></tr></table></figure>
-<h4 id="descendants"><a href="#descendants" class="headerlink" title="descendants"></a>descendants</h4><p>子孙节点生成器 递归循环的列出子节点和子孙节点</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(type(soup.head.descendants))  <span class="comment"># &lt;class 'generator'&gt;</span></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> soup.head.descendants:</span><br><span class="line">    print(child)</span><br><span class="line">    <span class="comment"># &lt;title&gt;The Dormouse's story&lt;/title&gt;   子节点</span></span><br><span class="line">    <span class="comment"># The Dormouse's story                  孙节点</span></span><br></pre></td></tr></table></figure>
-<h4 id="strings"><a href="#strings" class="headerlink" title="strings"></a>strings</h4><p>标签中的字符串</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> str <span class="keyword">in</span> soup.strings:</span><br><span class="line">    print(repr(str))</span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># "The Dormouse's story"</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># 'you are beautiful'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># 'Once upon a time there were three little sisters; and their names were\n'</span></span><br><span class="line"><span class="comment"># 'Elsie'</span></span><br><span class="line"><span class="comment"># ',\n'</span></span><br><span class="line"><span class="comment"># 'Lacie'</span></span><br><span class="line"><span class="comment"># ' and\n'</span></span><br><span class="line"><span class="comment"># 'Tillie'</span></span><br><span class="line"><span class="comment"># ';\nand they lived at the bottom of a well.'</span></span><br><span class="line"><span class="comment"># '\n'</span></span><br><span class="line"><span class="comment"># '...'</span></span><br><span class="line"><span class="comment"># '\n</span></span><br></pre></td></tr></table></figure>
-<h4 id="stripped-strings"><a href="#stripped-strings" class="headerlink" title="stripped_strings"></a>stripped_strings</h4><p>去除空格空行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> str <span class="keyword">in</span> soup.stripped_strings:</span><br><span class="line">    print(repr(str))</span><br><span class="line"><span class="comment"># "The Dormouse's story"</span></span><br><span class="line"><span class="comment"># 'you are beautiful'</span></span><br><span class="line"><span class="comment"># 'Once upon a time there were three little sisters; and their names were'</span></span><br><span class="line"><span class="comment"># 'Elsie'</span></span><br><span class="line"><span class="comment"># ','</span></span><br><span class="line"><span class="comment"># 'Lacie'</span></span><br><span class="line"><span class="comment"># 'and'</span></span><br><span class="line"><span class="comment"># 'Tillie'</span></span><br><span class="line"><span class="comment"># ';\nand they lived at the bottom of a well.'</span></span><br><span class="line"><span class="comment"># '...'</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id7" target="_blank" rel="external">http://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id7</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/02/24/【Python】BeautifulSoup使用/" class="archive-article-date">
-  	<time datetime="2017-02-24T06:26:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-24</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-【Python】视频资源" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/【Python】视频资源/">【Python】视频资源</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>python3英文视频教程(全87集) <a href="http://pan.baidu.com/s/1dDnGBvV" target="_blank" rel="external">http://pan.baidu.com/s/1dDnGBvV</a> </p>
-<p>Python从入门到精通视频（全60集）链接：<a href="http://pan.baidu.com/s/1eQw2dd4" target="_blank" rel="external">http://pan.baidu.com/s/1eQw2dd4</a> 密码：9bdl </p>
-<p>Python学习手册视频教程(全44集) <a href="http://pan.baidu.com/s/1o64tpf8" target="_blank" rel="external">http://pan.baidu.com/s/1o64tpf8</a> </p>
-<p>零基础入门学习Python(全42集) 链接：<a href="http://pan.baidu.com/s/1qWNmdKo" target="_blank" rel="external">http://pan.baidu.com/s/1qWNmdKo</a> 密码：jrjy </p>
-<p>中谷python视频教程（全38集） <a href="http://pan.baidu.com/s/1o6LUn1o" target="_blank" rel="external">http://pan.baidu.com/s/1o6LUn1o</a> </p>
-<p>老男孩Python运维系统开发（全36集）链接：<a href="http://pan.baidu.com/s/1sjuJLEl" target="_blank" rel="external">http://pan.baidu.com/s/1sjuJLEl</a> 密码：kypb</p>
-<p>Let’s-python系列视频教程（全25集） <a href="http://pan.baidu.com/s/1dD4BAi1" target="_blank" rel="external">http://pan.baidu.com/s/1dD4BAi1</a> </p>
-<p>老男孩Python高级运维编程实战精品入门进阶（全27集） 链接：<a href="http://pan.baidu.com/s/1dDu2k61" target="_blank" rel="external">http://pan.baidu.com/s/1dDu2k61</a> 密码：q8s8 </p>
-<p>播布客python基础教程(全21集) <a href="http://pan.baidu.com/s/1o6p0krC" target="_blank" rel="external">http://pan.baidu.com/s/1o6p0krC</a> </p>
-<p>老男孩python运维视频教程（全15集）<a href="http://pan.baidu.com/s/1o6hYBqi" target="_blank" rel="external">http://pan.baidu.com/s/1o6hYBqi</a> </p>
-<p>基于python web框架(全13集) <a href="http://pan.baidu.com/s/1mgFSE60" target="_blank" rel="external">http://pan.baidu.com/s/1mgFSE60</a> </p>
-<p>Python.Django视频教程（全13集）<a href="http://pan.baidu.com/s/1mgC4RdY" target="_blank" rel="external">http://pan.baidu.com/s/1mgC4RdY</a> </p>
-<p>python基础教程视频(全13集) <a href="http://pan.baidu.com/s/1kTDmOy7" target="_blank" rel="external">http://pan.baidu.com/s/1kTDmOy7</a> </p>
-<p>老男孩python自动化运维视频教程（全9集）<a href="http://pan.baidu.com/s/1o6Fi9KI" target="_blank" rel="external">http://pan.baidu.com/s/1o6Fi9KI</a> </p>
-<p>Python视频专题讲座（全9集） <a href="http://pan.baidu.com/s/1bndBuAr" target="_blank" rel="external">http://pan.baidu.com/s/1bndBuAr</a> </p>
-<p>利用Python SOCKET多线程开发FTP软件（全6集）<a href="http://pan.baidu.com/s/1eQcPovo" target="_blank" rel="external">http://pan.baidu.com/s/1eQcPovo</a></p>
-</blockquote>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/02/24/【Python】视频资源/" class="archive-article-date">
-  	<time datetime="2017-02-24T03:44:55.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-24</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频资源/">视频资源</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Python/">Python</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ActiveMQ在Mac上的安装" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/03/ActiveMQ在Mac上的安装/">ActiveMQ在Mac上的安装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>简单记录一下ActiveMQ在Mac上的安装。</p>
-</blockquote>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/mqtttt.png" alt=""></p>
-<h4 id="具体指令"><a href="#具体指令" class="headerlink" title="具体指令"></a>具体指令</h4><p>使用的是brew</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install activemq		<span class="comment">// 此过程需要下载组件，速度依据网速</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activemq --version			<span class="comment">// 安装成功之后，可以查看一下版本进行检查</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activemq start				<span class="comment">// 启动</span></span><br></pre></td></tr></table></figure>
-<p>启动之后，可在浏览器中访问 <a href="http://localhost:8161/" target="_blank" rel="external">http://localhost:8161/</a></p>
-<h4 id="其他操作指令"><a href="#其他操作指令" class="headerlink" title="其他操作指令"></a>其他操作指令</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Tasks:</span><br><span class="line">    browse                   - Display selected messages in a specified destination.</span><br><span class="line">    bstat                    - Performs a predefined query that displays useful statistics regarding the specified broker</span><br><span class="line">    consumer                 - Receives messages from the broker</span><br><span class="line">    create                   - Creates a runnable broker instance in the specified path.</span><br><span class="line">    decrypt                  - Decrypts given text</span><br><span class="line">    dstat                    - Performs a predefined query that displays useful tabular statistics regarding the specified destination type</span><br><span class="line">    encrypt                  - Encrypts given text</span><br><span class="line">    export                   - Exports a stopped brokers data files to an archive file</span><br><span class="line">    list                     - Lists all available brokers in the specified JMX context</span><br><span class="line">    producer                 - Sends messages to the broker</span><br><span class="line">    purge                    - Delete selected destination's messages that matches the message selector</span><br><span class="line">    query                    - Display selected broker component's attributes and statistics.</span><br><span class="line">    start                    - Creates and starts a broker using a configuration file, or a broker URI.</span><br><span class="line">    stop                     - Stops a running broker specified by the broker name.</span><br><span class="line"></span><br><span class="line">Task Options (Options specific to each task):</span><br><span class="line">    --extdir &lt;dir&gt; - Add the jar files in the directory to the classpath.</span><br><span class="line">    --version - Display the version information.</span><br><span class="line">    -h,-?,--help - Display this help information. To display task specific help, use Main [task] -h,-?,--help</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2017/02/03/ActiveMQ在Mac上的安装/" class="archive-article-date">
-  	<time datetime="2017-02-03T02:00:18.000Z" itemprop="datePublished"><i class="icon-clock"></i>2017-02-03</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/MQTT/">MQTT</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
-  
-
-
-      </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2017 Mr Fox
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
-</footer>
-    </div>
-    <script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: false,
-		animate: true,
-		isHome: true,
-		isPost: false,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false,
-		root: "/",
-		innerArchive: false
-	}
-</script>
-
-<script src="/./main.js" type="text/javascript"></script>
-
-
-    
-<div class="tools-col">
-  <ul class="btn-wrap">
-    
-    
-    
-    
-  </ul>
-  <div class="tools-wrap">
-    
-
-    
-
-    
-
-    
-  </div>
-  
-</div>
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Jmsp's Tips</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/zhangzhaopds" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
         </div>
 
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
+        <!-- ============================ Header & Logo bar =========================== -->
 
-            <div class="pswp__top-bar">
 
-                <!--  Controls are self-explanatory. Order can be changed. -->
+      <!-- ============================ Hero Image =========================== -->
 
-                <div class="pswp__counter"></div>
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+                        
 
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
                     </div>
                 </div>
             </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
+            <!-- // .col-md-12 -->
         </div>
-
+        <div class="herofade beige-dk"></div>
     </div>
+</section>
 
-</div>
-  </div>
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+<!-- ============================ Content =========================== -->
+
+<section id="intro">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/05/03/【小程序】POST请求服务器接收不到参数/">【小程序】POST请求服务器接收不到参数</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-05-03T02:27:25.000Z" itemprop="datePublished">
+          2017-05-03
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+POST请求服务器接收不到参数的坑
+
+设置header如下
+1header: &#123; "Content-Type": "application/x-www-form-urlencoded" &#125;
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/05/03/【小程序】POST请求服务器接收不到参数/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/03/15/【ERROR】RestKit-objectRequestOpertationDidStart/">【ERROR】RestKit-'objectRequestOpertationDidStart:'</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-03-15T07:29:47.000Z" itemprop="datePublished">
+          2017-03-15
+      </time>
+    
+    
+    | 
+    <a href='/tags/RestKit/'>RestKit</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+RestKit使用时，执行[objectRequestOperation start]方法，在&#39;&#39;objectRequestOpertationDidStart:&#39;&#39;&#39;处报错。
+
+环境Xcode: 8.2.1
+RestKit: 0.27.0
+iOS: 8.0
+报错执行内容：
+1234567891011121314151617181920212223242526- (void)viewDidLoa
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/03/15/【ERROR】RestKit-objectRequestOpertationDidStart/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/03/10/【微信小程序】二维码生成与识别器/">【微信小程序】二维码生成与识别器</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-03-10T01:34:00.000Z" itemprop="datePublished">
+          2017-03-10
+      </time>
+    
+    
+    | 
+    <a href='/tags/二维码生成/'>二维码生成</a>,
+    
+    <a href='/tags/二维码识别/'>二维码识别</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+一个二维码生成与识别的很简单的微信小程序，主要是为了走一下小程序开发的整个流程。7号上午提交的审核，8号出结果，审核速度还可以，发布需要管理员手动发布。唯一令人烦的地方是，开发者的权限太低，除了编码，其他的操作都需要管理员扫描相应操作的二维码（前前后后将近10次）。
+
+二维码生成与识别器项目源码：https://github.com/zhangzhaopds/QrPay.git
+效果图：
+安装地址
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/03/10/【微信小程序】二维码生成与识别器/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/03/02/【Python】Pillow图片处理库/">【Python】Pillow图片处理库</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-03-02T07:26:19.000Z" itemprop="datePublished">
+          2017-03-02
+      </time>
+    
+    
+    | 
+    <a href='/tags/PIL/'>PIL</a>,
+    
+    <a href='/tags/Pillow/'>Pillow</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+Pillow是Python中的图片处理库，来自于PIL，使用时 import PIL;
+
+
+安装Python2中安装命令:
+1sudo pip install PIL
+Python3中安装命令:
+1sudo pip install Pillow
+创建12mg = Image.open('pic.JPG')print(img.size, img.mode)       # (3264, 2448) RGB
+缩略图1234size = (
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/03/02/【Python】Pillow图片处理库/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/03/02/【Python】简单应用-xlwt库/">【Python】简单应用-xlwt库</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-03-02T02:22:03.000Z" itemprop="datePublished">
+          2017-03-02
+      </time>
+    
+    
+    | 
+    <a href='/tags/excel/'>excel</a>,
+    
+    <a href='/tags/xlwt/'>xlwt</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+获取成都教育网的学校信息，并将信息以Excel格式存储。
+
+项目地址 https://github.com/zhangzhaopds/chengdujiaoyu.git
+安装 xlwt 库，它可以用来处理 Excel 97/2000/XP/2003 的xls文件。
+
+导入相关类库：
+123from bs4 import BeautifulSoupimport requestsimport xlwt
+获取页面数据：
+1234567891
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/03/02/【Python】简单应用-xlwt库/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/02/27/【Python】简单应用-糗事百科/">【Python】简单应用-糗事百科</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-02-27T07:39:31.000Z" itemprop="datePublished">
+          2017-02-27
+      </time>
+    
+    
+    | 
+    <a href='/tags/糗事百科/'>糗事百科</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+一个抓取糗事百科内容的小程序。
+
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647# 糗事百科from pip._vendor.distlib.compat import raw_inputfrom bs4 import BeautifulSoupimport requestsclass Qiu:    # 获取界
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/02/27/【Python】简单应用-糗事百科/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/02/24/【Python】简单应用-刷博客访问量/">【Python】简单应用—网站压力测试</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-02-24T08:45:28.000Z" itemprop="datePublished">
+          2017-02-24
+      </time>
+    
+    
+    | 
+    <a href='/tags/随机Header/'>随机Header</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+利用随机生成的请求header，对同一地址进行假身份访问；
+
+代码地址：https://github.com/zhangzhaopds/request_demo
+randomHeader.py123456789101112131415161718192021222324252627282930313233import randomdef randHeader():    head_connection = ['Keep-Alive',
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/02/24/【Python】简单应用-刷博客访问量/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/02/24/【Python】BeautifulSoup使用/">【Python】BeautifulSoup基本使用</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-02-24T06:26:55.000Z" itemprop="datePublished">
+          2017-02-24
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+BeautifulSoup是Python中用来解析HTML、XML等文档的强大工具。
+
+Beautiful Soup将复杂HTML文档转换成一个复杂的树形结构,每个节点都是Python对象,所有对象可以归纳为4种: Tag , NavigableString , BeautifulSoup , Comment。
+1234567891011html_doc = """&lt;html&gt;&lt;head&gt;&lt;title&g
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/02/24/【Python】BeautifulSoup使用/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/02/24/【Python】视频资源/">【Python】视频资源</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-02-24T03:44:55.000Z" itemprop="datePublished">
+          2017-02-24
+      </time>
+    
+    
+    | 
+    <a href='/tags/视频资源/'>视频资源</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+python3英文视频教程(全87集) http://pan.baidu.com/s/1dDnGBvV 
+Python从入门到精通视频（全60集）链接：http://pan.baidu.com/s/1eQw2dd4 密码：9bdl 
+Python学习手册视频教程(全44集) http://pan.baidu.com/s/1o64tpf8 
+零基础入门学习Python(全42集) 链接：http://pan.baidu.com/s/1q
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/02/24/【Python】视频资源/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2017/02/03/ActiveMQ在Mac上的安装/">ActiveMQ在Mac上的安装</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2017-02-03T02:00:18.000Z" itemprop="datePublished">
+          2017-02-03
+      </time>
+    
+    
+    | 
+    <a href='/tags/ActiveMQ/'>ActiveMQ</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+简单记录一下ActiveMQ在Mac上的安装。
+
+
+具体指令使用的是brew
+1brew install activemq		// 此过程需要下载组件，速度依据网速
+1activemq --version			// 安装成功之后，可以查看一下版本进行检查
+1activemq start				// 启动
+启动之后，可在浏览器中访问 http://localhost:8161/
+其他操作指令12345678910111213141516
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2017/02/03/ActiveMQ在Mac上的安装/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <nav class="pagination" role="pagination">
+          <a class="pull-left" href="/">← Newer Posts</a>
+          <a class="pull-right" href="/page/3/">Older Posts →</a>
+        </nav>
+    </div>
+</section>
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>Perseverance does pay off.</p>
+        </div>
+    </div>
+</section>
+<!-- ============================ END Content =========================== -->
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Mr Fox. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/zhangzhaopds" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
 </body>
 </html>

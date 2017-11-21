@@ -1,966 +1,762 @@
 <!DOCTYPE html>
-<html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Jmsp&#39;s Tips</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jmsp's Tips">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
-<meta property="og:site_name" content="Jmsp's Tips">
-<meta property="og:description">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jmsp's Tips">
-<meta name="twitter:description">
-  
-    <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/main.css" type="text/css">
-  
-<!-- baidu Analytics -->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?d400b2b9cf7d1a287b60931c6cbae186";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Jmsp's Tips">
+    <meta name="author" content="Mr Fox">
+    <meta name="description" content="" />
+    <meta name="keywords" content="iOS,Android,OC,Python,Swift,html5,开发者,程序猿,程序猿,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,html" />
 
-<!-- End baidu Analytics -->
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
 
+    <link rel="alternate" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
 
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
 </head>
 
-<body>
-  <div id="container">
-    <div class="left-col">
-      <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
-			
-		</a>
+<!--
+<body class="home-template">
+-->
+<body id="index" class="lightnav animsition">
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">Mr Fox</a></h1>
-		</hgroup>
+      <!-- ============================ Off-canvas navigation =========================== -->
 
-		
-
-		<nav class="header-menu">
-			<ul>
-			
-				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/archives">所有文章</a></li>
-	        
-				<li><a href="/categories/OC">OC</a></li>
-	        
-				<li><a href="/categories/Swift">Swift</a></li>
-	        
-				<li><a href="/categories/Android">Android</a></li>
-	        
-				<li><a href="/categories/Python">Python</a></li>
-	        
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-	        
-    		
-    			
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
             
-    			
-            
-    			
-            
-    			
-            
-		</nav>
-		<nav class="header-nav">
-			<div class="social">
-				
-					<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
-		        
-					<a class="rss" target="_blank" href="/#" title="rss">rss</a>
-		        
-					<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
-		        
-			</div>
-		</nav>
-	</header>		
-</div>
-
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"><i class="icon-list"></i></div>
-  		<h1 class="header-author js-mobile-header hide">Mr Fox</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				
-					<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
-				
-			</div>
-			<hgroup>
-			  <h1 class="header-author">Mr Fox</h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-					<li><a href="/categories/OC">OC</a></li>
-		        
-					<li><a href="/categories/Swift">Swift</a></li>
-		        
-					<li><a href="/categories/Android">Android</a></li>
-		        
-					<li><a href="/categories/Python">Python</a></li>
-		        
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/Cocoapods/" class="animsition-link">Cocoapods<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MQTT/" class="animsition-link">MQTT<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MacOS/" class="animsition-link">MacOS<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/OC/" class="animsition-link">OC<small>(23)</small></a></li>
+				    
+				    <li><a href="/categories/PHP/" class="animsition-link">PHP<small>(6)</small></a></li>
+				    
+				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(9)</small></a></li>
+				    
+				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/ReactNative/" class="animsition-link">ReactNative<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(22)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/npm/" class="animsition-link">npm<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/小程序/" class="animsition-link">小程序<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/工具/" class="animsition-link">工具<small>(5)</small></a></li>
+				    
+				    <li><a href="/categories/微信小程序/" class="animsition-link">微信小程序<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/逆向工程/" class="animsition-link">逆向工程<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/随笔/" class="animsition-link">随笔<small>(2)</small></a></li>
+				    
 				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
-			        
-						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
-			        
-						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-
-      <div class="body-wrap">
-        
-  
-    <article id="post-斗鱼" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/20/斗鱼/">斗鱼</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>逆向工程，高仿斗鱼直播，持续更新中。</p>
-</blockquote>
-<p><a href="https://github.com/zhangzhaopds/Douyu" target="_blank" rel="external">https://github.com/zhangzhaopds/Douyu</a></p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/douyu.PNG" alt=""></p>
-
-      
+        	</li>
+			
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
     </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/20/斗鱼/" class="archive-article-date">
-  	<time datetime="2016-12-20T06:56:10.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-20</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/斗鱼直播/">斗鱼直播</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高仿/">高仿</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-GPUImage图像处理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/07/GPUImage图像处理/">GPUImage图像处理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>GPUImage是Git上一个非常强大的图像处理框架，现有的滤镜将近200种，还可以自定义新的滤镜。</p>
-</blockquote>
-<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p>GPUImage <a href="https://github.com/BradLarson/GPUImage" target="_blank" rel="external">https://github.com/BradLarson/GPUImage</a></p>
-<p>简单Demo <a href="https://github.com/zhangzhaopds/GPUImage_Demo.git" target="_blank" rel="external">https://github.com/zhangzhaopds/GPUImage_Demo.git</a></p>
-<h4 id="滤镜效果图（部分）"><a href="#滤镜效果图（部分）" class="headerlink" title="滤镜效果图（部分）"></a>滤镜效果图（部分）</h4><h5 id="GPUImageZoomBlurFilter"><a href="#GPUImageZoomBlurFilter" class="headerlink" title="GPUImageZoomBlurFilter"></a>GPUImageZoomBlurFilter</h5><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/GPUImageZoomBlurFilter.PNG" alt=""></p>
-<h5 id="GPUImageNonMaximumSuppressionFilter"><a href="#GPUImageNonMaximumSuppressionFilter" class="headerlink" title="GPUImageNonMaximumSuppressionFilter"></a>GPUImageNonMaximumSuppressionFilter</h5><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/NonMaximumSuppressionFilter.PNG" alt=""></p>
-<h5 id="GPUImageSketchFilter"><a href="#GPUImageSketchFilter" class="headerlink" title="GPUImageSketchFilter"></a>GPUImageSketchFilter</h5><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/GPUImageSketchFilter.JPG" alt=""></p>
-<h5 id="GPUImageTransformFilter"><a href="#GPUImageTransformFilter" class="headerlink" title="GPUImageTransformFilter"></a>GPUImageTransformFilter</h5><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/GPUImageTransformFilter.PNG" alt=""></p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/IMG_0504.PNG" alt=""></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/07/GPUImage图像处理/" class="archive-article-date">
-  	<time datetime="2016-12-07T08:31:34.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-07</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GPUImage/">GPUImage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滤镜/">滤镜</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-直播弹幕BarrageRenderer" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/06/直播弹幕BarrageRenderer/">直播弹幕BarrageRenderer</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>一个封装的不错的弹幕框架 BarrageRenderer。</p>
-</blockquote>
-<p><a href="https://github.com/unash/BarrageRenderer" target="_blank" rel="external">https://github.com/unash/BarrageRenderer</a></p>
-<p><a href="https://github.com/zhangzhaopds/BarrageRenderer_demo.git" target="_blank" rel="external">https://github.com/zhangzhaopds/BarrageRenderer_demo.git</a></p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/20150701210800504.jpg" alt=""></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/06/直播弹幕BarrageRenderer/" class="archive-article-date">
-  	<time datetime="2016-12-06T07:29:28.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-06</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BarrageRenderer/">BarrageRenderer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/直播弹幕/">直播弹幕</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-IJKPlayer视频直播框架" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/05/IJKPlayer视频直播框架/">IJKPlayer视频直播框架</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="https://github.com/Bilibili/ijkplayer" target="_blank" rel="external">IJKPlayer</a>是B站的一个开源视频播放框架，基于<a href="https://zh.wikipedia.org/zh/FFmpeg" target="_blank" rel="external">FFMPEG</a>;</p>
-<p>集成的过程较为繁琐，记录一下。</p>
-</blockquote>
-<h4 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h4><p>按照官方教程一步一步来就行，官网链接<a href="https://github.com/Bilibili/ijkplayer" target="_blank" rel="external">https://github.com/Bilibili/ijkplayer</a></p>
-<p>这篇博客写得也很详细，<a href="http://www.jianshu.com/p/4f21af680c19" target="_blank" rel="external">http://www.jianshu.com/p/4f21af680c19</a></p>
-<p>这个我打包好的静态库，下载解压拖到工程、添加依赖库就能用：<a href="http://ohp8q40k9.bkt.clouddn.com/IJK.zip" target="_blank" rel="external">http://ohp8q40k9.bkt.clouddn.com/IJK.zip</a></p>
-<h5 id="iOS的集成主要有以下几步骤："><a href="#iOS的集成主要有以下几步骤：" class="headerlink" title="iOS的集成主要有以下几步骤："></a>iOS的集成主要有以下几步骤：</h5><ol>
-<li><p>在本地创建一个文件夹，在Terminal中，cd到文件夹，执行<code>git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-ios</code>；</p>
-</li>
-<li><p>继续执行<code>cd ijkplayer-ios</code>；</p>
-</li>
-<li><p>执行<code>git checkout -B latest k0.7.5</code>，开辟新的分支<code>latest</code>；</p>
-</li>
-<li><p>执行<code>./init-ios.sh</code>,这个过程较慢，因为要下载180MB左右的文件；</p>
-</li>
-<li><p><code>cd ios</code>;</p>
-</li>
-<li><p><code>./compile-ffmpeg.sh clean</code>；</p>
-</li>
-<li><p><code>./compile-ffmpeg.sh all</code>,这个过程也较慢；最终效果：</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk222.png" alt=""></p>
-</li>
-<li><p>打开工程<code>IJKMediaDemo</code>, 在plist中添加 Camera 和 Photo的系统应用权限；之后编译和运行应该都没问题。</p>
-</li>
-</ol>
-<h4 id="静态库的打包"><a href="#静态库的打包" class="headerlink" title="静态库的打包"></a>静态库的打包</h4><p>基于上面已经能够成功运行的工程，将IJKPlayer打包成方便使用的framework;</p>
-<ol>
-<li><p>选择 IJKMediaFramework — Edit Scheme — Run — Buid Configuration — Release;</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk02.png" alt=""></p>
-</li>
-<li><p>将 IJKMediaFramework 分别在模拟器和真机下编译 command + B;</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk01.png" alt=""></p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk03.png" alt=""></p>
-</li>
-<li><p>打开Products下的 IJKMediaFramework.framework, 可以看到Release-iphonesimulator和Release-iphoneos；</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk04.png" alt=""></p>
-</li>
-<li><p>将模拟器和真机的两个静态库合并；到文件夹/Build/Products，例如：<code>cd /Users/zhangzhao/Library/Developer/Xcode/DerivedData/IJKMediaDemo-bwancsljxxihfseajvayxkzkonhi/Build/Products</code></p>
-</li>
-<li><p>在Products下执行 <code>lipo -create Release-iphoneos/IJKMediaFramework.framework/IJKMediaFramework Release-iphonesimulator/IJKMediaFramework.framework/IJKMediaFramework -output IJKMediaFramework</code>合并；</p>
-</li>
-<li><p>之后执行copy操作，<code>cp IJKMediaFramework Release-iphoneos/IJKMediaFramework.framework/</code>;</p>
-</li>
-<li><p>静态库<code>iphoneos/IJKMediaFramework.framework</code>就是最终的结果。</p>
-</li>
-</ol>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ol>
-<li><p>添加IJKMediaFramework.framework到新建的项目中；</p>
-</li>
-<li><p>添加依赖</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijk5.png" alt=""></p>
-<p>编译的时候出现的以下的报错就是依赖库没添加全</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/ijkkk.png" alt=""></p>
-</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/05/IJKPlayer视频直播框架/" class="archive-article-date">
-  	<time datetime="2016-12-05T06:37:39.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-05</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IJKPlayer/">IJKPlayer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频直播框架/">视频直播框架</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-OCR-基于OpenCV、Tesseract的银行卡号识别" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/01/OCR-基于OpenCV、Tesseract的银行卡号识别/">OCR:基于OpenCV、Tesseract的银行卡号识别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>由于银行卡的卡面背景色彩千差万别，并且卡号的印制方式（平印、凸印）也不相同，所以这种识别方式的效果并不理想，可以说很差，暂时对平印的单一色彩的银行卡的识别效果还行；</p>
-<p>这种方式可以用来做身份证的识别，效果很好，因为身份证背景颜色浅，而且样式一致。</p>
-</blockquote>
-<h4 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h4><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/detector.png" alt=""></p>
-<h4 id="本文Demo"><a href="#本文Demo" class="headerlink" title="本文Demo"></a>本文Demo</h4><p><a href="https://github.com/zhangzhaopds/OCR_OpenCV_Tesseract_demo.git" target="_blank" rel="external">https://github.com/zhangzhaopds/OCR_OpenCV_Tesseract_demo.git</a></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>1、对预览图进行初步的手动裁剪，缩小OpenCV的处理范围；</p>
-<p>2、利用OpenCV对图片进行初步的处理，包括灰度化处理、二阈值处理、膨胀处理等；</p>
-<p>3、利用TesseractIOSOCR进行图片的文字识别；</p>
-<h4 id="主要实现"><a href="#主要实现" class="headerlink" title="主要实现"></a>主要实现</h4><p>依赖库：</p>
-<p><code>pod &#39;OpenCV&#39;, &#39;~&gt; 3.0.0&#39;</code><br><code>pod &#39;TesseractOCRiOS&#39;, &#39;~&gt; 4.0.0&#39;</code></p>
-<p>实现（代码中有解释）：</p>
-<h4 id="图片的剪裁、识别与结果处理"><a href="#图片的剪裁、识别与结果处理" class="headerlink" title="图片的剪裁、识别与结果处理:"></a>图片的剪裁、识别与结果处理:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 图片的剪裁、识别与结果处理</span></span><br><span class="line">- (<span class="keyword">void</span>)detecteCardWithImage:(UIImage *)cardImage compleate:(CompleteBlock)complete &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     相对于身份证来说，银行卡片的背景环境千差万别，有的卡片无需处理而有的则需要灰度值或二阈值重新处理，用一种方式处理千百种环境，结果可想而知；</span><br><span class="line">     这里的话就简单的，在图片的不同处理阶段进行多次的文字识别，最后在统一处理；</span><br><span class="line">     </span><br><span class="line">     第一次：卡号所在位置的图片截取之后，进行识别；</span><br><span class="line">     第二次：灰度值处理之后，进行识别；</span><br><span class="line">     第三次：二阈值处理之后，进行识别；</span><br><span class="line">     第四次：腐蚀化重新截图并灰度值处理之后，进行识别；</span><br><span class="line">     第五次：腐蚀化重新截图、灰度值并二阈值处理之后，进行识别；</span><br><span class="line">     */</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将卡号所在的大致位置在图片上截取出来，缩小OpenCV要识别的图片范围，认为的提高识别效率。</span></span><br><span class="line">    UIImage *corpImage = [self cropImageFromImage:cardImage];</span><br><span class="line">    <span class="keyword">if</span> (corpImage == nil) &#123;</span><br><span class="line">        complete(nil);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 识别结果的初步处理</span></span><br><span class="line">    __<span class="function">weak <span class="title">typeof</span><span class="params">(self)</span> weakSelf </span>= self;</span><br><span class="line">    self.myBlock = ^(NSString *res) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 信用卡16位，储蓄卡19位</span></span><br><span class="line">        <span class="keyword">if</span> (res.length &lt; <span class="number">16</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        NSString *result = [weakSelf findNumFromStr:res];</span><br><span class="line">        NSLog(@<span class="string">"🔥%@"</span>, result);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (result.length &lt; <span class="number">16</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        complete(result);</span><br><span class="line">    &#125;;</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 第一次识别：</span></span><br><span class="line">    [self tesseractDetectorWithImage: corpImage withComplete:^(NSString *result) &#123;</span><br><span class="line">        NSLog(@<span class="string">"第一次识别：%@"</span>, result);</span><br><span class="line">        weakSelf.myBlock(result);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 利用OpenCV，对截取出来的图片进一步处理,并进行类外四次的识别</span></span><br><span class="line">    [self opencvScanCard:corpImage];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因为识别的次数增多，所以结果的反馈较慢，可相应减少识别次数。</p>
-<h4 id="利用OpenCV对图片的进一步处理"><a href="#利用OpenCV对图片的进一步处理" class="headerlink" title="利用OpenCV对图片的进一步处理"></a>利用OpenCV对图片的进一步处理</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)opencvScanCard:(UIImage *)image &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 图片转换</span></span><br><span class="line">    cv::Mat resultImage;</span><br><span class="line">    UIImageToMat(image, resultImage);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 灰度处理（去除图片的色彩和光亮）</span></span><br><span class="line">    cvtColor(resultImage, resultImage, cv::COLOR_BGR2GRAY);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 第二次识别：</span></span><br><span class="line">    __<span class="function">weak <span class="title">typeof</span><span class="params">(self)</span> weakSelf </span>= self;</span><br><span class="line">    [self tesseractDetectorWithImage: MatToUIImage(resultImage) withComplete:^(NSString *result) &#123;</span><br><span class="line">        NSLog(@<span class="string">"第二次识别：%@"</span>, result);</span><br><span class="line">        weakSelf.myBlock(result);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 二阈值处理</span></span><br><span class="line">    cv::threshold(resultImage, resultImage, <span class="number">100</span>, <span class="number">255</span>, CV_THRESH_BINARY);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 第三次识别：</span></span><br><span class="line">    [self tesseractDetectorWithImage: MatToUIImage(resultImage) withComplete:^(NSString *result) &#123;</span><br><span class="line">        NSLog(@<span class="string">"第三次识别：%@"</span>, result);</span><br><span class="line">        weakSelf.myBlock(result);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 腐蚀：白色背景缩小，黑色扩大</span></span><br><span class="line">    cv::Mat erodeElement = getStructuringElement(cv::MORPH_RECT, cv::Size(<span class="number">25</span>,<span class="number">25</span>)); <span class="comment">//3535</span></span><br><span class="line">    cv::erode(resultImage, resultImage, erodeElement);</span><br><span class="line">    </span><br><span class="line">    UIImage *ccc = MatToUIImage(resultImage);</span><br><span class="line">    UIImageWriteToSavedPhotosAlbum(ccc, nil, nil, nil);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 轮廊检测</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point&gt;&gt; contours;</span><br><span class="line">    cv::findContours(resultImage, contours, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cvPoint(<span class="number">0</span>, <span class="number">0</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 取出卡号区域</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Rect&gt; rects;</span><br><span class="line">    cv::Rect numberRect = cv::Rect(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point&gt;&gt;::const_iterator itContours = contours.begin();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> ( ; itContours != contours.end(); ++itContours) &#123;</span><br><span class="line">        cv::Rect rect = cv::boundingRect(*itContours);</span><br><span class="line">        rects.push_back(rect);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (rect.width &gt; numberRect.width &amp;&amp; rect.width &gt; rect.height * <span class="number">5</span>) &#123;</span><br><span class="line">            numberRect = rect;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (numberRect.width == <span class="number">0</span> || numberRect.height == <span class="number">0</span>) &#123;</span><br><span class="line">        NSLog(@<span class="string">"定位失败"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 定位成功，重新截图</span></span><br><span class="line">    cv::Mat matImage;</span><br><span class="line">    UIImageToMat(image, matImage);</span><br><span class="line">    resultImage = matImage(numberRect);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 第二次灰度值处理</span></span><br><span class="line">    cvtColor(resultImage, resultImage, cv::COLOR_BGR2GRAY);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 第四次识别：</span></span><br><span class="line">    [self tesseractDetectorWithImage: MatToUIImage(resultImage) withComplete:^(NSString *result) &#123;</span><br><span class="line">        NSLog(@<span class="string">"第四次识别：%@"</span>, result);</span><br><span class="line">        weakSelf.myBlock(result);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 第二次二阈值处理</span></span><br><span class="line">    cv::threshold(resultImage, resultImage, <span class="number">100</span>, <span class="number">255</span>, CV_THRESH_BINARY);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 第五次识别：</span></span><br><span class="line">    [self tesseractDetectorWithImage: MatToUIImage(resultImage) withComplete:^(NSString *result) &#123;</span><br><span class="line">        NSLog(@<span class="string">"第五次识别：%@"</span>, result);</span><br><span class="line">        weakSelf.myBlock(result);</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Tesseract识别"><a href="#Tesseract识别" class="headerlink" title="Tesseract识别"></a>Tesseract识别</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Tesseract识别</span></span><br><span class="line">- (<span class="keyword">void</span>)tesseractDetectorWithImage:(UIImage *)img withComplete:(CompleteBlock)complete &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, <span class="number">0</span>), ^&#123;</span><br><span class="line">        G8Tesseract *tesseract = [[G8Tesseract alloc] initWithLanguage:@<span class="string">"eng"</span>];</span><br><span class="line">        tesseract.image = [img g8_blackAndWhite];</span><br><span class="line">        tesseract.image = img;</span><br><span class="line">        [tesseract recognize];</span><br><span class="line">        complete(tesseract.recognizedText);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="银行卡片的初次裁剪"><a href="#银行卡片的初次裁剪" class="headerlink" title="银行卡片的初次裁剪"></a>银行卡片的初次裁剪</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 裁剪银行卡号</span></span><br><span class="line">- (UIImage *)cropImageFromImage:(UIImage *)img &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> CGFloat cardWidth = <span class="number">400</span>;</span><br><span class="line">    <span class="keyword">static</span> CGFloat cardHeight = <span class="number">400</span>/<span class="number">1.59</span>;</span><br><span class="line">    </span><br><span class="line">    CGFloat h = img.size.height * <span class="number">500</span> / img.size.width;</span><br><span class="line">    UIGraphicsBeginImageContext(CGSizeMake(<span class="number">500</span>, h));</span><br><span class="line">    [img drawInRect:CGRectMake(<span class="number">0</span>, <span class="number">0</span>, <span class="number">500</span>, h)];</span><br><span class="line">    UIImage *scaleImg = UIGraphicsGetImageFromCurrentImageContext();</span><br><span class="line">    UIGraphicsEndImageContext();</span><br><span class="line">    </span><br><span class="line">    CGFloat y = (scaleImg.size.height - cardHeight) / <span class="number">2</span>;</span><br><span class="line">    </span><br><span class="line">    CGImageRef sourceImageRef = [scaleImg CGImage];</span><br><span class="line">    CGImageRef newImageRef = CGImageCreateWithImageInRect(sourceImageRef, CGRectMake(<span class="number">50</span>, y, cardWidth, cardHeight));</span><br><span class="line">    </span><br><span class="line">    CGImageRef resultImgRef = CGImageCreateWithImageInRect(newImageRef, CGRectMake(<span class="number">0</span>, <span class="number">130</span>, cardWidth, <span class="number">50</span>));</span><br><span class="line">    UIImage *mm = [UIImage imageWithCGImage:resultImgRef];</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        NSLog(@"%@", scaleImg);</span><br><span class="line">        NSLog(@"%@", [UIImage imageWithCGImage:newImageRef]);</span><br><span class="line">        NSLog(@"%@", mm);</span><br><span class="line">        UIImageWriteToSavedPhotosAlbum(scaleImg, nil, nil, nil);</span><br><span class="line">        UIImageWriteToSavedPhotosAlbum([UIImage imageWithCGImage:newImageRef], nil, nil, nil);</span><br><span class="line">        UIImageWriteToSavedPhotosAlbum(mm, nil, nil, nil);</span><br><span class="line">    &#125;)</span><br><span class="line">    */</span></span><br><span class="line">    <span class="keyword">return</span> mm;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)clickedDetecteBtn:(UIButton *)sender &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//【点击事件中调用图片识别，防止CPU飙升】</span></span><br><span class="line">    [[DetectorManager shareInstance] detecteCardWithImage:self.myImage compleate:^(NSString *result) &#123;</span><br><span class="line">        NSLog(@<span class="string">"识别结果：%@"</span>, result);</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><p><a href="http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html" target="_blank" rel="external">OpenCV教程-http://www.opencv.org.cn/opencvdoc/2.3.2/html/doc/tutorials/tutorials.html</a></p>
-<p><a href="https://github.com/garnele007/SwiftOCR.git" target="_blank" rel="external">SwiftOCR教程-https://github.com/garnele007/SwiftOCR.git</a></p>
-<p><a href="https://github.com/tesseract-ocr/tesseract.git" target="_blank" rel="external">Tesseract教程-https://github.com/tesseract-ocr/tesseract.git</a></p>
-<p><a href="http://www.jianshu.com/p/7462275f93ac" target="_blank" rel="external">http://www.jianshu.com/p/7462275f93ac</a></p>
-<p><a href="https://github.com/iosWellLin/OCR.git" target="_blank" rel="external">https://github.com/iosWellLin/OCR.git</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/01/OCR-基于OpenCV、Tesseract的银行卡号识别/" class="archive-article-date">
-  	<time datetime="2016-12-01T08:50:30.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-01</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OCR/">OCR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tesseract/">Tesseract</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS中基于CIDetector的人脸识别" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/28/iOS中基于CIDetector的人脸识别/">iOS中基于CIDetector的人脸识别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>CIDetector是iOS中自带的人脸识别框架，使用起来相对方便。</p>
-</blockquote>
-<h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/renlian.png" alt=""></p>
-<h4 id="本文Demo"><a href="#本文Demo" class="headerlink" title="本文Demo"></a>本文Demo</h4><p><a href="https://github.com/zhangzhaopds/CIDetector_demo.git" target="_blank" rel="external">https://github.com/zhangzhaopds/CIDetector_demo.git</a></p>
-<h4 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 人脸识别</span></span><br><span class="line">- (void)detectorFace &#123;</span><br><span class="line">    <span class="comment">// 上下文</span></span><br><span class="line">    <span class="type">CIContext</span> *content = [<span class="type">CIContext</span> contextWithOptions:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     1、识别精度 Detector Accuracy</span><br><span class="line">     </span><br><span class="line">        key: CIDetectorAccuracy</span><br><span class="line">        value: CIDetectorAccuracyLow    低精度识别速度快</span><br><span class="line">               CIDetectorAccuracyHigh   高精度识别速度慢</span><br><span class="line">     */</span></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     2、识别类型 Detector Types</span><br><span class="line">     </span><br><span class="line">        CIDetectorTypeFace      面部识别</span><br><span class="line">        CIDetectorTypeRectangle 矩形识别</span><br><span class="line">        CIDetectorTypeQRCode    条码识别</span><br><span class="line">        CIDetectorTypeText      文本识别</span><br><span class="line">     */</span></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     3、 具体特征 Feature Detection</span><br><span class="line">     </span><br><span class="line">        CIDetectorImageOrientation  图片方向</span><br><span class="line">        CIDetectorEyeBlink          识别眨眼（closed eyes）</span><br><span class="line">        CIDetectorSmile             笑脸</span><br><span class="line">        CIDetectorFocalLength       焦距</span><br><span class="line">        CIDetectorAspectRatio       矩形宽高比</span><br><span class="line">        CIDetectorReturnSubFeatures 是否检测子特征</span><br><span class="line">     */</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 配置识别质量</span></span><br><span class="line">    <span class="type">NSDictionary</span> *param = [<span class="type">NSDictionary</span> dictionaryWithObject:<span class="type">CIDetectorAccuracyHigh</span> forKey:<span class="type">CIDetectorAccuracy</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建人脸识别器</span></span><br><span class="line">    <span class="type">CIDetector</span> *detector = [<span class="type">CIDetector</span> detectorOfType:<span class="type">CIDetectorTypeFace</span> context:content options:param];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 识别图片</span></span><br><span class="line">    <span class="type">CIImage</span> *ciImg = [<span class="type">CIImage</span> imageWithCGImage:_myImageView.image.<span class="type">CGImage</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 识别特征: 这里添加了眨眼和微笑</span></span><br><span class="line">    <span class="comment">// CIDetectorSmile 眼部的识别效果很差，很难识别出来</span></span><br><span class="line">    <span class="type">NSDictionary</span> *featuresParam = @&#123;<span class="type">CIDetectorSmile</span>: [<span class="type">NSNumber</span> numberWithBool:<span class="literal">true</span>],</span><br><span class="line">                                    <span class="type">CIDetectorEyeBlink</span>: [<span class="type">NSNumber</span> numberWithBool:<span class="literal">true</span>]&#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取识别结果</span></span><br><span class="line">    <span class="type">NSArray</span> *resultArr = [detector featuresInImage:ciImg options:featuresParam];</span><br><span class="line">    </span><br><span class="line">    <span class="type">UIView</span> *resultView = [[<span class="type">UIView</span> alloc] initWithFrame:_myImageView.frame];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:resultView];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">CIFaceFeature</span> *feature <span class="keyword">in</span> resultArr) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">"微笑：%d"</span>, feature.hasSmile);</span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">"右眼：%d"</span>, feature.rightEyeClosed);</span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">"左眼：%d"</span>, feature.leftEyeClosed);</span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">"脸框：%d"</span>, feature.hasFaceAngle);</span><br><span class="line">        <span class="type">NSLog</span>(@<span class="string">"嘴：%d"</span>, feature.hasMouthPosition);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/** </span><br><span class="line">         关于feature中的position需要注意的是:</span><br><span class="line">            position是以所要识别图像的原始尺寸为标准；</span><br><span class="line">            因此，</span><br><span class="line">            如果装载图片的UIImageView的尺寸与图片原始尺寸不一样的话，会出现识别的位置有偏差。</span><br><span class="line">         */</span></span><br><span class="line">        <span class="type">UIView</span> *faceView = [[<span class="type">UIView</span> alloc] initWithFrame:feature.bounds];</span><br><span class="line">        faceView.layer.borderColor = [<span class="type">UIColor</span> redColor].<span class="type">CGColor</span>;</span><br><span class="line">        faceView.layer.borderWidth = <span class="number">1</span>;</span><br><span class="line">        [resultView addSubview:faceView];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 坐标系的转换</span></span><br><span class="line">        [resultView setTransform:<span class="type">CGAffineTransformMakeScale</span>(<span class="number">1</span>, -<span class="number">1</span>)];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 左眼</span></span><br><span class="line">        <span class="keyword">if</span> (feature.hasLeftEyePosition) &#123;</span><br><span class="line">            <span class="type">UIView</span> * leftEyeView = [[<span class="type">UIView</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">0</span>, <span class="number">30</span>, <span class="number">20</span>, <span class="number">20</span>)];</span><br><span class="line">            [leftEyeView setCenter:feature.leftEyePosition];</span><br><span class="line">            leftEyeView.layer.borderWidth = <span class="number">1</span>;</span><br><span class="line">            leftEyeView.layer.borderColor = [<span class="type">UIColor</span> greenColor].<span class="type">CGColor</span>;</span><br><span class="line">            [resultView addSubview:leftEyeView];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 右眼</span></span><br><span class="line">        <span class="keyword">if</span> (feature.hasRightEyePosition) &#123;</span><br><span class="line">            <span class="type">UIView</span> * rightEyeView = [[<span class="type">UIView</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">20</span>, <span class="number">20</span>)];</span><br><span class="line">            [rightEyeView setCenter:feature.rightEyePosition];</span><br><span class="line">            rightEyeView.layer.borderWidth = <span class="number">1</span>;</span><br><span class="line">            rightEyeView.layer.borderColor = [<span class="type">UIColor</span> redColor].<span class="type">CGColor</span>;</span><br><span class="line">            [resultView addSubview:rightEyeView];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 嘴部</span></span><br><span class="line">        <span class="keyword">if</span> (feature.hasMouthPosition) &#123;</span><br><span class="line">            <span class="type">UIView</span> * mouthView = [[<span class="type">UIView</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">30</span>, <span class="number">30</span>)];</span><br><span class="line">            [mouthView setCenter:feature.mouthPosition];</span><br><span class="line">            mouthView.layer.borderWidth = <span class="number">1</span>;</span><br><span class="line">            mouthView.layer.borderColor = [<span class="type">UIColor</span> redColor].<span class="type">CGColor</span>;</span><br><span class="line">            [resultView addSubview:mouthView];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/28/iOS中基于CIDetector的人脸识别/" class="archive-article-date">
-  	<time datetime="2016-11-28T06:10:07.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-28</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CIDetector/">CIDetector</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人脸识别/">人脸识别</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS中基于OpenCV的人脸识别" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/28/iOS中基于OpenCV的人脸识别/">iOS中基于OpenCV的人脸识别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>OpenCV 是一个开源的计算机视觉和机器学习库。</p>
-<p>与iOS系统自带的识别库一样，对于侧脸的识别很无力。简单记录一下。</p>
-</blockquote>
-<h3 id="相关参考"><a href="#相关参考" class="headerlink" title="相关参考"></a>相关参考</h3><p><a href="https://objccn.io/issue-21-9/" target="_blank" rel="external">https://objccn.io/issue-21-9/</a></p>
-<p><a href="http://www.jianshu.com/p/7a055b7eb14c" target="_blank" rel="external">http://www.jianshu.com/p/7a055b7eb14c</a></p>
-<h4 id="本文demo"><a href="#本文demo" class="headerlink" title="本文demo"></a>本文demo</h4><p><a href="https://github.com/zhangzhaopds/OpenCV_Demo.git" target="_blank" rel="external">https://github.com/zhangzhaopds/OpenCV_Demo.git</a></p>
-<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/IMG_0324.PNG" alt=""></p>
-<h3 id="部署与使用"><a href="#部署与使用" class="headerlink" title="部署与使用"></a>部署与使用</h3><p>CocoaPods</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &#39;OpenCV&#39;, &#39;~&#62; 3.0.0&#39;</span><br></pre></td></tr></table></figure>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">import</span> "OpenCVUtil.h"</span><br><span class="line"></span><br><span class="line">#<span class="keyword">import</span> &lt;opencv2/opencv.hpp&gt;</span><br><span class="line">#<span class="keyword">import</span> &lt;opencv2/imgproc/types_c.h&gt;</span><br><span class="line">#<span class="keyword">import</span> &lt;opencv2/imgcodecs/ios.h&gt;</span><br><span class="line"></span><br><span class="line">@implementation <span class="type">OpenCVUtil</span></span><br><span class="line"></span><br><span class="line">+ (<span class="type">UIImage</span> *)convertImage: (<span class="type">UIImage</span> *)image &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 初始化一个图片的二维矩阵cvImage</span></span><br><span class="line">    cv::<span class="type">Mat</span> cvImage;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将图片UIImage对象转为Mat对象</span></span><br><span class="line">    <span class="type">UIImageToMat</span>(image, cvImage);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (!cvImage.empty()) &#123;</span><br><span class="line">        cv::<span class="type">Mat</span> gray;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 进一步将图片转为灰度显示</span></span><br><span class="line">        cv::cvtColor(cvImage, gray, <span class="type">CV_RGB2GRAY</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 利用搞死滤镜去除边缘</span></span><br><span class="line">        cv::<span class="type">GaussianBlur</span>(gray, gray, cv::<span class="type">Size</span>(<span class="number">5</span>, <span class="number">5</span>), <span class="number">1.2</span>, <span class="number">1.2</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 计算画布</span></span><br><span class="line">        cv::<span class="type">Mat</span> edges;</span><br><span class="line">        cv::<span class="type">Canny</span>(gray, edges, <span class="number">0</span>, <span class="number">50</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 使用白色填充</span></span><br><span class="line">        cvImage.setTo(cv::<span class="type">Scalar</span>::all(<span class="number">225</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 修改边缘颜色</span></span><br><span class="line">        cvImage.setTo(cv::<span class="type">Scalar</span>(<span class="number">0</span>,<span class="number">128</span>,<span class="number">255</span>,<span class="number">255</span>),edges);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将Mat转换为UIImage</span></span><br><span class="line">        <span class="keyword">return</span> <span class="type">MatToUIImage</span>(cvImage);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="type">NSArray</span>*)facePointDetectForImage:(<span class="type">UIImage</span>*)image&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> cv::<span class="type">CascadeClassifier</span> faceDetector;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        <span class="comment">// 添加xml文件</span></span><br><span class="line">        <span class="type">NSString</span>* cascadePath = [[<span class="type">NSBundle</span> mainBundle]</span><br><span class="line">                                 pathForResource:@<span class="string">"haarcascade_frontalface_alt2"</span></span><br><span class="line">                                 ofType:@<span class="string">"xml"</span>];</span><br><span class="line">        faceDetector.load([cascadePath <span class="type">UTF8String</span>]);</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    cv::<span class="type">Mat</span> faceImage;</span><br><span class="line">    <span class="type">UIImageToMat</span>(image, faceImage);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 转为灰度</span></span><br><span class="line">    cv::<span class="type">Mat</span> gray;</span><br><span class="line">    cvtColor(faceImage, gray, <span class="type">CV_BGR2GRAY</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 检测人脸并储存</span></span><br><span class="line">    std::vector&lt;cv::<span class="type">Rect</span>&gt;faces;</span><br><span class="line">    faceDetector.detectMultiScale(gray, faces,<span class="number">1.1</span>,<span class="number">2</span>,<span class="type">CV_HAAR_FIND_BIGGEST_OBJECT</span>,cv::<span class="type">Size</span>(<span class="number">30</span>,<span class="number">30</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="type">NSMutableArray</span> *array = [<span class="type">NSMutableArray</span> array];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(unsigned int i= <span class="number">0</span>;i &lt; faces.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        const cv::<span class="type">Rect</span>&amp; face = faces[i];</span><br><span class="line">        float height = (float)faceImage.rows;</span><br><span class="line">        float width = (float)faceImage.cols;</span><br><span class="line">        <span class="type">CGRect</span> rect = <span class="type">CGRectMake</span>(face.x/width, face.y/height, face.width/width, face.height/height);</span><br><span class="line">        [array addObject:[<span class="type">NSNumber</span> valueWithCGRect:rect]];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [array copy];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="type">UIImage</span>*)faceDetectForImage:(<span class="type">UIImage</span>*)image &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> cv::<span class="type">CascadeClassifier</span> faceDetector;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="type">NSString</span>* cascadePath = [[<span class="type">NSBundle</span> mainBundle]</span><br><span class="line">                        pathForResource:@<span class="string">"haarcascade_frontalface_alt"</span></span><br><span class="line">                                 ofType:@<span class="string">"xml"</span>];</span><br><span class="line">        faceDetector.load([cascadePath <span class="type">UTF8String</span>]);</span><br><span class="line">    &#125;);</span><br><span class="line">  </span><br><span class="line">    cv::<span class="type">Mat</span> faceImage;</span><br><span class="line">    <span class="type">UIImageToMat</span>(image, faceImage);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 转为灰度</span></span><br><span class="line">    cv::<span class="type">Mat</span> gray;</span><br><span class="line">    cvtColor(faceImage, gray, <span class="type">CV_BGR2GRAY</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 检测人脸并储存</span></span><br><span class="line">    std::vector&lt;cv::<span class="type">Rect</span>&gt;faces;</span><br><span class="line">    faceDetector.detectMultiScale(gray, faces,<span class="number">1.1</span>,<span class="number">2</span>,<span class="number">0</span>,cv::<span class="type">Size</span>(<span class="number">30</span>,<span class="number">30</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 在每个人脸上画一个红色四方形</span></span><br><span class="line">    <span class="keyword">for</span>(unsigned int i= <span class="number">0</span>;i &lt; faces.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        const cv::<span class="type">Rect</span>&amp; face = faces[i];</span><br><span class="line">        cv::<span class="type">Point</span> tl(face.x,face.y);</span><br><span class="line">        cv::<span class="type">Point</span> br = tl + cv::<span class="type">Point</span>(face.width,face.height);</span><br><span class="line">        <span class="comment">// 四方形的画法</span></span><br><span class="line">        cv::<span class="type">Scalar</span> magenta = cv::<span class="type">Scalar</span>(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">        cv::rectangle(faceImage, tl, br, magenta, <span class="number">11</span>, <span class="number">8</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="type">MatToUIImage</span>(faceImage);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="type">UIImage</span>*)circleDetectForImage:(<span class="type">UIImage</span>*)image&#123;</span><br><span class="line">    cv::<span class="type">Mat</span> circleImage,src_gray;</span><br><span class="line">    <span class="type">UIImageToMat</span>(image, circleImage);</span><br><span class="line">    <span class="comment">/// Convert it to gray</span></span><br><span class="line">    cvtColor( circleImage, src_gray, <span class="type">CV_BGR2GRAY</span> );</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/// Reduce the noise so we avoid false circle detection</span></span><br><span class="line">    <span class="type">GaussianBlur</span>( src_gray, src_gray, cv::<span class="type">Size</span>(<span class="number">9</span>, <span class="number">9</span>), <span class="number">2</span>, <span class="number">2</span> );</span><br><span class="line">    </span><br><span class="line">    std::vector&lt;cv::<span class="type">Vec3f</span>&gt; circles;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/// Apply the Hough Transform to find the circles</span></span><br><span class="line">    <span class="type">HoughCircles</span>( src_gray, circles, <span class="type">CV_HOUGH_GRADIENT</span>, <span class="number">1</span>, src_gray.rows/<span class="number">8</span>, <span class="number">200</span>, <span class="number">100</span>, <span class="number">0</span>, <span class="number">0</span> );</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/// Draw the circles detected</span></span><br><span class="line">    <span class="keyword">for</span>( size_t i = <span class="number">0</span>; i &lt; circles.size(); i++ )</span><br><span class="line">    &#123;</span><br><span class="line">        cv::<span class="type">Point</span> center(cvRound(circles[i][<span class="number">0</span>]), cvRound(circles[i][<span class="number">1</span>]));</span><br><span class="line">        int radius = cvRound(circles[i][<span class="number">2</span>]);</span><br><span class="line">        <span class="comment">// circle center</span></span><br><span class="line">        circle( circleImage, center, <span class="number">3</span>, cv::<span class="type">Scalar</span>(<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>,<span class="number">255</span>), -<span class="number">1</span>, <span class="number">8</span>, <span class="number">0</span> );</span><br><span class="line">        <span class="comment">// circle outline</span></span><br><span class="line">        circle( circleImage, center, radius, cv::<span class="type">Scalar</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>,<span class="number">255</span>), <span class="number">3</span>, <span class="number">8</span>, <span class="number">0</span> );</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/// Show your results</span></span><br><span class="line">    <span class="keyword">return</span> <span class="type">MatToUIImage</span>(circleImage);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></span><br><span class="line">    </span><br><span class="line">    <span class="type">UIImage</span> *img = [<span class="type">UIImage</span> imageNamed:@<span class="string">"888.JPG"</span>];</span><br><span class="line">    _myImgView.image = img;</span><br><span class="line">    _detectImgView.image = [<span class="type">OpenCVUtil</span> faceDetectForImage:img];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/28/iOS中基于OpenCV的人脸识别/" class="archive-article-date">
-  	<time datetime="2016-11-28T01:45:27.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-28</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人脸识别/">人脸识别</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-RecyclerView中CardView的展开与叠起" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/23/RecyclerView中CardView的展开与叠起/">RecyclerView中CardView的展开与叠起</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>RecyclerView中CardView的展开与叠起效果。</p>
-</blockquote>
-<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/recyclerflex.png" alt=""></p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p><a href="https://github.com/zhangzhaopds/FlexbleCell.git" target="_blank" rel="external">本文DEMO https://github.com/zhangzhaopds/FlexbleCell.git</a></p>
-<p>主要代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">MyAdapter</span>.<span class="title">MyViewHolder</span>&gt; <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(MyViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MyViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        View cell = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_main_recyclerview, parent, <span class="keyword">false</span>);</span><br><span class="line">        MyViewHolder myViewHolder = <span class="keyword">new</span> MyViewHolder(cell);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 对每一个cell注册点击事件</span></span><br><span class="line">        cell.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 取消viewHolder的重用机制（很重要）</span></span><br><span class="line">        myViewHolder.setIsRecyclable(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> myViewHolder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyViewHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        MyViewHolder(View view) &#123;</span><br><span class="line">            <span class="keyword">super</span>(view);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> index;</span><br><span class="line">		<span class="comment">// 尽量用线性垂直布局来动态的添加视图</span></span><br><span class="line">        LinearLayout linearLayout = (LinearLayout)v.findViewById(R.id.cell_main_rootLayout);</span><br><span class="line">        View subView = LayoutInflater.from(v.getContext()).inflate(R.layout.cell_main_recyclerview_add, (ViewGroup)v, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 利用cell控件的Tag值来标记cell是否被点击过,因为已经将重用机制取消，cell退出当前界面时就会被销毁，Tag值也就不存在了。</span></span><br><span class="line">        <span class="comment">// 如果不取消重用，那么将会出现未曾点击就已经添加子视图的效果，再点击的时候会继续添加而不是收回。</span></span><br><span class="line">        <span class="keyword">if</span> (v.findViewById(R.id.cell_main_rootLayout).getTag() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            index = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            index = (<span class="keyword">int</span>)v.findViewById(R.id.cell_main_rootLayout).getTag();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// close状态: 添加视图</span></span><br><span class="line">        <span class="keyword">if</span> (index == <span class="number">1</span>) &#123;</span><br><span class="line">            linearLayout.addView(subView);</span><br><span class="line">            subView.setTag(<span class="number">1000</span>);</span><br><span class="line">            v.findViewById(R.id.cell_main_rootLayout).setTag(<span class="number">2</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// open状态： 移除视图</span></span><br><span class="line">            linearLayout.removeView(v.findViewWithTag(<span class="number">1000</span>));</span><br><span class="line">            v.findViewById(R.id.cell_main_rootLayout).setTag(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/23/RecyclerView中CardView的展开与叠起/" class="archive-article-date">
-  	<time datetime="2016-11-23T08:22:03.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-23</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CardView/">CardView</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/recyclerView/">recyclerView</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Android/">Android</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-依托AlertDialog实现的iOS风格的提醒框" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/18/依托AlertDialog实现的iOS风格的提醒框/">依托AlertDialog实现的iOS风格的提醒框</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>第一个Android项目基本做完了，整理一下笔记。个人实在是欣赏不动Android提醒框的审美风格，所以就自己简单封装个，方便今后使用。</p>
-</blockquote>
-<p>效果图：</p>
-<p><img src="http://7xoz39.com1.z0.glb.clouddn.com/alertdialog.png" alt=""></p>
-<h3 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h3><p>基本原理：</p>
-<p> 利用Android现有的提醒框AlertDialog，自定义内容视图。</p>
-<p>相关代码：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CustomAlertView<span class="class">.java</span> 是对提醒框的封装；</span><br><span class="line">view_alert<span class="class">.xml</span> 是自定义的内容视图；</span><br></pre></td></tr></table></figure>
-<p>文件view_alert.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">    <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span> <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">    <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">        <span class="attribute">android:layout_height</span>=<span class="value">"125dp"</span></span><br><span class="line">        <span class="attribute">android:orientation</span>=<span class="value">"vertical"</span></span><br><span class="line">        <span class="attribute">android:layout_centerInParent</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/alert_title"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"提示"</span></span><br><span class="line">            <span class="attribute">android:textAlignment</span>=<span class="value">"center"</span></span><br><span class="line">            <span class="attribute">android:textColor</span>=<span class="value">"@android:color/black"</span></span><br><span class="line">            <span class="attribute">android:gravity</span>=<span class="value">"bottom"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">TextView</span></span><br><span class="line">            <span class="attribute">android:id</span>=<span class="value">"@+id/alert_content"</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">            <span class="attribute">android:text</span>=<span class="value">"这个是提醒内容"</span></span><br><span class="line">            <span class="attribute">android:textAlignment</span>=<span class="value">"center"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">View</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"0.3dp"</span></span><br><span class="line">            <span class="attribute">android:background</span>=<span class="value">"#e5e5e5"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">LinearLayout</span></span><br><span class="line">            <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">            <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">            <span class="attribute">android:orientation</span>=<span class="value">"horizontal"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">Button</span></span><br><span class="line">                <span class="attribute">android:id</span>=<span class="value">"@+id/alert_leftBtn"</span></span><br><span class="line">                <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">                <span class="attribute">android:text</span>=<span class="value">"取消"</span></span><br><span class="line">                <span class="attribute">android:gravity</span>=<span class="value">"center"</span></span><br><span class="line">                <span class="attribute">android:textColor</span>=<span class="value">"@android:color/holo_blue_light"</span></span><br><span class="line">                <span class="attribute">android:background</span>=<span class="value">"@android:color/transparent"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">View</span></span><br><span class="line">                <span class="attribute">android:layout_width</span>=<span class="value">"0.3dp"</span></span><br><span class="line">                <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:background</span>=<span class="value">"#e5e5e5"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">Button</span></span><br><span class="line">                <span class="attribute">android:id</span>=<span class="value">"@+id/alert_rightBtn"</span></span><br><span class="line">                <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span></span><br><span class="line">                <span class="attribute">android:layout_weight</span>=<span class="value">"1"</span></span><br><span class="line">                <span class="attribute">android:text</span>=<span class="value">"确定"</span></span><br><span class="line">                <span class="attribute">android:gravity</span>=<span class="value">"center"</span></span><br><span class="line">                <span class="attribute">android:textColor</span>=<span class="value">"@android:color/holo_blue_light"</span></span><br><span class="line">                <span class="attribute">android:background</span>=<span class="value">"@android:color/transparent"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>文件CustomAlertView.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomAlertView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> TextView alertTitle;</span><br><span class="line">    <span class="keyword">private</span> TextView alertContent;</span><br><span class="line">    <span class="keyword">private</span> Button alertLeftBtn;</span><br><span class="line">    <span class="keyword">private</span> Button alertRightBtn;</span><br><span class="line">    <span class="keyword">private</span> Context mContent;</span><br><span class="line">    <span class="keyword">private</span> AlertDialog alertDialog;</span><br><span class="line">    <span class="keyword">private</span> View mView;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LeftButtonClickedListener leftButtonClickedListener;</span><br><span class="line">    <span class="keyword">public</span> RightButtonClickedListener rightButtonClickedListener;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomAlertView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">        mContent = context;</span><br><span class="line">        initView(mContent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomAlertView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">        mContent = context;</span><br><span class="line">        initView(mContent);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomAlertView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs, defStyleAttr);</span><br><span class="line">        mContent = context;</span><br><span class="line">        initView(mContent);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化视图</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        mView = LayoutInflater.from(mContent).inflate(R.layout.view_alert, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">        alertTitle = (TextView)mView.findViewById(R.id.alert_title);</span><br><span class="line">        alertContent = (TextView)mView.findViewById(R.id.alert_content);</span><br><span class="line">        alertLeftBtn = (Button)mView.findViewById(R.id.alert_leftBtn);</span><br><span class="line">        alertRightBtn = (Button)mView.findViewById(R.id.alert_rightBtn);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化AlertDialog</span></span><br><span class="line">        alertDialog = <span class="keyword">new</span> AlertDialog.Builder(mContent).create();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 监听</span></span><br><span class="line">        alertLeftBtn.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                leftButtonClickedListener.onClickedLeftButton(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        alertRightBtn.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                rightButtonClickedListener.onClickedRightButton(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 配置内容和标题</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">baseConfiguration</span><span class="params">(String title, String content)</span> </span>&#123;</span><br><span class="line">        alertTitle.setText(title);</span><br><span class="line">        alertContent.setText(content);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 弹出对话框</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showAlert</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 以AlertDialog为载体</span></span><br><span class="line">        alertDialog.setView(mView);</span><br><span class="line">        alertDialog.show();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置宽度，AlertDialog默认的宽度过于夸张。（可以不修改）</span></span><br><span class="line">        WindowManager windowManager = (WindowManager) getContext().getApplicationContext().getSystemService(Context.WINDOW_SERVICE);</span><br><span class="line">        Display display = windowManager.getDefaultDisplay();</span><br><span class="line">        WindowManager.LayoutParams layoutParams = alertDialog.getWindow().getAttributes();</span><br><span class="line">        layoutParams.width = (<span class="keyword">int</span>)(display.getWidth() * <span class="number">2</span> / <span class="number">3</span>);</span><br><span class="line">        alertDialog.getWindow().setAttributes(layoutParams);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取消对话框</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dismissAlert</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        alertDialog.dismiss();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">LeftButtonClickedListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onClickedLeftButton</span><span class="params">(View view)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RightButtonClickedListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onClickedRightButton</span><span class="params">(View view)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLeftButtonClickedListener</span><span class="params">(LeftButtonClickedListener leftButtonClickedListener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.leftButtonClickedListener = leftButtonClickedListener;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRightButtonClickedListener</span><span class="params">(RightButtonClickedListener rightButtonClickedListener)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.rightButtonClickedListener = rightButtonClickedListener;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在Activity中的调用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化</span></span><br><span class="line">        <span class="keyword">final</span> CustomAlertView customAlertView = <span class="keyword">new</span> CustomAlertView(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">        customAlertView.baseConfiguration(<span class="string">"提示"</span>, <span class="string">"今天是星期五吗"</span>);</span><br><span class="line"></span><br><span class="line">        Button showBtn = (Button)findViewById(R.id.main_show_btn);</span><br><span class="line">        showBtn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 显现</span></span><br><span class="line">                Log.i(TAG, <span class="string">"onClick: 显现"</span>);</span><br><span class="line">                customAlertView.showAlert();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        customAlertView.setLeftButtonClickedListener(<span class="keyword">new</span> CustomAlertView.LeftButtonClickedListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClickedLeftButton</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 取消</span></span><br><span class="line">                Log.i(TAG, <span class="string">"onClickedLeftButton: 取消"</span>);</span><br><span class="line">                customAlertView.dismissAlert();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        customAlertView.setRightButtonClickedListener(<span class="keyword">new</span> CustomAlertView.RightButtonClickedListener() &#123;</span><br><span class="line">            <span class="annotation">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClickedRightButton</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 确定</span></span><br><span class="line">                Log.i(TAG, <span class="string">"onClickedRightButton: 确定"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">/** 此处处理一些事物 **/</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// 取消</span></span><br><span class="line">                customAlertView.dismissAlert();</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/18/依托AlertDialog实现的iOS风格的提醒框/" class="archive-article-date">
-  	<time datetime="2016-11-18T07:40:28.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-18</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AlertDialog/">AlertDialog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/提醒框/">提醒框</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Android/">Android</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hexo主题yilia的头像无法显现" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/18/hexo主题yilia的头像无法显现/">hexo主题yilia的头像无法显现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>一直懒得整理博客，旧版的yilia主题的头像无法显现。</p>
-</blockquote>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>在路径 <code>yilia/layout/_partial/left-col.ejs</code> 下，打开 left-col.ejs;</p>
-<p>修改第6、8行的：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;img lazy-src=&#34;&#60;%=theme.avatar%&#62;&#34; class=&#34;js-avatar &#34;&#62;&#10;&#60;img src=&#34;&#60;%=theme.avatar%&#62;&#34; class=&#34;js-avatar &#34; style=&#34;width: 100%;height: 100%;opacity: 1;&#34;&#62;</span><br></pre></td></tr></table></figure>
-<p>为：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;img src=&#34;&#60;%=theme.avatar%&#62;&#34; class=&#34;js-avatar show&#34;&#62;&#10;&#60;img src=&#34;&#60;%=theme.avatar%&#62;&#34; class=&#34;js-avatar show&#34; style=&#34;width: 100%;height: 100%;opacity: 1;&#34;&#62;</span><br></pre></td></tr></table></figure>
-<p>最后重新部署就行了。</p>
-<p>最新的yilia主题没有这个问题。</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/18/hexo主题yilia的头像无法显现/" class="archive-article-date">
-  	<time datetime="2016-11-18T05:50:17.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-18</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yilia/">yilia</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
-    </nav>
-  
-
-
-      </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2017 Mr Fox
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
-</footer>
-    </div>
-    <script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: false,
-		animate: true,
-		isHome: true,
-		isPost: false,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false,
-		root: "/",
-		innerArchive: false
-	}
-</script>
-
-<script src="/./main.js" type="text/javascript"></script>
-
-
-    
-<div class="tools-col">
-  <ul class="btn-wrap">
-    
-    
-    
-    
-  </ul>
-  <div class="tools-wrap">
-    
-
-    
-
-    
-
-    
-  </div>
-  
-</div>
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Jmsp's Tips</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/zhangzhaopds" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
         </div>
 
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
+        <!-- ============================ Header & Logo bar =========================== -->
 
-            <div class="pswp__top-bar">
 
-                <!--  Controls are self-explanatory. Order can be changed. -->
+      <!-- ============================ Hero Image =========================== -->
 
-                <div class="pswp__counter"></div>
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+                        
 
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
                     </div>
                 </div>
             </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
+            <!-- // .col-md-12 -->
         </div>
-
+        <div class="herofade beige-dk"></div>
     </div>
+</section>
 
-</div>
-  </div>
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+<!-- ============================ Content =========================== -->
+
+<section id="intro">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/12/20/斗鱼/">斗鱼</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-12-20T06:56:10.000Z" itemprop="datePublished">
+          2016-12-20
+      </time>
+    
+    
+    | 
+    <a href='/tags/斗鱼直播/'>斗鱼直播</a>,
+    
+    <a href='/tags/高仿/'>高仿</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+逆向工程，高仿斗鱼直播，持续更新中。
+
+https://github.com/zhangzhaopds/Douyu
+
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/12/20/斗鱼/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/12/07/GPUImage图像处理/">GPUImage图像处理</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-12-07T08:31:34.000Z" itemprop="datePublished">
+          2016-12-07
+      </time>
+    
+    
+    | 
+    <a href='/tags/GPUImage/'>GPUImage</a>,
+    
+    <a href='/tags/滤镜/'>滤镜</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+GPUImage是Git上一个非常强大的图像处理框架，现有的滤镜将近200种，还可以自定义新的滤镜。
+
+链接GPUImage https://github.com/BradLarson/GPUImage
+简单Demo https://github.com/zhangzhaopds/GPUImage_Demo.git
+滤镜效果图（部分）GPUImageZoomBlurFilter
+GPUImageNonMaximumSuppressio
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/12/07/GPUImage图像处理/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/12/06/直播弹幕BarrageRenderer/">直播弹幕BarrageRenderer</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-12-06T07:29:28.000Z" itemprop="datePublished">
+          2016-12-06
+      </time>
+    
+    
+    | 
+    <a href='/tags/BarrageRenderer/'>BarrageRenderer</a>,
+    
+    <a href='/tags/直播弹幕/'>直播弹幕</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+一个封装的不错的弹幕框架 BarrageRenderer。
+
+https://github.com/unash/BarrageRenderer
+https://github.com/zhangzhaopds/BarrageRenderer_demo.git
+
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/12/06/直播弹幕BarrageRenderer/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/12/05/IJKPlayer视频直播框架/">IJKPlayer视频直播框架</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-12-05T06:37:39.000Z" itemprop="datePublished">
+          2016-12-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/IJKPlayer/'>IJKPlayer</a>,
+    
+    <a href='/tags/视频直播框架/'>视频直播框架</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+IJKPlayer是B站的一个开源视频播放框架，基于FFMPEG;
+集成的过程较为繁琐，记录一下。
+
+集成按照官方教程一步一步来就行，官网链接https://github.com/Bilibili/ijkplayer
+这篇博客写得也很详细，http://www.jianshu.com/p/4f21af680c19
+这个我打包好的静态库，下载解压拖到工程、添加依赖库就能用：http://ohp8q40k9.bkt.clouddn.com
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/12/05/IJKPlayer视频直播框架/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/12/01/OCR-基于OpenCV、Tesseract的银行卡号识别/">OCR:基于OpenCV、Tesseract的银行卡号识别</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-12-01T08:50:30.000Z" itemprop="datePublished">
+          2016-12-01
+      </time>
+    
+    
+    | 
+    <a href='/tags/OCR/'>OCR</a>,
+    
+    <a href='/tags/OpenCV/'>OpenCV</a>,
+    
+    <a href='/tags/Tesseract/'>Tesseract</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+由于银行卡的卡面背景色彩千差万别，并且卡号的印制方式（平印、凸印）也不相同，所以这种识别方式的效果并不理想，可以说很差，暂时对平印的单一色彩的银行卡的识别效果还行；
+这种方式可以用来做身份证的识别，效果很好，因为身份证背景颜色浅，而且样式一致。
+
+效果图：
+本文Demohttps://github.com/zhangzhaopds/OCR_OpenCV_Tesseract_demo.git
+思路1、对预览图进行初步的手动裁剪，缩小Op
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/12/01/OCR-基于OpenCV、Tesseract的银行卡号识别/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/11/28/iOS中基于CIDetector的人脸识别/">iOS中基于CIDetector的人脸识别</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-11-28T06:10:07.000Z" itemprop="datePublished">
+          2016-11-28
+      </time>
+    
+    
+    | 
+    <a href='/tags/CIDetector/'>CIDetector</a>,
+    
+    <a href='/tags/人脸识别/'>人脸识别</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+CIDetector是iOS中自带的人脸识别框架，使用起来相对方便。
+
+效果图
+本文Demohttps://github.com/zhangzhaopds/CIDetector_demo.git
+具体实现123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/11/28/iOS中基于CIDetector的人脸识别/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/11/28/iOS中基于OpenCV的人脸识别/">iOS中基于OpenCV的人脸识别</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-11-28T01:45:27.000Z" itemprop="datePublished">
+          2016-11-28
+      </time>
+    
+    
+    | 
+    <a href='/tags/OpenCV/'>OpenCV</a>,
+    
+    <a href='/tags/人脸识别/'>人脸识别</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+OpenCV 是一个开源的计算机视觉和机器学习库。
+与iOS系统自带的识别库一样，对于侧脸的识别很无力。简单记录一下。
+
+相关参考https://objccn.io/issue-21-9/
+http://www.jianshu.com/p/7a055b7eb14c
+本文demohttps://github.com/zhangzhaopds/OpenCV_Demo.git
+效果图
+部署与使用CocoaPods
+1pod &#39;Ope
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/11/28/iOS中基于OpenCV的人脸识别/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/11/23/RecyclerView中CardView的展开与叠起/">RecyclerView中CardView的展开与叠起</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-11-23T08:22:03.000Z" itemprop="datePublished">
+          2016-11-23
+      </time>
+    
+    
+    | 
+    <a href='/tags/CardView/'>CardView</a>,
+    
+    <a href='/tags/recyclerView/'>recyclerView</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+RecyclerView中CardView的展开与叠起效果。
+
+效果图
+实现本文DEMO https://github.com/zhangzhaopds/FlexbleCell.git
+主要代码
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061public c
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/11/23/RecyclerView中CardView的展开与叠起/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/11/18/依托AlertDialog实现的iOS风格的提醒框/">依托AlertDialog实现的iOS风格的提醒框</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-11-18T07:40:28.000Z" itemprop="datePublished">
+          2016-11-18
+      </time>
+    
+    
+    | 
+    <a href='/tags/AlertDialog/'>AlertDialog</a>,
+    
+    <a href='/tags/提醒框/'>提醒框</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+第一个Android项目基本做完了，整理一下笔记。个人实在是欣赏不动Android提醒框的审美风格，所以就自己简单封装个，方便今后使用。
+
+效果图：
+
+具体实现：基本原理：
+ 利用Android现有的提醒框AlertDialog，自定义内容视图。
+相关代码：
+12CustomAlertView.java 是对提醒框的封装；view_alert.xml 是自定义的内容视图；
+文件view_alert.xml
+12345678910111
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/11/18/依托AlertDialog实现的iOS风格的提醒框/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/11/18/hexo主题yilia的头像无法显现/">hexo主题yilia的头像无法显现</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-11-18T05:50:17.000Z" itemprop="datePublished">
+          2016-11-18
+      </time>
+    
+    
+    | 
+    <a href='/tags/hexo/'>hexo</a>,
+    
+    <a href='/tags/yilia/'>yilia</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+一直懒得整理博客，旧版的yilia主题的头像无法显现。
+
+解决方法在路径 yilia/layout/_partial/left-col.ejs 下，打开 left-col.ejs;
+修改第6、8行的：
+1&#60;img lazy-src=&#34;&#60;%=theme.avatar%&#62;&#34; class=&#34;js-avatar &#34;&#62;&#10;&#60;img src=&#34;&#60;%=th
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/11/18/hexo主题yilia的头像无法显现/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <nav class="pagination" role="pagination">
+          <a class="pull-left" href="/page/3/">← Newer Posts</a>
+          <a class="pull-right" href="/page/5/">Older Posts →</a>
+        </nav>
+    </div>
+</section>
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>Perseverance does pay off.</p>
+        </div>
+    </div>
+</section>
+<!-- ============================ END Content =========================== -->
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Mr Fox. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/zhangzhaopds" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
 </body>
 </html>

@@ -1,1459 +1,732 @@
 <!DOCTYPE html>
-<html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Jmsp&#39;s Tips</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jmsp's Tips">
-<meta property="og:url" content="http://yoursite.com/page/8/index.html">
-<meta property="og:site_name" content="Jmsp's Tips">
-<meta property="og:description">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jmsp's Tips">
-<meta name="twitter:description">
-  
-    <link rel="alternative" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/main.css" type="text/css">
-  
-<!-- baidu Analytics -->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?d400b2b9cf7d1a287b60931c6cbae186";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Jmsp's Tips">
+    <meta name="author" content="Mr Fox">
+    <meta name="description" content="" />
+    <meta name="keywords" content="iOS,Android,OC,Python,Swift,html5,开发者,程序猿,程序猿,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,html" />
 
-<!-- End baidu Analytics -->
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
 
+    <link rel="alternate" href="/atom.xml" title="Jmsp&#39;s Tips" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
 
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
 </head>
 
-<body>
-  <div id="container">
-    <div class="left-col">
-      <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
-			
-		</a>
+<!--
+<body class="home-template">
+-->
+<body id="index" class="lightnav animsition">
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">Mr Fox</a></h1>
-		</hgroup>
+      <!-- ============================ Off-canvas navigation =========================== -->
 
-		
-
-		<nav class="header-menu">
-			<ul>
-			
-				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/archives">所有文章</a></li>
-	        
-				<li><a href="/categories/OC">OC</a></li>
-	        
-				<li><a href="/categories/Swift">Swift</a></li>
-	        
-				<li><a href="/categories/Android">Android</a></li>
-	        
-				<li><a href="/categories/Python">Python</a></li>
-	        
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-	        
-    		
-    			
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
             
-    			
-            
-    			
-            
-    			
-            
-		</nav>
-		<nav class="header-nav">
-			<div class="social">
-				
-					<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
-		        
-					<a class="rss" target="_blank" href="/#" title="rss">rss</a>
-		        
-					<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
-		        
-			</div>
-		</nav>
-	</header>		
-</div>
-
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"><i class="icon-list"></i></div>
-  		<h1 class="header-author js-mobile-header hide">Mr Fox</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				
-					<img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_IMG_0412.png" class="js-avatar">
-				
-			</div>
-			<hgroup>
-			  <h1 class="header-author">Mr Fox</h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-					<li><a href="/categories/OC">OC</a></li>
-		        
-					<li><a href="/categories/Swift">Swift</a></li>
-		        
-					<li><a href="/categories/Android">Android</a></li>
-		        
-					<li><a href="/categories/Python">Python</a></li>
-		        
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/Android/" class="animsition-link">Android<small>(4)</small></a></li>
+				    
+				    <li><a href="/categories/Cocoapods/" class="animsition-link">Cocoapods<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MQTT/" class="animsition-link">MQTT<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MacOS/" class="animsition-link">MacOS<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/OC/" class="animsition-link">OC<small>(23)</small></a></li>
+				    
+				    <li><a href="/categories/PHP/" class="animsition-link">PHP<small>(6)</small></a></li>
+				    
+				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(9)</small></a></li>
+				    
+				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/ReactNative/" class="animsition-link">ReactNative<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Swift/" class="animsition-link">Swift<small>(22)</small></a></li>
+				    
+				    <li><a href="/categories/iOS/" class="animsition-link">iOS<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/npm/" class="animsition-link">npm<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/小程序/" class="animsition-link">小程序<small>(3)</small></a></li>
+				    
+				    <li><a href="/categories/工具/" class="animsition-link">工具<small>(5)</small></a></li>
+				    
+				    <li><a href="/categories/微信小程序/" class="animsition-link">微信小程序<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/逆向工程/" class="animsition-link">逆向工程<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/随笔/" class="animsition-link">随笔<small>(2)</small></a></li>
+				    
 				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/zhangzhaopds weibo: " title="github">github</a>
-			        
-						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
-			        
-						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-
-      <div class="body-wrap">
-        
-  
-    <article id="post-GCD-API-Main-Global-Dispatch-Queue" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/">GCD_API_Main/Global_Dispatch_Queue</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>获取系统标准提供的Dispatch Queue: Main Dispatch Queue 和 Global Dispatch Queue.</p>
-</blockquote>
-<h3 id="Main-Dispatch-Queue"><a href="#Main-Dispatch-Queue" class="headerlink" title="Main Dispatch Queue"></a>Main Dispatch Queue</h3><p>Main Dispatch Queue 正如其名称中含有的‘main’一样，是在主线程中执行Dispatch Queue。因为主线程只有一个，所以Main Dispatch Queue 自然就是 <code>Serial Dispatch Queue</code>。</p>
-<p>追加到 Main Dispatch Queue 的处理在主线程的<code>RunLoop</code>中执行。由于在主线程中执行，因此要将用户界面的界面更新等一些必须在主线程中执行的处理追加到 Main Dispatch Queue 使用。</p>
-<h3 id="Global-Dispatch-Queue"><a href="#Global-Dispatch-Queue" class="headerlink" title="Global Dispatch Queue"></a>Global Dispatch Queue</h3><p>Global Dispatch Queue 是所有的应用程序都能够使用的 <code>Concurrent Dispatch Queue</code>。 没有必要通过 dispatch_queue_create 函数逐个生成 Concurrent Dispatch Queue。 只要获取 Global Dispatch Queue 使用就行。</p>
-<h3 id="获取方法"><a href="#获取方法" class="headerlink" title="获取方法"></a>获取方法</h3><pre><code>// 获取 Main Dispatch Queue
-let mainDispatchQueue: dispatch_queue_t = dispatch_get_main_queue()
-
-// 获取 Global Dispatch Queue(高优先级)
-let globalDispatchQueueHigh: dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
-
-// 获取 Global Dispatch Queue(默认优先级)
-let globalDispatchQueueDefault = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-
-// 获取 Global Dispatch Queue(低优先级)
-let globalDispatchQueueLow = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
-
-// 获取 Global Dispatch Queue(后台优先级)
-let globalDispatchQueueBackground = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
-</code></pre><h3 id="常用例子"><a href="#常用例子" class="headerlink" title="常用例子"></a>常用例子</h3><pre><code>// 在默认优先级 Global Dispatch Queue 中执行 Block
-dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { 
-
-    // 可以并行执行的处理（如： 图片下载）
-
-    // 在 Main Dispatch Queue 中执行的 Block
-    dispatch_async(dispatch_get_main_queue(), { 
-
-        // 只能在主线程中执行的处理（如：将缓存在本地的图片呈现在界面中）
-
-    })
-}
-</code></pre>
-      
+        	</li>
+			
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
     </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/" class="archive-article-date">
-  	<time datetime="2016-04-04T03:21:17.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-04-04</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Global-Dispatch-Queue/">Global_Dispatch_Queue</a></li></ul>
-	</div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
 
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Jmsp's Tips</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/zhangzhaopds" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <div class="clearfix"></div>
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+                        
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
     </div>
-  </div>
-</article>
+</section>
 
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
 
+<!-- ============================ END Hero Image =========================== -->
+<!-- ============================ Content =========================== -->
 
-
-
-
-
-
-
-
-  
-    <article id="post-CGD-API-DispatchQueue" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+<section id="intro">
+    <div class="container">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/31/CGD-API-DispatchQueue/">GCD_API_DispatchQueue</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>关于 Dispatch Queue 和 Dispatch_queue_create 的介绍。</p>
-</blockquote>
-<h3 id="Dispatch-Queue"><a href="#Dispatch-Queue" class="headerlink" title="Dispatch Queue"></a>Dispatch Queue</h3><p>Dispatch Queue,字面意思就是执行处理的等待队列。将想要执行的任务，通过dispatch_async函数“追加”赋值在变量queue的“Dispatch Queue”中。放在dispatch_async函数的block里面的任务就可以在另个一线程中执行。</p>
-<pre><code>dispatch_async(queue) { 
-        // 想要执行的任务
-}
-</code></pre><p>Dispatch Queue 按照追加的顺序（先进先出FIFO）执行处理。</p>
-<p>Dispatch Queue 分为两种：Serial Dispatch Queue 和 Concurrent Dispatch Queue。</p>
-<h4 id="Serial-Dispatch-Queue"><a href="#Serial-Dispatch-Queue" class="headerlink" title="Serial Dispatch Queue"></a>Serial Dispatch Queue</h4><p>Serial Dispatch Queue 等待处理结束。简单的理解，比方说，Dispatch Queue中有多个任务，那么这几个任务只能使用同一个线程，按照这几个任务添加的顺序，逐个处理。</p>
-<p>优点：可以有效的避免数据多线程产生的数据竞争问题。因为一个Serial Dispatch Queue只能有一个线程。当然，如果你创建3000个这样的queue,就又会绕到多线程消耗大量内存的问题上来，会大幅度降低系统的响应性能。过犹不及。因此，Serial Dispatch Queue的生成个数应当仅限所必须的数量。</p>
-<h4 id="Concurrent-Dispatch-Queue"><a href="#Concurrent-Dispatch-Queue" class="headerlink" title="Concurrent Dispatch Queue"></a>Concurrent Dispatch Queue</h4><p>Concurrent Dispatch Queue 不等待处理。当在这种Dispatch Queue中有多个任务时，会有多个线程来处理这些任务。比方说，有3个线程A、B、C, 5个先后添加的任务a.b.c.d.e, 那么线程A就会处理任务a, 同时B处理b, C处理c; 如果线程B优先其他线程把任务处理完了，那么线程B就会去处理任务d; 下一个空余出来的线程就会去处理任务e, 直至任务都处理完成。</p>
-<h3 id="Dispatch-queue-create"><a href="#Dispatch-queue-create" class="headerlink" title="Dispatch_queue_create"></a>Dispatch_queue_create</h3><p>创建一个Dispatch_queue时会使用用到函数Dispatch_queue_create。</p>
-<pre><code>// 创建一个Serial Dispatch Queue
-    let mySerialQueue: dispatch_queue_t = dispatch_queue_create(&quot;com.SerialDispatchQueue&quot;, nil)
-
-// 创建一个Concurrent Dispatch Queue
-    let myConcurrentQueue: dispatch_queue_t = dispatch_queue_create(&quot;com.SerialDispatchQueue&quot;, DISPATCH_QUEUE_CONCURRENT)
-</code></pre><p>以上是创建这两种dispatch_queue的方法，区别在于第二个参数的设定，第一个参数是dispatch_queue的署名。</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/31/CGD-API-DispatchQueue/" class="archive-article-date">
-  	<time datetime="2016-03-31T10:35:06.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-31</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-GCD学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/">GCD_API_Main/Global_Dispatch_Queue</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-04-04T03:21:17.000Z" itemprop="datePublished">
+          2016-04-04
+      </time>
     
     
-      <header class="article-header">
+    | 
+    <a href='/tags/Global-Dispatch-Queue/'>Global_Dispatch_Queue</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+获取系统标准提供的Dispatch Queue: Main Dispatch Queue 和 Global Dispatch Queue.
+
+Main Dispatch QueueMain Dispatch Queue 正如其名称中含有的‘main’一样，是在主线程中执行Dispatch Queue。因为主线程只有一个，所以Main Dispatch Queue 自然就是 Serial Dispatch Queue。
+追加到 Main
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/04/04/GCD-API-Main-Global-Dispatch-Queue/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/30/GCD学习笔记/">GCD</a>
-    </h1>
-  
-
-      </header>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/03/31/CGD-API-DispatchQueue/">GCD_API_DispatchQueue</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-03-31T10:35:06.000Z" itemprop="datePublished">
+          2016-03-31
+      </time>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！</p>
-</blockquote>
-<h3 id="什么是GCD"><a href="#什么是GCD" class="headerlink" title="什么是GCD"></a>什么是GCD</h3><p>Grand Central Dispath(GCD),就是异步执行任务的一种技术。简单地说就是GCD提供了极为简单的方法，实现了极为复杂繁琐的多线程编程。</p>
-<pre><code>// 自定义一个线程
-let queue: dispatch_queue_t = dispatch_queue_create(&quot;myqueue&quot;, nil)
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+关于 Dispatch Queue 和 Dispatch_queue_create 的介绍。
 
-// 耗时的任务放到后台处理
+Dispatch QueueDispatch Queue,字面意思就是执行处理的等待队列。将想要执行的任务，通过dispatch_async函数“追加”赋值在变量queue的“Dispatch Queue”中。放在dispatch_async函数的block里面的任务就可以在另个一线程中执行。
 dispatch_async(queue) {
-    var num = Int()
-    for i in 1...900 {
-        num += i
-    }
-
-    // 在主线程中打印求和结果
-    dispatch_async(dispatch_get_main_queue(), { 
-        print(num)
-    })
-}
-</code></pre><p>以上就是一个很简单地GCD应用，开辟新的线程用来处理耗时的任务，在主线程中处理必要操作，比如UI的展示，网络请求结果的处理等。</p>
-<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>多线程说白了，就像工厂里面的流水线，每条流水线都有各自的任务，流水线之间原则上没有太大的相关性。</p>
-<p>使用多线程的程序可以在某个线程和其他线程之间反复多次进行上下文切换，看上去就像一个CPU核能够并列的执行多个线程一样。当然，多个CPU核的情况下，是真的提供了多个CPU核并列执行多个线程的技术。</p>
-<h4 id="多线程的优点："><a href="#多线程的优点：" class="headerlink" title="多线程的优点："></a>多线程的优点：</h4><p>1、数据竞争（多个线程更新相同的资源会导致数据的不一致）；<br>2、死锁(停止等待事件的线程会导致多个线程相互持续等待)；<br>3、使用太多线程会消耗大量内存等。 </p>
-<h4 id="多线程的优点：-1"><a href="#多线程的优点：-1" class="headerlink" title="多线程的优点："></a>多线程的优点：</h4><p>使用多线程编程，在执行长时间的处理是仍可保证用户界面的响应性能。比如：程序启动的时候，最先执行的是主线程，用来描绘用户界面、处理触摸屏幕的事件等；而其他耗时操作，如数据请求、图片下载等则是开辟新的线程进行处理。这样可以避免妨碍主线程中NSRunLoop的执行，从而保证用户界面的响应性能。</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/30/GCD学习笔记/" class="archive-article-date">
-  	<time datetime="2016-03-30T13:06:18.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-30</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-URL中特殊字符的处理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/03/31/CGD-API-DispatchQueue/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/30/URL中特殊字符的处理/">URL中特殊字符的转义</a>
-    </h1>
-  
-
-      </header>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/03/30/GCD学习笔记/">GCD</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-03-30T13:06:18.000Z" itemprop="datePublished">
+          2016-03-30
+      </time>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳</p>
-</blockquote>
-<h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><pre><code>// 对URL进行转义
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+时间总是匆匆而过，上篇学习笔记还在月初，这篇就已经到月末了，感觉对自己太溺爱了。还是看看书，写点笔记，督促自己不断学习吧！
+
+什么是GCDGrand Central Dispath(GCD),就是异步执行任务的一种技术。简单地说就是GCD提供了极为简单的方法，实现了极为复杂繁琐的多线程编程。
+// 自定义一个线程
+let queue: dispatch_queue_t = dispatch_queue_create(&quot;myq
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/03/30/GCD学习笔记/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/03/30/URL中特殊字符的处理/">URL中特殊字符的转义</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-03-30T03:40:38.000Z" itemprop="datePublished">
+          2016-03-30
+      </time>
+    
+    
+    | 
+    <a href='/tags/字符转义/'>字符转义</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+在做RSA签名和加密的过程中，由于RSA生成的字段中含有 + ,需要进行转义，思路很简单，但总有坑要跳
+
+解决思路// 对URL进行转义
 - (NSString *)formatURLwithText:(NSString *)text {
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)text, NULL, (CFStringRef)@&quot;!*’();:@&amp;=+$,/?%#[]&quot;, kCFStringEncodingUTF8));
-}
-</code></pre><p>上面代码是就是最近本的处理方法，关键在用的时机。</p>
-<p>生成sign值：通常的做法是对所有参数按key排序，然后拼接成a=x&amp;b=y…这样的字符串，然后RSA一下。但是如果encode一下，iOS端和安卓端出现不同的结果，那么服务端拿到以后是可以得到原串的，但是服务端encode一下所得到的结果会不一样，那么校验sign就会失败。</p>
-<p>但是，如果不对每个value进行转码，在服务端就无法通过&amp;来分割了，因为value中有&amp;时，若不转码就会出问题，因此encode是必须的。</p>
-<p>解决方法：生成sign时，是遍历所有的key-value，然后拼接，最后RSA。那么，生成sign时，我们只要不对value进行encode，而其他上传的参数值都encode，这样就可以解决我们的问题了。</p>
-<p>注意点：转义之后的URL不可再用encode；例如，value里面含有中文字段，正常情况下是要进行中文编码的，如果调用转义的方法后，就不需要在进行中文编码的。</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/30/URL中特殊字符的处理/" class="archive-article-date">
-  	<time datetime="2016-03-30T03:40:38.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-30</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符转义/">字符转义</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-高阶函数：map、flatMap、forEach、filter、reduce" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/03/30/URL中特殊字符的处理/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/">高阶函数：map、flatMap、forEach、filter、reduce</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>高阶函数：函数作为参数或者函数作为返回值。</p>
-</blockquote>
-<h3 id="函数的写法："><a href="#函数的写法：" class="headerlink" title="函数的写法："></a>函数的写法：</h3><h4 id="1-正常写法"><a href="#1-正常写法" class="headerlink" title="1.正常写法"></a>1.正常写法</h4><pre><code>let res = numbers.sort({$0 &lt; $1})
-</code></pre><h4 id="2-Trailing-Closure"><a href="#2-Trailing-Closure" class="headerlink" title="2.Trailing Closure"></a>2.Trailing Closure</h4><pre><code>let ree = numbers.sort{$0 &lt; $1}
-</code></pre><h3 id="常用实例"><a href="#常用实例" class="headerlink" title="常用实例"></a>常用实例</h3><h4 id="map函数："><a href="#map函数：" class="headerlink" title="map函数："></a>map函数：</h4><pre><code>map函数：当数组调用map函数时，闭包作为它的参数，闭包实现对数组单个元素进行某种规则的处理，最终map函数返回一个原数组元素被闭包处理过的新的数组（新的数组元素个数和原先的相等，数组类型可自定义，如数组类型由[Int],变为[String] 或者 [Bool]等）。
-
-let arr = [1, 2, 9, 4, 5]
-// 写法一：推荐写法
-let mrr1 = arr.map {
-    &quot;step.&quot; + String($0)
-}
-// 写法二：
-let mrr2 = arr.map { (a: Int) -&gt; String in
-    &quot;step.&quot; + String(a)
-}
-// 写法三：
-let mrr3 = arr.map ({ (a: Int) -&gt; String in
-    &quot;step.&quot; + String(a)
-})
-</code></pre><h4 id="flatMap函数："><a href="#flatMap函数：" class="headerlink" title="flatMap函数："></a>flatMap函数：</h4><pre><code>flatMap函数：功能和map函数基本相同，不同之处在于，flatMap生成的数组自动去除nil。
-
-// 1、去除nil
-let frr = [&quot;af&quot;, &quot;vf&quot;, &quot;&quot;]
-let frr1 = frr.flatMap { (a: String) -&gt; Int? in
-    if a.characters.count == 0 {
-            return nil
-    } else {
-        return a.characters.count
-    }
-}   // [2,2]
-
-// 2、对嵌套数组的拆分合并
-let fmp = [[2, 6, 4], [5, 3, 7]]
-let fmp1 = fmp.flatMap { (a: [Int]) -&gt; [Int] in
-    a
-}   // [2, 6, 4, 5, 3, 7]
-
-let fmp2 = fmp.map { (a: [Int]) -&gt; [Int] in
-    a
-}   // [[2, 6, 4], [5, 3, 7]]
-
-// 3、对不同类型数组的合并
-let c = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
-let i = [1, 2]
-let fmp3 = i.flatMap { car in
-    c.map { num in
-        num + &quot;\(car)&quot;
-    }
-}   // [&quot;a1&quot;, &quot;b1&quot;, &quot;c1&quot;, &quot;a2&quot;, &quot;b2&quot;, &quot;c2&quot;]
-</code></pre><h4 id="filter函数："><a href="#filter函数：" class="headerlink" title="filter函数："></a>filter函数：</h4><pre><code>let err = arr.filter { (a: Int) -&gt; Bool in
-    a % 2 == 0
-}   // [2, 4]
-</code></pre><h4 id="forEach函数："><a href="#forEach函数：" class="headerlink" title="forEach函数："></a>forEach函数：</h4><pre><code>arr.forEach { (a: Int) -&gt; () in
-    print(a)
-}
-</code></pre><h4 id="reduce函数："><a href="#reduce函数：" class="headerlink" title="reduce函数："></a>reduce函数：</h4><pre><code>reduce函数：把数组元素合并成一个新的值, 新值类型不固定。有两个参数，第一个参数是返回值的初始值；第二个参数是一个处理数组元素的函数。
-
-// 返回Int
-let crr = arr.reduce(0) { (prevSum: Int, elemen: Int) in
-    return prevSum + elemen
-
-}
-// 返回String
-let crr2 = arr.reduce(&quot;&quot;) {
-      &quot;\($0)&quot; + &quot;\($1)&quot;
-}
-
-// 实现map和filter
-extension Array {
-    func mMap&lt;U&gt; (transform: Element -&gt; U) -&gt; [U] {
-    return reduce([], combine: { $0 + [transform($1)] })
-    }
-    func mFilter (includeElement: Element -&gt; Bool) -&gt; [Element] {
-        return reduce([]) { includeElement($1) ? $0 + [$1] : $0 }
-    }
-}
-
-// 利用 reduce 实现 map
-let ass = arr.reduce([]) { (a: [Int], element: Int) -&gt;[Int] in
-    var t = Array(a)
-    t.append(element * 2)
-    return t
-}
-
-// 利用 reduce 方法一次求出数组中奇数的和、以及偶数乘积
-let sss:(Int, Int) = arr.reduce((0, 1)) {
-    (a: (Int, Int), element: Int) -&gt; (Int, Int) in
-    if element % 2 == 0 {
-        return (a.0, a.1 * element)
-    } else {
-        return (a.0 + element, a.1)
-    }
-}
-
-// 利用 reduce 方法一次求出数组中偶数的平方和
-let kkk = arr.filter {
-        $0 % 2 == 0
-    }.map {
-        $0 * $0
-    }.reduce(0){
-        $0 + $1
-}
-</code></pre>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/" class="archive-article-date">
-  	<time datetime="2016-03-15T03:40:38.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-15</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/filter/">filter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flatMap/">flatMap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/forEach/">forEach</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reduce/">reduce</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-NSURLSession-Swift" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/">高阶函数：map、flatMap、forEach、filter、reduce</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-03-15T03:40:38.000Z" itemprop="datePublished">
+          2016-03-15
+      </time>
     
     
-      <header class="article-header">
+    | 
+    <a href='/tags/filter/'>filter</a>,
+    
+    <a href='/tags/flatMap/'>flatMap</a>,
+    
+    <a href='/tags/forEach/'>forEach</a>,
+    
+    <a href='/tags/map/'>map</a>,
+    
+    <a href='/tags/reduce/'>reduce</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+高阶函数：函数作为参数或者函数作为返回值。
+
+函数的写法：1.正常写法let res = numbers.sort({$0 &lt; $1})
+2.Trailing Closurelet ree = numbers.sort{$0 &lt; $1}
+常用实例map函数：map函数：当数组调用map函数时，闭包作为它的参数，闭包实现对数组单个元素进行某种规则的处理，最终map函数返回一个原数组元素被闭包处理过的新的数组（新的数组元素个数
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/03/15/高阶函数：map、flatMap、forEach、filter、reduce/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/09/NSURLSession-Swift/">NSURLSession_Swift</a>
-    </h1>
-  
-
-      </header>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/03/09/NSURLSession-Swift/">NSURLSession_Swift</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-03-09T06:46:51.000Z" itemprop="datePublished">
+          2016-03-09
+      </time>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>一个简单地Swift语言的网络请求封装，包括数据请求、数据上传、图片下载、图片上传。</p>
-</blockquote>
-<p><a href="https://github.com/zhangzhaopds/NSURLSession_Swift.git" target="_blank" rel="external">本文链接</a></p>
-<h4 id="数据请求"><a href="#数据请求" class="headerlink" title="数据请求"></a>数据请求</h4><pre><code>/**
+    
+    | 
+    <a href='/tags/网络封装/'>网络封装</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+一个简单地Swift语言的网络请求封装，包括数据请求、数据上传、图片下载、图片上传。
+
+本文链接
+数据请求/**
  数据请求
 
  - parameter urlStr:  请求地址
  - parameter reponse: 请求结果
  */
-func get(urlStr: String, reponse: (result: AnyObject, response: NSURLResponse)-&gt;Void)-&gt;Void  {
-
-    if urlStr.isEmpty {
-        print(&quot;Request address cannot be empty&quot;)
-        return
-    }
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-
-    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-    let task: NSURLSessionDataTask = session.dataTaskWithRequest(request) { (data, resp, err) -&gt; Void in
-        if (err != nil) {
-            print(&quot;Data request failed: \(err?.code)&quot;)
-            return
-        }
-        do {
-            let json =
-            try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-            reponse(result: json, response: resp!)
-
-        } catch {
-        }
-    }
-    task.resume()
-}
-</code></pre><h4 id="数据下载"><a href="#数据下载" class="headerlink" title="数据下载"></a>数据下载</h4><pre><code>/**
- 数据下载
-
- - parameter urlStr:  请求地址
- - parameter reponse: 数据本地保存地址
- */
-func downLoad(urlStr: String, reponse:(location: String)-&gt;Void)-&gt;Void {
-    if urlStr.isEmpty {
-        print(&quot;Request address cannot be empty&quot;)
-        return
-    }
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-    let downLoadTask: NSURLSessionDownloadTask = session.downloadTaskWithRequest(request) { (location, resp, err) -&gt; Void in
-        if (err != nil) {
-            print(&quot;DownLoadData request failed: \(err?.code)&quot;)
-            return
-        }
-        let caches: String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).last!
-
-        let file: String = caches.stringByAppendingString(&quot;/\(resp!.suggestedFilename!)&quot;)
-
-        if NSFileManager.defaultManager().fileExistsAtPath(file) {
-            if NSThread.isMainThread() {
-                reponse(location: file)
-            } else {
-                dispatch_async(dispatch_get_main_queue(), { () -&gt; Void in
-                    reponse(location: file)
-                })
-            }
-        } else {
-            do {
-                try NSFileManager.defaultManager().moveItemAtPath(location!.path!, toPath: file)
-                if NSThread.isMainThread() {
-                    reponse(location: file)
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), { () -&gt; Void in
-                        reponse(location: file)
-                    })
-                }
-            } catch {
-
-            }
-        }
-    }
-    downLoadTask.resume()
-}
-</code></pre><h4 id="JSON数据上传"><a href="#JSON数据上传" class="headerlink" title="JSON数据上传"></a>JSON数据上传</h4><pre><code>/**
- 普通数据上传
-
- - parameter urlStr:     上传地址
- - parameter uploadData: 字典数据
- - parameter reponse:    上传结果
- */
-func upLoadData(urlStr: String, uploadData: AnyObject, reponse: (result: AnyObject, response: NSURLResponse)-&gt;Void)-&gt;Void {
-    if urlStr.isEmpty {
-        print(&quot;Request address cannot be empty&quot;)
-        return
-    }
-
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-
-    request.addValue(&quot;application/json&quot;, forHTTPHeaderField: &quot;Content-Type&quot;)
-    request.addValue(&quot;application/json&quot;, forHTTPHeaderField: &quot;Accept&quot;)
-
-    request.HTTPMethod = &quot;POST&quot;
-    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-    request.timeoutInterval = 20
-    do {
-        let data: NSData =
-        try NSJSONSerialization.dataWithJSONObject(uploadData, options: NSJSONWritingOptions.PrettyPrinted)
-        let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let uploadTask: NSURLSessionUploadTask = session.uploadTaskWithRequest(request, fromData: data, completionHandler: { (result, resp, err) -&gt; Void in
-            if (err != nil) {
-                print(&quot;UpLoadData request failed: \(err?.code)&quot;)
-                return
-            }
-
-            do {
-                let json: AnyObject =
-                try NSJSONSerialization.JSONObjectWithData(result!, options: NSJSONReadingOptions.MutableContainers)
-                reponse(result: json, response: resp!)
-            } catch {
-
-            }
-
-        })
-        uploadTask.resume()
-    } catch {
-
-    }
-}
-</code></pre><h4 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h4><pre><code> /**
- 图片上传
-
- - parameter urlStr:     上传地址
- - parameter uploadData: 图片数据
- - parameter dataType:   图片类型
- - parameter reponse:    上传结果
- */
-func upLoadImage(urlStr: String, image: UIImage, dataType: DataType, reponse: (result: String, response: NSURLResponse)-&gt;Void)-&gt;Void {
-    if urlStr.isEmpty {
-        print(&quot;Request address cannot be empty&quot;)
-        return
-    }
-
-    let strEncode: String = urlStr.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let url: NSURL = NSURL.init(string: strEncode)!
-    let request: NSMutableURLRequest = NSMutableURLRequest.init(URL: url)
-    var daa = NSData()
-    switch dataType {
-    case .JPEG:
-        request.addValue(&quot;image/jpeg&quot;, forHTTPHeaderField: &quot;Content-Type&quot;)
-        request.addValue(&quot;text/html&quot;, forHTTPHeaderField: &quot;Accept&quot;)
-        daa = UIImageJPEGRepresentation(image, 1)!
-    case .PNG:
-        request.addValue(&quot;image/png&quot;, forHTTPHeaderField: &quot;Content-Type&quot;)
-        request.addValue(&quot;text/html&quot;, forHTTPHeaderField: &quot;Accept&quot;)
-        daa = UIImagePNGRepresentation(image)!
-    }
-
-    request.HTTPMethod = &quot;POST&quot;
-    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-    request.timeoutInterval = 20
-    let session: NSURLSession = NSURLSession.init(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-
-    let uploadTask: NSURLSessionUploadTask = session.uploadTaskWithRequest(request, fromData: daa, completionHandler: { (result, resp, err) -&gt; Void in
-
-        if (err != nil) {
-            print(&quot;UpLoadImage request failed: \(err?.code)&quot;)
-            return
-        }
-        let ss: String = String.init(data: result!, encoding: NSUTF8StringEncoding)!
-        reponse(result: ss, response: resp!)
-    })
-    uploadTask.resume()
-}
-</code></pre>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/09/NSURLSession-Swift/" class="archive-article-date">
-  	<time datetime="2016-03-09T06:46:51.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-09</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络封装/">网络封装</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Fabric-Crashlytics" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+func get(urlStr: String, reponse: (result: AnyObject, response: NSURLResponse)-&gt;Void)-&gt;Void
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/03/09/NSURLSession-Swift/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/03/Fabric-Crashlytics/">Fabric-Crashlytics</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Fabric是Twitter公司提供的一款，应用于移动应用开发，统计应用崩溃信息的工具。操作简单，使用方便。</p>
-</blockquote>
-<h3 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h3><h4 id="申请账号"><a href="#申请账号" class="headerlink" title="申请账号"></a>申请账号</h4><p>Crashlytics的服务是免费提供的，但是并不能直接注册使用，需要先申请，打开 <a href="http://try.crashlytics.com" target="_blank" rel="external">Crashlytic的官网</a> ，输入自己的邮箱申请使用。之后Fabric会发一封确认邮件，确认成功之后，还会发一封Welcome to Fabric的邮件，点击Get Started with Fabric，根据提示，现在安装Mac端的App，登陆并根据提示完成配置。</p>
-<h4 id="设置工程"><a href="#设置工程" class="headerlink" title="设置工程"></a>设置工程</h4><pre><code>1、点击&quot;+ New App&quot; 添加工程项目；
-2、根据提示配置&quot;Run Script&quot;。打开工程-&gt;Build Phases-&gt;Editor-&gt;Add Build Phase-&gt;Add Run Script Build Phase, 然后将Fabric提供的代码粘贴到Shell下， 然后Command+B;
-3、按照提示，将Fabric提供的frameworks(图标)拖到工程里，然后粘贴复制相关代码。
-</code></pre><h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><pre><code>1、可以直接使用Fabric提供的强行Crash代码进行测试，也可以自己写个。
-2、测试的时候需要脱离Xcode的调试环境。最简单的方法就是真机测试，但要注意的是，测试的时候手机和Xcode不要用数据线连接。测试之后，会收到Fabric的测试报告，出现Crash的具体位置，十分方便。
-3、用户也可以在AppStore中下载Fabric,在手机端查看测试报告。
-</code></pre>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/03/03/Fabric-Crashlytics/" class="archive-article-date">
-  	<time datetime="2016-03-03T02:59:15.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-03-03</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fabric/">Fabric</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/应用分析工具/">应用分析工具</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spotlight" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/03/03/Fabric-Crashlytics/">Fabric-Crashlytics</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-03-03T02:59:15.000Z" itemprop="datePublished">
+          2016-03-03
+      </time>
     
     
-      <header class="article-header">
+    | 
+    <a href='/tags/Fabric/'>Fabric</a>,
+    
+    <a href='/tags/应用分析工具/'>应用分析工具</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+Fabric是Twitter公司提供的一款，应用于移动应用开发，统计应用崩溃信息的工具。操作简单，使用方便。
+
+使用介绍申请账号Crashlytics的服务是免费提供的，但是并不能直接注册使用，需要先申请，打开 Crashlytic的官网 ，输入自己的邮箱申请使用。之后Fabric会发一封确认邮件，确认成功之后，还会发一封Welcome to Fabric的邮件，点击Get Started with Fabric，根据提示，现在安装M
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/03/03/Fabric-Crashlytics/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/29/Spotlight/">Spotlight</a>
-    </h1>
-  
-
-      </header>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/02/29/Spotlight/">Spotlight</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-02-29T05:17:43.000Z" itemprop="datePublished">
+          2016-02-29
+      </time>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>iOS9推出的Core Spotlight(CS)框架，利用CS做应用内搜索。<br><a href="https://github.com/zhangzhaopds/CoreSpotlight.git" target="_blank" rel="external">本文链接</a></p>
-</blockquote>
-<h4 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h4><pre><code>导入MobileCoreServices.framework和CoreSpotligt.framework
-</code></pre><h4 id="主要代码"><a href="#主要代码" class="headerlink" title="主要代码"></a>主要代码</h4><pre><code>// 设置spotlight
+    
+    | 
+    <a href='/tags/Spotlight/'>Spotlight</a>,
+    
+    <a href='/tags/应用内搜索/'>应用内搜索</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+iOS9推出的Core Spotlight(CS)框架，利用CS做应用内搜索。本文链接
+
+框架导入MobileCoreServices.framework和CoreSpotligt.framework
+主要代码// 设置spotlight
 - (void)setSpotligtht {
     self.searchItemArr = [NSMutableArray array];
     int i = 0;
-    for (NSDictionary *dic in self.dataArr) {
-
-        CSSearchableItemAttributeSet *searchItemSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:(NSString *)kUTTypeText];
-
-        // 标题
-        searchItemSet.title = [dic objectForKey:@&quot;title&quot;];
-
-        // 描述
-        searchItemSet.contentDescription = [dic objectForKey:@&quot;desc&quot;];
-        NSArray *arr = [[dic objectForKey:@&quot;picture&quot;] componentsSeparatedByString:@&quot;.&quot;];
-
-        // 设置照片路径
-        searchItemSet.thumbnailURL = [[NSBundle mainBundle] URLForResource:arr[0] withExtension:arr[1]];
-
-        // 搜索关键词 keywords(字符串形式) / contactKeywords(数组形式)
-        searchItemSet.keywords = [dic objectForKey:@&quot;title&quot;];
-
-        /*
-         uniqueIdentifier：这个参数唯一地标识Spotlight当前搜索项。你可以用你喜欢的方式构造这个唯一标示符。
-         domainIdentifier:使用这个参数对搜索项进行分组。
-         attributeSet：它就是我们刚刚设置属性时的属性设置对象。
-         */
-        CSSearchableItem *searchItem = [[CSSearchableItem alloc] initWithUniqueIdentifier:[NSString stringWithFormat:@&quot;com.spolight.%d&quot;, i] domainIdentifier:@&quot;books&quot; attributeSet:searchItemSet];
-        [self.searchItemArr addObject:searchItem];
-        i++;
-    }
-
-    [[CSSearchableIndex defaultSearchableIndex] indexSearchableItems:self.searchItemArr completionHandler:^(NSError * _Nullable error) {
-        if (error) {
-            NSLog(@&quot;%@&quot;, error.localizedDescription);
-        }
-    }];
-}
-</code></pre>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/02/29/Spotlight/" class="archive-article-date">
-  	<time datetime="2016-02-29T05:17:43.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-02-29</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spotlight/">Spotlight</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/应用内搜索/">应用内搜索</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-BLE-Central" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    for (NS
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/02/29/Spotlight/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/26/BLE-Central/">BLE_Central</a>
-    </h1>
-  
-
-      </header>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/02/26/BLE-Central/">BLE_Central</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-02-26T01:08:38.000Z" itemprop="datePublished">
+          2016-02-26
+      </time>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>iOS蓝牙开发，中心模式开发。<a href="https://github.com/zhangzhaopds/BLE_Central.git" target="_blank" rel="external">相关DEMO</a>    <a href="https://github.com/zhangzhaopds/BluetoothStubOnOSX.git" target="_blank" rel="external">模拟外设</a></p>
-</blockquote>
-<h3 id="iOS链接外设的代码实现流程"><a href="#iOS链接外设的代码实现流程" class="headerlink" title="iOS链接外设的代码实现流程"></a>iOS链接外设的代码实现流程</h3><pre><code>1. 建立中心角色
+    
+    | 
+    <a href='/tags/BLE-Central/'>BLE_Central</a>,
+    
+    <a href='/tags/蓝牙中心模式/'>蓝牙中心模式</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+iOS蓝牙开发，中心模式开发。相关DEMO    模拟外设
+
+iOS链接外设的代码实现流程1. 建立中心角色
 2. 扫描外设（discover）
 3. 连接外设(connect)
 4. 扫描外设中的服务和特征(discover)
     - 4.1 获取外设的services
-    - 4.2 获取外设的Characteristics,获取Characteristics的值，获取Characteristics的Descriptor和Descriptor的值
-5. 与外设做数据交互(explore and interact)
-6. 订阅Characteristic的通知
-7. 断开连接(disconnect)
-</code></pre><h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><h4 id="1-初始化-init"><a href="#1-初始化-init" class="headerlink" title="1.初始化(init)"></a>1.初始化(init)</h4><pre><code>#import &lt;CoreBluetooth/CoreBluetooth.h&gt;
-
-@interface ViewController ()&lt;CBCentralManagerDelegate&gt;
-
-@property (nonatomic, strong) manager *centralManager;
-
-@property (nonatomic, strong) CBPeripheral *peripheral;
-
-// CBCentralManagerOptionShowPowerAlertKey的作用是，当设备蓝牙未打开时打开
-NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], CBCentralManagerOptionShowPowerAlertKey, nil];
-
-// 初始化并设置委托和线程队列，默认main线程
-self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue() options:options];
-</code></pre><h4 id="2-扫描外设-discover"><a href="#2-扫描外设-discover" class="headerlink" title="2.扫描外设(discover)"></a>2.扫描外设(discover)</h4><pre><code>-(void)centralManagerDidUpdateState:(CBCentralManager *)central{
-
-        switch (central.state) {
-            case CBCentralManagerStateUnknown:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateUnknown&quot;);
-                break;
-            case CBCentralManagerStateResetting:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateResetting&quot;);
-                break;
-            case CBCentralManagerStateUnsupported:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateUnsupported&quot;);
-                break;
-            case CBCentralManagerStateUnauthorized:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStateUnauthorized&quot;);
-                break;
-            case CBCentralManagerStatePoweredOff:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStatePoweredOff&quot;);
-                break;
-            case CBCentralManagerStatePoweredOn:
-                NSLog(@&quot;&gt;&gt;&gt;CBCentralManagerStatePoweredOn&quot;);
-                //开始扫描周围的外设
-                /*
-                 第一个参数nil就是扫描周围所有的外设，扫描到外设后会进入
-                      - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI;
-                 */
-                [manager scanForPeripheralsWithServices:nil options:nil];
-
-                break;
-            default:
-                break;
-        }
-
-    }
-
-    //扫描到设备会进入方法
-    -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
-
-        NSLog(@&quot;当扫描到设备:%@&quot;,peripheral.name);
-        //接下来可以连接设备
-
-    }
-</code></pre><h4 id="3-链接外设-connect"><a href="#3-链接外设-connect" class="headerlink" title="3.链接外设(connect)"></a>3.链接外设(connect)</h4><pre><code>//扫描到设备会进入方法
- -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
-
-//连接设备（注意：这里使用self.peripheral,而不是peripheral,是因为如果peripheral被释放掉，将不会实现连接到外设的回调方法，也就是下面三个方法将不执行）
-     self.peripheral = peripheral;
-     [manager connectPeripheral:self.peripheral options:nil]; 
- }
-
- //连接到Peripherals-成功
- - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-     NSLog(@&quot;&gt;&gt;&gt;连接到名称为（%@）的设备-成功&quot;,peripheral.name);
- }
-
- //连接到Peripherals-失败
- -(void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-     NSLog(@&quot;&gt;&gt;&gt;连接到名称为（%@）的设备-失败,原因:%@&quot;,[peripheral name],[error localizedDescription]);
- }
-
- //Peripherals断开连接
- - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-     NSLog(@&quot;&gt;&gt;&gt;外设连接断开连接 %@: %@\n&quot;, [peripheral name], [error localizedDescription]);
- }
-</code></pre><h4 id="4-获取外设的services"><a href="#4-获取外设的services" class="headerlink" title="4.获取外设的services"></a>4.获取外设的services</h4><pre><code>//连接到Peripherals-成功
-   - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
-   {
-       NSLog(@&quot;&gt;&gt;&gt;连接到名称为（%@）的设备-成功&quot;,peripheral.name);
-       //设置的peripheral委托CBPeripheralDelegate
-       //@interface ViewController : UIViewController&lt;CBCentralManagerDelegate,CBPeripheralDelegate&gt;
-       [peripheral setDelegate:self];
-       //扫描外设Services，成功后会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
-       [peripheral discoverServices:nil];
-
-   }
-
-   //扫描到Services
-   -(void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error{
-       //  NSLog(@&quot;&gt;&gt;&gt;扫描到服务：%@&quot;,peripheral.services);
-       if (error)
-       {
-           NSLog(@&quot;&gt;&gt;&gt;Discovered services for %@ with error: %@&quot;, peripheral.name, [error localizedDescription]);
-           return;
-       }
-
-       for (CBService *service in peripheral.services) {
-                        NSLog(@&quot;%@&quot;,service.UUID);
-                        //扫描每个service的Characteristics，扫描到后会进入方法： -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
-                        [peripheral discoverCharacteristics:nil forService:service];
-                    }
-
-   }
-</code></pre><h4 id="5-获取外设的Characteristics-Descriptor"><a href="#5-获取外设的Characteristics-Descriptor" class="headerlink" title="5.获取外设的Characteristics,Descriptor"></a>5.获取外设的Characteristics,Descriptor</h4><pre><code>//扫描到Characteristics
- -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error{
-     if (error)
-     {
-         NSLog(@&quot;error Discovered characteristics for %@ with error: %@&quot;, service.UUID, [error localizedDescription]);
-         return;
-     }
-
-     for (CBCharacteristic *characteristic in service.characteristics)
-     {
-         NSLog(@&quot;service:%@ 的 Characteristic: %@&quot;,service.UUID,characteristic.UUID);
-     }
-
-     //获取Characteristic的值，读到数据会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
-     for (CBCharacteristic *characteristic in service.characteristics){
-         {
-             [peripheral readValueForCharacteristic:characteristic];
-         }
-     }
-
-     //搜索Characteristic的Descriptors，读到数据会进入方法：-(void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
-     for (CBCharacteristic *characteristic in service.characteristics){
-         [peripheral discoverDescriptorsForCharacteristic:characteristic];
-     }
-
-
- }
-
-//获取的charateristic的值
--(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
-    //打印出characteristic的UUID和值
-    //!注意，value的类型是NSData，具体开发时，会根据外设协议制定的方式去解析数据
-    NSLog(@&quot;characteristic uuid:%@  value:%@&quot;,characteristic.UUID,characteristic.value);
-
-}
-
-//搜索到Characteristic的Descriptors
--(void)peripheral:(CBPeripheral *)peripheral didDiscoverDescriptorsForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error{
-
-    //打印出Characteristic和他的Descriptors
-     NSLog(@&quot;characteristic uuid:%@&quot;,characteristic.UUID);
-    for (CBDescriptor *d in characteristic.descriptors) {
-        NSLog(@&quot;Descriptor uuid:%@&quot;,d.UUID);
-    }
-
-}
-//获取到Descriptors的值
--(void)peripheral:(CBPeripheral *)peripheral didUpdateValueForDescriptor:(CBDescriptor *)descriptor error:(NSError *)error{
-    //打印出DescriptorsUUID 和value
-    //这个descriptor都是对于characteristic的描述，一般都是字符串，所以这里我们转换成字符串去解析
-    NSLog(@&quot;characteristic uuid:%@  value:%@&quot;,[NSString stringWithFormat:@&quot;%@&quot;,descriptor.UUID],descriptor.value);
-}
-</code></pre><h4 id="6-把数据写入到Characteristic中"><a href="#6-把数据写入到Characteristic中" class="headerlink" title="6.把数据写入到Characteristic中"></a>6.把数据写入到Characteristic中</h4><pre><code>//写数据
--(void)writeCharacteristic:(CBPeripheral *)peripheral
-            characteristic:(CBCharacteristic *)characteristic
-                     value:(NSData *)value{
-
-    //打印出 characteristic 的权限，可以看到有很多种，这是一个NS_OPTIONS，就是可以同时用于好几个值，常见的有read，write，notify，indicate，知知道这几个基本就够用了，前连个是读写权限，后两个都是通知，两种不同的通知方式。
-    /*
-     typedef NS_OPTIONS(NSUInteger, CBCharacteristicProperties) {
-     CBCharacteristicPropertyBroadcast                                                = 0x01,
-     CBCharacteristicPropertyRead                                                    = 0x02,
-     CBCharacteristicPropertyWriteWithoutResponse                                    = 0x04,
-     CBCharacteristicPropertyWrite                                                    = 0x08,
-     CBCharacteristicPropertyNotify                                                    = 0x10,
-     CBCharacteristicPropertyIndicate                                                = 0x20,
-     CBCharacteristicPropertyAuthenticatedSignedWrites                                = 0x40,
-     CBCharacteristicPropertyExtendedProperties                                        = 0x80,
-     CBCharacteristicPropertyNotifyEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)        = 0x100,
-     CBCharacteristicPropertyIndicateEncryptionRequired NS_ENUM_AVAILABLE(NA, 6_0)    = 0x200
-     };
-
-     */
-    NSLog(@&quot;%lu&quot;, (unsigned long)characteristic.properties);
-
-
-    //只有 characteristic.properties 有write的权限才可以写
-    if(characteristic.properties &amp; CBCharacteristicPropertyWrite){
-        /*
-            最好一个type参数可以为CBCharacteristicWriteWithResponse或type:CBCharacteristicWriteWithResponse,区别是是否会有反馈
-        */
-        [peripheral writeValue:value forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-    }else{
-        NSLog(@&quot;该字段不可写！&quot;);
-    }
-
-
-}
-</code></pre><h4 id="7-订阅Characteristic的通知"><a href="#7-订阅Characteristic的通知" class="headerlink" title="7.订阅Characteristic的通知"></a>7.订阅Characteristic的通知</h4><pre><code>//设置通知
--(void)notifyCharacteristic:(CBPeripheral *)peripheral
-            characteristic:(CBCharacteristic *)characteristic{
-    //设置通知，数据通知会进入：didUpdateValueForCharacteristic方法
-    [peripheral setNotifyValue:YES forCharacteristic:characteristic];
-
-}
-
-//取消通知
--(void)cancelNotifyCharacteristic:(CBPeripheral *)peripheral
-             characteristic:(CBCharacteristic *)characteristic{
-
-     [peripheral setNotifyValue:NO forCharacteristic:characteristic];
-}
-</code></pre><h4 id="7-断开连接-disconnect"><a href="#7-断开连接-disconnect" class="headerlink" title="7.断开连接(disconnect)"></a>7.断开连接(disconnect)</h4><pre><code>//停止扫描并断开连接
--(void)disconnectPeripheral:(CBCentralManager *)centralManager
-                 peripheral:(CBPeripheral *)peripheral{
-    //停止扫描
-    [centralManager stopScan];
-    //断开连接
-    [centralManager cancelPeripheralConnection:peripheral];
-}
-</code></pre>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/02/26/BLE-Central/" class="archive-article-date">
-  	<time datetime="2016-02-26T01:08:38.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-02-26</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BLE-Central/">BLE_Central</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/蓝牙中心模式/">蓝牙中心模式</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/OC/">OC</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Refresh-Swift" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    - 4.2 获取外设的Characteristics,获取Characteristics的值，获取Characteristics的Descriptor和
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/02/26/BLE-Central/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/29/Refresh-Swift/">Refresh-Swift</a>
-    </h1>
-  
-
-      </header>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/01/29/Refresh-Swift/">Refresh-Swift</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-01-29T08:23:29.000Z" itemprop="datePublished">
+          2016-01-29
+      </time>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Swift语言实现的数据刷新功能，类似于MJRefresh.(上拉加载，下拉刷新)</p>
-</blockquote>
-<p><a href="https://github.com/zhangzhaopds/Alamofire-Refresh.git" target="_blank" rel="external">本文DEMO</a></p>
-<h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_%E5%88%B7%E6%96%B0.png?imageView2/2/w/300" alt=""><img src="http://7xoz39.com1.z0.glb.clouddn.com/BLOG_%E5%8A%A0%E8%BD%BD.png?imageView2/2/w/300" alt=""></p>
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+Swift语言实现的数据刷新功能，类似于MJRefresh.(上拉加载，下拉刷新)
 
-      
+本文DEMO
+效果图
+
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/01/29/Refresh-Swift/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <nav class="pagination" role="pagination">
+          <a class="pull-left" href="/page/7/">← Newer Posts</a>
+          <a class="pull-right" href="/page/9/">Older Posts →</a>
+        </nav>
     </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/01/29/Refresh-Swift/" class="archive-article-date">
-  	<time datetime="2016-01-29T08:23:29.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-01-29</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
-
-
-      <div class="clearfix"></div>
+</section>
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>Perseverance does pay off.</p>
+        </div>
     </div>
-  </div>
-</article>
+</section>
+<!-- ============================ END Content =========================== -->
 
+      
+<!-- ============================ Footer =========================== -->
 
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
-    </nav>
-  
-
-
-      </div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2017 Mr Fox
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Mr Fox. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/zhangzhaopds" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
 </footer>
-    </div>
-    <script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: false,
-		animate: true,
-		isHome: true,
-		isPost: false,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false,
-		root: "/",
-		innerArchive: false
-	}
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
 </script>
 
-<script src="/./main.js" type="text/javascript"></script>
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      (function(){
+        console.log('font');
+        var getCss = function(path) {
+          var head = document.getElementsByTagName('head')[0];
+          link = document.createElement('link');
+          link.href = path;
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          head.appendChild(link);
+        };
+        getCss('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+        getCss('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+      })();
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
 
-
-    
-<div class="tools-col">
-  <ul class="btn-wrap">
-    
-    
-    
-    
-  </ul>
-  <div class="tools-wrap">
-    
-
-    
-
-    
-
-    
-  </div>
-  
-</div>
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-  </div>
 </body>
 </html>
