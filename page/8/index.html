@@ -104,6 +104,8 @@
 				    
 				    <li><a href="/categories/npm/" class="animsition-link">npm<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/书籍/" class="animsition-link">书籍<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/小程序/" class="animsition-link">小程序<small>(3)</small></a></li>
 				    
 				    <li><a href="/categories/工具/" class="animsition-link">工具<small>(5)</small></a></li>
@@ -228,6 +230,45 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/04/28/Swift代码片段：单例/">Swift代码片段：GCD创建单例</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-04-28T03:14:32.000Z" itemprop="datePublished">
+          2016-04-28
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+Swift中利用GCD创建单例
+
+class var sharedInstance: QRMakeVC {
+    struct Static {
+        static var onceToken: dispatch_once_t = 0
+        static var instance: QRMakeVC? = nil
+    }
+    dispatch_once(&amp;Static.onceToken) {
+ 
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/04/28/Swift代码片段：单例/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -587,51 +628,6 @@ iOS9推出的Core Spotlight(CS)框架，利用CS做应用内搜索。本文链�
                     
                     <p class="pull-right readMore">
                         <a href="/2016/02/29/Spotlight/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/02/26/BLE-Central/">BLE_Central</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-02-26T01:08:38.000Z" itemprop="datePublished">
-          2016-02-26
-      </time>
-    
-    
-    | 
-    <a href='/tags/BLE-Central/'>BLE_Central</a>,
-    
-    <a href='/tags/蓝牙中心模式/'>蓝牙中心模式</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-iOS蓝牙开发，中心模式开发。相关DEMO    模拟外设
-
-iOS链接外设的代码实现流程1. 建立中心角色
-2. 扫描外设（discover）
-3. 连接外设(connect)
-4. 扫描外设中的服务和特征(discover)
-    - 4.1 获取外设的services
-    - 4.2 获取外设的Characteristics,获取Characteristics的值，获取Characteristics的Descriptor和
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/02/26/BLE-Central/">Read More...</a>
                     </p>
                     
                 </div>

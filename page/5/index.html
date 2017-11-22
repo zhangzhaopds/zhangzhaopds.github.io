@@ -104,6 +104,8 @@
 				    
 				    <li><a href="/categories/npm/" class="animsition-link">npm<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/书籍/" class="animsition-link">书籍<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/小程序/" class="animsition-link">小程序<small>(3)</small></a></li>
 				    
 				    <li><a href="/categories/工具/" class="animsition-link">工具<small>(5)</small></a></li>
@@ -228,6 +230,53 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/11/18/依托AlertDialog实现的iOS风格的提醒框/">依托AlertDialog实现的iOS风格的提醒框</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-11-18T07:40:28.000Z" itemprop="datePublished">
+          2016-11-18
+      </time>
+    
+    
+    | 
+    <a href='/tags/AlertDialog/'>AlertDialog</a>,
+    
+    <a href='/tags/提醒框/'>提醒框</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+第一个Android项目基本做完了，整理一下笔记。个人实在是欣赏不动Android提醒框的审美风格，所以就自己简单封装个，方便今后使用。
+
+效果图：
+
+具体实现：基本原理：
+ 利用Android现有的提醒框AlertDialog，自定义内容视图。
+相关代码：
+12CustomAlertView.java 是对提醒框的封装；view_alert.xml 是自定义的内容视图；
+文件view_alert.xml
+12345678910111
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/11/18/依托AlertDialog实现的iOS风格的提醒框/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -569,46 +618,6 @@ node.
                     
                     <p class="pull-right readMore">
                         <a href="/2016/07/28/layer层CornerRadius影响shadow的实现/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/07/28/【BUG】Swift2-3适配Swift3-0/">Swift2.3适配Swift3.0</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-07-28T05:36:36.000Z" itemprop="datePublished">
-          2016-07-28
-      </time>
-    
-    
-    | 
-    <a href='/tags/Swift2-3/'>Swift2.3</a>,
-    
-    <a href='/tags/Swift3-0/'>Swift3.0</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-升级Xcode8.0Beta版，看着公司Swift版本的项目200多个报红，那种酸爽也就苹果能给。慢慢改吧！改的东西很多，但基本都不难，记录几个花费较长时间的Bug。
-
-NO.1【报错】“Use Legacy Swift Language Version” (SWIFT_VERSION) is required to be configured correctly for targets which use Swift. Use th
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/07/28/【BUG】Swift2-3适配Swift3-0/">Read More...</a>
                     </p>
                     
                 </div>
