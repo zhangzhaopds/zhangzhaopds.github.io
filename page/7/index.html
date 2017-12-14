@@ -92,7 +92,7 @@
 				    
 				    <li><a href="/categories/PHP/" class="animsition-link">PHP<small>(6)</small></a></li>
 				    
-				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(9)</small></a></li>
+				    <li><a href="/categories/Python/" class="animsition-link">Python<small>(10)</small></a></li>
 				    
 				    <li><a href="/categories/Python3/" class="animsition-link">Python3<small>(2)</small></a></li>
 				    
@@ -230,6 +230,39 @@
 
 <section id="intro">
     <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2016/05/24/PHP学习笔记2-日期/">PHP学习笔记（2）-日期</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2016-05-24T01:58:29.000Z" itemprop="datePublished">
+          2016-05-24
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p class="index-excerpt">
+                      
+                        
+总体感觉，php的字符串转日期的功能很强大。
+
+123456789101112131415161718&lt;?php	date_default_timezone_set("Asia/Shanghai");	echo "今天是 ".date("Y.m.d") ."&lt;br&gt;";	echo "今天是 ".date("l")."&lt;br&gt;";			// l - 表示周里的某天		$d = mktime(9, 22, 4
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2016/05/24/PHP学习笔记2-日期/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
@@ -575,43 +608,6 @@ Typora是一款非常方便的Markdown文档编辑器，相对于Mou来说，它
                     
                     <p class="pull-right readMore">
                         <a href="/2016/04/29/Typora/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2016/04/28/Swift代码片段：颜色值/">Swift代码片段：颜色值</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2016-04-28T03:36:40.000Z" itemprop="datePublished">
-          2016-04-28
-      </time>
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p class="index-excerpt">
-                      
-                        
-利用延展，为UIColor添加颜色值的初始化方法，遍历构造器。
-
-extension UIColor {
-        // 三色值
-      convenience init(red: Int, green: Int, blue: Int) {
-        assert(red &gt;= 0 &amp;&amp; red &lt;= 255, &quot;Invalid red component&quot;)
-     
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2016/04/28/Swift代码片段：颜色值/">Read More...</a>
                     </p>
                     
                 </div>
