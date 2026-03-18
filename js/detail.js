@@ -22,9 +22,9 @@ function loadWallpaperDetail() {
 }
 
 function displayWallpaper(wallpaper) {
-    // 显示图片
+    // 显示图片 - 使用thumb字段
     const img = document.getElementById('wallpaperImage');
-    img.src = wallpaper.image || wallpaper.thumb;
+    img.src = wallpaper.thumb || wallpaper.image;
     img.alt = '壁纸预览';
 
     // 显示标题
