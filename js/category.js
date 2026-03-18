@@ -1,4 +1,4 @@
-const kHost = "https://liusepai.oss-cn-beijing.aliyuncs.com/";
+const kHost = "https://cdn.jsdelivr.net/gh/zhangzhaopds/zhangzhaopds.github.io@master/";
 
 document.addEventListener('DOMContentLoaded', function() {
     loadCategories();

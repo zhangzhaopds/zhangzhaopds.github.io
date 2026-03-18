@@ -1,4 +1,5 @@
-const kHost = "https://liusepai.oss-cn-beijing.aliyuncs.com/";
+// 使用jsdelivr CDN加载GitHub仓库中的数据
+const kHost = "https://cdn.jsdelivr.net/gh/zhangzhaopds/zhangzhaopds.github.io@master/";
 let wallpapers = [];
 let currentPage = 0;
 let loadedIndices = [];

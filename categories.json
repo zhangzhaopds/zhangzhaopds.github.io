@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "美女壁纸",
+      "path": "wallpapersgirls.json",
+      "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/jcSNh6zo8WeZ2jv20icicLj4unB8nuD8MRYjI2pdYNNOicEUIs8q2uibicEMMcYzutjbTKib0dn37SqHk3yUgDmlWqLaJKY7hOZNM0MHWlqudfkB4/640?wx_fmt=jpeg&amp;from=appmsg"
+    },
+    {
+      "id": 2,
+      "title": "精选壁纸",
+      "path": "wallpapersjx.json",
+      "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/jcSNh6zo8WdicVrppt79rzB5rFllLLia7a8JFGJibLlv3fqWErPPxQXDXzPaaviasSQnibo5MHsbtEHRzAlOYoib4oXfcrxI3FBwI9wpAtSy0LSCE/640?wx_fmt=jpeg&amp;from=appmsg"
+    },
+    {
+      "id": 3,
+      "title": "全家桶壁纸",
+      "path": "wallpapersqjt.json",
+      "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/jcSNh6zo8WeniaJYcdAD8iceqYBZvJTPLZrarkgRkX8wR7olJJtpunCoicL1u5icoU1kqwVibbQKledgy7z7FmBxGuxe01dYSCFMypm1KxMef8Oo/640?wx_fmt=jpeg&amp;from=appmsg"
+    }
+  ],
+  "version": "1"
+}
