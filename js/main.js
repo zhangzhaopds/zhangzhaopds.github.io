@@ -1,32 +1,27 @@
-// 使用jsdelivr CDN加载GitHub仓库中的数据
-const kHost = "https://cdn.jsdelivr.net/gh/zhangzhaopds/zhangzhaopds.github.io@master/";
+const kHost = "https://liusepai.oss-cn-beijing.aliyuncs.com/";
+const kDataUrl = kHost + "wallpapersweb.json";
 
 let wallpapers = [];
 
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
-    loadFirstPage();
+    loadWallpapers();
 });
 
-// 加载第一页
-function loadFirstPage() {
-    fetchPageData(0);
-}
-
-// 加载指定页
-function fetchPageData(index) {
-    const jsonUrl = kHost + 'wallpapers' + index + '.json';
-
-    fetch(jsonUrl)
+function loadWallpapers() {
+    fetch(kDataUrl)
         .then(response => response.json())
         .then(data => {
             if (data.wallpapers && data.wallpapers.length > 0) {
-                wallpapers = wallpapers.concat(data.wallpapers);
-                renderWallpapers(document.getElementById('wallpaperGrid'), data.wallpapers);
+                // 拼接完整图片URL
+                wallpapers = data.wallpapers.map(w => ({
+                    ...w,
+                    thumb: kHost + w.thumb,
+                    image: kHost + w.phone
+                }));
+                renderWallpapers(document.getElementById('wallpaperGrid'), wallpapers);
             } else {
-                if (wallpapers.length === 0) {
-                    document.getElementById('wallpaperGrid').innerHTML = '<div class="loading">暂无壁纸</div>';
-                }
+                document.getElementById('wallpaperGrid').innerHTML = '<div class="loading">暂无壁纸</div>';
             }
         })
         .catch(error => {
@@ -58,7 +53,7 @@ function createWallpaperItem(wallpaper) {
     div.onclick = () => viewDetail(wallpaper);
 
     const img = document.createElement('img');
-    img.src = wallpaper.thumb || wallpaper.image;
+    img.src = wallpaper.thumb;
     img.alt = '壁纸预览';
     img.loading = 'lazy';
 
@@ -67,7 +62,7 @@ function createWallpaperItem(wallpaper) {
 
     const title = document.createElement('div');
     title.className = 'wallpaper-title';
-    title.textContent = wallpaper.tags && wallpaper.tags[0] ? wallpaper.tags[0] : '壁纸';
+    title.textContent = wallpaper.id || '壁纸';
 
     overlay.appendChild(title);
     div.appendChild(img);

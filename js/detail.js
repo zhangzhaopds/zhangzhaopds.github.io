@@ -1,3 +1,5 @@
+const kHost = "https://liusepai.oss-cn-beijing.aliyuncs.com/";
+
 // 壁纸详情页
 document.addEventListener('DOMContentLoaded', function() {
     loadWallpaperDetail();
@@ -22,22 +24,33 @@ function loadWallpaperDetail() {
 }
 
 function displayWallpaper(wallpaper) {
+    // thumb已经是完整URL，或者需要拼接
+    let thumbUrl = wallpaper.thumb;
+    let imageUrl = wallpaper.image;
+
+    // 如果不是完整URL，拼接域名
+    if (thumbUrl && !thumbUrl.startsWith('http')) {
+        thumbUrl = kHost + thumbUrl;
+    }
+    if (imageUrl && !imageUrl.startsWith('http')) {
+        imageUrl = kHost + imageUrl;
+    }
+
     // 显示图片 - 使用thumb字段
     const img = document.getElementById('wallpaperImage');
-    img.src = wallpaper.thumb || wallpaper.image;
+    img.src = thumbUrl || imageUrl;
     img.alt = '壁纸预览';
 
     // 显示标题
     const title = document.getElementById('wallpaperTitle');
-    title.textContent = wallpaper.tags && wallpaper.tags[0] ? wallpaper.tags[0] : '壁纸预览';
+    title.textContent = wallpaper.id || '壁纸预览';
 
     // 下载按钮
     const downloadBtn = document.getElementById('downloadBtn');
-    downloadBtn.onclick = () => downloadWallpaper(wallpaper);
+    downloadBtn.onclick = () => downloadWallpaper(imageUrl || thumbUrl, wallpaper.id);
 }
 
-function downloadWallpaper(wallpaper) {
-    const url = wallpaper.thumb || wallpaper.image;
+function downloadWallpaper(url, id) {
     if (!url) {
         alert('下载链接无效');
         return;
@@ -46,7 +59,7 @@ function downloadWallpaper(wallpaper) {
     // 创建下载链接
     const a = document.createElement('a');
     a.href = url;
-    a.download = (wallpaper.id || 'wallpaper') + '.jpg';
+    a.download = (id || 'wallpaper') + '.jpg';
     a.target = '_blank';
     document.body.appendChild(a);
     a.click();
