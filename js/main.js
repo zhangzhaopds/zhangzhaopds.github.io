@@ -59,16 +59,7 @@ function createWallpaperItem(wallpaper) {
     img.alt = '壁纸预览';
     img.loading = 'lazy';
 
-    const overlay = document.createElement('div');
-    overlay.className = 'wallpaper-overlay';
-
-    const title = document.createElement('div');
-    title.className = 'wallpaper-title';
-    title.textContent = wallpaper.id || '壁纸';
-
-    overlay.appendChild(title);
     div.appendChild(img);
-    div.appendChild(overlay);
 
     return div;
 }

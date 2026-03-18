@@ -36,14 +36,23 @@ function displayWallpaper(wallpaper) {
         imageUrl = kHost + imageUrl;
     }
 
-    // 显示图片 - 使用thumb字段
+    // 获取图片容器
+    const wrapper = document.getElementById('wallpaperImage').parentElement;
+
+    // 显示图片
     const img = document.getElementById('wallpaperImage');
     img.src = thumbUrl || imageUrl;
     img.alt = '壁纸预览';
 
-    // 显示标题
+    // 在图片右下角添加编号
+    const idSpan = document.createElement('span');
+    idSpan.className = 'wallpaper-id';
+    idSpan.textContent = wallpaper.id || '';
+    wrapper.appendChild(idSpan);
+
+    // 隐藏左侧标题
     const title = document.getElementById('wallpaperTitle');
-    title.textContent = wallpaper.id || '壁纸预览';
+    title.style.display = 'none';
 
     // 下载按钮
     const downloadBtn = document.getElementById('downloadBtn');
