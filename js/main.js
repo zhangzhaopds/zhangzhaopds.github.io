@@ -1,5 +1,7 @@
-const kHost = "https://liusepai.oss-cn-beijing.aliyuncs.com/";
+// 使用jsdelivr CDN加载GitHub仓库中的数据
+const kHost = "https://cdn.jsdelivr.net/gh/zhangzhaopds/zhangzhaopds.github.io@master/";
 const kDataUrl = kHost + "wallpapersweb.json";
+const kImageHost = "https://liusepai.oss-cn-beijing.aliyuncs.com/";
 
 let wallpapers = [];
 
@@ -16,8 +18,8 @@ function loadWallpapers() {
                 // 拼接完整图片URL
                 wallpapers = data.wallpapers.map(w => ({
                     ...w,
-                    thumb: kHost + w.thumb,
-                    image: kHost + w.phone
+                    thumb: kImageHost + w.thumb,
+                    image: kImageHost + w.phone
                 }));
                 renderWallpapers(document.getElementById('wallpaperGrid'), wallpapers);
             } else {
