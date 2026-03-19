@@ -369,7 +369,7 @@ body {
     background: var(--light-color);
     border-radius: 8px;
     margin: 20px auto;
-    max-width: 400px;
+    max-width: 600px;
 }
 
 .detail-tip {
@@ -379,7 +379,8 @@ body {
 }
 
 .detail-miniprogram-qr {
-    width: 180px;
+    max-width: 100%;
+    width: auto;
     height: auto;
     border-radius: 8px;
 }
