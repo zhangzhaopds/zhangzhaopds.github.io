@@ -18,8 +18,11 @@ async function loadArticleList() {
             return;
         }
 
+        // 按日期倒序排列
+        const sortedArticles = [...data.articles].sort((a, b) => new Date(b.date) - new Date(a.date));
+
         let html = '<div class="article-grid">';
-        data.articles.forEach(article => {
+        sortedArticles.forEach(article => {
             html += `
                 <a href="article.html?id=${article.id}" class="article-card">
                     <h3 class="article-card-title">${article.title}</h3>

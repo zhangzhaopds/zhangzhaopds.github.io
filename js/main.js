@@ -42,6 +42,9 @@ function renderWallpapers(container, items) {
         loading.remove();
     }
 
+    // 打乱顺序
+    items = [...items].sort(() => Math.random() - 0.5);
+
     items.forEach(wallpaper => {
         const item = createWallpaperItem(wallpaper);
         container.appendChild(item);

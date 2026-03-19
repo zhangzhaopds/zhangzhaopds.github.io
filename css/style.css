@@ -393,6 +393,28 @@ body {
     text-decoration: underline;
 }
 
+/* 详情页小程序引导 */
+.detail-miniprogram {
+    text-align: center;
+    padding: 20px;
+    background: var(--light-color);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.detail-tip {
+    font-size: 14px;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.detail-miniprogram-qr {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
 /* 政策页 */
 .policy-container {
     max-width: 800px;
@@ -688,6 +710,43 @@ body {
     margin: 0 auto;
     padding-top: 30px;
     border-top: 1px solid var(--border-color);
+}
+
+/* 文章底部关注公众号 */
+.article-follow {
+    max-width: 800px;
+    margin: 30px auto 0;
+    padding: 30px;
+    background: var(--light-color);
+    border-radius: 8px;
+}
+
+.article-follow-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.article-follow-qr {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.article-follow-info {
+    text-align: left;
+}
+
+.article-follow-info h3 {
+    font-size: 18px;
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.article-follow-info p {
+    font-size: 14px;
+    color: var(--secondary-color);
 }
 
 /* 关注我们区域 */
