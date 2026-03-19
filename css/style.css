@@ -137,6 +137,16 @@ body {
     margin-bottom: 20px;
 }
 
+.more-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.more-link:hover {
+    text-decoration: underline;
+}
+
 .section-title {
     font-size: 28px;
     color: var(--dark-color);
@@ -702,18 +712,25 @@ body {
 .follow-grid {
     display: flex;
     justify-content: center;
-    gap: 60px;
+    gap: 100px;
     flex-wrap: wrap;
 }
 
 .follow-item {
     text-align: center;
+    max-width: 280px;
+}
+
+.follow-item h3 {
+    margin-top: 15px;
+    font-size: 18px;
+    color: var(--dark-color);
 }
 
 .follow-item p {
-    margin-top: 15px;
-    font-size: 16px;
-    color: var(--dark-color);
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--secondary-color);
 }
 
 .follow-qrcode {
