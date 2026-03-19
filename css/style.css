@@ -517,6 +517,10 @@ body {
     gap: 20px;
 }
 
+.footer-links + .footer-links {
+    margin-top: 10px;
+}
+
 .footer a {
     color: #fff;
     text-decoration: none;
