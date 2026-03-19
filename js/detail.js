@@ -49,10 +49,6 @@ function displayWallpaper(wallpaper) {
     idSpan.className = 'wallpaper-id';
     idSpan.textContent = wallpaper.id || '';
     wrapper.appendChild(idSpan);
-
-    // 隐藏左侧标题
-    const title = document.getElementById('wallpaperTitle');
-    title.style.display = 'none';
 }
 
 function showError(message) {
