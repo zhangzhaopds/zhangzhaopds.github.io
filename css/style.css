@@ -719,34 +719,13 @@ body {
     padding: 30px;
     background: var(--light-color);
     border-radius: 8px;
-}
-
-.article-follow-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+    text-align: center;
 }
 
 .article-follow-qr {
-    width: 120px;
+    width: 180px;
     height: auto;
     border-radius: 8px;
-}
-
-.article-follow-info {
-    text-align: left;
-}
-
-.article-follow-info h3 {
-    font-size: 18px;
-    color: var(--dark-color);
-    margin-bottom: 5px;
-}
-
-.article-follow-info p {
-    font-size: 14px;
-    color: var(--secondary-color);
 }
 
 /* 关注我们区域 */

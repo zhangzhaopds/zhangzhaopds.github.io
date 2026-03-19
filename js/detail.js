@@ -53,26 +53,6 @@ function displayWallpaper(wallpaper) {
     // 隐藏左侧标题
     const title = document.getElementById('wallpaperTitle');
     title.style.display = 'none';
-
-    // 下载按钮
-    const downloadBtn = document.getElementById('downloadBtn');
-    downloadBtn.onclick = () => downloadWallpaper(imageUrl || thumbUrl, wallpaper.id);
-}
-
-function downloadWallpaper(url, id) {
-    if (!url) {
-        alert('下载链接无效');
-        return;
-    }
-
-    // 创建下载链接
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = (id || 'wallpaper') + '.jpg';
-    a.target = '_blank';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
 }
 
 function showError(message) {
