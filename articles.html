@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>联系我们 - 流色派</title>
+    <title>文章列表 - 流色派</title>
     <link rel="stylesheet" href="css/style.css">
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6710008629258058" crossorigin="anonymous"></script>
@@ -14,30 +14,26 @@
             <a href="index.html" class="logo">流色派</a>
             <nav class="nav">
                 <a href="index.html" class="nav-link">首页</a>
+                <a href="articles.html" class="nav-link active">文章</a>
                 <a href="about.html" class="nav-link">关于我们</a>
                 <a href="privacy.html" class="nav-link">隐私政策</a>
-                <a href="contact.html" class="nav-link active">联系我们</a>
+                <a href="contact.html" class="nav-link">联系我们</a>
             </nav>
         </div>
     </header>
 
     <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">文章</h1>
+                <p class="hero-subtitle">壁纸技巧与资讯分享</p>
+            </div>
+        </section>
+
         <section class="section">
             <div class="container">
-                <div class="contact-container">
-                    <h1>联系我们</h1>
-                    <p class="contact-intro">我们欢迎您提出宝贵意见和问题。</p>
-
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <h3>电子邮件</h3>
-                            <p>zhangzhaopds@gmail.com</p>
-                        </div>
-                        <div class="contact-method">
-                            <h3>工作时间</h3>
-                            <p>周一至周五: 9:00 - 18:00</p>
-                        </div>
-                    </div>
+                <div id="articleList" class="article-list">
+                    <div class="loading">加载中...</div>
                 </div>
             </div>
         </section>
@@ -56,6 +52,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/articles.js"></script>
 </body>
 </html>
