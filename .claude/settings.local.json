@@ -11,7 +11,8 @@
       "WebFetch(domain:support.google.com)",
       "Bash(for file:*)",
       "Bash(do echo:*)",
-      "WebFetch(domain:www.ytechb.com)"
+      "WebFetch(domain:www.ytechb.com)",
+      "Bash(python3 add_article.py)"
     ]
   }
 }
