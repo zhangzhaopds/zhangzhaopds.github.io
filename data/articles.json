@@ -135,6 +135,14 @@
       "category": "科技资讯",
       "excerpt": "如预期一样，苹果现已向开发者和公测用户发布 iOS 26.4 Release Candidate。这意味着 iOS 26.4 可能在下周初向公众发布。",
       "content": "<p>如预期一样，苹果现已向开发者和公测用户发布 <strong>iOS 26.4 Release Candidate</strong>。这意味着 iOS 26.4 可能在下周初向公众发布。</p><p>苹果于 2 月中旬开始测试 iOS 26.4，经过约一个月的时间，Beta 测试似乎已经结束，准备向公众发布。</p><p>今日，苹果还发布了一些其他更新，包括 <strong>iPadOS 26.4 RC、watchOS 26.4 RC、tvOS 26.4 RC、macOS Tahoe 26.4 RC、macOS Sequoia 15.7.5 RC5、macOS Sonoma 14.8.5 RC4 和 visionOS 26.4 RC</strong>。</p><h2>版本信息</h2><p>iOS 26.4 RC 携带构建号 <strong>23E244</strong>，这也可能就是公开发布时的构建号，但有时如果公开发布带有任何微小变化，构建号可能会有所不同。</p><h2>更新内容</h2><p>此次更新带来了 <strong>Apple Music 的 Playlist Playground 和 Concerts</strong>、<strong>8 个新表情符号</strong>，以及其他功能、错误修复和安全更新。此外还包括：</p><ul><li>端到端加密 RCS 短信（Beta）</li><li>新的\"紧急\"提醒智能列表，带自动闹钟</li><li>印度英语本地化支持</li><li>以及更多改进</li></ul><h2>如何安装</h2><p>iOS 26.4 RC 版本面向开发者和公测用户。如果你已选择 Beta 更新，可通过<strong>设置 &gt; 通用 &gt; 软件更新</strong>安装最新的候选版本。请在安装更新前备份数据。</p>"
+    },
+    {
+      "id": "18",
+      "title": "watchOS 26.4 Release Candidate 向测试者发布",
+      "date": "2026-03-21",
+      "category": "科技资讯",
+      "excerpt": "经过一个月的测试，苹果今日向开发者发布了 watchOS 26.4 的候选发布版本。该更新向开发者和公测用户开放。watchOS 26.4 预计将为 Apple Watch 带来多项新功能和改进。",
+      "content": "<p>经过一个月的测试，苹果今日向开发者发布了 <strong>watchOS 26.4</strong> 的候选发布版本。该更新向开发者和公测用户开放。watchOS 26.4 预计将为 Apple Watch 带来多项新功能和改进。</p><p>苹果正在推送的 watchOS 26.4 候选版本构建号为 <strong>23T239</strong>。面向测试者的更新下载大小为 <strong>470MB</strong>。该更新向运行 watchOS 26 或更高版本的所有人开放。如果你不知道，候选发布版本本质上是最终版本，在公开发布前向开发者提供。我们预计本周晚些时候或下周初公开发布。</p><h2>更新内容</h2><p>watchOS 26.4 带来了 <strong>8 个新表情符号</strong>，以及其他功能、错误修复和安全更新。iOS 26.4 还为 Apple Watch 带来了以下重要更新：</p><ul><li>全新改版的表盘相册，提供可下载的表盘包</li><li>端到端加密 RCS 短信（Beta）</li><li>新的\"紧急\"提醒智能列表，带自动闹钟</li><li>印度英语本地化支持</li><li>以及更多改进</li></ul><h2>如何安装</h2><p>首先，你需要将 iPhone 更新到 iOS 26.4 候选版本。完成后，按以下步骤安装 watchOS 26.4 候选版本：</p><ol><li>打开 iPhone 上的 Watch 应用</li><li>点击<strong>通用 &gt; 软件更新</strong></li><li>选择 Beta 更新并启用 <strong>watchOS 26.4 开发者 Beta</strong> 选项</li><li>返回并下载 watchOS 26.4 的候选版本</li></ol><p>确保 Apple Watch 至少充电 50% 并连接到 WiFi 网络。watchOS 26.4 候选版本更新将下载并传输到你的 Apple Watch。</p>"
     }
   ]
 }
