@@ -167,6 +167,14 @@
       "category": "科技资讯",
       "excerpt": "苹果为 iPhone 推出了一项小型但重要的安全改进更新。iOS 26.3.1(a) 更新现已面向符合条件的 iPhone 型号提供。与常规更新不同，这是一个后台安全更新，旨在增强系统保护。",
       "content": "<p>苹果为 iPhone 推出了一项小型但重要的安全改进更新。<strong>iOS 26.3.1(a)</strong> 更新现已面向符合条件的 iPhone 型号提供。与常规更新不同，这是一个<strong>后台安全更新</strong>，旨在增强系统保护。</p><p>该安全更新也面向 iPad 和 Mac 设备提供，分别为 iPadOS 26.3.1(a) 和 macOS Tahoe 26.3.1(a)。iOS 26.3.1(a) 更新携带构建号 <strong>23D771330a</strong>。</p><h2>更新说明</h2><p>如前所述，iOS 26.3.1(a) 是一个小型后台安全改进更新。官方更新页面内容如下：</p><p><em>\"此后台安全改进提供了额外保护，建议所有用户安装。\"</em></p><p>此更新专门解决了一个与 WebKit 相关的问题：</p><ul><li><strong>影响：</strong>处理恶意制作的网页内容可能绕过同源策略</li><li><strong>描述：</strong>通过改进的输入验证解决了导航 API 中的跨域问题</li></ul><h2>如何安装</h2><p>如果你使用的是 iOS 26.3 更新，可以通过<strong>设置 &gt; 通用 &gt; 软件更新</strong>找到并安装更新。但是，如果你已升级到 iOS 26.3.1，可以通过<strong>设置 &gt; 隐私与安全 &gt; 后台安全改进</strong>检查更新。你可以選擇自动安装这些后台安全改进，或点击\"安装\"按钮手动安装。</p><p>如果遇到任何后台安全更新问题，你甚至可以卸载它们。具体操作：进入<strong>设置 &gt; 隐私与安全 &gt; 后台安全改进</strong>。在此页面中，你将找到已安装的最新安全更新。点击\"i\"图标查看移除更新的选项。</p>"
+    },
+    {
+      "id": "22",
+      "title": "三星 Galaxy A57 和 Galaxy A37 在泰国零售商处列出价格和配件",
+      "date": "2026-03-21",
+      "category": "科技资讯",
+      "excerpt": "三星 Galaxy A57 和 Galaxy A37 即将正式亮相，此前我们已经看到了多个相关暗示。在真机开箱视频之后，即将发布的这两款设备现已在泰国三星授权经销商处出现，连同其配件一起展示了完整规格和价格。",
+      "content": "<p>三星 Galaxy A57 和 Galaxy A37 即将正式亮相，此前我们已经看到了多个相关暗示。在真机开箱视频之后，即将发布的这两款设备现已在泰国三星授权经销商处出现，连同其配件一起展示了完整规格和价格。</p><p>在 Siam TV 数字商店，Galaxy A37 和 Galaxy A57 的标价看起来是真实的。如你所知，目前的 RAM 和存储短缺导致价格上涨，这两款即将发布的三星设备预计将比其前代产品更贵。</p><h2>价格信息</h2><p><strong>Galaxy A57</strong>（12GB/512GB）标价为 <strong>20,999 泰铢</strong>，而 <strong>Galaxy A37</strong>（8GB/256GB）标价为 <strong>13,999 泰铢</strong>。此外，Galaxy A57 12/512GB 型号有促销活动，可享受 12/256GB 型号的价格，即 <strong>17,999 泰铢</strong>。</p><p>泰国商店还列出了 Galaxy A57 和 Galaxy A37 的多种保护壳，价格从 199 泰铢到 690 泰铢不等。</p><h2>Galaxy A57 规格</h2><ul><li><strong>显示屏：</strong>6.7 英寸 Super AMOLED+，最高 120Hz 刷新率，分辨率 1080 x 2340 像素（FHD+）</li><li><strong>处理器：</strong>Exynos 1680</li><li><strong>后置摄像头：</strong>5000 万像素主摄 + 1200 万像素 + 500 万像素</li><li><strong>前置摄像头：</strong>1200 万像素</li><li><strong>电池：</strong>5000mAh，支持 45W 快充</li><li><strong>其他：</strong>蓝牙 v6.0、IP68 防水防尘、NFC、Android 16（One UI 8.5）</li><li><strong>配色：</strong>灰色、深蓝色、紫色</li><li><strong>存储：</strong>12GB RAM，256GB/512GB 存储</li></ul><h2>Galaxy A37 规格</h2><ul><li><strong>显示屏：</strong>6.7 英寸 Super AMOLED，120Hz，分辨率 1080 x 2340 像素</li><li><strong>后置摄像头：</strong>5000 万像素主摄 + 800 万像素 + 500 万像素</li><li><strong>前置摄像头：</strong>1200 万像素</li><li><strong>电池：</strong>5000mAh，支持 45W 快充</li><li><strong>其他：</strong>蓝牙 v5.3、IP68、NFC</li><li><strong>配色：</strong>灰色、深绿色、浅紫色</li><li><strong>存储：</strong>8GB RAM，256GB 存储</li></ul><p>请注意，配色和 RAM/存储配置的可用性可能因地区而异。</p>"
     }
   ]
 }
