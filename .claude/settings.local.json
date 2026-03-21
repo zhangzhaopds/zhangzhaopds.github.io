@@ -14,7 +14,9 @@
       "WebFetch(domain:www.ytechb.com)",
       "Bash(python3 add_article.py)",
       "Bash(node temp_add.js)",
-      "Bash(node add_comments.js)"
+      "Bash(node add_comments.js)",
+      "Bash(ls -la *.py)",
+      "Bash(grep -r \"detail\\\\.html\\\\|wallpapersweb\\\\.json\\\\|js/main\\\\.js\\\\|js/detail\\\\.js\" *.html)"
     ]
   }
 }
