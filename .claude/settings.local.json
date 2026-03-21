@@ -12,7 +12,8 @@
       "Bash(for file:*)",
       "Bash(do echo:*)",
       "WebFetch(domain:www.ytechb.com)",
-      "Bash(python3 add_article.py)"
+      "Bash(python3 add_article.py)",
+      "Bash(node temp_add.js)"
     ]
   }
 }
