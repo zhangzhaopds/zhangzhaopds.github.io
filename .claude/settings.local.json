@@ -7,7 +7,10 @@
       "Bash(python3 -m json.tool)",
       "Bash(python3 fix_json.py)",
       "Bash(python3 -c \"import json; json.load\\(open\\(''data/articles.json''\\)\\)\")",
-      "Bash(python3 add_articles.py)"
+      "Bash(python3 add_articles.py)",
+      "WebFetch(domain:support.google.com)",
+      "Bash(for file:*)",
+      "Bash(do echo:*)"
     ]
   }
 }
