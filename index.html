@@ -88,7 +88,10 @@
             .then(response => response.json())
             .then(data => {
                 const grid = document.getElementById('articleGrid');
-                const articles = data.articles.slice(0, 6); // 只显示6篇
+                // 按日期倒序排序，取前6篇
+                const articles = data.articles
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .slice(0, 6);
 
                 if (articles.length === 0) {
                     grid.innerHTML = '<p class="no-data">暂无文章</p>';
