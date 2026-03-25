@@ -222,10 +222,10 @@
                 return;
             }
 
-            // Check if contains non-Chinese characters
-            const chineseOnly = text.replace(/[\u4e00-\u9fa5]/g, '').trim();
-            if (chineseOnly && mode !== 3) {
-                showError('请输入纯中文内容进行拼音转换');
+            // Check if there's at least one Chinese character
+            const hasChinese = /[\u4e00-\u9fa5]/.test(text);
+            if (!hasChinese) {
+                showError('请输入包含中文的内容');
                 return;
             }
 
@@ -234,30 +234,16 @@
 
             try {
                 const options = getOptions();
+                const pinyinArray = pinyin.getPinyin(text, options.separator || ' ', mode === 2, true);
 
-                if (mode === 1) {
-                    // Without tone
-                    const pinyinArray = pinyin.getPinyin(text, '', false, true);
-                    let result = pinyinArray.join(options.separator || ' ');
-                    result = formatPinyin(result, options);
-                    currentResult = result;
-                    resultText.textContent = result;
-                } else if (mode === 2) {
-                    // With tone
-                    const pinyinArray = pinyin.getPinyin(text, '', true, true);
-                    let result = pinyinArray.join(options.separator || ' ');
-                    result = formatPinyin(result, options);
-                    currentResult = result;
-                    resultText.textContent = result;
-                } else if (mode === 3) {
-                    // Pinyin-Chinese对照
-                    const pinyinArray = pinyin.getPinyin(text, ' ', true, true);
+                if (mode === 1 || mode === 2) {
+                    // Process character by character to preserve punctuation
                     let result = '';
-                    let chineseIndex = 0;
+                    let pinyinIndex = 0;
                     for (let i = 0; i < text.length; i++) {
                         const char = text[i];
                         if (/[\u4e00-\u9fa5]/.test(char)) {
-                            let py = pinyinArray[chineseIndex] || '';
+                            let py = pinyinArray[pinyinIndex] || '';
                             if (options.letterType === '1') {
                                 py = py.charAt(0).toUpperCase() + py.slice(1).toLowerCase();
                             } else if (options.letterType === '2') {
@@ -265,8 +251,42 @@
                             } else {
                                 py = py.toLowerCase();
                             }
-                            result += char + '(' + py + ')' + options.separator;
-                            chineseIndex++;
+                            result += py;
+                            pinyinIndex++;
+                        } else if (options.separator && options.separator !== ' ' && /[a-zA-Z]/.test(char)) {
+                            // Keep spacing between pinyin words
+                            result += options.separator + char;
+                        } else {
+                            // Preserve punctuation and spaces
+                            if (result && result.length > 0 && /[a-zA-Z]/.test(result[result.length - 1]) && /[a-zA-Z]/.test(char)) {
+                                result += options.separator || ' ';
+                            }
+                            result += char;
+                            if (/[，。！？、；：""''（）]/.test(char)) {
+                                result += (options.separator || ' ');
+                            }
+                        }
+                    }
+                    result = result.trim();
+                    currentResult = result;
+                    resultText.textContent = result;
+                } else if (mode === 3) {
+                    // Pinyin-Chinese对照
+                    let result = '';
+                    let pinyinIndex = 0;
+                    for (let i = 0; i < text.length; i++) {
+                        const char = text[i];
+                        if (/[\u4e00-\u9fa5]/.test(char)) {
+                            let py = pinyinArray[pinyinIndex] || '';
+                            if (options.letterType === '1') {
+                                py = py.charAt(0).toUpperCase() + py.slice(1).toLowerCase();
+                            } else if (options.letterType === '2') {
+                                py = py.toUpperCase();
+                            } else {
+                                py = py.toLowerCase();
+                            }
+                            result += char + '(' + py + ')' + (options.separator || ' ');
+                            pinyinIndex++;
                         } else {
                             result += char;
                         }
