@@ -34,6 +34,10 @@
         .btn-primary:hover { background: #5a6fd6; }
         .btn-success { background: #28a745; color: white; }
         .btn-success:hover { background: #218838; }
+        .btn-success.active { background: #1e7e34; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
+        .btn-mode { background: #6c757d; color: white; }
+        .btn-mode:hover { background: #5a6268; }
+        .btn-mode.active { background: #28a745; }
         .btn-secondary { background: #f8f9fa; color: #333; border: 2px solid #e0e0e0; }
         .btn-secondary:hover { background: #e9ecef; }
         .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
@@ -120,8 +124,8 @@
                     </div>
 
                     <div class="btn-row">
-                        <button class="btn btn-success" onclick="pinyinConvert(2)">转为带声调拼音</button>
-                        <button class="btn btn-success" onclick="pinyinConvert(3)">转为拼音汉字对照</button>
+                        <button class="btn btn-success active" id="btnTone" onclick="pinyinConvert(2)">转为带声调拼音</button>
+                        <button class="btn btn-mode" id="btnCompare" onclick="pinyinConvert(3)">转为拼音汉字对照</button>
                         <button class="btn btn-secondary" onclick="clearContent()">清空内容</button>
                     </div>
 
@@ -129,7 +133,7 @@
                         <div id="resultText"></div>
                     </div>
 
-                    <div style="text-align: center; margin-top: 12px;">
+                    <div id="copyArea" style="text-align: center; margin-top: 12px; display: none;">
                         <button class="copy-btn" onclick="copyResult()">复制结果</button>
                     </div>
 
@@ -161,8 +165,12 @@
         const resultBox = document.getElementById('resultBox');
         const resultText = document.getElementById('resultText');
         const errorTip = document.getElementById('errorTip');
+        const copyArea = document.getElementById('copyArea');
+        const btnTone = document.getElementById('btnTone');
+        const btnCompare = document.getElementById('btnCompare');
 
         let currentResult = '';
+        let currentMode = 2; // Default to tone mode
 
         // Character count
         inputText.addEventListener('input', function() {
@@ -170,6 +178,10 @@
             if (this.value.length > 500) {
                 this.value = this.value.substring(0, 500);
                 charCount.textContent = 500;
+            }
+            // Auto regenerate if we have a result
+            if (currentResult && /[\u4e00-\u9fa5]/.test(this.value)) {
+                pinyinConvert(currentMode);
             }
         });
 
@@ -183,6 +195,26 @@
             else if (letterBlank === '3') separator = '_';
 
             return { letterType, separator };
+        }
+
+        // Auto regenerate when options change
+        document.querySelectorAll('input[name="letter_type"], input[name="letter_blank"]').forEach(function(input) {
+            input.addEventListener('change', function() {
+                if (currentResult && inputText.value.trim()) {
+                    pinyinConvert(currentMode);
+                }
+            });
+        });
+
+        function setActiveButton(mode) {
+            currentMode = mode;
+            if (mode === 2) {
+                btnTone.className = 'btn btn-success active';
+                btnCompare.className = 'btn btn-mode';
+            } else {
+                btnTone.className = 'btn btn-mode';
+                btnCompare.className = 'btn btn-success active';
+            }
         }
 
         function formatPinyin(pinyin, options) {
@@ -215,6 +247,7 @@
 
             if (!text) {
                 showError('请输入需要转换的内容');
+                copyArea.style.display = 'none';
                 return;
             }
 
@@ -222,9 +255,11 @@
             const hasChinese = /[\u4e00-\u9fa5]/.test(text);
             if (!hasChinese) {
                 showError('请输入包含中文的内容');
+                copyArea.style.display = 'none';
                 return;
             }
 
+            setActiveButton(mode);
             hideError();
             resultBox.classList.add('show');
 
@@ -294,9 +329,11 @@
                     result = result.trim();
                     currentResult = result;
                     resultText.textContent = result;
+                    copyArea.style.display = 'block';
                 }
             } catch (e) {
                 showError('转换失败，请尝试更少的内容');
+                copyArea.style.display = 'none';
                 console.error(e);
             }
         }
@@ -315,6 +352,7 @@
             inputText.value = '';
             charCount.textContent = '0';
             resultBox.classList.remove('show');
+            copyArea.style.display = 'none';
             currentResult = '';
             hideError();
         }
