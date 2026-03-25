@@ -66,6 +66,14 @@
             z-index: 10001;
         }
         .toast.show { opacity: 1; }
+        .file-upload-label {
+            display: inline-block;
+            padding: 12px 28px; background: #f8f9fa; color: #333;
+            border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer;
+            font-size: 15px; transition: all 0.2s;
+        }
+        .file-upload-label:hover { background: #e9ecef; border-color: #667eea; }
+        #parseFile { display: none; }
     </style>
 </head>
 <body>
@@ -113,9 +121,7 @@
                         <div class="input-group">
                             <label class="input-label">上传二维码图片</label>
                             <input type="file" id="parseFile" accept="image/*" onchange="handleFileSelect(this)">
-                            <div class="btn-row" style="margin-top:12px;">
-                                <button class="btn btn-secondary" onclick="document.getElementById('parseFile').click()">选择图片</button>
-                            </div>
+                            <label for="parseFile" class="file-upload-label">选择图片</label>
                             <p id="fileName" style="font-size:13px;color:#666;margin-top:8px;"></p>
                         </div>
                         <div class="qr-preview" id="parsePreview">
@@ -239,21 +245,43 @@
                 img.onload = function() {
                     decodeQRImage(img);
                 };
+                img.onerror = function() {
+                    document.getElementById('parseError').textContent = '图片加载失败，请尝试其他图片';
+                    document.getElementById('parseError').classList.add('show');
+                };
                 img.src = e.target.result;
+            };
+            reader.onerror = function() {
+                document.getElementById('parseError').textContent = '文件读取失败';
+                document.getElementById('parseError').classList.add('show');
             };
             reader.readAsDataURL(file);
         }
 
         function decodeQRImage(img) {
+            // Use a larger canvas for better quality
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-            canvas.width = img.naturalWidth;
-            canvas.height = img.naturalHeight;
-            ctx.drawImage(img, 0, 0);
+
+            // Get actual dimensions
+            const width = img.naturalWidth || img.width;
+            const height = img.naturalHeight || img.height;
+
+            if (width === 0 || height === 0) {
+                document.getElementById('parseError').textContent = '无法读取图片尺寸，请尝试其他图片';
+                document.getElementById('parseError').classList.add('show');
+                return;
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            ctx.drawImage(img, 0, 0, width, height);
 
             try {
-                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                const code = jsQR(imageData.data, canvas.width, canvas.height);
+                const imageData = ctx.getImageData(0, 0, width, height);
+                const code = jsQR(imageData.data, width, height, {
+                    inversionAttempts: 'dontInvert'
+                });
 
                 if (code) {
                     lastParsedData = code.data;
@@ -262,9 +290,24 @@
                     document.getElementById('parseError').classList.remove('show');
                     document.getElementById('successMsg').classList.add('show');
                 } else {
-                    document.getElementById('parseError').classList.add('show');
+                    // Try with inversion
+                    const code2 = jsQR(imageData.data, width, height, {
+                        inversionAttempts: 'onlyInvert'
+                    });
+                    if (code2) {
+                        lastParsedData = code2.data;
+                        document.getElementById('parseResultText').textContent = code2.data;
+                        document.getElementById('parseResultArea').style.display = 'block';
+                        document.getElementById('parseError').classList.remove('show');
+                        document.getElementById('successMsg').classList.add('show');
+                    } else {
+                        document.getElementById('parseError').textContent = '无法识别二维码，请确保图片中包含清晰的二维码';
+                        document.getElementById('parseError').classList.add('show');
+                    }
                 }
             } catch (err) {
+                console.error('QR decode error:', err);
+                document.getElementById('parseError').textContent = '解析失败，请尝试其他图片';
                 document.getElementById('parseError').classList.add('show');
             }
         }
