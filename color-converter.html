@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>颜色值转换 - 流色派</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .converter-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .converter-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .converter-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .converter-header p {
+            color: #666;
+        }
+
+        .color-preview {
+            width: 100%;
+            height: 150px;
+            border-radius: 12px;
+            background: #007bff;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .color-input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+            transition: border-color 0.2s;
+        }
+
+        .color-input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .color-input.error {
+            border-color: #dc3545;
+        }
+
+        .copy-btn {
+            padding: 14px 20px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #e9ecef;
+            border-color: #007bff;
+        }
+
+        .copy-btn.copied {
+            background: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+
+        .hex-group {
+            margin-bottom: 24px;
+        }
+
+        .hex-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .hex-input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            transition: border-color 0.2s;
+        }
+
+        .hex-input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .hex-input.error {
+            border-color: #dc3545;
+        }
+
+        .rgba-inputs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .rgba-field {
+            text-align: center;
+        }
+
+        .rgba-field label {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .rgba-field input {
+            width: 100%;
+            padding: 12px 8px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .rgba-field input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .rgba-field input[type="range"] {
+            padding: 0;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .alpha-display {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #666;
+            margin-top: 6px;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .slider-value {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            min-width: 40px;
+        }
+
+        .error-text {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .error-text.show {
+            display: block;
+        }
+
+        .info-text {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .color-swatches {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.1);
+            border-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">流色派</a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="articles.html" class="nav-link">文章</a>
+                <a href="pdf2image.html" class="nav-link">PDF转图片</a>
+                <a href="color-converter.html" class="nav-link active">颜色转换</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="converter-container">
+                    <div class="converter-header">
+                        <h1>颜色值转换</h1>
+                        <p>HEX 与 RGBA 互转，实时预览颜色效果</p>
+                    </div>
+
+                    <div id="colorPreview" class="color-preview">
+                        <span id="previewText">#007BFF</span>
+                    </div>
+
+                    <div class="hex-group">
+                        <label class="input-label">HEX 值</label>
+                        <div class="hex-row">
+                            <input type="text" id="hexInput" class="hex-input" value="#007BFF" placeholder="#FFFFFF">
+                            <button class="copy-btn" id="copyHexBtn" title="复制">📋</button>
+                        </div>
+                        <p class="error-text" id="hexError">请输入有效的 HEX 颜色值（如 #FF5733 或 #F00）</p>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">RGBA 值</label>
+                        <div class="input-row">
+                            <input type="text" id="rgbaInput" class="color-input" value="rgba(0, 123, 255, 1)" readonly>
+                            <button class="copy-btn" id="copyRgbaBtn" title="复制">📋</button>
+                        </div>
+                        <p class="info-text">调整下方滑块修改 RGBA 值</p>
+                    </div>
+
+                    <div class="rgba-inputs">
+                        <div class="rgba-field">
+                            <label>R (红)</label>
+                            <input type="range" id="rangeR" min="0" max="255" value="0">
+                            <div class="slider-container">
+                                <input type="number" id="inputR" min="0" max="255" value="0" size="3">
+                                <span class="slider-value" id="valR">0</span>
+                            </div>
+                        </div>
+                        <div class="rgba-field">
+                            <label>G (绿)</label>
+                            <input type="range" id="rangeG" min="0" max="255" value="123">
+                            <div class="slider-container">
+                                <input type="number" id="inputG" min="0" max="255" value="123" size="3">
+                                <span class="slider-value" id="valG">123</span>
+                            </div>
+                        </div>
+                        <div class="rgba-field">
+                            <label>B (蓝)</label>
+                            <input type="range" id="rangeB" min="0" max="255" value="255">
+                            <div class="slider-container">
+                                <input type="number" id="inputB" min="0" max="255" value="255" size="3">
+                                <span class="slider-value" id="valB">255</span>
+                            </div>
+                        </div>
+                        <div class="rgba-field">
+                            <label>A (透明度)</label>
+                            <input type="range" id="rangeA" min="0" max="100" value="100">
+                            <div class="slider-container">
+                                <input type="number" id="inputA" min="0" max="100" value="100" size="3" step="1">
+                                <span class="slider-value" id="valA">1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-swatches" id="colorSwatches">
+                        <!-- Predefined colors will be added by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 流色派. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="about.html">关于我们</a>
+                <a href="privacy.html">隐私政策</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hexInput = document.getElementById('hexInput');
+        const rgbaInput = document.getElementById('rgbaInput');
+        const colorPreview = document.getElementById('colorPreview');
+        const previewText = document.getElementById('previewText');
+        const hexError = document.getElementById('hexError');
+        const copyHexBtn = document.getElementById('copyHexBtn');
+        const copyRgbaBtn = document.getElementById('copyRgbaBtn');
+        const colorSwatches = document.getElementById('colorSwatches');
+
+        const rangeR = document.getElementById('rangeR');
+        const rangeG = document.getElementById('rangeG');
+        const rangeB = document.getElementById('rangeB');
+        const rangeA = document.getElementById('rangeA');
+        const inputR = document.getElementById('inputR');
+        const inputG = document.getElementById('inputG');
+        const inputB = document.getElementById('inputB');
+        const inputA = document.getElementById('inputA');
+        const valR = document.getElementById('valR');
+        const valG = document.getElementById('valG');
+        const valB = document.getElementById('valB');
+        const valA = document.getElementById('valA');
+
+        let isUpdating = false;
+
+        const presetColors = [
+            '#FF5733', '#33FF57', '#3357FF', '#FF33F5', '#F5FF33',
+            '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
+            '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9',
+            '#F8B500', '#00CED1', '#FF1493', '#00FA9A', '#FFD700',
+            '#007BFF', '#6C757D', '#28A745', '#DC3545', '#FFC107',
+            '#17A2B8', '#6610F2', '#E83E8C', '#FD7E14', '#8B5CF6'
+        ];
+
+        function initSwatches() {
+            presetColors.forEach(color => {
+                const swatch = document.createElement('div');
+                swatch.className = 'color-swatch';
+                swatch.style.backgroundColor = color;
+                swatch.title = color;
+                swatch.addEventListener('click', () => {
+                    hexInput.value = color.toUpperCase();
+                    updateFromHex();
+                });
+                colorSwatches.appendChild(swatch);
+            });
+        }
+
+        function rgbToHex(r, g, b) {
+            const toHex = (n) => {
+                const hex = Math.round(Math.max(0, Math.min(255, n))).toString(16);
+                return hex.length === 1 ? '0' + hex : hex;
+            };
+            return '#' + toHex(r) + toHex(g) + toHex(b);
+        }
+
+        function hexToRgb(hex) {
+            hex = hex.replace('#', '');
+            if (hex.length === 3) {
+                hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+            }
+            if (!/^[0-9A-Fa-f]{6}$/.test(hex)) {
+                return null;
+            }
+            return {
+                r: parseInt(hex.substr(0, 2), 16),
+                g: parseInt(hex.substr(2, 2), 16),
+                b: parseInt(hex.substr(4, 2), 16)
+            };
+        }
+
+        function isValidHex(hex) {
+            return /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(hex);
+        }
+
+        function updateFromHex() {
+            if (isUpdating) return;
+            isUpdating = true;
+
+            const hex = hexInput.value.trim();
+            if (!isValidHex(hex)) {
+                hexInput.classList.add('error');
+                hexError.classList.add('show');
+                isUpdating = false;
+                return;
+            }
+
+            hexInput.classList.remove('error');
+            hexError.classList.remove('show');
+
+            const rgb = hexToRgb(hex);
+            if (!rgb) {
+                isUpdating = false;
+                return;
+            }
+
+            const a = parseFloat(rangeA.value) / 100;
+
+            rangeR.value = rgb.r;
+            rangeG.value = rgb.g;
+            rangeB.value = rgb.b;
+            inputR.value = rgb.r;
+            inputG.value = rgb.g;
+            inputB.value = rgb.b;
+            valR.textContent = rgb.r;
+            valG.textContent = rgb.g;
+            valB.textContent = rgb.b;
+
+            const normalizedHex = '#' + hex.replace('#', '').toUpperCase();
+            hexInput.value = normalizedHex;
+
+            updatePreview(rgb.r, rgb.g, rgb.b, a);
+            updateRgbaString(rgb.r, rgb.g, rgb.b, a);
+
+            isUpdating = false;
+        }
+
+        function updateFromRgba() {
+            if (isUpdating) return;
+            isUpdating = true;
+
+            const r = parseInt(inputR.value) || 0;
+            const g = parseInt(inputG.value) || 0;
+            const b = parseInt(inputB.value) || 0;
+            const a = parseFloat(rangeA.value) / 100;
+
+            const clampedR = Math.max(0, Math.min(255, r));
+            const clampedG = Math.max(0, Math.min(255, g));
+            const clampedB = Math.max(0, Math.min(255, b));
+
+            rangeR.value = clampedR;
+            rangeG.value = clampedG;
+            rangeB.value = clampedB;
+            inputR.value = clampedR;
+            inputG.value = clampedG;
+            inputB.value = clampedB;
+            valR.textContent = clampedR;
+            valG.textContent = clampedG;
+            valB.textContent = clampedB;
+
+            const hex = rgbToHex(clampedR, clampedG, clampedB);
+            hexInput.value = hex.toUpperCase();
+            hexInput.classList.remove('error');
+            hexError.classList.remove('show');
+
+            updatePreview(clampedR, clampedG, clampedB, a);
+            updateRgbaString(clampedR, clampedG, clampedB, a);
+
+            isUpdating = false;
+        }
+
+        function updatePreview(r, g, b, a) {
+            const alpha = Math.round(a * 255).toString(16).padStart(2, '0');
+            colorPreview.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${a})`;
+
+            if (a < 1) {
+                previewText.textContent = `rgba(${r}, ${g}, ${b}, ${a.toFixed(2)})`;
+            } else {
+                previewText.textContent = hexInput.value.toUpperCase();
+            }
+
+            if (r * 0.299 + g * 0.587 + b * 0.114 > 186) {
+                previewText.style.color = '#333';
+            } else {
+                previewText.style.color = '#fff';
+            }
+        }
+
+        function updateRgbaString(r, g, b, a) {
+            rgbaInput.value = `rgba(${r}, ${g}, ${b}, ${a.toFixed(2)})`;
+        }
+
+        function syncSliders() {
+            if (isUpdating) return;
+            isUpdating = true;
+
+            const r = parseInt(rangeR.value);
+            const g = parseInt(rangeG.value);
+            const b = parseInt(rangeB.value);
+            const a = parseFloat(rangeA.value) / 100;
+
+            inputR.value = r;
+            inputG.value = g;
+            inputB.value = b;
+            valR.textContent = r;
+            valG.textContent = g;
+            valB.textContent = b;
+            valA.textContent = a.toFixed(2);
+
+            const hex = rgbToHex(r, g, b);
+            hexInput.value = hex.toUpperCase();
+            hexInput.classList.remove('error');
+            hexError.classList.remove('show');
+
+            updatePreview(r, g, b, a);
+            updateRgbaString(r, g, b, a);
+
+            isUpdating = false;
+        }
+
+        function copyToClipboard(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btn.textContent;
+                btn.textContent = '✓';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 1500);
+            });
+        }
+
+        hexInput.addEventListener('input', () => {
+            setTimeout(updateFromHex, 100);
+        });
+
+        hexInput.addEventListener('blur', updateFromHex);
+
+        inputR.addEventListener('input', updateFromRgba);
+        inputG.addEventListener('input', updateFromRgba);
+        inputB.addEventListener('input', updateFromRgba);
+
+        rangeR.addEventListener('input', syncSliders);
+        rangeG.addEventListener('input', syncSliders);
+        rangeB.addEventListener('input', syncSliders);
+        rangeA.addEventListener('input', () => {
+            if (isUpdating) return;
+            isUpdating = true;
+            const a = parseFloat(rangeA.value) / 100;
+            inputA.value = rangeA.value;
+            valA.textContent = a.toFixed(2);
+
+            const r = parseInt(rangeR.value);
+            const g = parseInt(rangeG.value);
+            const b = parseInt(rangeB.value);
+
+            updatePreview(r, g, b, a);
+            updateRgbaString(r, g, b, a);
+            isUpdating = false;
+        });
+
+        copyHexBtn.addEventListener('click', () => {
+            copyToClipboard(hexInput.value, copyHexBtn);
+        });
+
+        copyRgbaBtn.addEventListener('click', () => {
+            copyToClipboard(rgbaInput.value, copyRgbaBtn);
+        });
+
+        initSwatches();
+        updateFromHex();
+    </script>
+</body>
+</html>
