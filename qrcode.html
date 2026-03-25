@@ -38,11 +38,15 @@
         .btn-secondary:hover { background: #e9ecef; }
         .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
         .qr-preview {
-            background: white; padding: 20px; border-radius: 12px;
+            background: white; padding: 16px; border-radius: 12px;
             border: 2px solid #e0e0e0; text-align: center; margin-top: 20px;
             min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .qr-preview img, .qr-preview canvas { padding: 12px; background: white; }
+        .qr-preview img, .qr-preview canvas {
+            display: block;
+            box-shadow: 0 0 0 8px #fff, 0 0 0 10px #e0e0e0;
+            border-radius: 4px;
+        }
         .qr-preview img { max-width: 200px; height: auto; }
         .qr-placeholder { color: #999; font-size: 14px; }
         .result-box {

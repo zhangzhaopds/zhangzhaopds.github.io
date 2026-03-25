@@ -237,7 +237,7 @@
                 const toneMode = mode === 2;
 
                 // Get pinyin array (one entry per character)
-                const pinyinArray = pinyin(text, { type: 'array', tone: toneMode });
+                const pinyinArray = pinyinPro.pinyin(text, { type: 'array', tone: toneMode });
 
                 if (mode === 1 || mode === 2) {
                     // Convert to pinyin string, preserving non-Chinese characters
