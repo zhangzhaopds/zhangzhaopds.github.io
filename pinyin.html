@@ -240,13 +240,16 @@
                 const pinyinArray = pinyinPro.pinyin(text, { type: 'array', tone: toneMode });
 
                 if (mode === 1 || mode === 2) {
-                    // Convert to pinyin string, preserving non-Chinese characters
+                    // Process the pinyin array directly
                     let result = '';
-                    let pyIndex = 0;
-                    for (let i = 0; i < text.length; i++) {
-                        const char = text[i];
-                        if (/[\u4e00-\u9fa5]/.test(char)) {
-                            let py = pinyinArray[pyIndex] || '';
+                    for (let i = 0; i < pinyinArray.length; i++) {
+                        let py = pinyinArray[i] || '';
+
+                        // Check if it's a Chinese character pinyin (has letters)
+                        const isPinyin = /[a-zA-Z]/.test(py);
+
+                        if (isPinyin) {
+                            // Apply case formatting
                             if (options.letterType === '1') {
                                 py = py.charAt(0).toUpperCase() + py.slice(1).toLowerCase();
                             } else if (options.letterType === '2') {
@@ -254,17 +257,19 @@
                             } else {
                                 py = py.toLowerCase();
                             }
+
+                            // Add separator between consecutive pinyin
+                            if (i > 0) {
+                                const prev = pinyinArray[i - 1];
+                                if (/[a-zA-Z]/.test(prev)) {
+                                    result += options.separator || ' ';
+                                }
+                            }
                             result += py;
-                            pyIndex++;
                         } else {
                             // Preserve punctuation and non-Chinese characters
-                            result += char;
+                            result += py;
                         }
-                    }
-
-                    // Apply separator between pinyin words
-                    if (options.separator && options.separator !== ' ') {
-                        result = result.replace(/([a-zA-Z])([a-zA-Z])/g, (m, p1, p2) => p1 + options.separator + p2);
                     }
 
                     currentResult = result;
