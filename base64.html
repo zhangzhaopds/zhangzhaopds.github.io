@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 编解码 - 流色派</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .converter-container { max-width: 700px; margin: 0 auto; padding: 40px 20px; }
+        .converter-header { text-align: center; margin-bottom: 40px; }
+        .converter-header h1 { font-size: 2rem; margin-bottom: 10px; }
+        .converter-header p { color: #666; }
+        .input-group { margin-bottom: 24px; }
+        .input-label { display: block; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 8px; }
+        .text-input {
+            width: 100%; padding: 14px 16px; border: 2px solid #e0e0e0;
+            border-radius: 8px; font-size: 16px; font-family: 'Courier New', monospace;
+            resize: vertical; min-height: 120px; box-sizing: border-box;
+        }
+        .text-input:focus { outline: none; border-color: #667eea; }
+        .output-row { display: flex; gap: 12px; align-items: flex-start; }
+        .output-input {
+            flex: 1; padding: 14px 16px; border: 2px solid #e0e0e0;
+            border-radius: 8px; font-size: 16px; font-family: 'Courier New', monospace;
+            background: #f8f9fa; min-height: 120px; word-break: break-all;
+        }
+        .copy-btn {
+            padding: 14px 20px; background: #f8f9fa; border: 2px solid #e0e0e0;
+            border-radius: 8px; cursor: pointer; font-size: 18px; transition: all 0.2s;
+        }
+        .copy-btn:hover { background: #e9ecef; border-color: #667eea; }
+        .copy-btn.copied { background: #28a745; border-color: #28a745; color: white; }
+        .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn {
+            padding: 12px 24px; border: none; border-radius: 8px;
+            cursor: pointer; font-size: 14px; transition: all 0.2s;
+        }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-primary:hover { background: #5a6fd6; }
+        .btn-secondary { background: #f8f9fa; color: #333; border: 2px solid #e0e0e0; }
+        .btn-secondary:hover { background: #e9ecef; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">流色派</a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="articles.html" class="nav-link">文章</a>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="converter-container">
+                    <div class="converter-header">
+                        <h1>Base64 编解码</h1>
+                        <p>文本与 Base64 字符串互转</p>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">输入</label>
+                        <textarea id="inputText" class="text-input" placeholder="输入要编码或解码的文本..."></textarea>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn-primary" id="encodeBtn">编码 →</button>
+                        <button class="btn btn-primary" id="decodeBtn">← 解码</button>
+                        <button class="btn btn-secondary" id="clearBtn">清空</button>
+                    </div>
+                    <div class="input-group" style="margin-top:30px;">
+                        <label class="input-label">输出</label>
+                        <div class="output-row">
+                            <div class="output-input" id="outputText">等待处理...</div>
+                            <button class="copy-btn" id="copyBtn">📋</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 流色派. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="about.html">关于我们</a>
+                <a href="privacy.html">隐私政策</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const inputText = document.getElementById('inputText');
+        const outputText = document.getElementById('outputText');
+        const encodeBtn = document.getElementById('encodeBtn');
+        const decodeBtn = document.getElementById('decodeBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const copyBtn = document.getElementById('copyBtn');
+
+        function encode() {
+            const text = inputText.value;
+            if (!text) { outputText.textContent = '请输入文本'; return; }
+            try {
+                outputText.textContent = btoa(unescape(encodeURIComponent(text)));
+            } catch (e) {
+                outputText.textContent = '编码失败';
+            }
+        }
+
+        function decode() {
+            const text = inputText.value;
+            if (!text) { outputText.textContent = '请输入文本'; return; }
+            try {
+                outputText.textContent = decodeURIComponent(escape(atob(text)));
+            } catch (e) {
+                outputText.textContent = '解码失败，请检查输入是否有效';
+            }
+        }
+
+        function copyOutput() {
+            const text = outputText.textContent;
+            if (text === '等待处理...' || text === '请输入文本' || text === '编码失败' || text.startsWith('解码失败')) return;
+            navigator.clipboard.writeText(text).then(() => {
+                const original = copyBtn.textContent;
+                copyBtn.textContent = '✓';
+                copyBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyBtn.textContent = original;
+                    copyBtn.classList.remove('copied');
+                }, 1500);
+            });
+        }
+
+        encodeBtn.addEventListener('click', encode);
+        decodeBtn.addEventListener('click', decode);
+        clearBtn.addEventListener('click', () => { inputText.value = ''; outputText.textContent = '等待处理...'; });
+        copyBtn.addEventListener('click', copyOutput);
+    </script>
+</body>
+</html>

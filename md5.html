@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD5加密 - 流色派</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .converter-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .converter-header { text-align: center; margin-bottom: 40px; }
+        .converter-header h1 { font-size: 2rem; margin-bottom: 10px; }
+        .converter-header p { color: #666; }
+        .input-group { margin-bottom: 24px; }
+        .input-label { display: block; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 8px; }
+        .text-input {
+            width: 100%; padding: 14px 16px; border: 2px solid #e0e0e0;
+            border-radius: 8px; font-size: 16px; font-family: 'Courier New', monospace;
+            resize: vertical; min-height: 120px; box-sizing: border-box;
+        }
+        .text-input:focus { outline: none; border-color: #667eea; }
+        .output-row { display: flex; gap: 12px; align-items: flex-start; }
+        .output-input {
+            flex: 1; padding: 14px 16px; border: 2px solid #e0e0e0;
+            border-radius: 8px; font-size: 16px; font-family: 'Courier New', monospace;
+            background: #f8f9fa; min-height: 60px; word-break: break-all;
+        }
+        .copy-btn {
+            padding: 14px 20px; background: #f8f9fa; border: 2px solid #e0e0e0;
+            border-radius: 8px; cursor: pointer; font-size: 18px; transition: all 0.2s;
+        }
+        .copy-btn:hover { background: #e9ecef; border-color: #667eea; }
+        .copy-btn.copied { background: #28a745; border-color: #28a745; color: white; }
+        .btn-row { display: flex; gap: 12px; margin-top: 16px; }
+        .btn {
+            padding: 12px 24px; border: none; border-radius: 8px;
+            cursor: pointer; font-size: 14px; transition: all 0.2s;
+        }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-primary:hover { background: #5a6fd6; }
+        .btn-secondary { background: #f8f9fa; color: #333; border: 2px solid #e0e0e0; }
+        .btn-secondary:hover { background: #e9ecef; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">流色派</a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="articles.html" class="nav-link">文章</a>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="converter-container">
+                    <div class="converter-header">
+                        <h1>MD5 加密</h1>
+                        <p>将任意字符串转换为 MD5 哈希值</p>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">输入文本</label>
+                        <textarea id="inputText" class="text-input" placeholder="输入要加密的文本..."></textarea>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn-primary" id="encryptBtn">加密</button>
+                        <button class="btn btn-secondary" id="clearBtn">清空</button>
+                    </div>
+                    <div class="input-group" style="margin-top:30px;">
+                        <label class="input-label">MD5 哈希值</label>
+                        <div class="output-row">
+                            <div class="output-input" id="outputText">等待加密...</div>
+                            <button class="copy-btn" id="copyBtn">📋</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 流色派. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="about.html">关于我们</a>
+                <a href="privacy.html">隐私政策</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        const inputText = document.getElementById('inputText');
+        const outputText = document.getElementById('outputText');
+        const encryptBtn = document.getElementById('encryptBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const copyBtn = document.getElementById('copyBtn');
+
+        function encrypt() {
+            const text = inputText.value;
+            if (!text) {
+                outputText.textContent = '请输入文本';
+                return;
+            }
+            const hash = CryptoJS.MD5(text).toString();
+            outputText.textContent = hash;
+        }
+
+        function copyOutput() {
+            const text = outputText.textContent;
+            if (text === '等待加密...' || text === '请输入文本') return;
+            navigator.clipboard.writeText(text).then(() => {
+                const original = copyBtn.textContent;
+                copyBtn.textContent = '✓';
+                copyBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyBtn.textContent = original;
+                    copyBtn.classList.remove('copied');
+                }, 1500);
+            });
+        }
+
+        encryptBtn.addEventListener('click', encrypt);
+        clearBtn.addEventListener('click', () => {
+            inputText.value = '';
+            outputText.textContent = '等待加密...';
+        });
+        copyBtn.addEventListener('click', copyOutput);
+        inputText.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') encrypt();
+        });
+    </script>
+</body>
+</html>

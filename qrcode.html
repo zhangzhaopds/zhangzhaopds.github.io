@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二维码生成与解析 - 流色派</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .converter-container { max-width: 700px; margin: 0 auto; padding: 40px 20px; }
+        .converter-header { text-align: center; margin-bottom: 40px; }
+        .converter-header h1 { font-size: 2rem; margin-bottom: 10px; }
+        .converter-header p { color: #666; }
+        .tabs { display: flex; gap: 12px; margin-bottom: 30px; justify-content: center; }
+        .tab {
+            padding: 12px 28px; border: 2px solid #e0e0e0; border-radius: 8px;
+            background: white; cursor: pointer; font-size: 15px; font-weight: 600;
+            transition: all 0.2s;
+        }
+        .tab:hover { border-color: #667eea; }
+        .tab.active { background: #667eea; border-color: #667eea; color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .input-group { margin-bottom: 20px; }
+        .input-label { display: block; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 8px; }
+        .text-input {
+            width: 100%; padding: 14px 16px; border: 2px solid #e0e0e0;
+            border-radius: 8px; font-size: 16px; resize: vertical;
+            min-height: 100px; box-sizing: border-box;
+        }
+        .text-input:focus { outline: none; border-color: #667eea; }
+        .btn {
+            padding: 12px 28px; border: none; border-radius: 8px;
+            cursor: pointer; font-size: 15px; transition: all 0.2s;
+        }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-primary:hover { background: #5a6fd6; }
+        .btn-secondary { background: #f8f9fa; color: #333; border: 2px solid #e0e0e0; }
+        .btn-secondary:hover { background: #e9ecef; }
+        .qr-preview {
+            background: white; padding: 20px; border-radius: 12px;
+            border: 2px solid #e0e0e0; text-align: center; margin-top: 20px;
+            min-height: 200px; display: flex; align-items: center; justify-content: center;
+        }
+        .qr-preview canvas { max-width: 100%; }
+        .qr-placeholder { color: #999; font-size: 14px; }
+        .result-text {
+            padding: 14px 16px; border: 2px solid #e0e0e0; border-radius: 8px;
+            background: #f8f9fa; font-size: 15px; word-break: break-all;
+            min-height: 60px; margin-top: 20px;
+        }
+        .error-text { color: #dc3545; font-size: 13px; margin-top: 8px; display: none; }
+        .error-text.show { display: block; }
+        .btn-row { display: flex; gap: 12px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">流色派</a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="articles.html" class="nav-link">文章</a>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="converter-container">
+                    <div class="converter-header">
+                        <h1>二维码生成与解析</h1>
+                        <p>输入文本生成二维码，或上传二维码图片解析内容</p>
+                    </div>
+
+                    <div class="tabs">
+                        <button class="tab active" data-tab="generate">生成二维码</button>
+                        <button class="tab" data-tab="parse">解析二维码</button>
+                    </div>
+
+                    <div class="tab-content active" id="generateTab">
+                        <div class="input-group">
+                            <label class="input-label">输入内容</label>
+                            <textarea id="generateInput" class="text-input" placeholder="输入要生成二维码的文本..."></textarea>
+                        </div>
+                        <button class="btn btn-primary" id="generateBtn">生成二维码</button>
+                        <div class="qr-preview" id="generatePreview">
+                            <span class="qr-placeholder">二维码将在此处显示</span>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="parseTab">
+                        <div class="input-group">
+                            <label class="input-label">上传二维码图片</label>
+                            <input type="file" id="parseFile" accept="image/*" style="display:none;">
+                            <div class="btn-row">
+                                <button class="btn btn-secondary" id="uploadBtn">选择图片</button>
+                                <button class="btn btn-secondary" id="parseBtn" disabled>解析</button>
+                            </div>
+                            <p id="fileName" style="font-size:13px;color:#666;margin-top:8px;"></p>
+                        </div>
+                        <div class="qr-preview" id="parsePreview">
+                            <span class="qr-placeholder">图片预览</span>
+                        </div>
+                        <p class="error-text" id="parseError">无法解析此二维码图片</p>
+                        <div id="parseResult" class="result-text" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 流色派. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="about.html">关于我们</a>
+                <a href="privacy.html">隐私政策</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsqr/1.4.0/jsQR.min.js"></script>
+    <script>
+        // Tabs
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab + 'Tab').classList.add('active');
+            });
+        });
+
+        // Generate QR Code
+        const generateBtn = document.getElementById('generateBtn');
+        const generateInput = document.getElementById('generateInput');
+        const generatePreview = document.getElementById('generatePreview');
+        let qrInstance = null;
+
+        generateBtn.addEventListener('click', () => {
+            const text = generateInput.value.trim();
+            if (!text) {
+                alert('请输入内容');
+                return;
+            }
+            generatePreview.innerHTML = '';
+            qrInstance = new QRCode(generatePreview, {
+                text: text,
+                width: 200,
+                height: 200,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        });
+
+        // Parse QR Code
+        const uploadBtn = document.getElementById('uploadBtn');
+        const parseBtn = document.getElementById('parseBtn');
+        const parseFile = document.getElementById('parseFile');
+        const parsePreview = document.getElementById('parsePreview');
+        const parseResult = document.getElementById('parseResult');
+        const parseError = document.getElementById('parseError');
+        const fileName = document.getElementById('fileName');
+        let uploadedImage = null;
+
+        uploadBtn.addEventListener('click', () => parseFile.click());
+
+        parseFile.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            fileName.textContent = file.name;
+            parseBtn.disabled = false;
+            parseError.classList.remove('show');
+            parseResult.style.display = 'none';
+
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+                parsePreview.innerHTML = `<img src="${evt.target.result}" style="max-width:200px;max-height:200px;" id="qrImage">`;
+                uploadedImage = evt.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        parseBtn.addEventListener('click', () => {
+            const img = document.getElementById('qrImage');
+            if (!img) return;
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.naturalWidth || 200;
+            canvas.height = img.naturalHeight || 200;
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            try {
+                const code = jsQR(imageData.data, canvas.width, canvas.height);
+                if (code) {
+                    parseResult.textContent = code.data;
+                    parseResult.style.display = 'block';
+                    parseError.classList.remove('show');
+                } else {
+                    parseError.textContent = '无法解析此二维码，请确保图片清晰完整';
+                    parseError.classList.add('show');
+                }
+            } catch (e) {
+                parseError.textContent = '解析失败：' + e.message;
+                parseError.classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>
