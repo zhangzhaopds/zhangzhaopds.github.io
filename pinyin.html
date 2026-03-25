@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汉语拼音转换 - 流色派</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .converter-container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .converter-header { text-align: center; margin-bottom: 40px; }
+        .converter-header h1 { font-size: 2rem; margin-bottom: 10px; }
+        .converter-header p { color: #666; }
+        .input-group { margin-bottom: 24px; }
+        .input-label { display: block; font-size: 14px; font-weight: 600; color: #333; margin-bottom: 8px; }
+        .text-input {
+            width: 100%; padding: 14px 16px; border: 2px solid #e0e0e0;
+            border-radius: 8px; font-size: 16px; resize: vertical;
+            min-height: 150px; box-sizing: border-box; font-family: inherit;
+        }
+        .text-input:focus { outline: none; border-color: #667eea; }
+        .word-count { text-align: right; font-size: 13px; color: #999; margin-top: 8px; }
+        .options-section { background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 24px; }
+        .option-row { margin-bottom: 16px; }
+        .option-row:last-child { margin-bottom: 0; }
+        .option-title { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 10px; }
+        .radio-group { display: flex; flex-wrap: wrap; gap: 20px; }
+        .radio-label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 14px; }
+        .radio-label input[type="radio"] { width: 16px; height: 16px; cursor: pointer; }
+        .btn {
+            padding: 12px 24px; border: none; border-radius: 8px;
+            cursor: pointer; font-size: 14px; transition: all 0.2s;
+        }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-primary:hover { background: #5a6fd6; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-success:hover { background: #218838; }
+        .btn-secondary { background: #f8f9fa; color: #333; border: 2px solid #e0e0e0; }
+        .btn-secondary:hover { background: #e9ecef; }
+        .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+        .result-box {
+            padding: 16px; border: 2px solid #28a745; border-radius: 8px;
+            background: #f8f9fa; font-size: 16px; min-height: 100px;
+            white-space: pre-wrap; word-break: break-all; margin-top: 16px;
+            display: none;
+        }
+        .result-box.show { display: block; }
+        .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .copy-btn {
+            padding: 8px 16px; background: #28a745; color: white; border: none;
+            border-radius: 6px; cursor: pointer; font-size: 14px;
+        }
+        .copy-btn:hover { background: #218838; }
+        .toast {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            background: #333; color: white; padding: 12px 24px; border-radius: 8px;
+            font-size: 14px; opacity: 0; transition: opacity 0.3s; pointer-events: none;
+            z-index: 10001;
+        }
+        .toast.show { opacity: 1; }
+        .tips { font-size: 13px; color: #999; margin-top: 16px; line-height: 1.6; }
+        .error-tip { color: #dc3545; font-size: 13px; margin-top: 8px; display: none; }
+        .error-tip.show { display: block; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">流色派</a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="articles.html" class="nav-link">文章</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="converter-container">
+                    <div class="converter-header">
+                        <h1>汉语拼音转换</h1>
+                        <p>将汉字转换为汉语拼音</p>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">输入文字</label>
+                        <textarea id="inputText" class="text-input" placeholder="请输入需要转换的中文内容..."></textarea>
+                        <div class="word-count"><span id="charCount">0</span> / 500</div>
+                    </div>
+
+                    <div class="options-section">
+                        <div class="option-row">
+                            <div class="option-title">字母方式</div>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="letter_type" value="0" checked> 全部小写
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="letter_type" value="1"> 首字母大写
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="letter_type" value="2"> 全部大写
+                                </label>
+                            </div>
+                        </div>
+                        <div class="option-row">
+                            <div class="option-title">拼音间隔</div>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="letter_blank" value="0"> 无
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="letter_blank" value="1" checked> 空格
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="letter_blank" value="2"> 中横线
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="letter_blank" value="3"> 下横线
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-row">
+                        <button class="btn btn-success" onclick="pinyinConvert(1)">转为无声调拼音</button>
+                        <button class="btn btn-success" onclick="pinyinConvert(2)">转为带声调拼音</button>
+                        <button class="btn btn-success" onclick="pinyinConvert(3)">转为拼音汉字对照</button>
+                        <button class="btn btn-secondary" onclick="clearContent()">清空内容</button>
+                    </div>
+
+                    <div id="resultBox" class="result-box">
+                        <div class="result-header">
+                            <span>转换结果</span>
+                            <button class="copy-btn" onclick="copyResult()">复制结果</button>
+                        </div>
+                        <div id="resultText"></div>
+                    </div>
+
+                    <div id="errorTip" class="error-tip"></div>
+
+                    <p class="tips">提示：无声调拼音为计算机写法。带声调拼音需要较长的转换时间，请耐心等待。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast" id="toast">已复制</div>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 流色派. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="about.html">关于我们</a>
+                <a href="privacy.html">隐私政策</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/pinyin@2.11.2/build/pinyin.min.js"></script>
+    <script>
+        const inputText = document.getElementById('inputText');
+        const charCount = document.getElementById('charCount');
+        const resultBox = document.getElementById('resultBox');
+        const resultText = document.getElementById('resultText');
+        const errorTip = document.getElementById('errorTip');
+
+        let currentResult = '';
+
+        // Character count
+        inputText.addEventListener('input', function() {
+            charCount.textContent = this.value.length;
+            if (this.value.length > 500) {
+                this.value = this.value.substring(0, 500);
+                charCount.textContent = 500;
+            }
+        });
+
+        function getOptions() {
+            const letterType = document.querySelector('input[name="letter_type"]:checked').value;
+            const letterBlank = document.querySelector('input[name="letter_blank"]:checked').value;
+
+            let separator = ' ';
+            if (letterBlank === '0') separator = '';
+            else if (letterBlank === '2') separator = '-';
+            else if (letterBlank === '3') separator = '_';
+
+            return { letterType, separator };
+        }
+
+        function formatPinyin(pinyin, options) {
+            let result = pinyin;
+
+            // Apply letter case
+            if (options.letterType === '1') {
+                result = result.split(' ').map(word => {
+                    if (word.length > 0) {
+                        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                    }
+                    return word;
+                }).join(' ');
+            } else if (options.letterType === '2') {
+                result = result.toUpperCase();
+            } else {
+                result = result.toLowerCase();
+            }
+
+            // Apply separator
+            if (options.separator !== ' ') {
+                result = result.split(' ').join(options.separator);
+            }
+
+            return result;
+        }
+
+        function pinyinConvert(mode) {
+            const text = inputText.value.trim();
+
+            if (!text) {
+                showError('请输入需要转换的内容');
+                return;
+            }
+
+            // Check if contains non-Chinese characters
+            const chineseOnly = text.replace(/[\u4e00-\u9fa5]/g, '').trim();
+            if (chineseOnly && mode !== 3) {
+                showError('请输入纯中文内容进行拼音转换');
+                return;
+            }
+
+            hideError();
+            resultBox.classList.add('show');
+
+            try {
+                const options = getOptions();
+
+                if (mode === 1) {
+                    // Without tone
+                    const pinyinArray = pinyin.getPinyin(text, '', false, true);
+                    let result = pinyinArray.join(options.separator || ' ');
+                    result = formatPinyin(result, options);
+                    currentResult = result;
+                    resultText.textContent = result;
+                } else if (mode === 2) {
+                    // With tone
+                    const pinyinArray = pinyin.getPinyin(text, '', true, true);
+                    let result = pinyinArray.join(options.separator || ' ');
+                    result = formatPinyin(result, options);
+                    currentResult = result;
+                    resultText.textContent = result;
+                } else if (mode === 3) {
+                    // Pinyin-Chinese对照
+                    const pinyinArray = pinyin.getPinyin(text, ' ', true, true);
+                    let result = '';
+                    let chineseIndex = 0;
+                    for (let i = 0; i < text.length; i++) {
+                        const char = text[i];
+                        if (/[\u4e00-\u9fa5]/.test(char)) {
+                            let py = pinyinArray[chineseIndex] || '';
+                            if (options.letterType === '1') {
+                                py = py.charAt(0).toUpperCase() + py.slice(1).toLowerCase();
+                            } else if (options.letterType === '2') {
+                                py = py.toUpperCase();
+                            } else {
+                                py = py.toLowerCase();
+                            }
+                            result += char + '(' + py + ')' + options.separator;
+                            chineseIndex++;
+                        } else {
+                            result += char;
+                        }
+                    }
+                    result = result.trim();
+                    currentResult = result;
+                    resultText.textContent = result;
+                }
+            } catch (e) {
+                showError('转换失败，请尝试更少的内容');
+                console.error(e);
+            }
+        }
+
+        function showError(msg) {
+            errorTip.textContent = msg;
+            errorTip.classList.add('show');
+            resultBox.classList.remove('show');
+        }
+
+        function hideError() {
+            errorTip.classList.remove('show');
+        }
+
+        function clearContent() {
+            inputText.value = '';
+            charCount.textContent = '0';
+            resultBox.classList.remove('show');
+            currentResult = '';
+            hideError();
+        }
+
+        function copyResult() {
+            if (!currentResult) return;
+            navigator.clipboard.writeText(currentResult).then(() => {
+                showToast('已复制到剪贴板');
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+    </script>
+</body>
+</html>
