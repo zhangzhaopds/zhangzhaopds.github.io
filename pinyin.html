@@ -158,7 +158,7 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/pinyin@2.11.2/build/pinyin.min.js"></script>
+    <script src="js/pinyin.min.js"></script>
     <script>
         const inputText = document.getElementById('inputText');
         const charCount = document.getElementById('charCount');
@@ -234,16 +234,19 @@
 
             try {
                 const options = getOptions();
-                const pinyinArray = pinyin.getPinyin(text, options.separator || ' ', mode === 2, true);
+                const toneMode = mode === 2;
+
+                // Get pinyin array (one entry per character)
+                const pinyinArray = pinyin(text, { type: 'array', tone: toneMode });
 
                 if (mode === 1 || mode === 2) {
-                    // Process character by character to preserve punctuation
+                    // Convert to pinyin string, preserving non-Chinese characters
                     let result = '';
-                    let pinyinIndex = 0;
+                    let pyIndex = 0;
                     for (let i = 0; i < text.length; i++) {
                         const char = text[i];
                         if (/[\u4e00-\u9fa5]/.test(char)) {
-                            let py = pinyinArray[pinyinIndex] || '';
+                            let py = pinyinArray[pyIndex] || '';
                             if (options.letterType === '1') {
                                 py = py.charAt(0).toUpperCase() + py.slice(1).toLowerCase();
                             } else if (options.letterType === '2') {
@@ -252,22 +255,18 @@
                                 py = py.toLowerCase();
                             }
                             result += py;
-                            pinyinIndex++;
-                        } else if (options.separator && options.separator !== ' ' && /[a-zA-Z]/.test(char)) {
-                            // Keep spacing between pinyin words
-                            result += options.separator + char;
+                            pyIndex++;
                         } else {
-                            // Preserve punctuation and spaces
-                            if (result && result.length > 0 && /[a-zA-Z]/.test(result[result.length - 1]) && /[a-zA-Z]/.test(char)) {
-                                result += options.separator || ' ';
-                            }
+                            // Preserve punctuation and non-Chinese characters
                             result += char;
-                            if (/[，。！？、；：""''（）]/.test(char)) {
-                                result += (options.separator || ' ');
-                            }
                         }
                     }
-                    result = result.trim();
+
+                    // Apply separator between pinyin words
+                    if (options.separator && options.separator !== ' ') {
+                        result = result.replace(/([a-zA-Z])([a-zA-Z])/g, (m, p1, p2) => p1 + options.separator + p2);
+                    }
+
                     currentResult = result;
                     resultText.textContent = result;
                 } else if (mode === 3) {
