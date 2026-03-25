@@ -42,7 +42,7 @@
             border: 2px solid #e0e0e0; text-align: center; margin-top: 20px;
             min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
-        .qr-preview canvas { max-width: 100%; }
+        .qr-preview img { max-width: 200px; height: auto; }
         .qr-placeholder { color: #999; font-size: 14px; }
         .result-box {
             padding: 16px; border: 2px solid #28a745; border-radius: 8px;
@@ -55,44 +55,10 @@
             border-radius: 6px; cursor: pointer; font-size: 14px; white-space: nowrap;
         }
         .copy-btn:hover { background: #218838; }
-        .copy-btn.copied { background: #218838; }
-        .error-text { color: #dc3545; font-size: 13px; margin-top: 8px; display: none; }
+        .error-text { color: #dc3545; font-size: 13px; margin-top: 8px; display: none; text-align: center; }
         .error-text.show { display: block; }
-        .download-btn { margin-top: 16px; }
-        /* Screen capture overlay */
-        .capture-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 9999; display: none; cursor: crosshair;
-        }
-        .capture-overlay.active { display: block; }
-        .capture-instructions {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            background: white; padding: 12px 24px; border-radius: 8px;
-            font-size: 14px; color: #333; z-index: 10000;
-        }
-        .capture-btn {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            padding: 12px 24px; background: #dc3545; color: white; border: none;
-            border-radius: 8px; font-size: 14px; cursor: pointer; z-index: 10000;
-        }
-        .capture-btn:hover { background: #c82333; }
-        /* Area selection */
-        .selection-box {
-            position: absolute; border: 2px dashed #667eea; background: rgba(102,126,234,0.1);
-            pointer-events: none;
-        }
-        /* File input styled */
-        .file-input-wrapper {
-            position: relative; display: inline-block;
-        }
-        .file-input-wrapper input { display: none; }
-        /* Parse result section */
-        .parse-section { margin-top: 20px; }
-        .parse-section h5 { font-size: 14px; color: #666; margin-bottom: 12px; }
-        .capture-preview {
-            max-width: 100%; max-height: 300px; margin-top: 16px;
-            border-radius: 8px; display: none;
-        }
+        .success-text { color: #28a745; font-size: 13px; margin-top: 8px; display: none; text-align: center; }
+        .success-text.show { display: block; }
         .toast {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
             background: #333; color: white; padding: 12px 24px; border-radius: 8px;
@@ -119,59 +85,57 @@
                 <div class="converter-container">
                     <div class="converter-header">
                         <h1>二维码生成与解析</h1>
-                        <p>输入文本生成二维码，或截图解析二维码内容</p>
+                        <p>输入文本生成二维码，或上传二维码图片解析内容</p>
                     </div>
 
                     <div class="tabs">
-                        <button class="tab active" data-tab="generate">生成二维码</button>
-                        <button class="tab" data-tab="parse">解析二维码</button>
+                        <button class="tab active" id="tabGenerate" onclick="switchTab('generate')">生成二维码</button>
+                        <button class="tab" id="tabParse" onclick="switchTab('parse')">解析二维码</button>
                     </div>
 
+                    <!-- Generate Tab -->
                     <div class="tab-content active" id="generateTab">
                         <div class="input-group">
                             <label class="input-label">输入内容</label>
-                            <textarea id="generateInput" class="text-input" placeholder="输入要生成二维码的文本..."></textarea>
+                            <textarea id="generateInput" class="text-input" placeholder="输入要生成二维码的文本...">https://example.com</textarea>
                         </div>
-                        <button class="btn btn-primary" id="generateBtn">生成二维码</button>
+                        <button class="btn btn-primary" onclick="generateQR()">生成二维码</button>
                         <div class="qr-preview" id="generatePreview">
                             <span class="qr-placeholder">二维码将在此处显示</span>
                         </div>
-                        <div id="downloadArea" style="display:none;">
-                            <button class="btn btn-primary download-btn" id="downloadBtn">下载二维码</button>
+                        <div id="downloadArea" style="display:none; text-align:center; margin-top:16px;">
+                            <button class="btn btn-primary" onclick="downloadQR()">下载二维码</button>
                         </div>
                     </div>
 
+                    <!-- Parse Tab -->
                     <div class="tab-content" id="parseTab">
-                        <div class="btn-row" style="margin-bottom:20px;">
-                            <button class="btn btn-secondary" id="selectFileBtn">选择图片</button>
-                            <button class="btn btn-secondary" id="captureBtn">截图选取</button>
-                        </div>
-                        <input type="file" id="parseFile" accept="image/*" style="display:none;">
-
-                        <div id="parseContent">
-                            <div class="qr-preview" id="parsePreview">
-                                <span class="qr-placeholder">上传图片后将自动解析</span>
+                        <div class="input-group">
+                            <label class="input-label">上传二维码图片</label>
+                            <input type="file" id="parseFile" accept="image/*" onchange="handleFileSelect(this)">
+                            <div class="btn-row" style="margin-top:12px;">
+                                <button class="btn btn-secondary" onclick="document.getElementById('parseFile').click()">选择图片</button>
                             </div>
-                            <img id="capturedImage" class="capture-preview" alt="捕获的二维码">
-                            <p class="error-text" id="parseError">无法解析此图片，请确保二维码清晰可见</p>
-                            <div id="parseResultBox" class="result-box" style="display:none;">
+                            <p id="fileName" style="font-size:13px;color:#666;margin-top:8px;"></p>
+                        </div>
+                        <div class="qr-preview" id="parsePreview">
+                            <span class="qr-placeholder">上传图片后将自动解析</span>
+                        </div>
+                        <div id="parseResultArea" style="display:none;">
+                            <div class="result-box">
                                 <span class="result-text" id="parseResultText"></span>
-                                <button class="copy-btn" id="copyResultBtn">复制</button>
+                                <button class="copy-btn" onclick="copyResult()">复制</button>
                             </div>
+                            <p id="successMsg" class="success-text">解析成功</p>
                         </div>
+                        <p id="parseError" class="error-text">无法解析此图片，请确保二维码清晰可见</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Screen capture overlay -->
-    <div class="capture-overlay" id="captureOverlay">
-        <div class="capture-instructions">拖动鼠标选择二维码区域</div>
-        <button class="capture-btn" id="cancelCaptureBtn">取消</button>
-    </div>
-
-    <div class="toast" id="toast">已复制到剪贴板</div>
+    <div class="toast" id="toast">已复制</div>
 
     <footer class="footer">
         <div class="container footer-content">
@@ -187,7 +151,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsqr/1.4.0/jsQR.min.js"></script>
     <script>
-        // Toast notification
+        let qrInstance = null;
+        let lastParsedData = '';
+
         function showToast(msg) {
             const toast = document.getElementById('toast');
             toast.textContent = msg;
@@ -195,39 +161,33 @@
             setTimeout(() => toast.classList.remove('show'), 2000);
         }
 
-        // Tabs
-        const tabs = document.querySelectorAll('.tab');
-        const tabContents = document.querySelectorAll('.tab-content');
+        function switchTab(tab) {
+            document.getElementById('tabGenerate').classList.remove('active');
+            document.getElementById('tabParse').classList.remove('active');
+            document.getElementById('generateTab').classList.remove('active');
+            document.getElementById('parseTab').classList.remove('active');
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.tab + 'Tab').classList.add('active');
-            });
-        });
+            if (tab === 'generate') {
+                document.getElementById('tabGenerate').classList.add('active');
+                document.getElementById('generateTab').classList.add('active');
+            } else {
+                document.getElementById('tabParse').classList.add('active');
+                document.getElementById('parseTab').classList.add('active');
+            }
+        }
 
-        // ========== Generate QR Code ==========
-        const generateBtn = document.getElementById('generateBtn');
-        const generateInput = document.getElementById('generateInput');
-        const generatePreview = document.getElementById('generatePreview');
-        const downloadArea = document.getElementById('downloadArea');
-        const downloadBtn = document.getElementById('downloadBtn');
-        let qrInstance = null;
-        let currentQRData = '';
-
-        generateBtn.addEventListener('click', () => {
-            const text = generateInput.value.trim();
+        function generateQR() {
+            const text = document.getElementById('generateInput').value.trim();
             if (!text) {
                 alert('请输入内容');
                 return;
             }
-            currentQRData = text;
-            generatePreview.innerHTML = '';
-            downloadArea.style.display = 'none';
 
-            qrInstance = new QRCode(generatePreview, {
+            const preview = document.getElementById('generatePreview');
+            preview.innerHTML = '';
+            document.getElementById('downloadArea').style.display = 'none';
+
+            qrInstance = new QRCode(preview, {
                 text: text,
                 width: 200,
                 height: 200,
@@ -236,164 +196,90 @@
                 correctLevel: QRCode.CorrectLevel.H
             });
 
-            // Show download button after a short delay for QR to render
             setTimeout(() => {
-                downloadArea.style.display = 'block';
-            }, 100);
-        });
+                document.getElementById('downloadArea').style.display = 'block';
+            }, 200);
+        }
 
-        downloadBtn.addEventListener('click', () => {
-            const canvas = generatePreview.querySelector('canvas');
-            if (!canvas) {
-                // For older browsers or if canvas not created
-                const img = generatePreview.querySelector('img');
-                if (img) {
-                    const link = document.createElement('a');
-                    link.download = 'qrcode.png';
-                    link.href = img.src;
-                    link.click();
-                }
-                return;
+        function downloadQR() {
+            const preview = document.getElementById('generatePreview');
+            const canvas = preview.querySelector('canvas');
+            const img = preview.querySelector('img');
+
+            if (canvas) {
+                const link = document.createElement('a');
+                link.download = 'qrcode.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                showToast('二维码已下载');
+            } else if (img) {
+                const link = document.createElement('a');
+                link.download = 'qrcode.png';
+                link.href = img.src;
+                link.click();
+                showToast('二维码已下载');
             }
+        }
 
-            const link = document.createElement('a');
-            link.download = 'qrcode.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-            showToast('二维码已下载');
-        });
-
-        // ========== Parse QR Code ==========
-        const parseFile = document.getElementById('parseFile');
-        const selectFileBtn = document.getElementById('selectFileBtn');
-        const captureBtn = document.getElementById('captureBtn');
-        const parsePreview = document.getElementById('parsePreview');
-        const capturedImage = document.getElementById('capturedImage');
-        const parseResultBox = document.getElementById('parseResultBox');
-        const parseResultText = document.getElementById('parseResultText');
-        const parseError = document.getElementById('parseError');
-        const copyResultBtn = document.getElementById('copyResultBtn');
-
-        selectFileBtn.addEventListener('click', () => parseFile.click());
-
-        parseFile.addEventListener('change', (e) => {
-            const file = e.target.files[0];
+        function handleFileSelect(input) {
+            const file = input.files[0];
             if (!file) return;
+
+            document.getElementById('fileName').textContent = '已选择: ' + file.name;
+            document.getElementById('parseResultArea').style.display = 'none';
+            document.getElementById('parseError').classList.remove('show');
+            document.getElementById('successMsg').classList.remove('show');
+
             const reader = new FileReader();
-            reader.onload = (evt) => {
+            reader.onload = function(e) {
+                const preview = document.getElementById('parsePreview');
+                preview.innerHTML = '<img src="' + e.target.result + '" style="max-width:200px; max-height:200px;">';
+
                 const img = new Image();
-                img.onload = () => {
-                    capturedImage.src = evt.target.result;
-                    capturedImage.style.display = 'block';
-                    parsePreview.style.display = 'none';
-                    parseResultBox.style.display = 'none';
-                    parseError.style.display = 'none';
+                img.onload = function() {
                     decodeQRImage(img);
                 };
-                img.src = evt.target.result;
+                img.src = e.target.result;
             };
             reader.readAsDataURL(file);
-        });
-
-        // Copy result
-        copyResultBtn.addEventListener('click', () => {
-            const text = parseResultText.textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                copyResultBtn.textContent = '已复制';
-                copyResultBtn.classList.add('copied');
-                setTimeout(() => {
-                    copyResultBtn.textContent = '复制';
-                    copyResultBtn.classList.remove('copied');
-                }, 1500);
-            });
-        });
+        }
 
         function decodeQRImage(img) {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-            canvas.width = img.naturalWidth || 300;
-            canvas.height = img.naturalHeight || 300;
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            ctx.drawImage(img, 0, 0);
 
             try {
                 const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
                 const code = jsQR(imageData.data, canvas.width, canvas.height);
+
                 if (code) {
-                    parseResultText.textContent = code.data;
-                    parseResultBox.style.display = 'flex';
-                    parseError.style.display = 'none';
+                    lastParsedData = code.data;
+                    document.getElementById('parseResultText').textContent = code.data;
+                    document.getElementById('parseResultArea').style.display = 'block';
+                    document.getElementById('parseError').classList.remove('show');
+                    document.getElementById('successMsg').classList.add('show');
                 } else {
-                    parseError.textContent = '无法解析此图片，请确保二维码清晰可见';
-                    parseError.style.display = 'block';
-                    parseResultBox.style.display = 'none';
+                    document.getElementById('parseError').classList.add('show');
                 }
-            } catch (e) {
-                parseError.textContent = '解析失败：' + e.message;
-                parseError.style.display = 'block';
-                parseResultBox.style.display = 'none';
+            } catch (err) {
+                document.getElementById('parseError').classList.add('show');
             }
         }
 
-        // ========== Screen Capture ==========
-        const captureOverlay = document.getElementById('captureOverlay');
-        const cancelCaptureBtn = document.getElementById('cancelCaptureBtn');
-        let isSelecting = false;
-        let startX, startY;
-        let selectionRect = null;
+        function copyResult() {
+            if (!lastParsedData) return;
+            navigator.clipboard.writeText(lastParsedData).then(() => {
+                showToast('已复制到剪贴板');
+            });
+        }
 
-        captureBtn.addEventListener('click', async () => {
-            try {
-                // Request screen capture
-                const stream = await navigator.mediaDevices.getDisplayMedia({
-                    video: { cursor: 'always' } as any
-                });
-
-                // Create video element
-                const video = document.createElement('video');
-                video.srcObject = stream;
-                video.play();
-
-                // Wait for video to be ready
-                await new Promise(resolve => {
-                    video.onloadedmetadata = resolve;
-                });
-
-                // Create canvas for capture
-                const tempCanvas = document.createElement('canvas');
-                tempCanvas.width = video.videoWidth;
-                tempCanvas.height = video.videoHeight;
-                const tempCtx = tempCanvas.getContext('2d');
-                tempCtx.drawImage(video, 0, 0);
-
-                // Stop the stream
-                stream.getTracks().forEach(track => track.stop());
-
-                // Decode from captured frame
-                const img = new Image();
-                img.onload = () => {
-                    capturedImage.src = tempCanvas.toDataURL('image/png');
-                    capturedImage.style.display = 'block';
-                    parsePreview.style.display = 'none';
-                    parseResultBox.style.display = 'none';
-                    parseError.style.display = 'none';
-                    decodeQRImage(img);
-                };
-                img.src = tempCanvas.toDataURL('image/png');
-
-            } catch (err) {
-                // Fallback: if screen capture not supported, show file dialog
-                parseFile.click();
-            }
-        });
-
-        cancelCaptureBtn.addEventListener('click', () => {
-            captureOverlay.classList.remove('active');
-            isSelecting = false;
-            if (selectionRect) {
-                selectionRect.remove();
-                selectionRect = null;
-            }
-        });
+        // Generate initial QR on page load
+        window.onload = function() {
+            generateQR();
+        };
     </script>
 </body>
 </html>
