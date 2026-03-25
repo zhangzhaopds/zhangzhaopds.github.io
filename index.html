@@ -3,10 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>流色派 - 壁纸技巧与色彩心理学</title>
+    <title>流色派 - 在线工具箱</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6710008629258058" crossorigin="anonymous"></script>
+    <style>
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tool-card {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border-color: #007bff;
+        }
+
+        .tool-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .tool-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .tool-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .section {
+            padding: 40px 0;
+        }
+
+        .ad-section {
+            padding: 20px 0;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -15,8 +82,6 @@
             <nav class="nav">
                 <a href="index.html" class="nav-link active">首页</a>
                 <a href="articles.html" class="nav-link">文章</a>
-                <a href="pdf2image.html" class="nav-link">PDF转图片</a>
-                <a href="color-converter.html" class="nav-link">颜色转换</a>
             </nav>
         </div>
     </header>
@@ -24,48 +89,41 @@
     <main class="main">
         <section class="hero">
             <div class="container">
-                <h1 class="hero-title">壁纸技巧与色彩心理学</h1>
-                <p class="hero-subtitle">探索色彩与视觉的秘密</p>
+                <h1 class="hero-title">在线工具箱</h1>
+                <p class="hero-subtitle">免费实用的在线工具集合</p>
             </div>
         </section>
 
         <section class="section">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">最新文章</h2>
-                    <a href="articles.html" class="more-link">更多 &rarr;</a>
-                </div>
-                <div id="articleGrid" class="article-grid">
-                    <div class="loading">加载中...</div>
+                <div class="tools-grid">
+                    <a href="pdf2image.html" class="tool-card">
+                        <div class="tool-icon">📄</div>
+                        <div class="tool-title">PDF 转图片</div>
+                        <div class="tool-desc">将 PDF 文件转换为 PNG/JPEG 图片，支持多页批量转换</div>
+                    </a>
+
+                    <a href="color-converter.html" class="tool-card">
+                        <div class="tool-icon">🎨</div>
+                        <div class="tool-title">颜色值转换</div>
+                        <div class="tool-desc">HEX 与 RGBA 互转，实时预览颜色效果</div>
+                    </a>
+
+                    <a href="base-converter.html" class="tool-card">
+                        <div class="tool-icon">🔢</div>
+                        <div class="tool-title">进制转换</div>
+                        <div class="tool-desc">二进制、八进制、十进制、十六进制互转</div>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- 关注我们 -->
-        <section class="section follow-section">
-            <div class="container">
-                <h2 class="section-title">关注我们</h2>
-                <p class="follow-intro">扫码关注公众号，或在微信搜索「流小色」小程序获取更多壁纸</p>
-                <div class="follow-qr-codes">
-                    <div class="follow-qr-item">
-                        <img src="images/liusepai.png" alt="流色派公众号" class="follow-qr-img">
-                        <p class="follow-qr-label">公众号：流色派</p>
-                    </div>
-                    <div class="follow-qr-item">
-                        <img src="images/liuxiaose.png" alt="流小色小程序" class="follow-qr-img">
-                        <p class="follow-qr-label">小程序：流小色</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 广告位 -->
         <section class="section ad-section">
             <div class="container">
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-6710008629258058"
-     data-ad-slot="2841079158"
+                     data-ad-slot="2841079158"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
             </div>
@@ -83,33 +141,6 @@
         </div>
     </footer>
 
-    <script>
-        // 加载文章列表到首页
-        fetch('data/articles.json')
-            .then(response => response.json())
-            .then(data => {
-                const grid = document.getElementById('articleGrid');
-                // 按日期倒序排序，取前6篇
-                const articles = data.articles
-                    .sort((a, b) => new Date(b.date) - new Date(a.date))
-                    .slice(0, 6);
-
-                if (articles.length === 0) {
-                    grid.innerHTML = '<p class="no-data">暂无文章</p>';
-                    return;
-                }
-
-                grid.innerHTML = articles.map(article => `
-                    <a href="article.html?id=${article.id}" class="article-card">
-                        <h3 class="article-card-title">${article.title}</h3>
-                        <p class="article-card-excerpt">${article.excerpt}</p>
-                        <span class="article-card-date">${article.date}</span>
-                    </a>
-                `).join('');
-            })
-            .catch(error => {
-                document.getElementById('articleGrid').innerHTML = '<p class="error">加载失败</p>';
-            });
-    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6710008629258058" crossorigin="anonymous"></script>
 </body>
 </html>
