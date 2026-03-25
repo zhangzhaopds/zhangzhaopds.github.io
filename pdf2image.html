@@ -47,6 +47,16 @@
             background: #e6f0ff;
         }
 
+        .upload-area.has-file {
+            border-color: #28a745;
+            background: #f0fff4;
+        }
+
+        .upload-area.has-file:hover {
+            border-color: #28a745;
+            background: #e6ffe6;
+        }
+
         .upload-icon {
             font-size: 48px;
             margin-bottom: 16px;
@@ -247,9 +257,10 @@
                     <div id="errorMessage" class="error-message"></div>
 
                     <div id="uploadArea" class="upload-area">
-                        <div class="upload-icon">📄</div>
-                        <div class="upload-text">点击或拖拽 PDF 文件到此处</div>
-                        <div class="upload-hint">支持多页 PDF，自动逐页转换</div>
+                        <div class="upload-icon" id="uploadIcon">📄</div>
+                        <div class="upload-text" id="uploadText">点击或拖拽 PDF 文件到此处</div>
+                        <div class="upload-hint" id="uploadHint">支持多页 PDF，自动逐页转换</div>
+                        <div id="fileInfo" style="display:none; margin-top:12px;"></div>
                     </div>
                     <input type="file" id="fileInput" accept=".pdf,application/pdf">
 
@@ -371,6 +382,32 @@
             hideError();
             previewContainer.style.display = 'none';
             pdfImages = [];
+
+            // 更新上传区域样式
+            uploadArea.classList.add('has-file');
+            document.getElementById('uploadIcon').textContent = '✅';
+            document.getElementById('uploadText').textContent = file.name;
+            document.getElementById('uploadHint').textContent = '文件已加载，点击可重新选择';
+            document.getElementById('fileInfo').style.display = 'block';
+            document.getElementById('fileInfo').innerHTML = `
+                <span style="color:#28a745; font-size:14px;">✓ 已添加 PDF 文件</span>
+                <button class="btn btn-secondary" style="padding:6px 12px; font-size:13px; margin-left:12px;" id="resetBtn">重新选择</button>
+            `;
+        }
+
+        function resetUpload() {
+            pdfFile = null;
+            pdfDoc = null;
+            pdfImages = [];
+            fileInput.value = '';
+            convertBtn.disabled = true;
+            uploadArea.classList.remove('has-file');
+            document.getElementById('uploadIcon').textContent = '📄';
+            document.getElementById('uploadText').textContent = '点击或拖拽 PDF 文件到此处';
+            document.getElementById('uploadHint').textContent = '支持多页 PDF，自动逐页转换';
+            document.getElementById('fileInfo').style.display = 'none';
+            previewContainer.style.display = 'none';
+            progressContainer.style.display = 'none';
         }
 
         async function convertPDF() {
@@ -483,6 +520,10 @@
         convertBtn.addEventListener('click', convertPDF);
         downloadAllBtn.addEventListener('click', downloadAll);
         downloadAllBtn2.addEventListener('click', downloadAll);
+        document.getElementById('resetBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            resetUpload();
+        });
     </script>
 </body>
 </html>
