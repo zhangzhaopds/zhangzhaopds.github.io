@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>反应速度测试 - 流色派</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .test-header {
+            margin-bottom: 30px;
+        }
+
+        .test-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .test-header p {
+            color: #666;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-value.best {
+            color: #28a745;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .test-area {
+            width: 100%;
+            height: 350px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.15s, box-shadow 0.15s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .test-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .test-area.state-ready {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            border: 3px solid #ddd;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .test-area.state-waiting {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            border: 3px solid #ff5252;
+            box-shadow: 0 4px 20px rgba(255,107,107,0.4);
+        }
+
+        .test-area.state-click {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border: 3px solid #28a745;
+            box-shadow: 0 4px 20px rgba(40,167,69,0.4);
+        }
+
+        .test-area.state-result {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 3px solid #667eea;
+            box-shadow: 0 4px 20px rgba(102,126,234,0.4);
+        }
+
+        .test-area.state-early {
+            background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+            border: 3px solid #ffc107;
+            box-shadow: 0 4px 20px rgba(255,193,7,0.4);
+        }
+
+        .test-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .test-subtext {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            margin-top: 12px;
+        }
+
+        .click-hint {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .result-time {
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .result-unit {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.8);
+            margin-left: 8px;
+        }
+
+        .result-comment {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            margin-top: 16px;
+        }
+
+        .history-list {
+            margin-top: 30px;
+        }
+
+        .history-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .history-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .history-item {
+            padding: 6px 14px;
+            background: #f5f5f5;
+            border-radius: 20px;
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
+            color: #666;
+        }
+
+        .history-item.best {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .tips {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .tips h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .tips ul {
+            font-size: 13px;
+            color: #666;
+            padding-left: 20px;
+        }
+
+        .tips li {
+            margin-bottom: 6px;
+        }
+
+        .reset-btn {
+            margin-top: 20px;
+            padding: 10px 24px;
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">流色派</a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="articles.html" class="nav-link">文章</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section">
+            <div class="container">
+                <div class="test-container">
+                    <div class="test-header">
+                        <h1>反应速度测试</h1>
+                        <p>测试你的反应速度，点击目标并记录时间</p>
+                    </div>
+
+                    <div class="stats-bar">
+                        <div class="stat-item">
+                            <div class="stat-value" id="avgTime">--</div>
+                            <div class="stat-label">平均 (ms)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value best" id="bestTime">--</div>
+                            <div class="stat-label">最快 (ms)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="attemptCount">0</div>
+                            <div class="stat-label">测试次数</div>
+                        </div>
+                    </div>
+
+                    <div class="test-area state-ready" id="testArea">
+                        <div class="test-text" id="mainText">准备就绪</div>
+                        <div class="test-subtext" id="subText">点击区域开始测试</div>
+                    </div>
+
+                    <div class="history-list" id="historyList" style="display:none;">
+                        <div class="history-title">历史记录</div>
+                        <div class="history-items" id="historyItems"></div>
+                    </div>
+
+                    <div class="tips">
+                        <h3>测试说明</h3>
+                        <ul>
+                            <li>点击绿色区域后，等待屏幕变红</li>
+                            <li>屏幕变绿时，立即点击</li>
+                            <li>如果提前点击（变绿前），测试失败</li>
+                            <li>保持专注，多次测试取平均值更准确</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 流色派. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="about.html">关于我们</a>
+                <a href="privacy.html">隐私政策</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const testArea = document.getElementById('testArea');
+        const mainText = document.getElementById('mainText');
+        const subText = document.getElementById('subText');
+        const avgTimeEl = document.getElementById('avgTime');
+        const bestTimeEl = document.getElementById('bestTime');
+        const attemptCountEl = document.getElementById('attemptCount');
+        const historyList = document.getElementById('historyList');
+        const historyItems = document.getElementById('historyItems');
+
+        let state = 'ready'; // ready, waiting, click, result, early
+        let startTime = 0;
+        let timeoutId = null;
+        let times = [];
+
+        function setState(newState) {
+            state = newState;
+            testArea.className = 'test-area state-' + state;
+        }
+
+        function getRandomDelay() {
+            // Random delay between 1000ms and 4000ms
+            return Math.floor(Math.random() * 3000) + 1000;
+        }
+
+        function getComment(time) {
+            if (time < 200) return '惊人的反应速度！';
+            if (time < 250) return '非常优秀！';
+            if (time < 300) return '很不错！';
+            if (time < 400) return '正常水平';
+            if (time < 500) return '稍微慢了一点';
+            return '继续加油！';
+        }
+
+        function updateStats() {
+            attemptCountEl.textContent = times.length;
+            if (times.length > 0) {
+                const avg = Math.round(times.reduce((a, b) => a + b, 0) / times.length);
+                avgTimeEl.textContent = avg;
+                bestTimeEl.textContent = Math.min(...times);
+            }
+        }
+
+        function updateHistory() {
+            if (times.length === 0) {
+                historyList.style.display = 'none';
+                return;
+            }
+            historyList.style.display = 'block';
+            const minTime = Math.min(...times);
+            historyItems.innerHTML = times.map(t =>
+                `<span class="history-item ${t === minTime ? 'best' : ''}">${t}ms</span>`
+            ).join('');
+        }
+
+        function startTest() {
+            setState('waiting');
+            mainText.innerHTML = '<span class="click-hint">等待...</span>';
+            subText.textContent = '保持专注，不要点击';
+
+            const delay = getRandomDelay();
+            timeoutId = setTimeout(() => {
+                setState('click');
+                mainText.innerHTML = '<span class="click-hint">点击！</span>';
+                subText.textContent = '';
+                startTime = Date.now();
+            }, delay);
+        }
+
+        function handleClick() {
+            switch (state) {
+                case 'ready':
+                    startTest();
+                    break;
+
+                case 'waiting':
+                    // Clicked too early
+                    clearTimeout(timeoutId);
+                    setState('early');
+                    mainText.innerHTML = '<span class="click-hint">太快了！</span>';
+                    subText.textContent = '还没变绿就点击了';
+                    setTimeout(() => {
+                        setState('ready');
+                        mainText.innerHTML = '<span class="test-text">重新开始</span>';
+                        subText.textContent = '点击区域继续';
+                    }, 1500);
+                    break;
+
+                case 'click':
+                    // Success
+                    const reactionTime = Date.now() - startTime;
+                    times.push(reactionTime);
+                    setState('result');
+                    mainText.innerHTML = `<span class="result-time">${reactionTime}<span class="result-unit">ms</span></span>`;
+                    subText.innerHTML = `<span class="result-comment">${getComment(reactionTime)}</span>`;
+
+                    // Add reset button
+                    const btn = document.createElement('button');
+                    btn.className = 'reset-btn';
+                    btn.textContent = '再来一次';
+                    btn.onclick = (e) => {
+                        e.stopPropagation();
+                        setState('ready');
+                        mainText.innerHTML = '<span class="test-text">准备就绪</span>';
+                        subText.textContent = '点击区域开始测试';
+                        btn.remove();
+                    };
+                    subText.after(btn);
+
+                    updateStats();
+                    updateHistory();
+                    break;
+
+                case 'result':
+                    // Start new test
+                    startTest();
+                    break;
+            }
+        }
+
+        testArea.addEventListener('click', handleClick);
+
+        // Prevent context menu on long press (mobile)
+        testArea.addEventListener('contextmenu', (e) => e.preventDefault());
+    </script>
+</body>
+</html>
