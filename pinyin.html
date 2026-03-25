@@ -107,9 +107,6 @@
                             <div class="option-title">拼音间隔</div>
                             <div class="radio-group">
                                 <label class="radio-label">
-                                    <input type="radio" name="letter_blank" value="0"> 无
-                                </label>
-                                <label class="radio-label">
                                     <input type="radio" name="letter_blank" value="1" checked> 空格
                                 </label>
                                 <label class="radio-label">
@@ -123,18 +120,17 @@
                     </div>
 
                     <div class="btn-row">
-                        <button class="btn btn-success" onclick="pinyinConvert(1)">转为无声调拼音</button>
                         <button class="btn btn-success" onclick="pinyinConvert(2)">转为带声调拼音</button>
                         <button class="btn btn-success" onclick="pinyinConvert(3)">转为拼音汉字对照</button>
                         <button class="btn btn-secondary" onclick="clearContent()">清空内容</button>
                     </div>
 
                     <div id="resultBox" class="result-box">
-                        <div class="result-header">
-                            <span>转换结果</span>
-                            <button class="copy-btn" onclick="copyResult()">复制结果</button>
-                        </div>
                         <div id="resultText"></div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 12px;">
+                        <button class="copy-btn" onclick="copyResult()">复制结果</button>
                     </div>
 
                     <div id="errorTip" class="error-tip"></div>
