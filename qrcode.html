@@ -219,15 +219,45 @@
             const img = preview.querySelector('img');
 
             if (canvas) {
+                // Create a new canvas with white margin
+                const margin = 16;
+                const qrSize = canvas.width;
+                const newCanvas = document.createElement('canvas');
+                newCanvas.width = qrSize + margin * 2;
+                newCanvas.height = qrSize + margin * 2;
+                const ctx = newCanvas.getContext('2d');
+
+                // Fill white background
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+
+                // Draw QR code with margin
+                ctx.drawImage(canvas, margin, margin, qrSize, qrSize);
+
                 const link = document.createElement('a');
                 link.download = 'qrcode.png';
-                link.href = canvas.toDataURL('image/png');
+                link.href = newCanvas.toDataURL('image/png');
                 link.click();
                 showToast('二维码已下载');
             } else if (img) {
+                // Create a new canvas with white margin for image
+                const margin = 16;
+                const imgSize = img.naturalWidth || img.width;
+                const newCanvas = document.createElement('canvas');
+                newCanvas.width = imgSize + margin * 2;
+                newCanvas.height = imgSize + margin * 2;
+                const ctx = newCanvas.getContext('2d');
+
+                // Fill white background
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+
+                // Draw image with margin
+                ctx.drawImage(img, margin, margin, imgSize, imgSize);
+
                 const link = document.createElement('a');
                 link.download = 'qrcode.png';
-                link.href = img.src;
+                link.href = newCanvas.toDataURL('image/png');
                 link.click();
                 showToast('二维码已下载');
             }
